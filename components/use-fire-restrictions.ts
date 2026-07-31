@@ -12,7 +12,7 @@ type RestrictionResponse = {
   error?: { message?: string };
 };
 
-export const FIRE_MAP_URL = "https://www.mtfireinfo.org/restrictions";
+export const FIRE_MAP_URL = "https://mtdnrc.maps.arcgis.com/apps/dashboards/86668bab4c2248f09c1b70b546bff420#";
 
 const FIRE_QUERY_URL =
   "https://services2.arcgis.com/DRQySz3VhPgOv7Bo/arcgis/rest/services/Fire_Restrictions_by_Jurisdiction_Update_-_Read_Only_view/FeatureServer/2/query?f=json&where=1%3D1&geometry=-113.33945%2C46.82559&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=JurisdictionalUnitName%2CRestrictionType&returnGeometry=false";

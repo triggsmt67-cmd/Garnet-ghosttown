@@ -33,6 +33,36 @@ const weatherLabels: Record<number, string> = {
   95: "Thunderstorms",
 };
 
+function LiveDateTime() {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const tick = () => setNow(new Date());
+    tick();
+    const id = setInterval(tick, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const date = now.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    timeZone: "America/Denver",
+  });
+  const time = now.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+    timeZone: "America/Denver",
+  });
+
+  return (
+    <p className="mt-1.5 text-[0.62rem] font-semibold tracking-[0.12em] text-white/45 uppercase lg:text-xs">
+      {date} · {time}
+    </p>
+  );
+}
+
 export function WeatherCard({ compact = false }: { compact?: boolean }) {
   const [weather, setWeather] = useState<Weather | null>(null);
   const [failed, setFailed] = useState(false);
@@ -70,14 +100,17 @@ export function WeatherCard({ compact = false }: { compact?: boolean }) {
           At Garnet · 6,000 ft
         </p>
         {weather ? (
-          <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0 lg:gap-x-3">
-            <span className="display-type text-3xl font-bold lg:text-4xl">
-              {weather.temperature}°
-            </span>
-            <span className="text-[0.65rem] leading-4 text-white/65 lg:text-xs">
-              {weatherLabels[weather.code] ?? "Mountain weather"} · {weather.wind} mph wind
-            </span>
-          </div>
+          <>
+            <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0 lg:gap-x-3">
+              <span className="display-type text-4xl font-bold lg:text-5xl">
+                {weather.temperature}°
+              </span>
+              <span className="text-xs leading-4 text-white/70 lg:text-sm">
+                {weatherLabels[weather.code] ?? "Mountain weather"} · {weather.wind} mph
+              </span>
+            </div>
+            <LiveDateTime />
+          </>
         ) : (
           <p className="mt-2 text-xs text-white/60">
             {failed ? "Weather unavailable—check before leaving." : "Reading mountain weather…"}
