@@ -8,10 +8,9 @@ import { FireStatusBar } from "./fire-status-bar";
 
 const links = [
   { href: "/visit", label: "Plan Your Visit" },
-  { href: "/explore", label: "Explore" },
-  { href: "/#events", label: "Events" },
-  { href: "/history", label: "History" },
-  { href: "/preserve", label: "Preserve" },
+  { href: "/history", label: "Step into History" },
+  { href: "/events", label: "Education & Events" },
+  { href: "/preserve", label: "Get Involved" },
 ];
 
 export function Header() {
@@ -70,7 +69,7 @@ export function Header() {
               href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-2 bg-[#a8333d] px-4 py-3 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-[#bd3a46]"
+              className="group flex items-center gap-2 bg-[#3d5a3e] px-4 py-3 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-[#4a6e4c]"
             >
               Get directions
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

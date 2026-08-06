@@ -10,8 +10,8 @@ export function FireStatusBar() {
     <div
       className={`border-b text-white transition-colors duration-500 ${
         isUrgent
-          ? "border-[#a8333d] bg-[#a8333d]"
-          : "border-white/10 bg-[#0d1218]"
+          ? "border-[#3d5a3e] bg-[#3d5a3e]"
+          : "border-[#3d5a3e] bg-[#3d5a3e]"
       }`}
       role="status"
       aria-live="polite"

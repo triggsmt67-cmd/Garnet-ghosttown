@@ -110,7 +110,7 @@ export function TownMap() {
           >
             <div>
               <div className="flex items-start justify-between gap-6">
-                <p className="text-[0.63rem] font-bold tracking-[0.18em] text-[#a8333d] uppercase">
+                <p className="text-[0.63rem] font-bold tracking-[0.18em] text-[#3d5a3e] uppercase">
                   Selected building
                 </p>
                 <p className="text-right text-[0.6rem] font-bold tracking-[0.12em] text-black/42 uppercase">
@@ -125,8 +125,8 @@ export function TownMap() {
               </h3>
               <p className="mt-7 text-sm leading-7 text-black/62">{active.summary}</p>
 
-              <div className="mt-8 border-l-2 border-[#a8333d] pl-5">
-                <p className="text-[0.61rem] font-bold tracking-[0.15em] text-[#a8333d] uppercase">
+              <div className="mt-8 border-l-2 border-[#3d5a3e] pl-5">
+                <p className="text-[0.61rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                   What to notice
                 </p>
                 <p className="mt-3 text-sm leading-7 text-black/58">{active.lookFor}</p>

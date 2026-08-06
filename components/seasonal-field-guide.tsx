@@ -173,7 +173,7 @@ export function SeasonalFieldGuide() {
                   aria-controls="season-panel"
                   onClick={() => setActiveSeason(index)}
                   className={`group flex w-full items-center justify-between border-b border-[#0e1c27]/15 py-5 text-left last:border-b-0 ${
-                    selected ? "text-[#a8333d]" : "text-[#18202a]"
+                    selected ? "text-[#3d5a3e]" : "text-[#18202a]"
                   }`}
                 >
                   <span className="display-type text-3xl">{item.name}</span>
@@ -181,7 +181,7 @@ export function SeasonalFieldGuide() {
                     aria-hidden="true"
                     className={`h-px transition-all duration-300 ${
                       selected
-                        ? "w-16 bg-[#a8333d]"
+                        ? "w-16 bg-[#3d5a3e]"
                         : "w-7 bg-[#0e1c27]/30 group-hover:w-12 group-hover:bg-[#0e1c27]"
                     }`}
                   />

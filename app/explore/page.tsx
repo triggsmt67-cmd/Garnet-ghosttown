@@ -39,7 +39,7 @@ export default function ExplorePage() {
           <Reveal className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <h2 className="display-type text-6xl leading-[0.9] tracking-[-0.04em] md:text-8xl">
               Take Main Street
-              <span className="block text-[#a8333d]">at walking speed.</span>
+              <span className="block text-[#3d5a3e]">at walking speed.</span>
             </h2>
             <p className="max-w-lg leading-8 text-black/58">
               The thresholds, handwritten labels, room sizes, and worn tools are easy to
@@ -107,7 +107,7 @@ export default function ExplorePage() {
               ].map(([name, time, copy], index) => (
                 <Reveal key={name} className="grid gap-3 py-7 md:grid-cols-[1fr_.65fr_1.35fr]" delay={index * 70}>
                   <h3 className="display-type text-2xl">{name}</h3>
-                  <p className="text-xs font-bold tracking-[0.12em] text-[#a8333d] uppercase">{time}</p>
+                  <p className="text-xs font-bold tracking-[0.12em] text-[#3d5a3e] uppercase">{time}</p>
                   <p className="text-sm leading-6 text-black/55">{copy}</p>
                 </Reveal>
               ))}

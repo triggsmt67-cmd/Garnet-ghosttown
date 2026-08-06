@@ -5,7 +5,7 @@ export function PreservationBanner() {
     <aside
       id="preservation-banner"
       aria-labelledby="preservation-banner-title"
-      className="relative overflow-hidden border-y border-[#d3b350]/25 bg-[#33191a] px-5 py-10 text-[#f8f6f1] md:px-10 md:py-12"
+      className="relative overflow-hidden border-y border-[#d3b350]/25 bg-[#1e2f1f] px-5 py-10 text-[#f8f6f1] md:px-10 md:py-12"
     >
       <div className="absolute -right-10 -top-24 h-64 w-64 rounded-full bg-[#d3b350]/8 blur-3xl" />
       <div className="relative mx-auto grid max-w-[90rem] gap-8 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-7">

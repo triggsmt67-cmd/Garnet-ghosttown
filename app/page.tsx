@@ -137,7 +137,7 @@ export default function Home() {
 
       <section
         id="events"
-        className="scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#33191a] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-16"
+        className="scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#1e2f1f] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-16"
       >
         <Reveal className="mx-auto grid max-w-[82rem] items-center gap-8 lg:grid-cols-[.68fr_1.45fr_auto] lg:gap-12">
           <time
@@ -179,11 +179,11 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <section className="overflow-hidden bg-[#f2eee4] px-5 py-24 md:px-10 md:py-36">
+      <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-36">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
             <div className="lg:sticky lg:top-32">
-              <h2 className="display-type text-[clamp(3.4rem,6vw,6rem)] leading-[.92] tracking-[-0.04em]">
+              <h2 className="display-type text-[clamp(2.5rem,7vw,6rem)] leading-[.92] tracking-[-0.04em]">
                 You can walk into rooms unchanged since 1898.
               </h2>
               <p className="mt-8 max-w-md text-lg leading-8 text-black/62">
@@ -215,8 +215,8 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="mx-auto mt-24 max-w-5xl border-t border-[#0e1c27]/25 pt-16 text-center md:mt-32 md:pt-24 pb-12">
-            <p className="display-type italic text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-tight text-[#18202a]">
-              “In <span className="text-[#a8333d]">1898</span>, nearly <span className="text-[#a8333d]">1,000</span> people lived here. They built hotels, stores, a
+            <p className="display-type italic text-[clamp(2.1rem,4.2vw,3.8rem)] leading-[1.05] tracking-tight text-[#18202a]">
+              “In <span className="text-[#3d5a3e]">1898</span>, nearly <span className="text-[#3d5a3e]">1,000</span> people lived here. They built hotels, stores, a
               school, and thirteen saloons before the mines slowed and families left.”
             </p>
           </Reveal>
@@ -225,7 +225,7 @@ export default function Home() {
 
       <section className="paper-grain overflow-hidden bg-[#0e1c27] text-[#f8f6f1]">
         <div className="mx-auto grid max-w-[90rem] lg:min-h-[52rem] lg:grid-cols-[1.08fr_.92fr]">
-          <Reveal className="relative min-h-[34rem] lg:min-h-full">
+          <Reveal className="relative min-h-[24rem] sm:min-h-[34rem] lg:min-h-full">
             <Image
               src="/images/garnet-visitors.png"
               alt="A family walking along the historic street between Garnet's timber buildings"
@@ -241,9 +241,9 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="flex items-center px-5 py-20 md:px-14 lg:px-16 xl:px-20">
+          <div className="flex items-center px-5 py-16 md:px-14 lg:px-16 xl:px-20">
             <Reveal>
-              <h2 className="display-type text-5xl leading-[.96] tracking-[-0.035em] md:text-7xl">
+              <h2 className="display-type text-4xl leading-[.96] tracking-[-0.035em] md:text-7xl">
                 Spend the first hour on Main Street.
               </h2>
               <p className="mt-8 max-w-lg text-lg leading-8 text-white/65">
@@ -276,11 +276,11 @@ export default function Home() {
 
       <section
         id="conditions"
-        className="scroll-mt-28 overflow-hidden bg-[#f2eee4] px-5 py-24 md:px-10 md:py-32"
+        className="scroll-mt-28 overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-32"
       >
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end lg:gap-24">
-            <h2 className="display-type text-5xl leading-[.97] tracking-[-0.035em] md:text-7xl">
+            <h2 className="display-type text-4xl leading-[.97] tracking-[-0.035em] md:text-7xl">
               Make the last decisions while you still have service.
             </h2>
             <p className="max-w-xl text-lg leading-8 text-black/60 lg:pb-2">
@@ -291,10 +291,10 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="mt-14 grid overflow-hidden border border-[#0e1c27]/18 bg-white shadow-[0_28px_75px_rgba(13,18,24,.08)] lg:grid-cols-[.82fr_1.18fr]">
-            <div className="relative overflow-hidden bg-[#a8333d] px-7 py-10 text-white md:px-12 md:py-14">
+            <div className="relative overflow-hidden bg-[#3d5a3e] px-7 py-10 text-white md:px-12 md:py-14">
               <div className="absolute right-[-5rem] top-[-5rem] h-64 w-64 rounded-full border border-white/12" />
               <div className="relative">
-                <h3 className="display-type max-w-lg text-[clamp(2.8rem,4.8vw,4.8rem)] leading-[.96] tracking-[-0.035em]">
+                <h3 className="display-type max-w-lg text-[clamp(2.2rem,6vw,4.8rem)] leading-[.96] tracking-[-0.035em]">
                   $10 for visitors age 16 and older.
                 </h3>
                 <p className="mt-5 text-base text-white/68">
@@ -320,14 +320,14 @@ export default function Home() {
             <div className="px-7 py-4 md:px-12 md:py-8">
               <dl>
                 <div className="grid gap-3 border-b border-[#0e1c27]/15 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="display-type text-2xl text-[#33191a]">Parking</dt>
+                  <dt className="display-type text-2xl text-[#1e2f1f]">Parking</dt>
                   <dd className="leading-7 text-black/60">
                     Spaces are limited. Arrive early on summer weekends and carpool
                     when you can; prepaid admission does not hold a space.
                   </dd>
                 </div>
                 <div className="grid gap-3 border-b border-[#0e1c27]/15 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="display-type text-2xl text-[#33191a]">No services</dt>
+                  <dt className="display-type text-2xl text-[#1e2f1f]">No services</dt>
                   <dd className="leading-7 text-black/60">
                     There is no cell coverage, food, fuel, or flush restrooms at Garnet.
                     Bring drinking water and snacks, fill the tank before you leave
@@ -336,7 +336,7 @@ export default function Home() {
                   </dd>
                 </div>
                 <div className="grid gap-3 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="display-type text-2xl text-[#33191a]">The road</dt>
+                  <dt className="display-type text-2xl text-[#1e2f1f]">The road</dt>
                   <dd className="leading-7 text-black/60">
                     Approach from Highway 200 on Garnet Range Road. The final 10 miles
                     are unpaved. RVs and trailers should avoid the steep Bear Gulch
@@ -348,7 +348,7 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-[#0e1c27]/15 py-7">
                 <Link
                   href="/visit"
-                  className="inline-flex border-b border-[#a8333d] pb-2 text-sm font-semibold"
+                  className="inline-flex border-b border-[#3d5a3e] pb-2 text-sm font-semibold"
                 >
                   Read the complete visitor guide
                 </Link>

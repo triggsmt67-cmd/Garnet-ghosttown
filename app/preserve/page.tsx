@@ -24,7 +24,7 @@ export default function PreservePage() {
             <div>
               <h2 className="display-type text-6xl leading-[0.9] tracking-[-0.04em] md:text-8xl">
                 Preservation begins
-                <span className="block text-[#a8333d]">with what is original.</span>
+                <span className="block text-[#3d5a3e]">with what is original.</span>
               </h2>
             </div>
             <div className="prose-copy self-end text-base leading-8 text-black/58">
@@ -101,7 +101,7 @@ export default function PreservePage() {
             href="https://garnetghosttown.org/membership.php"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-4 bg-[#a8333d] px-7 py-4 text-sm font-semibold text-white transition-transform duration-500 hover:-translate-y-1"
+            className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-4 bg-[#3d5a3e] px-7 py-4 text-sm font-semibold text-white transition-transform duration-500 hover:-translate-y-1"
           >
             Support Garnet
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />

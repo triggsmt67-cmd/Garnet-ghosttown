@@ -115,13 +115,13 @@ export default function VisitPage() {
               <h2 className="display-type text-5xl leading-[0.95] font-extrabold md:text-7xl">
                 Pack for a high-elevation day.
               </h2>
-              <Compass className="mt-12 h-32 w-32 text-[#a8333d]/20 transition-transform duration-1000 hover:rotate-45" />
+              <Compass className="mt-12 h-32 w-32 text-[#3d5a3e]/20 transition-transform duration-1000 hover:rotate-45" />
             </Reveal>
             <div className="grid gap-2 md:grid-cols-[1fr_.9fr]">
               <div>
                 {checklist.map((item, index) => (
                   <Reveal key={item} className="flex gap-5 border-b border-black/15 py-6" delay={index * 60}>
-                    <span className="mt-2 h-px w-7 shrink-0 bg-[#a8333d]" aria-hidden="true" />
+                    <span className="mt-2 h-px w-7 shrink-0 bg-[#3d5a3e]" aria-hidden="true" />
                     <p className="pt-1 text-sm font-semibold">{item}</p>
                   </Reveal>
                 ))}
@@ -135,7 +135,7 @@ export default function VisitPage() {
         </div>
       </section>
 
-      <section className="bg-[#a8333d] px-5 py-14 text-[#f8f6f1] md:px-10">
+      <section className="bg-[#3d5a3e] px-5 py-14 text-[#f8f6f1] md:px-10">
         <div className="mx-auto flex max-w-[82rem] flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <p className="display-type text-3xl md:text-4xl">Road and visitor-center conditions can change.</p>
           <a className="text-xs font-bold tracking-[0.15em] uppercase underline underline-offset-8" href="https://www.blm.gov/visit/garnet-ghost-town" target="_blank" rel="noreferrer">

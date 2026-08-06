@@ -14,7 +14,7 @@ export function CtaLink({
     <Link
       href={href}
       className={`group inline-flex items-center gap-3 border-b py-2 text-sm font-semibold ${
-        light ? "border-[#e0c46d] text-[#f8f6f1]" : "border-[#a8333d] text-[#171713]"
+        light ? "border-[#e0c46d] text-[#f8f6f1]" : "border-[#3d5a3e] text-[#171713]"
       }`}
     >
       {children}

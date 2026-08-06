@@ -107,7 +107,7 @@ export default function HistoryPage() {
           <Reveal>
             <h2 className="display-type max-w-4xl text-6xl leading-[0.92] tracking-[-0.04em] md:text-8xl">
               From first strike
-              <span className="block text-[#a8333d]">to final departure.</span>
+              <span className="block text-[#3d5a3e]">to final departure.</span>
             </h2>
           </Reveal>
 
@@ -120,8 +120,8 @@ export default function HistoryPage() {
                 delay={index * 60}
               >
                 <div className="relative pr-7 text-right md:pr-12">
-                  <span className="display-type text-2xl text-[#a8333d] md:text-4xl">{item.year}</span>
-                  <span className="absolute top-2 -right-1 h-2 w-2 rounded-full bg-[#a8333d] ring-8 ring-[#f5ead3]" />
+                  <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">{item.year}</span>
+                  <span className="absolute top-2 -right-1 h-2 w-2 rounded-full bg-[#3d5a3e] ring-8 ring-[#f5ead3]" />
                 </div>
                 <div className="md:grid md:grid-cols-[.7fr_1.3fr] md:gap-10">
                   <h3 className="display-type text-3xl">{item.title}</h3>

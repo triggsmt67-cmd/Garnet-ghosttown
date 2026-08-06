@@ -69,8 +69,8 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <div className="mt-10 border-l-2 border-[#a8333d] bg-[#f2eee4] p-6 md:p-8">
-              <p className="text-[0.64rem] font-bold tracking-[0.15em] text-[#a8333d] uppercase">
+            <div className="mt-10 border-l-2 border-[#3d5a3e] bg-[#f2eee4] p-6 md:p-8">
+              <p className="text-[0.64rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                 When you are there
               </p>
               <p className="mt-3 max-w-2xl leading-7 text-black/60">{building.lookFor}</p>
@@ -79,7 +79,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
               href={building.source}
               target="_blank"
               rel="noreferrer"
-              className="group mt-9 inline-flex items-center gap-4 border-b border-[#a8333d] pb-2 text-[0.65rem] font-bold tracking-[0.14em] uppercase"
+              className="group mt-9 inline-flex items-center gap-4 border-b border-[#3d5a3e] pb-2 text-[0.65rem] font-bold tracking-[0.14em] uppercase"
             >
               {building.sourceLabel}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />

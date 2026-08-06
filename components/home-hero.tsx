@@ -105,19 +105,18 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
             <p className="hero-enter mb-5 text-xs font-semibold text-[#e0c46d] md:mb-7 md:text-sm">
               About one hour east of Missoula · Garnet, Montana
             </p>
-            <h1 className="hero-enter hero-enter-delay-1 display-type max-w-4xl text-[clamp(3rem,14vw,5.8rem)] leading-[0.94] tracking-[-0.035em] md:text-[clamp(3.35rem,6vw,5.8rem)] md:leading-[0.9]">
-              In 1898, a thousand people{" "}
-              <span className="mt-1 block text-[#e0c46d]">called this home.</span>
+            <h1 className="hero-enter hero-enter-delay-1 display-type max-w-4xl text-[clamp(2.5rem,11vw,5.8rem)] leading-[0.94] tracking-[-0.035em] md:text-[clamp(3.35rem,6vw,5.8rem)] md:leading-[0.9]">
+              Garnet, a glimpse into{" "}
+              <span className="mt-1 block text-[#e0c46d]">Montana's past…</span>
             </h1>
             <p className="hero-enter hero-enter-delay-2 mt-6 max-w-2xl text-sm leading-6 text-white/78 md:mt-8 md:text-lg md:leading-7">
-              Today, Garnet is one of the best-preserved gold mining towns in the
-              country — over 30 original structures still standing, from the hotel
-              to the schoolhouse. Two unhurried hours, one hour from Missoula.
+              The ghost town is open year-round and every building has its own
+              story to tell.
             </p>
             <div className="hero-enter hero-enter-delay-3 mt-6 flex flex-wrap gap-3 md:mt-9 md:gap-4">
               <Link
                 href="/visit"
-                className="group inline-flex items-center gap-5 bg-[#a8333d] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(53,12,17,.2)] transition-[background,transform,box-shadow] hover:-translate-y-1 hover:bg-[#bd3a46] hover:shadow-[0_20px_46px_rgba(53,12,17,.3)] md:px-6 md:py-4"
+                className="group inline-flex items-center gap-5 bg-[#3d5a3e] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(53,12,17,.2)] transition-[background,transform,box-shadow] hover:-translate-y-1 hover:bg-[#4a6e4c] hover:shadow-[0_20px_46px_rgba(53,12,17,.3)] md:px-6 md:py-4"
               >
                 Plan your visit
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />

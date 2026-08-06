@@ -8,7 +8,7 @@ export function FireRestrictionsCard({ compact = false }: { compact?: boolean })
 
   if (compact) {
     return (
-      <article className="relative overflow-hidden bg-[#33191a] p-6 text-[#f8f6f1] md:p-8">
+      <article className="relative overflow-hidden bg-[#1e2f1f] p-6 text-[#f8f6f1] md:p-8">
         <Flame className="absolute -right-4 -top-5 h-28 w-28 text-[#d3b350]/12" />
         <div className="relative">
           <div className="flex items-center justify-between gap-4">
@@ -38,7 +38,7 @@ export function FireRestrictionsCard({ compact = false }: { compact?: boolean })
   }
 
   return (
-    <article className="group relative min-h-[22rem] overflow-hidden bg-[#33191a] p-7 text-[#f8f6f1] md:p-9">
+    <article className="group relative min-h-[22rem] overflow-hidden bg-[#1e2f1f] p-7 text-[#f8f6f1] md:p-9">
       <Flame className="absolute -right-10 -top-9 h-52 w-52 text-[#d3b350]/10 transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:scale-105" />
       <div className="relative flex h-full flex-col justify-between">
         <div>
