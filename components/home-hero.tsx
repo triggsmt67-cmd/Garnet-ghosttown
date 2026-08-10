@@ -30,7 +30,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
         section.style.setProperty("--hero-clip-right", `${48 - revealProgress * 48}%`);
         section.style.setProperty("--hero-copy-opacity", `${1 - copyProgress}`);
         section.style.setProperty("--hero-copy-y", `${copyProgress * -34}px`);
-        section.style.setProperty("--hero-image-scale", `${1.025 + revealProgress * 0.045}`);
+        section.style.setProperty("--hero-image-scale", `${1.225 + revealProgress * 0.045}`);
         section.style.setProperty("--hero-sepia-opacity", `${0.42 - revealProgress * 0.34}`);
         section.style.setProperty("--hero-cue-opacity", `${1 - Math.min(progress * 3, 1)}`);
       });
@@ -74,7 +74,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
         >
           <div className="absolute inset-0 scale-[var(--hero-image-scale)]">
             <Image
-              src="/images/Garnet-Ghost-Town cover.webp?opening=sepia"
+              src="/images/garnet-town.JPG?opening=sepia"
               alt="Weathered timber buildings of Garnet along a mountain dirt lane"
               fill
               loading="eager"
@@ -86,7 +86,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
           </div>
           <div className="hero-color-layer absolute inset-0 scale-[var(--hero-image-scale)]">
             <Image
-              src="/images/Garnet-Ghost-Town cover.webp?opening=color"
+              src="/images/garnet-town.JPG?opening=color"
               alt=""
               fill
               loading="eager"
