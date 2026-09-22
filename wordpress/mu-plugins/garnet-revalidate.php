@@ -1,7 +1,8 @@
 <?php
 /**
- * Plugin Name: Garnet – Revalidate Next.js on save
- * Description: Tells the Next.js frontend to refresh content when editors save.
+ * Plugin Name: Garnet – Frontend sync
+ * Description: Stamps the road report's "Last checked" time on save, and tells the
+ *              Next.js frontend to refresh content when editors save.
  *
  * Install: copy to wp-content/mu-plugins/ and add to wp-config.php:
  *   define( 'GARNET_FRONTEND_URL', 'https://garnetghosttown.org' );
@@ -30,6 +31,20 @@ function garnet_revalidate( array $tags ) {
 		)
 	);
 }
+
+// Saving the road report IS verifying it: stamp "Last checked" with the current
+// Mountain Time so editors never have to enter it by hand.
+add_filter(
+	'acf/update_value/name=road_last_verified',
+	function ( $value, $post_id ) {
+		if ( 'options' === $post_id || str_starts_with( (string) $post_id, 'options' ) ) {
+			return current_time( 'Y-m-d H:i:s' );
+		}
+		return $value;
+	},
+	10,
+	2
+);
 
 function garnet_tag_for_post_type( $post_type ) {
 	$map = array(

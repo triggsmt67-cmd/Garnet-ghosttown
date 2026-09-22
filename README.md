@@ -43,8 +43,14 @@ layout and visual decision; WordPress editors only fill in forms.
 - WPGraphQL for ACF (the official ACF-maintained plugin)
 
 Set the WordPress site timezone to **America/Denver** before creating date fields.
-In every ACF field group below, turn on **Show in GraphQL** and use the GraphQL
-names listed.
+
+**Fast setup:** ACF → Tools → Import → choose `wordpress/acf-import.json`. It creates
+the Events and Timeline Entries post types, the Road Report options page, and all
+three field groups with the GraphQL names below. Then copy
+`wordpress/mu-plugins/garnet-revalidate.php` into `wp-content/mu-plugins/`.
+
+If building by hand instead, turn on **Show in GraphQL** in every ACF item and use
+the GraphQL names listed.
 
 ---
 
@@ -117,8 +123,10 @@ when no end time is entered.
 This information represents one current site-wide status, so it is better suited
 to an **ACF Options Page** than a post type.
 
-Options-page title: `Garnet Visitor Status` · GraphQL type name
-`GarnetVisitorStatus` (queried as `garnetVisitorStatus`).
+Options page shown to editors as **Road Report** (menu slug
+`garnet-visitor-status`, capability `edit_posts` so Editors can use it) · GraphQL
+type name `GarnetVisitorStatus` (queried as `garnetVisitorStatus`).
+`road_last_verified` is stamped automatically on save by the mu-plugin.
 
 ### ACF field group: Road and Winter Access
 
