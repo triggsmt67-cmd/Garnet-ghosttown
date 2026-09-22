@@ -61,6 +61,38 @@ export const TIMELINE_QUERY = /* GraphQL */ `
           summary
           photoCredit
           mainPhoto { node { ${IMAGE_FIELDS} } }
+          relatedStory {
+            nodes {
+              ... on GarnetStory { slug title }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const STORIES_QUERY = /* GraphQL */ `
+  query GarnetStories {
+    garnetStories(first: 200, where: { status: PUBLISH }) {
+      nodes {
+        databaseId
+        slug
+        title
+        content
+        storyDetails {
+          leadIn
+          timeFrame
+          startYear
+          storyType
+          mainPhoto { node { ${IMAGE_FIELDS} } }
+          photoCredit
+          voiceQuote
+          voiceSpeaker
+          voiceSource
+          mapBuilding
+          sourceLabel
+          sourceUrl
         }
       }
     }

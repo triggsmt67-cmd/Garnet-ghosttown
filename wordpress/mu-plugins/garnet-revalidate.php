@@ -46,10 +46,12 @@ add_filter(
 	2
 );
 
-function garnet_tag_for_post_type( $post_type ) {
+function garnet_tags_for_post_type( $post_type ) {
 	$map = array(
-		'event'          => 'events',
-		'timeline_entry' => 'timeline',
+		'event'          => array( 'events' ),
+		'timeline_entry' => array( 'timeline' ),
+		// Timeline entries show linked story titles, so refresh both.
+		'garnet_story'   => array( 'stories', 'timeline' ),
 	);
 	return $map[ $post_type ] ?? null;
 }
@@ -66,9 +68,9 @@ add_action(
 		if ( 'publish' !== get_post_status( $post_id ) ) {
 			return; // Drafts never reach the public site.
 		}
-		$tag = garnet_tag_for_post_type( get_post_type( $post_id ) );
-		if ( $tag ) {
-			garnet_revalidate( array( $tag ) );
+		$tags = garnet_tags_for_post_type( get_post_type( $post_id ) );
+		if ( $tags ) {
+			garnet_revalidate( $tags );
 		}
 	},
 	20
@@ -81,9 +83,9 @@ add_action(
 		if ( 'publish' !== $old_status || 'publish' === $new_status ) {
 			return;
 		}
-		$tag = garnet_tag_for_post_type( $post->post_type );
-		if ( $tag ) {
-			garnet_revalidate( array( $tag ) );
+		$tags = garnet_tags_for_post_type( $post->post_type );
+		if ( $tags ) {
+			garnet_revalidate( $tags );
 		}
 	},
 	10,

@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { buildings, getBuilding } from "@/lib/buildings";
+import { getStories } from "@/lib/content";
+
+export const revalidate = 300;
 
 type BuildingPageProps = {
   params: Promise<{ slug: string }>;
@@ -31,6 +34,8 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
 
   if (!building) notFound();
 
+  const { data: stories } = await getStories();
+  const story = stories.find((item) => item.mapBuilding === building.slug);
   const index = buildings.findIndex((item) => item.slug === building.slug);
   const nextBuilding = buildings[(index + 1) % buildings.length];
 
@@ -69,6 +74,20 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+            {story && (
+              <Link
+                href={`/stories/${story.slug}`}
+                className="group mt-10 flex items-center justify-between gap-6 bg-[#0e1c27] p-6 text-[#f8f6f1] transition-colors hover:bg-[#162a39] md:p-8"
+              >
+                <span>
+                  <span className="block text-[0.64rem] font-bold tracking-[0.15em] text-[#e0c46d] uppercase">
+                    The full story · {story.timeFrame}
+                  </span>
+                  <span className="display-type mt-2 block text-2xl md:text-3xl">{story.title}</span>
+                </span>
+                <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
+              </Link>
+            )}
             <div className="mt-10 border-l-2 border-[#3d5a3e] bg-[#f2eee4] p-6 md:p-8">
               <p className="text-[0.64rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                 When you are there

@@ -43,7 +43,7 @@ export const buildings: Building[] = [
     number: "02",
     name: "Kelly’s Saloon",
     type: "Saloon & social room",
-    era: "Before 1898",
+    era: "Built before 1898 · Kelly family, 1898–1930s",
     summary:
       "Kelly’s predates Garnet’s 1898 peak and survived long enough to become one of the town’s most familiar landmarks.",
     story: [

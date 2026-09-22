@@ -3,7 +3,9 @@ import Image from "next/image";
 import { CtaLink } from "@/components/cta-link";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
-import { getTimeline } from "@/lib/content";
+import Link from "next/link";
+import { ArrowRight } from "@/components/icons";
+import { getStories, getTimeline } from "@/lib/content";
 
 export const revalidate = 300;
 
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HistoryPage() {
-  const { data: timeline } = await getTimeline();
+  const [{ data: timeline }, { data: stories }] = await Promise.all([getTimeline(), getStories()]);
 
   return (
     <main id="main-content">
@@ -99,6 +101,15 @@ export default async function HistoryPage() {
                   <h3 className="display-type text-3xl">{item.title}</h3>
                   <div>
                     <p className="mt-3 max-w-lg text-sm leading-7 text-black/55 md:mt-1">{item.summary}</p>
+                    {item.relatedStory && (
+                      <Link
+                        href={`/stories/${item.relatedStory.slug}`}
+                        className="group mt-4 inline-flex items-center gap-2 border-b border-[#3d5a3e]/50 pb-1 text-sm font-semibold text-[#18202a] transition-colors hover:border-[#3d5a3e]"
+                      >
+                        Read the story
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    )}
                     {item.mainPhoto && (
                       <figure className="mt-6 max-w-lg">
                         <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
@@ -128,6 +139,55 @@ export default async function HistoryPage() {
           </div>
         </div>
       </section>
+      {stories.length > 0 && (
+        <section id="stories" className="scroll-mt-28 bg-[#f2eee4] px-5 py-20 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[82rem]">
+            <Reveal className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-24">
+              <h2 className="display-type text-5xl leading-[0.95] tracking-[-0.035em] md:text-7xl">
+                Stories of Garnet
+              </h2>
+              <p className="max-w-xl text-lg leading-8 text-black/58 lg:pb-2">
+                The families, homes, and businesses behind the buildings, told through
+                records and the memories of people who lived here.
+              </p>
+            </Reveal>
+
+            <div className="mt-14 grid gap-px overflow-hidden border border-[#0e1c27]/15 bg-[#0e1c27]/15 md:grid-cols-2">
+              {stories.map((story, i) => (
+                <Reveal key={story.id} delay={i * 70} className="bg-[#f8f6f1]">
+                  <Link
+                    href={`/stories/${story.slug}`}
+                    className="group flex h-full flex-col"
+                  >
+                    {story.mainPhoto && (
+                      <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
+                        <Image
+                          src={story.mainPhoto.url}
+                          alt={story.mainPhoto.alt}
+                          fill
+                          sizes="(min-width: 768px) 41rem, 100vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-7 md:p-10">
+                      <p className="text-sm font-semibold text-[#3d5a3e]">{story.timeFrame}</p>
+                      <h3 className="display-type mt-3 text-3xl leading-[1.02] tracking-[-0.02em] md:text-4xl">
+                        {story.title}
+                      </h3>
+                      <p className="mt-4 max-w-lg leading-7 text-black/58">{story.leadIn}</p>
+                      <span className="mt-auto inline-flex items-center gap-3 pt-8 text-sm font-semibold">
+                        Read the story
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

@@ -54,6 +54,43 @@ export type TimelineEntry = {
   /** Present when the entry has its own detail page */
   slug?: string;
   mainPhoto?: ContentImage;
+  /** Optional link to a full story */
+  relatedStory?: { slug: string; title: string };
+};
+
+export type StoryType = "place" | "family" | "person";
+
+/** A remembered moment in someone's own words. */
+export type StoryVoice = {
+  quote: string;
+  speaker: string;
+  source?: string;
+};
+
+/** Slugs of the buildings drawn on the Explore map (lib/buildings.ts). */
+export type MapBuildingSlug =
+  | "wells-hotel"
+  | "kellys-saloon"
+  | "davey-store"
+  | "schoolhouse"
+  | "dahl-cabin";
+
+export type GarnetStory = {
+  id: string;
+  slug: string;
+  title: string;
+  storyType: StoryType;
+  /** Display text, e.g. "1898 – late 1930s" */
+  timeFrame: string;
+  /** Sort key */
+  startYear: number;
+  leadIn: string;
+  /** Sanitized HTML: paragraphs, links, emphasis, quotes, lists, images */
+  bodyHtml: string;
+  voice?: StoryVoice;
+  mainPhoto?: ContentImage;
+  source?: { label: string; url?: string };
+  mapBuilding?: MapBuildingSlug;
 };
 
 /** Display-ready road report consumed by the homepage hero. */

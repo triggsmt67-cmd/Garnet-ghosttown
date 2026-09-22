@@ -247,3 +247,77 @@ button:focus-visible {
     padding: 12rem max(3rem, calc((100vw - 80rem) / 2)) 6rem;
   }
 }
+
+/* Story text from WordPress (sanitized in lib/content/sanitize.ts). */
+.story-body > * + * {
+  margin-top: 1.5rem;
+}
+
+.story-body > p:first-child::first-letter {
+  float: left;
+  margin: 0.35rem 0.6rem 0 0;
+  font-family: var(--display);
+  font-size: 4.2rem;
+  line-height: 0.8;
+  color: var(--ink);
+}
+
+.story-body h2,
+.story-body h3 {
+  margin-top: 2.75rem;
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.story-body h2 {
+  font-size: 2rem;
+}
+
+.story-body h3 {
+  font-size: 1.5rem;
+}
+
+.story-body a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.story-body blockquote {
+  margin-left: 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--gold);
+  font-family: var(--display);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.story-body ul,
+.story-body ol {
+  padding-left: 1.25rem;
+}
+
+.story-body ul {
+  list-style: disc;
+}
+
+.story-body ol {
+  list-style: decimal;
+}
+
+.story-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 2.5rem 0 0;
+}
+
+.story-body figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: rgb(0 0 0 / 0.45);
+}

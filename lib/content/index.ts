@@ -1,15 +1,24 @@
 import "server-only";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
-import { getMockVisitorStatus, mockEvents, mockTimeline } from "./mock";
-import { EVENTS_QUERY, TIMELINE_QUERY, VISITOR_STATUS_QUERY } from "./queries";
+import { getMockVisitorStatus, mockEvents, mockStories, mockTimeline } from "./mock";
+import { EVENTS_QUERY, STORIES_QUERY, TIMELINE_QUERY, VISITOR_STATUS_QUERY } from "./queries";
 import { formatShortDate } from "./time";
-import type { GarnetEvent, RoadReport, Sourced, TimelineEntry, VisitorStatus } from "./types";
+import type {
+  GarnetEvent,
+  GarnetStory,
+  RoadReport,
+  Sourced,
+  TimelineEntry,
+  VisitorStatus,
+} from "./types";
 import {
   mapEvent,
+  mapStory,
   mapTimelineEntry,
   mapVisitorStatus,
   type WpEventsResponse,
+  type WpStoriesResponse,
   type WpTimelineResponse,
   type WpVisitorStatusResponse,
 } from "./wordpress";
@@ -22,6 +31,7 @@ export const CONTENT_TAGS = {
   events: "events",
   visitorStatus: "visitor-status",
   timeline: "timeline",
+  stories: "stories",
 } as const;
 
 /** A road report older than this is treated as unconfirmed. */
@@ -191,4 +201,33 @@ export async function getTimeline(): Promise<Sourced<TimelineEntry[]>> {
   );
   result.data = [...result.data].sort((a, b) => a.sortYear - b.sortYear);
   return result;
+}
+
+// ---------------------------------------------------------------------------
+// Stories of Garnet
+// ---------------------------------------------------------------------------
+
+export async function getStories(): Promise<Sourced<GarnetStory[]>> {
+  const result = await load(
+    "Stories",
+    async () => {
+      const data = await wpFetch<WpStoriesResponse>(STORIES_QUERY, {
+        tags: [CONTENT_TAGS.stories],
+      });
+      return (data.garnetStories?.nodes ?? [])
+        .map(mapStory)
+        .filter((s): s is GarnetStory => s !== null);
+    },
+    () => mockStories,
+    () => [],
+  );
+  result.data = [...result.data].sort(
+    (a, b) => a.startYear - b.startYear || a.title.localeCompare(b.title),
+  );
+  return result;
+}
+
+export async function getStory(slug: string): Promise<GarnetStory | null> {
+  const { data } = await getStories();
+  return data.find((story) => story.slug === slug) ?? null;
 }

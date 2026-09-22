@@ -2,12 +2,16 @@
 // Mappers are defensive: a half-filled WordPress record is dropped or
 // degraded, never allowed to crash a page.
 
+import { sanitizeStoryHtml } from "./sanitize";
 import { toDenverISO } from "./time";
 import type {
   ContentImage,
   EventStatus,
   GarnetEvent,
+  GarnetStory,
+  MapBuildingSlug,
   RoadTone,
+  StoryType,
   TimelineEntry,
   VisitorStatus,
 } from "./types";
@@ -71,6 +75,32 @@ export type WpTimelineResponse = {
         summary?: string | null;
         photoCredit?: string | null;
         mainPhoto?: WpImageEdge;
+        relatedStory?: { nodes?: Array<{ slug?: string | null; title?: string | null } | null> } | null;
+      } | null;
+    }>;
+  } | null;
+};
+
+export type WpStoriesResponse = {
+  garnetStories?: {
+    nodes: Array<{
+      databaseId: number;
+      slug?: string | null;
+      title?: string | null;
+      content?: string | null;
+      storyDetails?: {
+        leadIn?: string | null;
+        timeFrame?: string | null;
+        startYear?: number | null;
+        storyType?: WpSelect;
+        mainPhoto?: WpImageEdge;
+        photoCredit?: string | null;
+        voiceQuote?: string | null;
+        voiceSpeaker?: string | null;
+        voiceSource?: string | null;
+        mapBuilding?: WpSelect;
+        sourceLabel?: string | null;
+        sourceUrl?: string | null;
       } | null;
     }>;
   } | null;
@@ -191,5 +221,55 @@ export function mapTimelineEntry(node: WpTimelineNode): TimelineEntry | null {
     summary: clean(f.summary) ?? "",
     slug: htmlToText(node.content) && node.slug ? node.slug : undefined,
     mainPhoto: mapImage(f.mainPhoto, f.photoCredit),
+    relatedStory: mapRelatedStory(f.relatedStory),
+  };
+}
+
+function mapRelatedStory(
+  field: NonNullable<WpTimelineNode["timelineDetails"]>["relatedStory"],
+): TimelineEntry["relatedStory"] {
+  const node = field?.nodes?.[0];
+  const slug = clean(node?.slug);
+  const title = clean(htmlToText(node?.title));
+  return slug && title ? { slug, title } : undefined;
+}
+
+const STORY_TYPES: StoryType[] = ["place", "family", "person"];
+const MAP_BUILDINGS: MapBuildingSlug[] = [
+  "wells-hotel",
+  "kellys-saloon",
+  "davey-store",
+  "schoolhouse",
+  "dahl-cabin",
+];
+
+type WpStoryNode = NonNullable<WpStoriesResponse["garnetStories"]>["nodes"][number];
+
+export function mapStory(node: WpStoryNode): GarnetStory | null {
+  const f = node.storyDetails;
+  const title = clean(htmlToText(node.title));
+  const slug = clean(node.slug);
+  if (!f || !title || !slug) return null;
+
+  const storyType = selectValue(f.storyType) as StoryType | undefined;
+  const mapBuilding = selectValue(f.mapBuilding) as MapBuildingSlug | undefined;
+  const quote = clean(f.voiceQuote)?.replace(/^[“"]+|[”"]+$/g, "");
+  const speaker = clean(f.voiceSpeaker);
+  const sourceLabel = clean(f.sourceLabel);
+  const sourceUrl = clean(f.sourceUrl);
+
+  return {
+    id: String(node.databaseId),
+    slug,
+    title,
+    storyType: storyType && STORY_TYPES.includes(storyType) ? storyType : "place",
+    timeFrame: clean(f.timeFrame) ?? (f.startYear ? String(f.startYear) : ""),
+    startYear: typeof f.startYear === "number" ? f.startYear : 9999,
+    leadIn: clean(f.leadIn) ?? "",
+    bodyHtml: sanitizeStoryHtml(node.content ?? ""),
+    voice: quote && speaker ? { quote, speaker, source: clean(f.voiceSource) } : undefined,
+    mainPhoto: mapImage(f.mainPhoto, f.photoCredit),
+    source: sourceLabel || sourceUrl ? { label: sourceLabel ?? "Source", url: sourceUrl } : undefined,
+    mapBuilding: mapBuilding && MAP_BUILDINGS.includes(mapBuilding) ? mapBuilding : undefined,
   };
 }

@@ -228,10 +228,28 @@ entry is given a slug for a future detail page.
 
 ---
 
+## Stories of Garnet
+
+Long-form stories about places, families, and people (for example, Kelly's
+Saloon, or Samuel and Jennie Adams). Each story gets its own page at
+`/stories/<slug>`, appears on the History page, and can link to a building on the
+Explore map and from timeline entries.
+
+- Post type: `Stories` · key `garnet_story` · GraphQL `garnetStory` / `garnetStories`
+- Field group: `Story Details` · GraphQL `storyDetails` (lead-in, time frame,
+  starting year, story type, main photo and credit, "Voice from Garnet" quote,
+  speaker and source, map building, source name and link)
+- The editor holds the story text. It is sanitized in `lib/content/sanitize.ts`
+  (paragraphs, emphasis, links, quotes, lists, images only).
+- Timeline entries have an optional `related_story` field (GraphQL `relatedStory`)
+  that adds a "Read the story" link.
+- `wordpress/story-paste-sheet.md` has the first two stories ready to paste.
+- Free ACF: import `wordpress/acf-import-free.json` (no Road Report page).
+
 ## Content refresh strategy (implemented)
 
 - WordPress is read on the server and cached with tags (`events`,
-  `visitor-status`, `timeline`). Visitors never request WordPress directly.
+  `visitor-status`, `timeline`, `stories`). Visitors never request WordPress directly.
 - Background refresh: road status every 2 minutes, other content every 5.
 - On save, `wordpress/mu-plugins/garnet-revalidate.php` POSTs to
   `/api/revalidate` with the `x-revalidate-secret` header, so edits appear on

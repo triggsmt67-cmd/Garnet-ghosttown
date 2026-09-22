@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { buildings } from "@/lib/buildings";
+import { getStories } from "@/lib/content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { data: stories } = await getStories();
   const base = "https://garnetghosttown.org";
   return [
     { url: `${base}/`, priority: 1, changeFrequency: "monthly" },
@@ -11,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/preserve`, priority: 0.7, changeFrequency: "monthly" },
     ...buildings.map((building) => ({
       url: `${base}/explore/${building.slug}`,
+      priority: 0.6,
+      changeFrequency: "yearly" as const,
+    })),
+    ...stories.map((story) => ({
+      url: `${base}/stories/${story.slug}`,
       priority: 0.6,
       changeFrequency: "yearly" as const,
     })),
