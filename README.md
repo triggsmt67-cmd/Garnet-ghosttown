@@ -241,8 +241,14 @@ Explore map and from timeline entries.
   speaker and source, map building, source name and link)
 - The editor holds the story text. It is sanitized in `lib/content/sanitize.ts`
   (paragraphs, emphasis, links, quotes, lists, images only).
-- Timeline entries have an optional `related_story` field (GraphQL `relatedStory`)
-  that adds a "Read the story" link.
+- **Stories appear on the History timeline automatically** at their "Year on the
+  timeline" (`startYear`). Timeline entries are only for town-wide events.
+- The timeline is grouped into five eras defined in `lib/content/timeline.ts`
+  (Early Claims, The Boom, Lean Years, The Last Residents, Preservation).
+- Quoted source material: editors use the editor's Quote button, then a line
+  starting with `--` for the citation (styled via `.excerpt-cite`).
+- `story_related_stories` (GraphQL `relatedStories`) links up to 3 stories.
+- Story types: place, family, person, community, organization.
 - `wordpress/story-paste-sheet.md` has the first two stories ready to paste.
 - Free ACF: import `wordpress/acf-import-free.json` (no Road Report page).
 

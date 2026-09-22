@@ -619,7 +619,7 @@
                 "name": "related_story",
                 "aria-label": "",
                 "type": "post_object",
-                "instructions": "Optional. Pick a story to add a “Read the story” link to this timeline entry.",
+                "instructions": "Optional, and usually not needed: every story already appears on the timeline at its own year. Use this only to link a town-wide event to a story.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -703,7 +703,7 @@
                 "name": "story_time_frame",
                 "aria-label": "",
                 "type": "text",
-                "instructions": "How the years should read on the page. Examples: 1898 – late 1930s, or 1904–1927",
+                "instructions": "How the years should read on the page. Examples: 1898, 1904–1927, or 1898 – late 1930s",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -723,11 +723,11 @@
             },
             {
                 "key": "field_garnet_story_start_year",
-                "label": "Starting year",
+                "label": "Year on the timeline",
                 "name": "story_start_year",
                 "aria-label": "",
                 "type": "number",
-                "instructions": "A plain number used to put stories in order, like 1898.",
+                "instructions": "The year this story appears on the History timeline, as a plain number like 1898. The story is placed there automatically.",
                 "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -768,7 +768,9 @@
                 "choices": {
                     "place": "A building or place",
                     "family": "A family",
-                    "person": "A person"
+                    "person": "A person",
+                    "community": "A community or group of people",
+                    "organization": "An organization or program"
                 },
                 "default_value": "place",
                 "return_format": "value",
@@ -939,11 +941,11 @@
             },
             {
                 "key": "field_garnet_story_source_label",
-                "label": "Source name",
+                "label": "Sources and credits",
                 "name": "story_source_label",
                 "aria-label": "",
                 "type": "text",
-                "instructions": "Optional. Where the facts come from. Example: BLM, The Road to Garnet's Gold",
+                "instructions": "Optional. Where the facts and photos come from. Example: Information and photos courtesy of Sharon Seadin Baldwin, granddaughter of Nels and Lena Seadin",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -956,7 +958,7 @@
                 "graphql_field_name": "sourceLabel",
                 "graphql_non_null": 0,
                 "default_value": "",
-                "maxlength": 120,
+                "maxlength": 250,
                 "placeholder": "",
                 "prepend": "",
                 "append": ""
@@ -981,6 +983,41 @@
                 "graphql_non_null": 0,
                 "default_value": "",
                 "placeholder": "https://"
+            },
+            {
+                "key": "field_garnet_story_related_stories",
+                "label": "Related stories",
+                "name": "story_related_stories",
+                "aria-label": "",
+                "type": "relationship",
+                "instructions": "Optional. Pick up to 3 stories that connect to this one (the same family, building, or events). They appear at the bottom of the page.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "garnet_story"
+                ],
+                "post_status": [
+                    "publish"
+                ],
+                "taxonomy": "",
+                "filters": [
+                    "search"
+                ],
+                "return_format": "object",
+                "min": "",
+                "max": 3,
+                "elements": "",
+                "bidirectional": 0,
+                "bidirectional_target": [],
+                "show_in_graphql": 1,
+                "graphql_description": "",
+                "graphql_field_name": "relatedStories",
+                "graphql_non_null": 0
             }
         ],
         "location": [

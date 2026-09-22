@@ -21,7 +21,7 @@ export function sanitizeStoryHtml(html: string): string {
         )
         .join("\n");
 
-  return sanitizeHtml(withParagraphs, {
+  const clean = sanitizeHtml(withParagraphs, {
     allowedTags: [
       "p", "br", "strong", "b", "em", "i", "a", "blockquote", "ul", "ol", "li",
       "h2", "h3", "figure", "figcaption", "img",
@@ -43,4 +43,12 @@ export function sanitizeStoryHtml(html: string): string {
     exclusiveFilter: (frame) =>
       frame.tag === "p" && !frame.text.trim() && frame.mediaChildren.length === 0,
   });
+
+  // A line starting with "—", "--" or "Source:" is a citation for the excerpt
+  // above it. Editors type it on the line right after a quoted passage.
+  // (WordPress turns "--" into an en dash, sometimes as an HTML entity.)
+  return clean.replace(
+    /<p>(\s*(?:—|–|--|&#8211;|&#8212;|&ndash;|&mdash;|Source:))/g,
+    '<p class="excerpt-cite">$1',
+  );
 }

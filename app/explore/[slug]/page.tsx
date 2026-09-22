@@ -35,7 +35,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
   if (!building) notFound();
 
   const { data: stories } = await getStories();
-  const story = stories.find((item) => item.mapBuilding === building.slug);
+  const buildingStories = stories.filter((item) => item.mapBuilding === building.slug);
   const index = buildings.findIndex((item) => item.slug === building.slug);
   const nextBuilding = buildings[(index + 1) % buildings.length];
 
@@ -74,20 +74,21 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {story && (
+            {buildingStories.map((story) => (
               <Link
+                key={story.id}
                 href={`/stories/${story.slug}`}
-                className="group mt-10 flex items-center justify-between gap-6 bg-[#0e1c27] p-6 text-[#f8f6f1] transition-colors hover:bg-[#162a39] md:p-8"
+                className="group mt-10 flex items-center justify-between gap-6 bg-[#0e1c27] p-6 text-[#f8f6f1] transition-colors hover:bg-[#162a39] md:p-8 [&+&]:mt-3"
               >
                 <span>
                   <span className="block text-[0.64rem] font-bold tracking-[0.15em] text-[#e0c46d] uppercase">
-                    The full story · {story.timeFrame}
+                    A story from this building · {story.timeFrame}
                   </span>
                   <span className="display-type mt-2 block text-2xl md:text-3xl">{story.title}</span>
                 </span>
                 <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
               </Link>
-            )}
+            ))}
             <div className="mt-10 border-l-2 border-[#3d5a3e] bg-[#f2eee4] p-6 md:p-8">
               <p className="text-[0.64rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                 When you are there

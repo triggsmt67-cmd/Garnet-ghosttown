@@ -93,6 +93,15 @@ export const STORIES_QUERY = /* GraphQL */ `
           mapBuilding
           sourceLabel
           sourceUrl
+          relatedStories {
+            nodes {
+              ... on GarnetStory {
+                slug
+                title
+                storyDetails { timeFrame }
+              }
+            }
+          }
         }
       }
     }

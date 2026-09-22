@@ -5,7 +5,16 @@ import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
 import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
-import { getStories, getTimeline } from "@/lib/content";
+import { getStories, getTimeline, type StoryType } from "@/lib/content";
+import { buildTimeline } from "@/lib/content/timeline";
+
+const storyTypeLabel: Record<StoryType, string> = {
+  place: "Place",
+  family: "Family",
+  person: "Person",
+  community: "Community",
+  organization: "Preservation",
+};
 
 export const revalidate = 300;
 
@@ -16,6 +25,7 @@ export const metadata: Metadata = {
 
 export default async function HistoryPage() {
   const [{ data: timeline }, { data: stories }] = await Promise.all([getTimeline(), getStories()]);
+  const chapters = buildTimeline(timeline, stories);
 
   return (
     <main id="main-content">
@@ -85,54 +95,136 @@ export default async function HistoryPage() {
             </h2>
           </Reveal>
 
-          <div className="relative mt-20">
-            <div className="absolute top-0 bottom-0 left-[3.5rem] w-px bg-black/15 md:left-[10.5rem]" />
-            {timeline.map((item, index) => (
-              <Reveal
-                key={item.id}
-                className="relative grid grid-cols-[7rem_1fr] gap-5 pb-14 md:grid-cols-[21rem_1fr] md:gap-10 md:pb-20"
-                delay={index * 60}
-              >
-                <div className="relative pr-7 text-right md:pr-12">
-                  <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">{item.yearLabel}</span>
-                  <span className="absolute top-2 -right-1 h-2 w-2 rounded-full bg-[#3d5a3e] ring-8 ring-[#f5ead3]" />
-                </div>
-                <div className="md:grid md:grid-cols-[.7fr_1.3fr] md:gap-10">
-                  <h3 className="display-type text-3xl">{item.title}</h3>
-                  <div>
-                    <p className="mt-3 max-w-lg text-sm leading-7 text-black/55 md:mt-1">{item.summary}</p>
-                    {item.relatedStory && (
-                      <Link
-                        href={`/stories/${item.relatedStory.slug}`}
-                        className="group mt-4 inline-flex items-center gap-2 border-b border-[#3d5a3e]/50 pb-1 text-sm font-semibold text-[#18202a] transition-colors hover:border-[#3d5a3e]"
-                      >
-                        Read the story
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    )}
-                    {item.mainPhoto && (
-                      <figure className="mt-6 max-w-lg">
-                        <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
-                          <Image
-                            src={item.mainPhoto.url}
-                            alt={item.mainPhoto.alt}
-                            fill
-                            sizes="(min-width: 768px) 32rem, 90vw"
-                            className="object-cover"
-                          />
-                        </div>
-                        {item.mainPhoto.credit && (
-                          <figcaption className="mt-2 text-xs text-black/42">
-                            {item.mainPhoto.credit}
-                          </figcaption>
-                        )}
-                      </figure>
-                    )}
-                  </div>
+          {chapters.length > 1 && (
+            <nav aria-label="Chapters of Garnet's history" className="mt-14 border-y border-black/15">
+              <ul className="flex flex-wrap gap-x-8 gap-y-3 py-5">
+                {chapters.map(({ era }) => (
+                  <li key={era.slug}>
+                    <a
+                      href={`#${era.slug}`}
+                      className="group inline-flex items-baseline gap-2 text-sm font-semibold text-[#18202a]"
+                    >
+                      <span className="border-b border-transparent pb-0.5 transition-colors group-hover:border-[#3d5a3e]">
+                        {era.name}
+                      </span>
+                      <span className="text-xs font-normal text-black/40">{era.years}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {chapters.map(({ era, items }) => (
+            <div key={era.slug} id={era.slug} className="scroll-mt-32 pt-16 md:pt-24">
+              <Reveal className="grid gap-3 border-b border-black/15 pb-8 md:grid-cols-[21rem_1fr] md:gap-10">
+                <p className="text-sm font-semibold text-[#3d5a3e] md:pr-12 md:text-right">{era.years}</p>
+                <div>
+                  <h3 className="display-type text-4xl leading-none tracking-[-0.03em] md:text-5xl">
+                    {era.name}
+                  </h3>
+                  <p className="mt-3 max-w-xl text-sm leading-7 text-black/55">{era.blurb}</p>
                 </div>
               </Reveal>
-            ))}
-          </div>
+
+              <div className="relative pt-12">
+                <div className="absolute top-0 bottom-0 left-[3.5rem] w-px bg-black/15 md:left-[10.5rem]" />
+                {items.map((item, index) =>
+                  item.kind === "event" ? (
+                    <Reveal
+                      key={`e-${item.entry.id}`}
+                      className="relative grid grid-cols-[7rem_1fr] gap-5 pb-12 md:grid-cols-[21rem_1fr] md:gap-10 md:pb-16"
+                      delay={index * 50}
+                    >
+                      <div className="relative pr-7 text-right md:pr-12">
+                        <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">
+                          {item.entry.yearLabel}
+                        </span>
+                        <span className="absolute top-2 -right-1 h-2 w-2 rounded-full bg-[#3d5a3e] ring-8 ring-[#f5ead3]" />
+                      </div>
+                      <div className="md:grid md:grid-cols-[.7fr_1.3fr] md:gap-10">
+                        <h4 className="display-type text-3xl">{item.entry.title}</h4>
+                        <div>
+                          <p className="mt-3 max-w-lg text-sm leading-7 text-black/55 md:mt-1">
+                            {item.entry.summary}
+                          </p>
+                          {item.entry.relatedStory && (
+                            <Link
+                              href={`/stories/${item.entry.relatedStory.slug}`}
+                              className="group mt-4 inline-flex items-center gap-2 border-b border-[#3d5a3e]/50 pb-1 text-sm font-semibold text-[#18202a] transition-colors hover:border-[#3d5a3e]"
+                            >
+                              Read the story
+                              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                          )}
+                          {item.entry.mainPhoto && (
+                            <figure className="mt-6 max-w-lg">
+                              <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
+                                <Image
+                                  src={item.entry.mainPhoto.url}
+                                  alt={item.entry.mainPhoto.alt}
+                                  fill
+                                  sizes="(min-width: 768px) 32rem, 90vw"
+                                  className="object-cover"
+                                />
+                              </div>
+                              {item.entry.mainPhoto.credit && (
+                                <figcaption className="mt-2 text-xs text-black/42">
+                                  {item.entry.mainPhoto.credit}
+                                </figcaption>
+                              )}
+                            </figure>
+                          )}
+                        </div>
+                      </div>
+                    </Reveal>
+                  ) : (
+                    <Reveal
+                      key={`s-${item.story.id}`}
+                      className="relative grid grid-cols-[7rem_1fr] gap-5 pb-12 md:grid-cols-[21rem_1fr] md:gap-10 md:pb-16"
+                      delay={index * 50}
+                    >
+                      <div className="relative pr-7 text-right md:pr-12">
+                        <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">
+                          {item.story.startYear}
+                        </span>
+                        <span className="absolute top-1.5 -right-[7px] h-3.5 w-3.5 rotate-45 border-2 border-[#d3b350] bg-[#f2eee4] ring-8 ring-[#f5ead3]" />
+                      </div>
+                      <Link
+                        href={`/stories/${item.story.slug}`}
+                        className="group block border border-[#0e1c27]/12 bg-[#f8f6f1] transition-colors hover:border-[#3d5a3e]/40 md:grid md:grid-cols-[1fr_12rem]"
+                      >
+                        <div className="p-6 md:p-8">
+                          <p className="text-[0.62rem] font-bold tracking-[0.16em] text-[#3d5a3e] uppercase">
+                            Story · {storyTypeLabel[item.story.storyType]} · {item.story.timeFrame}
+                          </p>
+                          <h4 className="display-type mt-3 text-3xl leading-[1.05] md:text-[2.1rem]">
+                            {item.story.title}
+                          </h4>
+                          <p className="mt-3 max-w-xl text-sm leading-7 text-black/58">{item.story.leadIn}</p>
+                          <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#18202a]">
+                            Read the story
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                          </span>
+                        </div>
+                        {item.story.mainPhoto && (
+                          <div className="relative hidden min-h-full overflow-hidden bg-[#0e1c27] md:block">
+                            <Image
+                              src={item.story.mainPhoto.url}
+                              alt={item.story.mainPhoto.alt}
+                              fill
+                              sizes="12rem"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                          </div>
+                        )}
+                      </Link>
+                    </Reveal>
+                  ),
+                )}
+              </div>
+            </div>
+          ))}
 
           <div className="mt-4 border-t border-black/15 pt-12 text-center">
             <CtaLink href="/preserve">See how Garnet is preserved</CtaLink>
@@ -140,51 +232,40 @@ export default async function HistoryPage() {
         </div>
       </section>
       {stories.length > 0 && (
-        <section id="stories" className="scroll-mt-28 bg-[#f2eee4] px-5 py-20 md:px-10 md:py-32">
+        <section id="stories" className="scroll-mt-28 bg-[#f2eee4] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[82rem]">
             <Reveal className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-24">
               <h2 className="display-type text-5xl leading-[0.95] tracking-[-0.035em] md:text-7xl">
                 Stories of Garnet
               </h2>
               <p className="max-w-xl text-lg leading-8 text-black/58 lg:pb-2">
-                The families, homes, and businesses behind the buildings, told through
-                records and the memories of people who lived here.
+                The people, families, and places behind the buildings, told through records
+                and the memories of those who lived here. Every story, A to Z.
               </p>
             </Reveal>
 
-            <div className="mt-14 grid gap-px overflow-hidden border border-[#0e1c27]/15 bg-[#0e1c27]/15 md:grid-cols-2">
-              {stories.map((story, i) => (
-                <Reveal key={story.id} delay={i * 70} className="bg-[#f8f6f1]">
-                  <Link
-                    href={`/stories/${story.slug}`}
-                    className="group flex h-full flex-col"
-                  >
-                    {story.mainPhoto && (
-                      <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
-                        <Image
-                          src={story.mainPhoto.url}
-                          alt={story.mainPhoto.alt}
-                          fill
-                          sizes="(min-width: 768px) 41rem, 100vw"
-                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                        />
-                      </div>
-                    )}
-                    <div className="flex flex-1 flex-col p-7 md:p-10">
-                      <p className="text-sm font-semibold text-[#3d5a3e]">{story.timeFrame}</p>
-                      <h3 className="display-type mt-3 text-3xl leading-[1.02] tracking-[-0.02em] md:text-4xl">
-                        {story.title}
-                      </h3>
-                      <p className="mt-4 max-w-lg leading-7 text-black/58">{story.leadIn}</p>
-                      <span className="mt-auto inline-flex items-center gap-3 pt-8 text-sm font-semibold">
-                        Read the story
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <ul className="mt-14 grid border-t border-[#0e1c27]/15 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-10">
+              {[...stories]
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map((story) => (
+                  <li key={story.id} className="border-b border-[#0e1c27]/15">
+                    <Link
+                      href={`/stories/${story.slug}`}
+                      className="group flex items-baseline justify-between gap-4 py-5"
+                    >
+                      <span>
+                        <span className="display-type block text-2xl leading-tight transition-colors group-hover:text-[#3d5a3e]">
+                          {story.title}
+                        </span>
+                        <span className="mt-1 block text-xs text-black/45">
+                          {storyTypeLabel[story.storyType]} · {story.timeFrame}
+                        </span>
                       </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
+                      <ArrowRight className="h-4 w-4 shrink-0 text-black/35 transition-transform group-hover:translate-x-1 group-hover:text-[#3d5a3e]" />
+                    </Link>
+                  </li>
+                ))}
+            </ul>
           </div>
         </section>
       )}

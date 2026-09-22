@@ -58,7 +58,7 @@ export type TimelineEntry = {
   relatedStory?: { slug: string; title: string };
 };
 
-export type StoryType = "place" | "family" | "person";
+export type StoryType = "place" | "family" | "person" | "community" | "organization";
 
 /** A remembered moment in someone's own words. */
 export type StoryVoice = {
@@ -89,9 +89,13 @@ export type GarnetStory = {
   bodyHtml: string;
   voice?: StoryVoice;
   mainPhoto?: ContentImage;
+  /** Sources and credits line, optionally linked */
   source?: { label: string; url?: string };
   mapBuilding?: MapBuildingSlug;
+  relatedStories?: StoryLink[];
 };
+
+export type StoryLink = { slug: string; title: string; timeFrame?: string };
 
 /** Display-ready road report consumed by the homepage hero. */
 export type RoadReport = {

@@ -11,6 +11,7 @@ import type {
   GarnetStory,
   MapBuildingSlug,
   RoadTone,
+  StoryLink,
   StoryType,
   TimelineEntry,
   VisitorStatus,
@@ -101,6 +102,13 @@ export type WpStoriesResponse = {
         mapBuilding?: WpSelect;
         sourceLabel?: string | null;
         sourceUrl?: string | null;
+        relatedStories?: {
+          nodes?: Array<{
+            slug?: string | null;
+            title?: string | null;
+            storyDetails?: { timeFrame?: string | null } | null;
+          } | null>;
+        } | null;
       } | null;
     }>;
   } | null;
@@ -234,7 +242,7 @@ function mapRelatedStory(
   return slug && title ? { slug, title } : undefined;
 }
 
-const STORY_TYPES: StoryType[] = ["place", "family", "person"];
+const STORY_TYPES: StoryType[] = ["place", "family", "person", "community", "organization"];
 const MAP_BUILDINGS: MapBuildingSlug[] = [
   "wells-hotel",
   "kellys-saloon",
@@ -271,5 +279,12 @@ export function mapStory(node: WpStoryNode): GarnetStory | null {
     mainPhoto: mapImage(f.mainPhoto, f.photoCredit),
     source: sourceLabel || sourceUrl ? { label: sourceLabel ?? "Source", url: sourceUrl } : undefined,
     mapBuilding: mapBuilding && MAP_BUILDINGS.includes(mapBuilding) ? mapBuilding : undefined,
+    relatedStories: (f.relatedStories?.nodes ?? [])
+      .map((n): StoryLink | null => {
+        const s = clean(n?.slug);
+        const t = clean(htmlToText(n?.title));
+        return s && t ? { slug: s, title: t, timeFrame: clean(n?.storyDetails?.timeFrame) } : null;
+      })
+      .filter((n): n is StoryLink => n !== null),
   };
 }

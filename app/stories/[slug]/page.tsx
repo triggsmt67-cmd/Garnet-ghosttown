@@ -37,6 +37,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
   const index = stories.findIndex((item) => item.slug === story.slug);
   const nextStory = stories.length > 1 ? stories[(index + 1) % stories.length] : null;
+  const related = (story.relatedStories ?? []).filter((r) => r.slug !== story.slug);
   const building = story.mapBuilding ? getBuilding(story.mapBuilding) : undefined;
 
   return (
@@ -113,22 +114,46 @@ export default async function StoryPage({ params }: StoryPageProps) {
                   rel="noreferrer"
                   className="group inline-flex items-center gap-3 border-b border-black/20 pb-2 text-sm font-semibold text-black/60"
                 >
-                  Source: {story.source.label}
-                  <ArrowUpRight className="h-4 w-4" />
+                  {story.source.label}
+                  <ArrowUpRight className="h-4 w-4 shrink-0" />
                 </a>
               ) : story.source ? (
-                <p className="text-sm text-black/50">Source: {story.source.label}</p>
+                <p className="max-w-xl text-sm leading-6 text-black/50">{story.source.label}</p>
               ) : null}
             </div>
           )}
         </div>
       </section>
 
+      {related.length > 0 && (
+        <section className="border-t border-black/15 px-5 py-16 md:px-10 md:py-20">
+          <div className="mx-auto max-w-[82rem]">
+            <h2 className="text-[0.68rem] font-bold tracking-[0.18em] text-black/45 uppercase">
+              Connected stories
+            </h2>
+            <ul className="mt-6 grid gap-px overflow-hidden border border-[#0e1c27]/15 bg-[#0e1c27]/15 md:grid-cols-3">
+              {related.map((r) => (
+                <li key={r.slug} className="bg-[#f8f6f1]">
+                  <Link href={`/stories/${r.slug}`} className="group flex h-full flex-col p-7">
+                    {r.timeFrame && <span className="text-sm font-semibold text-[#3d5a3e]">{r.timeFrame}</span>}
+                    <span className="display-type mt-2 text-2xl leading-tight">{r.title}</span>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold">
+                      Read the story
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {nextStory && (
         <section className="border-t border-black/15 bg-[#e8e2d7] px-5 py-14 md:px-10">
           <div className="mx-auto flex max-w-[82rem] flex-col gap-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-black/45">Another story from Garnet</p>
+              <p className="text-sm text-black/45">Next on the timeline</p>
               <p className="display-type mt-2 text-3xl md:text-4xl">{nextStory.title}</p>
             </div>
             <Link

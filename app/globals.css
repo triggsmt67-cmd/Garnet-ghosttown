@@ -286,14 +286,45 @@ button:focus-visible {
   text-underline-offset: 4px;
 }
 
+/* Quoted source material: newspaper clippings, memoirs, records. */
 .story-body blockquote {
-  margin-left: 0;
-  padding-left: 1.5rem;
-  border-left: 2px solid var(--gold);
+  margin: 2.5rem 0 0;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid rgb(14 28 39 / 0.14);
+  border-left: 3px solid var(--gold);
+  background: var(--paper-light);
   font-family: var(--display);
-  font-size: 1.35rem;
-  line-height: 1.5;
+  font-size: 1.12rem;
+  line-height: 1.7;
   color: var(--ink);
+}
+
+.story-body blockquote > * + * {
+  margin-top: 1rem;
+}
+
+.story-body blockquote strong {
+  display: block;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.story-body .excerpt-cite {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(0 0 0 / 0.5);
+}
+
+.story-body blockquote + .excerpt-cite {
+  margin-top: 0.75rem;
+}
+
+.story-body blockquote .excerpt-cite {
+  margin-top: 1.25rem;
+  font-family: var(--sans);
 }
 
 .story-body ul,
