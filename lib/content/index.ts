@@ -32,11 +32,14 @@ export const BLM_PHONE_DISPLAY = "406.329.3914";
 /**
  * Outage policy:
  * - WordPress not configured → mock data (local development).
+ * - Any WordPress error in development → cautious fallback plus a console
+ *   warning, so a half-configured local WordPress never blanks the page.
  * - WordPress unreachable during `next build` → cautious fallback, build continues.
- * - WordPress unreachable at runtime → rethrow. Next.js then keeps serving the
- *   last successfully generated page instead of caching a degraded one.
+ * - WordPress unreachable at production runtime → rethrow. Next.js then keeps
+ *   serving the last successfully generated page instead of caching a degraded one.
  */
 async function load<T>(
+  label: string,
   loader: () => Promise<T>,
   mock: () => T,
   fallback: () => T,
@@ -45,8 +48,14 @@ async function load<T>(
   try {
     return { data: await loader(), source: "wordpress" };
   } catch (error) {
-    if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
-      console.error("[content] WordPress unavailable during build; using fallback", error);
+    const isBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+    const isDev = process.env.NODE_ENV !== "production";
+    if (isBuild || isDev) {
+      console.warn(
+        `[content] ${label}: WordPress request failed; using fallback.\n  ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
       return { data: fallback(), source: "fallback" };
     }
     throw error;
@@ -59,6 +68,7 @@ async function load<T>(
 
 export async function getEvents(): Promise<Sourced<GarnetEvent[]>> {
   const result = await load(
+    "Events",
     async () => {
       const data = await wpFetch<WpEventsResponse>(EVENTS_QUERY, { tags: [CONTENT_TAGS.events] });
       return (data.events?.nodes ?? []).map(mapEvent).filter((e): e is GarnetEvent => e !== null);
@@ -106,6 +116,7 @@ export function pickHomepageEvent(events: GarnetEvent[], now = new Date()): Garn
 
 export async function getVisitorStatus(): Promise<Sourced<VisitorStatus | null>> {
   return load(
+    "Road report",
     async () => {
       const data = await wpFetch<WpVisitorStatusResponse>(VISITOR_STATUS_QUERY, {
         tags: [CONTENT_TAGS.visitorStatus],
@@ -164,6 +175,7 @@ export async function getRoadReport(): Promise<RoadReport> {
 
 export async function getTimeline(): Promise<Sourced<TimelineEntry[]>> {
   const result = await load(
+    "Timeline",
     async () => {
       const data = await wpFetch<WpTimelineResponse>(TIMELINE_QUERY, {
         tags: [CONTENT_TAGS.timeline],
