@@ -180,9 +180,11 @@ export async function getTimeline(): Promise<Sourced<TimelineEntry[]>> {
       const data = await wpFetch<WpTimelineResponse>(TIMELINE_QUERY, {
         tags: [CONTENT_TAGS.timeline],
       });
-      return (data.timelineEntries?.nodes ?? [])
+      const entries = (data.timelineEntries?.nodes ?? [])
         .map(mapTimelineEntry)
         .filter((e): e is TimelineEntry => e !== null);
+      // Until editors add entries, keep showing the built-in history rather than an empty page.
+      return entries.length > 0 ? entries : mockTimeline;
     },
     () => mockTimeline,
     () => mockTimeline, // History is stable; the built-in version is a safe fallback.
