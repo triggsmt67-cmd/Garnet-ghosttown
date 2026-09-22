@@ -1,7 +1,7 @@
 import "server-only";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
-import { getMockVisitorStatus, mockEvents, mockStories, mockTimeline } from "./mock";
+import { getMockVisitorStatus, mockEvents, mockStories } from "./mock";
 import { EVENTS_QUERY, STORIES_QUERY, TIMELINE_QUERY, VISITOR_STATUS_QUERY } from "./queries";
 import { formatShortDate } from "./time";
 import type {
@@ -190,14 +190,14 @@ export async function getTimeline(): Promise<Sourced<TimelineEntry[]>> {
       const data = await wpFetch<WpTimelineResponse>(TIMELINE_QUERY, {
         tags: [CONTENT_TAGS.timeline],
       });
-      const entries = (data.timelineEntries?.nodes ?? [])
+      return (data.timelineEntries?.nodes ?? [])
         .map(mapTimelineEntry)
         .filter((e): e is TimelineEntry => e !== null);
-      // Until editors add entries, keep showing the built-in history rather than an empty page.
-      return entries.length > 0 ? entries : mockTimeline;
     },
-    () => mockTimeline,
-    () => mockTimeline, // History is stable; the built-in version is a safe fallback.
+    // The timeline is built from stories. Timeline entries are optional extras
+    // for town-wide events, so there's no built-in placeholder list.
+    () => [],
+    () => [],
   );
   result.data = [...result.data].sort((a, b) => a.sortYear - b.sortYear);
   return result;
