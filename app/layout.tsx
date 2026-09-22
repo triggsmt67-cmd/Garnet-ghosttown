@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { getFireStatus } from "@/lib/fire";
 
 const display = Newsreader({
   variable: "--font-newsreader",
@@ -32,9 +33,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const fire = await getFireStatus();
+
   return (
     <html
       lang="en"
@@ -46,7 +49,7 @@ export default function RootLayout({
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-        <Header />
+        <Header fire={fire} />
         {children}
         <Footer />
       </body>

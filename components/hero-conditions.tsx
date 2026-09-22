@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "./icons";
+import type { RoadReport } from "@/lib/content/types";
 import { WeatherCard } from "./weather-card";
 
-export type HeroRoadReport = {
-  status: string;
-  note: string;
-  updatedLabel: string;
-  href: string;
-  tone?: "open" | "caution" | "closed";
-};
+/** Built by lib/content (toRoadReport), which applies the stale-report safeguard. */
+export type HeroRoadReport = RoadReport;
 
 const statusColor: Record<NonNullable<HeroRoadReport["tone"]>, string> = {
   open: "bg-[#d3b350]",
@@ -18,7 +14,7 @@ const statusColor: Record<NonNullable<HeroRoadReport["tone"]>, string> = {
 
 const unavailableReport: HeroRoadReport = {
   status: "Confirm access before leaving",
-  note: "Call the BLM Missoula Field Office",
+  note: "Call the BLM Missoula Field Office · 406.329.3914",
   updatedLabel: "Road report unavailable",
   href: "#conditions",
   tone: "caution",

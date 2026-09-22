@@ -1,53 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
+import { EventStatusBadge, formatEventPrice } from "@/components/event-meta";
+import {
+  formatEventDate,
+  formatEventDayTime,
+  getEvents,
+  splitEvents,
+  type GarnetEvent,
+} from "@/lib/content";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Education & Events — Garnet Ghost Town",
+  title: "Education & Events",
   description:
     "School tours, scavenger hunts, nature hikes, and guided curriculum rooted in Montana's gold-rush past. Plus a full calendar of Garnet events.",
 };
-
-const events = [
-  {
-    date: "September 12, 2026",
-    dateTime: "2026-09-12T12:30:00-06:00",
-    day: "Saturday · 12:30 p.m.",
-    title: "Step Back in Time",
-    description:
-      "Meet Garnet's 1917 residents inside five historic buildings, then stay for a chili feed, live music, and a street dance. Costumed interpreters bring the mining era to life in ways no sign ever could.",
-    price: "$20 per person",
-    priceNote: "Ages 12 and younger are free · separate from standard day pass",
-    href: "https://main.glaciermt.io/montana-event/52870",
-    featured: true,
-  },
-  {
-    date: "July 4, 2026",
-    dateTime: "2026-07-04T11:00:00-06:00",
-    day: "Saturday · 11:00 a.m.",
-    title: "Independence Day at the Ghost Town",
-    description:
-      "Celebrate the Fourth among buildings that saw a dozen Independence Days of their own. BLM rangers lead short historic walks every hour throughout the afternoon.",
-    price: "Standard day pass",
-    priceNote: "$10 for visitors 16 and older · under 16 free",
-    href: "https://www.recreation.gov/activitypass/AP23157",
-    featured: false,
-  },
-  {
-    date: "August 16, 2026",
-    dateTime: "2026-08-16T10:00:00-06:00",
-    day: "Sunday · 10:00 a.m.",
-    title: "Ranger-Led Mine Walk",
-    description:
-      "Follow a BLM park ranger on the Sierra Mine trail — a mile through the forest where prospectors staked their claims. The walk covers how ore was extracted, hauled, and processed, and why these mountains drew so many people so quickly.",
-    price: "Standard day pass",
-    priceNote: "$10 for visitors 16 and older · under 16 free",
-    href: "https://garnetghosttown.org",
-    featured: false,
-  },
-];
 
 const educationPrograms = [
   {
@@ -98,7 +68,69 @@ const resources = [
   },
 ];
 
-export default function EventsPage() {
+function EventRow({ event, index, past = false }: { event: GarnetEvent; index: number; past?: boolean }) {
+  const inactive = event.status === "cancelled" || event.status === "postponed";
+  const priceNote = [event.priceNote, event.price === undefined ? "$10 for visitors 16 and older · under 16 free" : null]
+    .filter(Boolean)
+    .join(" · ");
+
+  return (
+    <Reveal
+      className={`grid gap-6 py-10 md:grid-cols-[10rem_1fr_auto] md:gap-12 md:py-12 ${past ? "opacity-60" : ""}`}
+      delay={index * 80}
+    >
+      <time
+        dateTime={event.startDate}
+        className={`display-type shrink-0 text-xl leading-[1.1] text-[#e0c46d] ${inactive ? "line-through" : ""}`}
+      >
+        {formatEventDate(event.startDate)}
+        <span className="mt-1.5 block font-sans text-[0.68rem] font-semibold tracking-[0.08em] text-black/38 uppercase">
+          {formatEventDayTime(event.startDate)}
+        </span>
+      </time>
+
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="display-type text-3xl leading-none tracking-[-0.02em] md:text-4xl">
+            {event.title}
+          </h3>
+          {!past && <EventStatusBadge status={event.status} />}
+        </div>
+        <p className="mt-4 max-w-2xl leading-7 text-black/58">
+          {event.description ?? event.homepageSummary}
+        </p>
+        {!past && event.accessAdvisory && (
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#a8333d]">{event.accessAdvisory}</p>
+        )}
+        {!past && (
+          <p className="mt-3 text-sm font-semibold text-[#1e2f1f]">
+            {formatEventPrice(event)}
+            {priceNote && <span className="ml-2 font-normal text-black/38">· {priceNote}</span>}
+          </p>
+        )}
+      </div>
+
+      {!past && event.detailsUrl && (
+        <div className="flex items-start md:justify-end">
+          <a
+            href={event.detailsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex items-center gap-3 border-b border-[#d3b350] pb-1.5 text-sm font-semibold transition-colors hover:border-[#3d5a3e] hover:text-[#3d5a3e]"
+          >
+            {event.registrationRequired ? "Register" : "Event details"}
+            <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
+      )}
+    </Reveal>
+  );
+}
+
+export default async function EventsPage() {
+  const { data: events } = await getEvents();
+  const { upcoming, recent } = splitEvents(events);
+
   return (
     <main id="main-content">
       <RouteHero
@@ -120,55 +152,31 @@ export default function EventsPage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 divide-y divide-[#0e1c27]/12 border-y border-[#0e1c27]/12">
-            {events.map((event, i) => (
-              <Reveal
-                key={event.dateTime}
-                className="grid gap-6 py-10 md:grid-cols-[10rem_1fr_auto] md:gap-12 md:py-12"
-                delay={i * 80}
-              >
-                <time
-                  dateTime={event.dateTime}
-                  className="display-type shrink-0 text-xl leading-[1.1] text-[#e0c46d]"
-                >
-                  {event.date}
-                  <span className="mt-1.5 block font-sans text-[0.68rem] font-semibold tracking-[0.08em] text-black/38 uppercase">
-                    {event.day}
-                  </span>
-                </time>
+          {upcoming.length > 0 ? (
+            <div className="mt-14 divide-y divide-[#0e1c27]/12 border-y border-[#0e1c27]/12">
+              {upcoming.map((event, i) => (
+                <EventRow key={event.id} event={event} index={i} />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-14 border-y border-[#0e1c27]/12 py-10 text-lg text-black/55">
+              No upcoming events are currently scheduled. New events are posted here as
+              soon as they are confirmed.
+            </p>
+          )}
 
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="display-type text-3xl leading-none tracking-[-0.02em] md:text-4xl">
-                      {event.title}
-                    </h3>
-                    {event.featured && (
-                      <span className="inline-block shrink-0 bg-[#3d5a3e] px-3 py-1 text-[0.6rem] font-bold tracking-[0.15em] text-white uppercase">
-                        Featured event
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-4 max-w-2xl leading-7 text-black/58">{event.description}</p>
-                  <p className="mt-3 text-sm font-semibold text-[#1e2f1f]">
-                    {event.price}
-                    <span className="ml-2 font-normal text-black/38">· {event.priceNote}</span>
-                  </p>
-                </div>
-
-                <div className="flex items-start md:justify-end">
-                  <a
-                    href={event.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center gap-3 border-b border-[#d3b350] pb-1.5 text-sm font-semibold transition-colors hover:border-[#3d5a3e] hover:text-[#3d5a3e]"
-                  >
-                    Event details
-                    <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          {recent.length > 0 && (
+            <div className="mt-20">
+              <h3 className="text-[0.68rem] font-bold tracking-[0.18em] text-black/45 uppercase">
+                Recent events
+              </h3>
+              <div className="mt-4 divide-y divide-[#0e1c27]/12 border-y border-[#0e1c27]/12">
+                {recent.map((event, i) => (
+                  <EventRow key={event.id} event={event} index={i} past />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

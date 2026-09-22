@@ -4,8 +4,14 @@ import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { CtaLink } from "@/components/cta-link";
 import { HomeHero } from "@/components/home-hero";
-import type { HeroRoadReport } from "@/components/hero-conditions";
 import { SeasonalFieldGuide } from "@/components/seasonal-field-guide";
+import { EventBanner } from "@/components/event-banner";
+import { getEvents, getRoadReport, pickHomepageEvent } from "@/lib/content";
+import { eventSchema, jsonLd } from "@/lib/content/schema";
+
+// Re-render at least every 2 minutes so road-report staleness and past-event
+// cutoffs are re-evaluated even between WordPress webhooks.
+export const revalidate = 120;
 
 const placeSchema = {
   "@context": "https://schema.org",
@@ -23,59 +29,24 @@ const placeSchema = {
   publicAccess: true,
 };
 
-const eventSchema = {
-  "@context": "https://schema.org",
-  "@type": "Event",
-  name: "Step Back in Time",
-  startDate: "2026-09-12T12:30:00-06:00",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  eventStatus: "https://schema.org/EventScheduled",
-  location: {
-    "@type": "Place",
-    name: "Garnet Ghost Town",
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: "MT",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 46.82559,
-      longitude: -113.33945,
-    },
-  },
-  offers: {
-    "@type": "Offer",
-    price: 20,
-    priceCurrency: "USD",
-    url: "https://main.glaciermt.io/montana-event/52870",
-    availability: "https://schema.org/InStock",
-  },
-  url: "https://main.glaciermt.io/montana-event/52870",
-};
+export default async function Home() {
+  const [{ data: events }, roadReport] = await Promise.all([getEvents(), getRoadReport()]);
+  const homepageEvent = pickHomepageEvent(events);
 
-// Temporary stand-in for the future WordPress ACF road-status response.
-const mockRoadReport: HeroRoadReport = {
-  status: "Wheeled access open",
-  note: "Highway 200 route recommended",
-  updatedLabel: "Sample report · July 28",
-  href: "#conditions",
-  tone: "open",
-};
-
-export default function Home() {
   return (
     <main id="main-content">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(placeSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
-      />
+      {homepageEvent && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema(homepageEvent)) }}
+        />
+      )}
 
-      <HomeHero roadReport={mockRoadReport} />
+      <HomeHero roadReport={roadReport} />
 
       <section
         aria-label="Quick visitor links"
@@ -135,49 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="events"
-        className="scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#1e2f1f] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-16"
-      >
-        <Reveal className="mx-auto grid max-w-[82rem] items-center gap-8 lg:grid-cols-[.68fr_1.45fr_auto] lg:gap-12">
-          <time
-            dateTime="2026-09-12T12:30:00-06:00"
-            className="display-type border-b border-white/15 pb-7 text-3xl leading-[1.05] text-[#e0c46d] lg:border-r lg:border-b-0 lg:py-2 lg:pr-10"
-          >
-            September 12, 2026
-            <span className="mt-2 block font-sans text-xs font-semibold tracking-[0.08em] text-white/52">
-              Saturday · 12:30 p.m.
-            </span>
-          </time>
-
-          <div>
-            <h2 className="display-type text-4xl leading-none tracking-[-0.025em] md:text-5xl">
-              Step Back in Time
-            </h2>
-            <p className="mt-4 max-w-2xl leading-7 text-white/62">
-              Meet Garnet&apos;s 1917 residents inside five historic buildings, then
-              stay for a chili feed, live music, and a street dance. Event ticket
-              is separate from the standard day pass.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between gap-8 border-t border-white/15 pt-7 lg:block lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-            <div>
-              <p className="display-type text-2xl">$20 per person</p>
-              <p className="mt-1 text-xs text-white/48">Ages 12 and younger are free</p>
-            </div>
-            <a
-              href="https://main.glaciermt.io/montana-event/52870"
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-0 inline-flex shrink-0 items-center gap-3 border-b border-[#d3b350] pb-2 text-sm font-semibold lg:mt-5"
-            >
-              Event details
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
-          </div>
-        </Reveal>
-      </section>
+      <EventBanner event={homepageEvent} />
 
       <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-36">
         <div className="mx-auto max-w-[82rem]">
@@ -302,8 +231,8 @@ export default function Home() {
                 </p>
                 <p className="mt-9 max-w-md leading-7 text-white/78">
                   Buy the day pass before you leave reliable service, then save a copy
-                  to your phone. A pass covers standard site admission; the September
-                  Step Back in Time event requires a separate ticket.
+                  to your phone. A pass covers standard site admission; special events may
+                  require a separate ticket.
                 </p>
                 <a
                   href="https://www.recreation.gov/activitypass/AP23157"

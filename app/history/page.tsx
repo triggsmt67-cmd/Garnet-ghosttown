@@ -3,46 +3,18 @@ import Image from "next/image";
 import { CtaLink } from "@/components/cta-link";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
+import { getTimeline } from "@/lib/content";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "History",
   description: "Follow Garnet from gold discovery and its 1898 boom through decline, abandonment, and preservation.",
 };
 
-const timeline = [
-  {
-    year: "1860s",
-    title: "Gold in the gulches",
-    copy: "Placer miners work the streams of the Garnet Mountains, washing gravel for free-floating gold.",
-  },
-  {
-    year: "1895",
-    title: "A town takes shape",
-    copy: "Dr. Armistead Mitchell builds a stamp mill at the head of First Chance Gulch. A settlement grows around it.",
-  },
-  {
-    year: "1898",
-    title: "The height of the boom",
-    copy: "Nearly 1,000 people live in Garnet, supported by hotels, stores, a school, livery stables, and thirteen saloons.",
-  },
-  {
-    year: "1905",
-    title: "Gold becomes harder to reach",
-    copy: "Many mines are abandoned and the population falls to roughly 150. A 1912 fire later destroys much of the business district.",
-  },
-  {
-    year: "1940s",
-    title: "A ghost town",
-    copy: "War work draws residents away again. Cabins, furnishings, and commercial buildings are left behind in the mountains.",
-  },
-  {
-    year: "Today",
-    title: "A story kept standing",
-    copy: "The Bureau of Land Management and Garnet Preservation Association stabilize buildings and interpret the town for new generations.",
-  },
-];
+export default async function HistoryPage() {
+  const { data: timeline } = await getTimeline();
 
-export default function HistoryPage() {
   return (
     <main id="main-content">
       <RouteHero
@@ -115,17 +87,37 @@ export default function HistoryPage() {
             <div className="absolute top-0 bottom-0 left-[3.5rem] w-px bg-black/15 md:left-[10.5rem]" />
             {timeline.map((item, index) => (
               <Reveal
-                key={item.year}
+                key={item.id}
                 className="relative grid grid-cols-[7rem_1fr] gap-5 pb-14 md:grid-cols-[21rem_1fr] md:gap-10 md:pb-20"
                 delay={index * 60}
               >
                 <div className="relative pr-7 text-right md:pr-12">
-                  <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">{item.year}</span>
+                  <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">{item.yearLabel}</span>
                   <span className="absolute top-2 -right-1 h-2 w-2 rounded-full bg-[#3d5a3e] ring-8 ring-[#f5ead3]" />
                 </div>
                 <div className="md:grid md:grid-cols-[.7fr_1.3fr] md:gap-10">
                   <h3 className="display-type text-3xl">{item.title}</h3>
-                  <p className="mt-3 max-w-lg text-sm leading-7 text-black/55 md:mt-1">{item.copy}</p>
+                  <div>
+                    <p className="mt-3 max-w-lg text-sm leading-7 text-black/55 md:mt-1">{item.summary}</p>
+                    {item.mainPhoto && (
+                      <figure className="mt-6 max-w-lg">
+                        <div className="relative aspect-[3/2] overflow-hidden bg-[#0e1c27]">
+                          <Image
+                            src={item.mainPhoto.url}
+                            alt={item.mainPhoto.alt}
+                            fill
+                            sizes="(min-width: 768px) 32rem, 90vw"
+                            className="object-cover"
+                          />
+                        </div>
+                        {item.mainPhoto.credit && (
+                          <figcaption className="mt-2 text-xs text-black/42">
+                            {item.mainPhoto.credit}
+                          </figcaption>
+                        )}
+                      </figure>
+                    )}
+                  </div>
                 </div>
               </Reveal>
             ))}

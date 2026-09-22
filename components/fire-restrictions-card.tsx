@@ -1,10 +1,14 @@
-"use client";
-
+import { FIRE_MAP_URL, type FireStatus } from "@/lib/fire-shared";
 import { ArrowUpRight, Flame } from "./icons";
-import { FIRE_MAP_URL, useFireRestrictions } from "./use-fire-restrictions";
 
-export function FireRestrictionsCard({ compact = false }: { compact?: boolean }) {
-  const { isLoading, office, status } = useFireRestrictions();
+export function FireRestrictionsCard({
+  fire,
+  compact = false,
+}: {
+  fire: FireStatus;
+  compact?: boolean;
+}) {
+  const { jurisdiction, status } = fire;
 
   if (compact) {
     return (
@@ -18,10 +22,10 @@ export function FireRestrictionsCard({ compact = false }: { compact?: boolean })
             <span className="h-2 w-2 shrink-0 rounded-full bg-[#d3b350] shadow-[0_0_0_6px_rgba(211,179,80,.12)]" />
           </div>
           <p className="display-type mt-5 text-3xl leading-none" aria-live="polite">
-            {isLoading ? "Reading current status…" : status}
+            {status}
           </p>
           <p className="mt-3 text-xs leading-5 text-white/58">
-            {office}. Recheck on the morning of your visit.
+            {jurisdiction} restrictions. Recheck on the morning of your visit.
           </p>
           <a
             href={FIRE_MAP_URL}
@@ -44,16 +48,16 @@ export function FireRestrictionsCard({ compact = false }: { compact?: boolean })
         <div>
           <div className="flex items-center justify-between gap-4">
             <p className="text-[0.68rem] font-semibold tracking-[0.22em] text-[#d3b350] uppercase">
-              Fire restrictions · Garnet
+              Fire restrictions · {jurisdiction}
             </p>
             <span className="h-2 w-2 shrink-0 rounded-full bg-[#d3b350] shadow-[0_0_0_6px_rgba(211,179,80,.12)]" />
           </div>
           <p className="display-type mt-8 text-4xl leading-[1.02]" aria-live="polite">
-            {isLoading ? "Reading the official map…" : status}
+            {status}
           </p>
           <p className="mt-5 text-sm leading-7 text-white/62">
-            Current map result for the Garnet coordinates on land managed by the{" "}
-            {office}. Restrictions and closures can change quickly in summer.
+            Current restriction level for {jurisdiction}, which governs visits to
+            Garnet. Restrictions and closures can change quickly in summer.
           </p>
           <a
             href="tel:4063293914"

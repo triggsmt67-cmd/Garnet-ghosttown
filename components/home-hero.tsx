@@ -107,7 +107,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
             </p>
             <h1 className="hero-enter hero-enter-delay-1 display-type max-w-4xl text-[clamp(2.5rem,11vw,5.8rem)] leading-[0.94] tracking-[-0.035em] md:text-[clamp(3.35rem,6vw,5.8rem)] md:leading-[0.9]">
               Garnet, a glimpse into{" "}
-              <span className="mt-1 block text-[#e0c46d]">Montana's past…</span>
+              <span className="mt-1 block text-[#e0c46d]">Montana&apos;s past…</span>
             </h1>
             <p className="hero-enter hero-enter-delay-2 mt-6 max-w-2xl text-sm leading-6 text-white/78 md:mt-8 md:text-lg md:leading-7">
               The ghost town is open year-round and every building has its own

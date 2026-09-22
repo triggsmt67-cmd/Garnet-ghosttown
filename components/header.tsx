@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Mountain } from "./icons";
+import type { FireStatus } from "@/lib/fire-shared";
 import { FireStatusBar } from "./fire-status-bar";
 
 const links = [
@@ -13,7 +14,7 @@ const links = [
   { href: "/preserve", label: "Get Involved" },
 ];
 
-export function Header() {
+export function Header({ fire }: { fire: FireStatus }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,7 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <FireStatusBar />
+      <FireStatusBar fire={fire} />
       <div
         className={`border-b transition-all duration-500 ${
           scrolled || open

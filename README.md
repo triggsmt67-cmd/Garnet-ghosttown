@@ -20,23 +20,31 @@ npm run build
 npm audit --omit=dev
 ```
 
-## Planned WordPress and ACF integration
+## WordPress and ACF integration
 
-WordPress will act as a headless content-management system. Next.js will continue
-to control the layouts and visual system; WordPress administrators will manage
-information that changes regularly.
+WordPress is a headless content-management system. Next.js controls every
+layout and visual decision; WordPress editors only fill in forms.
 
-The first two WordPress-managed content areas should be:
+### How content flows
 
-1. Upcoming events
-2. Current road and winter-access status
+- All WordPress reads go through `lib/content/` (server-only). Components never
+  see raw WordPress data.
+- **With `WORDPRESS_GRAPHQL_URL` unset, the site runs on built-in sample content**
+  (`lib/content/mock.ts`). No WordPress install is needed to develop the frontend.
+- Queries live in `lib/content/queries.ts`; mapping and validation live in
+  `lib/content/wordpress.ts`. If a GraphQL field name changes in ACF, change it
+  in `queries.ts` and the matching type in `wordpress.ts` only.
+- Copy `.env.example` to `.env.local` to connect a WordPress install.
 
-Use either the WordPress REST API or WPGraphQL consistently. If using REST, enable
-**Show in REST API** for the Event post type and both ACF field groups. The public
-frontend should only request published content and should not contain WordPress
-administrator credentials.
+### Required WordPress plugins
+
+- ACF Pro
+- WPGraphQL
+- WPGraphQL for ACF (the official ACF-maintained plugin)
 
 Set the WordPress site timezone to **America/Denver** before creating date fields.
+In every ACF field group below, turn on **Show in GraphQL** and use the GraphQL
+names listed.
 
 ---
 
@@ -48,8 +56,8 @@ Create a custom post type with:
 - Post type key: `event`
 - Public: Yes
 - Has archive: Optional
-- Show in REST API: Yes
-- Supports: Title, editor, excerpt, featured image, revisions
+- Show in GraphQL: Yes · GraphQL single name `event` · plural `events`
+- Supports: Title, editor, featured image, revisions
 
 Use the WordPress title for the event name, the editor for the complete event
 description, and the featured image for event photography.
@@ -57,6 +65,8 @@ description, and the featured image for event photography.
 ### ACF field group: Event Details
 
 Display this field group when **Post Type is equal to Event**.
+GraphQL field name: `eventDetails`. Each field's GraphQL name is its field name
+in camelCase (for example, `event_start` → `eventStart`).
 
 | Field label | Field name | ACF type | Required | Notes or example |
 |---|---|---:|:---:|---|
@@ -95,27 +105,10 @@ The visible event section and its Schema.org `Event` structured data must be
 generated from the same WordPress event record. Do not maintain a separate
 hardcoded schema object.
 
-### Suggested frontend event model
-
-```ts
-type GarnetEvent = {
-  id: number;
-  title: string;
-  startDate: string;
-  endDate?: string;
-  homepageSummary: string;
-  price?: number;
-  priceNote?: string;
-  detailsUrl?: string;
-  accessAdvisory?: string;
-  status: "scheduled" | "postponed" | "cancelled" | "sold_out";
-  registrationRequired: boolean;
-  featuredImage?: {
-    url: string;
-    alt: string;
-  };
-};
-```
+The frontend model is `GarnetEvent` in `lib/content/types.ts`. Selection rules
+are implemented in `lib/content/index.ts` (`pickHomepageEvent`, `splitEvents`).
+An event counts as upcoming until its end time, or 12 hours after its start
+when no end time is entered.
 
 ---
 
@@ -124,11 +117,13 @@ type GarnetEvent = {
 This information represents one current site-wide status, so it is better suited
 to an **ACF Options Page** than a post type.
 
-Suggested options-page title: `Garnet Visitor Status`
+Options-page title: `Garnet Visitor Status` · GraphQL type name
+`GarnetVisitorStatus` (queried as `garnetVisitorStatus`).
 
 ### ACF field group: Road and Winter Access
 
 Display this field group on the Garnet Visitor Status options page.
+GraphQL field name: `roadAndWinterAccess`.
 
 #### Fields required by the current hero
 
@@ -190,48 +185,68 @@ the detailed visitor-planning section and source transparency.
 - Keep the BLM Missoula Field Office phone number available for same-day
   confirmation.
 
-### Example ACF-to-hero transformation
+### Stale-report safeguard (implemented)
 
-```ts
-const roadReport = {
-  status: fields.road_status,
-  note: fields.road_note,
-  updatedLabel: `Verified ${formatMountainTime(fields.road_last_verified)}`,
-  href: fields.road_report_url || "#conditions",
-  tone: fields.road_tone,
-};
-```
+`toRoadReport()` in `lib/content/index.ts` turns the ACF fields into the hero's
+`RoadReport`. If `road_last_verified` is older than 7 days
+(`ROAD_REPORT_STALE_DAYS`), or the report is missing, the hero shows
+“Not recently confirmed” with the BLM phone number instead of the saved status.
+An unrecognized `road_tone` is treated as `caution`, never `open`.
 
 ---
 
-## Content refresh strategy
+## Timeline entries
 
-Recommended Next.js behavior:
+Custom post type:
 
-- Cache public WordPress reads rather than requesting WordPress from every
-  visitor’s browser.
-- Revalidate events and visitor status every few minutes.
-- Add a signed WordPress webhook that calls a Next.js revalidation endpoint when
-  an event or visitor status is published or changed.
-- Keep the previous verified response during a temporary WordPress outage.
-- Use the cautious road-status fallback only when no previously verified response
-  is available.
+- Post type label: `Timeline Entries` · key `timeline_entry`
+- Show in GraphQL: Yes · single `timelineEntry` · plural `timelineEntries`
+- Supports: Title, editor, revisions
 
-Suggested environment variable:
+### ACF field group: Timeline Details
+
+GraphQL field name: `timelineDetails`.
+
+| Field label | Field name | ACF type | Required | Notes |
+|---|---|---:|:---:|---|
+| Year shown | `year_label` | Text | Yes | `1898`, `1860s`, `Today` |
+| Sort year | `sort_year` | Number | Yes | `1898`, `1860`, `9999` for Today. The timeline orders itself by this |
+| Summary | `summary` | Textarea | Yes | ~200 characters; shown on the timeline |
+| Main photo | `main_photo` | Image | No | Return format: Image Array. Minimum width 1200px |
+| Photo credit | `photo_credit` | Text | No | Archive or photographer credit |
+
+The editor (post content) is the optional full story. When it has content, the
+entry is given a slug for a future detail page.
+
+---
+
+## Content refresh strategy (implemented)
+
+- WordPress is read on the server and cached with tags (`events`,
+  `visitor-status`, `timeline`). Visitors never request WordPress directly.
+- Background refresh: road status every 2 minutes, other content every 5.
+- On save, `wordpress/mu-plugins/garnet-revalidate.php` POSTs to
+  `/api/revalidate` with the `x-revalidate-secret` header, so edits appear on
+  the next page load.
+- If WordPress is down at runtime, Next.js keeps serving the last good page.
+  If it is down during a build, pages build with cautious fallbacks.
+
+Environment variables (see `.env.example`):
 
 ```text
-WORDPRESS_API_URL=https://example.com/wp-json/wp/v2
+WORDPRESS_GRAPHQL_URL=https://cms.garnetghosttown.org/graphql
+REVALIDATE_SECRET=<openssl rand -hex 32>
 ```
 
-Keep webhook secrets and any authenticated preview credentials in environment
-variables. Never commit them to the repository or expose them in client-side
-JavaScript.
+Never commit secrets or expose them in client-side JavaScript.
 
 ## Content that should remain outside WordPress
 
 - Live weather should continue to come from the weather API.
-- Fire restrictions should continue to come from the official Montana
-  restrictions data source.
+- Fire restrictions come from Montana DNRC's restrictions layer, fetched on
+  the server every 15 minutes (`lib/fire.ts`). The query point is inside
+  **Missoula County**, the jurisdiction confirmed to govern Garnet visitors, and
+  the UI names that jurisdiction.
 - Layout, typography, spacing, component behavior, and routine interface labels
   should remain in Next.js.
 - Avoid turning every heading or button into an ACF field; expose only content

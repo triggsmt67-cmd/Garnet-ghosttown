@@ -4,6 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
 import { WeatherCard } from "@/components/weather-card";
 import { FireRestrictionsCard } from "@/components/fire-restrictions-card";
+import { getFireStatus } from "@/lib/fire";
 
 export const metadata: Metadata = {
   title: "Plan Your Visit",
@@ -20,7 +21,9 @@ const checklist = [
   "A morning-of check for current fire restrictions",
 ];
 
-export default function VisitPage() {
+export default async function VisitPage() {
+  const fire = await getFireStatus();
+
   return (
     <main id="main-content">
       <RouteHero
@@ -128,7 +131,7 @@ export default function VisitPage() {
               </div>
               <div className="space-y-2">
                 <WeatherCard />
-                <FireRestrictionsCard compact />
+                <FireRestrictionsCard fire={fire} compact />
               </div>
             </div>
           </div>
