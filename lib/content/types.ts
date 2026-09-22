@@ -43,21 +43,6 @@ export type VisitorStatus = {
   isSample?: boolean;
 };
 
-export type TimelineEntry = {
-  id: string;
-  /** Display label: "1898", "1860s", "Today" */
-  yearLabel: string;
-  /** Numeric sort key: 1898, 1860, 9999 for "Today" */
-  sortYear: number;
-  title: string;
-  summary: string;
-  /** Present when the entry has its own detail page */
-  slug?: string;
-  mainPhoto?: ContentImage;
-  /** Optional link to a full story */
-  relatedStory?: { slug: string; title: string };
-};
-
 export type StoryType = "place" | "family" | "person" | "community" | "organization";
 
 /** A remembered moment in someone's own words. */

@@ -13,7 +13,6 @@ import type {
   RoadTone,
   StoryLink,
   StoryType,
-  TimelineEntry,
   VisitorStatus,
 } from "./types";
 
@@ -60,25 +59,6 @@ export type WpVisitorStatusResponse = {
       roadTone?: WpSelect;
       roadReportUrl?: string | null;
     } | null;
-  } | null;
-};
-
-export type WpTimelineResponse = {
-  timelineEntries?: {
-    nodes: Array<{
-      databaseId: number;
-      slug?: string | null;
-      title?: string | null;
-      content?: string | null;
-      timelineDetails?: {
-        yearLabel?: string | null;
-        sortYear?: number | null;
-        summary?: string | null;
-        photoCredit?: string | null;
-        mainPhoto?: WpImageEdge;
-        relatedStory?: { nodes?: Array<{ slug?: string | null; title?: string | null } | null> } | null;
-      } | null;
-    }>;
   } | null;
 };
 
@@ -207,39 +187,6 @@ export function mapVisitorStatus(data: WpVisitorStatusResponse): VisitorStatus |
     tone: tone && ROAD_TONES.includes(tone) ? tone : "caution",
     reportUrl: clean(f.roadReportUrl),
   };
-}
-
-type WpTimelineNode = NonNullable<WpTimelineResponse["timelineEntries"]>["nodes"][number];
-
-export function mapTimelineEntry(node: WpTimelineNode): TimelineEntry | null {
-  const f = node.timelineDetails;
-  const title = clean(htmlToText(node.title));
-  const yearLabel = clean(f?.yearLabel) ?? (f?.sortYear ? String(f.sortYear) : undefined);
-  if (!f || !title || !yearLabel) return null;
-
-  const parsedYear = Number.parseInt(yearLabel, 10);
-  const sortYear =
-    typeof f.sortYear === "number" ? f.sortYear : Number.isNaN(parsedYear) ? 9999 : parsedYear;
-
-  return {
-    id: String(node.databaseId),
-    yearLabel,
-    sortYear,
-    title,
-    summary: clean(f.summary) ?? "",
-    slug: htmlToText(node.content) && node.slug ? node.slug : undefined,
-    mainPhoto: mapImage(f.mainPhoto, f.photoCredit),
-    relatedStory: mapRelatedStory(f.relatedStory),
-  };
-}
-
-function mapRelatedStory(
-  field: NonNullable<WpTimelineNode["timelineDetails"]>["relatedStory"],
-): TimelineEntry["relatedStory"] {
-  const node = field?.nodes?.[0];
-  const slug = clean(node?.slug);
-  const title = clean(htmlToText(node?.title));
-  return slug && title ? { slug, title } : undefined;
 }
 
 const STORY_TYPES: StoryType[] = ["place", "family", "person", "community", "organization"];

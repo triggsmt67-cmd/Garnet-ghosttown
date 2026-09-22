@@ -48,10 +48,8 @@ add_filter(
 
 function garnet_tags_for_post_type( $post_type ) {
 	$map = array(
-		'event'          => array( 'events' ),
-		'timeline_entry' => array( 'timeline' ),
-		// Timeline entries show linked story titles, so refresh both.
-		'garnet_story'   => array( 'stories', 'timeline' ),
+		'event'        => array( 'events' ),
+		'garnet_story' => array( 'stories' ),
 	);
 	return $map[ $post_type ] ?? null;
 }

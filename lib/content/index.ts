@@ -2,24 +2,21 @@ import "server-only";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
 import { getMockVisitorStatus, mockEvents, mockStories } from "./mock";
-import { EVENTS_QUERY, STORIES_QUERY, TIMELINE_QUERY, VISITOR_STATUS_QUERY } from "./queries";
+import { EVENTS_QUERY, STORIES_QUERY, VISITOR_STATUS_QUERY } from "./queries";
 import { formatShortDate } from "./time";
 import type {
   GarnetEvent,
   GarnetStory,
   RoadReport,
   Sourced,
-  TimelineEntry,
   VisitorStatus,
 } from "./types";
 import {
   mapEvent,
   mapStory,
-  mapTimelineEntry,
   mapVisitorStatus,
   type WpEventsResponse,
   type WpStoriesResponse,
-  type WpTimelineResponse,
   type WpVisitorStatusResponse,
 } from "./wordpress";
 
@@ -30,7 +27,6 @@ export * from "./time";
 export const CONTENT_TAGS = {
   events: "events",
   visitorStatus: "visitor-status",
-  timeline: "timeline",
   stories: "stories",
 } as const;
 
@@ -177,30 +173,6 @@ export function toRoadReport(status: VisitorStatus | null, now = new Date()): Ro
 export async function getRoadReport(): Promise<RoadReport> {
   const { data } = await getVisitorStatus();
   return toRoadReport(data);
-}
-
-// ---------------------------------------------------------------------------
-// Timeline
-// ---------------------------------------------------------------------------
-
-export async function getTimeline(): Promise<Sourced<TimelineEntry[]>> {
-  const result = await load(
-    "Timeline",
-    async () => {
-      const data = await wpFetch<WpTimelineResponse>(TIMELINE_QUERY, {
-        tags: [CONTENT_TAGS.timeline],
-      });
-      return (data.timelineEntries?.nodes ?? [])
-        .map(mapTimelineEntry)
-        .filter((e): e is TimelineEntry => e !== null);
-    },
-    // The timeline is built from stories. Timeline entries are optional extras
-    // for town-wide events, so there's no built-in placeholder list.
-    () => [],
-    () => [],
-  );
-  result.data = [...result.data].sort((a, b) => a.sortYear - b.sortYear);
-  return result;
 }
 
 // ---------------------------------------------------------------------------

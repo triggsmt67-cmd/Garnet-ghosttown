@@ -47,31 +47,6 @@ export const VISITOR_STATUS_QUERY = /* GraphQL */ `
   }
 `;
 
-export const TIMELINE_QUERY = /* GraphQL */ `
-  query GarnetTimeline {
-    timelineEntries(first: 200, where: { status: PUBLISH }) {
-      nodes {
-        databaseId
-        slug
-        title
-        content
-        timelineDetails {
-          yearLabel
-          sortYear
-          summary
-          photoCredit
-          mainPhoto { node { ${IMAGE_FIELDS} } }
-          relatedStory {
-            nodes {
-              ... on GarnetStory { slug title }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const STORIES_QUERY = /* GraphQL */ `
   query GarnetStories {
     garnetStories(first: 200, where: { status: PUBLISH }) {

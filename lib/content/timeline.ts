@@ -1,8 +1,8 @@
-import type { GarnetStory, TimelineEntry } from "./types";
+import type { GarnetStory } from "./types";
 
 /**
- * Garnet's history in five chapters. Stories and timeline entries are sorted
- * into these by year automatically. Edit names, ranges, or blurbs here.
+ * Garnet's history in five chapters. Stories are sorted into these by year
+ * automatically. Edit names, ranges, or blurbs here.
  */
 export const ERAS = [
   {
@@ -44,28 +44,19 @@ export const ERAS = [
 
 export type Era = (typeof ERAS)[number];
 
-export type TimelineItem =
-  | { kind: "event"; year: number; entry: TimelineEntry }
-  | { kind: "story"; year: number; story: GarnetStory };
-
-export type TimelineChapter = { era: Era; items: TimelineItem[] };
+export type TimelineChapter = { era: Era; stories: GarnetStory[] };
 
 export function eraForYear(year: number): Era {
   return ERAS.find((era) => year <= era.until) ?? ERAS[ERAS.length - 1];
 }
 
-/**
- * One timeline: town-wide events plus every story at its own year.
- * Within a year, events come before stories.
- */
-export function buildTimeline(entries: TimelineEntry[], stories: GarnetStory[]): TimelineChapter[] {
-  const items: TimelineItem[] = [
-    ...entries.map((entry) => ({ kind: "event" as const, year: entry.sortYear, entry })),
-    ...stories.map((story) => ({ kind: "story" as const, year: story.startYear, story })),
-  ].sort((a, b) => a.year - b.year || (a.kind === b.kind ? 0 : a.kind === "event" ? -1 : 1));
-
+/** The History timeline: every story at its year, grouped into eras. */
+export function buildTimeline(stories: GarnetStory[]): TimelineChapter[] {
+  const sorted = [...stories].sort(
+    (a, b) => a.startYear - b.startYear || a.title.localeCompare(b.title),
+  );
   return ERAS.map((era) => ({
     era,
-    items: items.filter((item) => eraForYear(item.year) === era),
-  })).filter((chapter) => chapter.items.length > 0);
+    stories: sorted.filter((story) => eraForYear(story.startYear) === era),
+  })).filter((chapter) => chapter.stories.length > 0);
 }

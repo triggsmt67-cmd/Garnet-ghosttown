@@ -45,8 +45,9 @@ layout and visual decision; WordPress editors only fill in forms.
 Set the WordPress site timezone to **America/Denver** before creating date fields.
 
 **Fast setup:** ACF → Tools → Import → choose `wordpress/acf-import.json`. It creates
-the Events and Timeline Entries post types, the Road Report options page, and all
-three field groups with the GraphQL names below. Then copy
+the Events and Stories post types, the Road Report options page, and their field
+groups with the GraphQL names below. Then Tools → Import → WordPress →
+`wordpress/garnet-stories-import.xml` adds the first seven stories. Then copy
 `wordpress/mu-plugins/garnet-revalidate.php` into `wp-content/mu-plugins/`.
 
 If building by hand instead, turn on **Show in GraphQL** in every ACF item and use
@@ -203,37 +204,12 @@ An unrecognized `road_tone` is treated as `caution`, never `open`.
 
 ---
 
-## Timeline entries
-
-Custom post type:
-
-- Post type label: `Timeline Entries` · key `timeline_entry`
-- Show in GraphQL: Yes · single `timelineEntry` · plural `timelineEntries`
-- Supports: Title, editor, revisions
-
-### ACF field group: Timeline Details
-
-GraphQL field name: `timelineDetails`.
-
-| Field label | Field name | ACF type | Required | Notes |
-|---|---|---:|:---:|---|
-| Year shown | `year_label` | Text | Yes | `1898`, `1860s`, `Today` |
-| Sort year | `sort_year` | Number | Yes | `1898`, `1860`, `9999` for Today. The timeline orders itself by this |
-| Summary | `summary` | Textarea | Yes | ~200 characters; shown on the timeline |
-| Main photo | `main_photo` | Image | No | Return format: Image Array. Minimum width 1200px |
-| Photo credit | `photo_credit` | Text | No | Archive or photographer credit |
-
-The editor (post content) is the optional full story. When it has content, the
-entry is given a slug for a future detail page.
-
----
-
 ## Stories of Garnet
 
 Long-form stories about places, families, and people (for example, Kelly's
 Saloon, or Samuel and Jennie Adams). Each story gets its own page at
 `/stories/<slug>`, appears on the History page, and can link to a building on the
-Explore map and from timeline entries.
+Explore map.
 
 - Post type: `Stories` · key `garnet_story` · GraphQL `garnetStory` / `garnetStories`
 - Field group: `Story Details` · GraphQL `storyDetails` (lead-in, time frame,
@@ -241,8 +217,8 @@ Explore map and from timeline entries.
   speaker and source, map building, source name and link)
 - The editor holds the story text. It is sanitized in `lib/content/sanitize.ts`
   (paragraphs, emphasis, links, quotes, lists, images only).
-- **Stories appear on the History timeline automatically** at their "Year on the
-  timeline" (`startYear`). Timeline entries are only for town-wide events.
+- **The History timeline is built entirely from stories**, each placed at its
+  "Year on the timeline" (`startYear`). There is no separate timeline post type.
 - The timeline is grouped into five eras defined in `lib/content/timeline.ts`
   (Early Claims, The Boom, Lean Years, The Last Residents, Preservation).
 - Quoted source material: editors use the editor's Quote button, then a line
@@ -255,7 +231,7 @@ Explore map and from timeline entries.
 ## Content refresh strategy (implemented)
 
 - WordPress is read on the server and cached with tags (`events`,
-  `visitor-status`, `timeline`, `stories`). Visitors never request WordPress directly.
+  `visitor-status`, `stories`). Visitors never request WordPress directly.
 - Background refresh: road status every 2 minutes, other content every 5.
 - On save, `wordpress/mu-plugins/garnet-revalidate.php` POSTs to
   `/api/revalidate` with the `x-revalidate-secret` header, so edits appear on
