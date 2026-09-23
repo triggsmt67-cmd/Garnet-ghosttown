@@ -9,6 +9,7 @@ import { FireStatusBar } from "./fire-status-bar";
 
 const links = [
   { href: "/visit", label: "Plan Your Visit" },
+  { href: "/explore", label: "Explore" },
   { href: "/history", label: "Step into History" },
   { href: "/events", label: "Education & Events" },
   { href: "/preserve", label: "Get Involved" },
@@ -49,23 +50,26 @@ export function Header({ fire }: { fire: FireStatus }) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:text-[#e0c46d] ${
-                  pathname === link.href ? "text-[#e0c46d]" : "text-white/75"
-                }`}
-              >
-                {link.label}
-                <span
-                  className={`absolute -bottom-2 left-0 h-px bg-[#d3b350] transition-all duration-300 ${
-                    pathname === link.href ? "w-full" : "w-0"
+          <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Main navigation">
+            {links.map((link) => {
+              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-xs font-semibold tracking-[0.12em] uppercase transition-colors hover:text-[#e0c46d] ${
+                    active ? "text-[#e0c46d]" : "text-white/75"
                   }`}
-                />
-              </Link>
-            ))}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-2 left-0 h-px bg-[#d3b350] transition-all duration-300 ${
+                      active ? "w-full" : "w-0"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
               target="_blank"
