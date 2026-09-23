@@ -1,7 +1,7 @@
 import "server-only";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
-import { getMockVisitorStatus, mockEvents, mockStories } from "./mock";
+import { getMockEvents, getMockVisitorStatus, mockStories } from "./mock";
 import { EVENTS_QUERY, STORIES_QUERY, VISITOR_STATUS_QUERY } from "./queries";
 import { formatShortDate } from "./time";
 import type {
@@ -79,7 +79,7 @@ export async function getEvents(): Promise<Sourced<GarnetEvent[]>> {
       const data = await wpFetch<WpEventsResponse>(EVENTS_QUERY, { tags: [CONTENT_TAGS.events] });
       return (data.events?.nodes ?? []).map(mapEvent).filter((e): e is GarnetEvent => e !== null);
     },
-    () => mockEvents,
+    getMockEvents,
     () => [],
   );
   result.data = [...result.data].sort(

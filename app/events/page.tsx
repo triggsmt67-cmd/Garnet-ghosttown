@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
-import { EventStatusBadge, formatEventPrice } from "@/components/event-meta";
+import { EventStatusBadge, SampleEventBadge, formatEventPrice } from "@/components/event-meta";
 import {
   formatEventDate,
   formatEventDayTime,
@@ -95,6 +95,7 @@ function EventRow({ event, index, past = false }: { event: GarnetEvent; index: n
             {event.title}
           </h3>
           {!past && <EventStatusBadge status={event.status} />}
+          {!past && <SampleEventBadge event={event} />}
         </div>
         <p className="mt-4 max-w-2xl leading-7 text-black/58">
           {event.description ?? event.homepageSummary}

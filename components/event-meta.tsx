@@ -32,3 +32,16 @@ export function EventStatusBadge({
     </span>
   );
 }
+
+/**
+ * Shown only on built-in sample content (no WordPress connected), so a preview
+ * can demonstrate the event section without implying a real scheduled date.
+ */
+export function SampleEventBadge({ event }: { event: GarnetEvent }) {
+  if (!event.isSample) return null;
+  return (
+    <span className="inline-block shrink-0 border border-current px-3 py-1 text-[0.6rem] font-bold tracking-[0.15em] uppercase opacity-70">
+      Sample date
+    </span>
+  );
+}

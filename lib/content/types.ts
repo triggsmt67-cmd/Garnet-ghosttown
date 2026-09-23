@@ -28,6 +28,8 @@ export type GarnetEvent = {
   status: EventStatus;
   registrationRequired: boolean;
   featuredImage?: ContentImage;
+  /** Mock data only — lets the UI label sample events honestly */
+  isSample?: boolean;
 };
 
 export type RoadTone = "open" | "caution" | "closed";
