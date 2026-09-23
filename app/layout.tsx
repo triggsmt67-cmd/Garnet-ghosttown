@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { getFireStatus } from "@/lib/fire";
+import { isIndexable } from "@/lib/site";
 
 const display = Newsreader({
   variable: "--font-newsreader",
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
     description: "Plan a visit to a preserved Montana mining town in the Garnet Mountains.",
     images: ["/images/garnet-hero.png"],
   },
+  // Belt and braces with robots.txt: a stray link to a preview URL still
+  // shouldn't put draft content into search results.
+  robots: isIndexable ? undefined : { index: false, follow: false },
 };
 
 export default async function RootLayout({

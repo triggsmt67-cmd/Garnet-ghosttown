@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { ArrowRight, Star } from "./icons";
+import { ArrowRight } from "./icons";
 import { HeroConditions, type HeroRoadReport } from "./hero-conditions";
 
 export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
@@ -128,28 +128,6 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
                 Explore the buildings
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
-            </div>
-            
-            {/* Social Proof */}
-            <div className="hero-enter hero-enter-delay-4 mt-8 flex items-center gap-4 text-sm text-white/80 md:mt-10">
-              <div className="flex -space-x-3">
-                <img src="https://i.pravatar.cc/100?img=11" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=12" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=33" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=44" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=55" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <div className="flex items-center gap-1 text-[#e0c46d]">
-                  <Star className="h-3.5 w-3.5" />
-                  <Star className="h-3.5 w-3.5" />
-                  <Star className="h-3.5 w-3.5" />
-                  <Star className="h-3.5 w-3.5" />
-                  <Star className="h-3.5 w-3.5" />
-                  <span className="ml-1 text-white font-semibold text-xs leading-none mt-px">4.7</span>
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-white/60 mt-1">1,171 Google reviews</span>
-              </div>
             </div>
           </div>
 
