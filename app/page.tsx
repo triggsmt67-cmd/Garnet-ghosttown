@@ -48,64 +48,6 @@ export default async function Home() {
 
       <HomeHero roadReport={roadReport} />
 
-      <section
-        aria-label="Quick visitor links"
-        className="relative z-20 border-y border-[#0e1c27]/15 bg-white"
-      >
-        <div className="mx-auto grid max-w-[90rem] md:grid-cols-3">
-          <Link
-            href="/visit"
-            className="group flex min-h-24 items-center justify-between gap-6 border-b border-[#0e1c27]/15 px-5 py-5 transition-colors hover:bg-[#f2eee4] md:border-r md:border-b-0 md:px-8"
-          >
-            <span>
-              <strong className="display-type block text-2xl font-medium">
-                Open year-round
-              </strong>
-              <span className="mt-1 block text-sm text-black/50">
-                Access changes with the season
-              </span>
-            </span>
-            <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
-
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
-            target="_blank"
-            rel="noreferrer"
-            className="group flex min-h-24 items-center justify-between gap-6 border-b border-[#0e1c27]/15 px-5 py-5 transition-colors hover:bg-[#f2eee4] md:border-r md:border-b-0 md:px-8"
-          >
-            <span>
-              <strong className="display-type block text-2xl font-medium">
-                About one hour from Missoula
-              </strong>
-              <span className="mt-1 block text-sm text-black/50">
-                The final miles are mountain gravel
-              </span>
-            </span>
-            <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </a>
-
-          <a
-            href="#conditions"
-            className="group flex min-h-24 items-center justify-between gap-6 px-5 py-5 transition-colors hover:bg-[#f2eee4] md:px-8"
-          >
-            <span>
-              <strong className="display-type block text-2xl font-medium">
-                Plan before losing service
-              </strong>
-              <span className="mt-1 block text-sm text-black/50">
-                Admission, pass, parking, and roads
-              </span>
-            </span>
-            <span aria-hidden="true" className="text-lg transition-transform group-hover:translate-y-1">
-              ↓
-            </span>
-          </a>
-        </div>
-      </section>
-
       <EventBanner event={homepageEvent} />
 
       <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-36">
@@ -230,9 +172,9 @@ export default async function Home() {
                   Visitors younger than 16 enter free.
                 </p>
                 <p className="mt-9 max-w-md leading-7 text-white/78">
-                  Buy the day pass before you leave reliable service, then save a copy
-                  to your phone. A pass covers standard site admission; special events may
-                  require a separate ticket.
+                  Purchase your day pass before leaving reliable cell service, and
+                  print a paper copy to place on your vehicle dashboard. A standard pass covers
+                  admission; special living history events require a separate ticket.
                 </p>
                 <a
                   href="https://www.recreation.gov/activitypass/AP23157"
@@ -252,24 +194,23 @@ export default async function Home() {
                   <dt className="display-type text-2xl text-[#1e2f1f]">Parking</dt>
                   <dd className="leading-7 text-black/60">
                     Spaces are limited. Arrive early on summer weekends and carpool
-                    when you can; prepaid admission does not hold a space.
+                    when you can; prepaid admission does not reserve a parking space.
                   </dd>
                 </div>
                 <div className="grid gap-3 border-b border-[#0e1c27]/15 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
                   <dt className="display-type text-2xl text-[#1e2f1f]">No services</dt>
                   <dd className="leading-7 text-black/60">
-                    There is no cell coverage, food, fuel, or flush restrooms at Garnet.
-                    Bring drinking water and snacks, fill the tank before you leave
-                    Missoula — there&apos;s no fuel within 30 miles — and download maps
-                    for offline use.
+                    There is no cell coverage, food concessions, fuel, or running tap water at Garnet.
+                    Bring drinking water and snacks, fill your gas tank or EV charge in
+                    Missoula, Bonner, or Drummond, and download offline maps.
                   </dd>
                 </div>
                 <div className="grid gap-3 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
                   <dt className="display-type text-2xl text-[#1e2f1f]">The road</dt>
                   <dd className="leading-7 text-black/60">
-                    Approach from Highway 200 on Garnet Range Road. The final 10 miles
-                    are unpaved. RVs and trailers should avoid the steep Bear Gulch
-                    route from I-90.
+                    Approach from Highway 200 at Mile Marker 22 via Garnet Range Road (11 miles).
+                    The first 3.7 miles are paved; the remaining 7.3 miles are gravel. RVs and
+                    trailers should avoid the narrow, steep cliff drop-offs of Cave Gulch from I-90.
                   </dd>
                 </div>
               </dl>

@@ -54,7 +54,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
           <p className="mt-14 text-sm text-white/48">
             {building.type}
           </p>
-          <h1 className="display-type mt-4 max-w-5xl text-[clamp(4rem,9vw,8.5rem)] leading-[0.86] font-black tracking-[-0.05em]">
+          <h1 className="display-type mt-4 max-w-5xl text-[clamp(4rem,9vw,8.5rem)] leading-[0.86] font-normal tracking-[-0.05em]">
             {building.name}
           </h1>
           <p className="mt-7 text-sm font-semibold text-[#e0c46d]">

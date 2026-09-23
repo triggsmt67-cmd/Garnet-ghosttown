@@ -42,7 +42,7 @@ export function Footer() {
             <p className="mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Explore</p>
             <div className="grid gap-2">
               <Link className="hover:text-[#e0c46d]" href="/visit">Plan Your Visit</Link>
-              <Link className="hover:text-[#e0c46d]" href="/explore">Things to See</Link>
+              <Link className="hover:text-[#e0c46d]" href="/explore">Explore</Link>
               <Link className="hover:text-[#e0c46d]" href="/history">History</Link>
             </div>
           </div>

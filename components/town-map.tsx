@@ -18,13 +18,13 @@ export function TownMap() {
         <div className="grid gap-8 lg:grid-cols-[.65fr_1.35fr] lg:items-end lg:gap-20">
           <div>
             <p className="text-[0.68rem] font-bold tracking-[0.2em] text-[#e0c46d] uppercase">
-              Town sketch · Five stops
+              Townsite Plan · Landmark Stops
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-white/52">
-              Select a building for a short field note, then open its full story.
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+              Select any building on the plan to preview field notes and architectural details, then open its complete archival history.
             </p>
           </div>
-          <h2 className="display-type text-5xl leading-[0.95] font-extrabold tracking-[-0.035em] md:text-7xl">
+          <h2 className="display-type text-5xl leading-[0.95] font-normal tracking-[-0.035em] md:text-7xl">
             Find the town inside
             <span className="block text-[#e0c46d]">the ghost town.</span>
           </h2>
@@ -120,7 +120,7 @@ export function TownMap() {
               <p className="mt-5 text-xs font-bold tracking-[0.12em] text-black/42 uppercase">
                 {active.type}
               </p>
-              <h3 className="display-type mt-3 text-4xl leading-none font-extrabold md:text-5xl">
+              <h3 className="display-type mt-3 text-4xl leading-none font-normal md:text-5xl">
                 {active.name}
               </h3>
               <p className="mt-7 text-sm leading-7 text-black/62">{active.summary}</p>
@@ -136,9 +136,9 @@ export function TownMap() {
             <div>
               <Link
                 href={`/explore/${active.slug}`}
-                className="group flex items-center justify-between border-t border-black/20 pt-5 text-[0.65rem] font-bold tracking-[0.15em] uppercase"
+                className="group flex items-center justify-between border-t border-black/20 pt-5 text-[0.65rem] font-bold tracking-[0.15em] uppercase text-[#0e1c27] transition-colors hover:text-[#3d5a3e]"
               >
-                Read the building story
+                Read full building history &amp; records
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
               </Link>
             </div>

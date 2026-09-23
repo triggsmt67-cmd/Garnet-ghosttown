@@ -14,7 +14,7 @@ export const mockEvents: GarnetEvent[] = [
       "Meet Garnet's 1917 residents inside five historic buildings, then stay for a chili feed, live music, and a street dance. Costumed interpreters bring the mining era to life in ways no sign ever could.",
     price: 20,
     priceNote: "Ages 12 and younger are free",
-    detailsUrl: "https://main.glaciermt.io/montana-event/52870",
+    detailsUrl: "/events",
     featureOnHomepage: true,
     status: "scheduled",
     registrationRequired: false,
