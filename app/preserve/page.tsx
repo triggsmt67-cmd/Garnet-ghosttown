@@ -16,22 +16,31 @@ export default function PreservePage() {
         eyebrow="Preserve Garnet"
         title="Old wood needs patient hands."
         intro="Snow loads roofs. Spring water shifts foundations. Summer visitors wear paths through fragile rooms. Preservation crews address that damage without rebuilding Garnet into something new."
+        image="/images/preserve/garnet-preservation-team.jpg"
+        imageAlt="Four members of the Garnet preservation community gathered behind a historic wooden bar"
+        imagePosition="object-[60%_42%] sm:object-[center_42%] lg:origin-left lg:scale-[1.12]"
+        contentClassName="mt-40 sm:mt-24 md:mt-0"
       />
 
       <section className="px-5 py-20 md:px-10 md:py-32">
         <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-24">
-            <div>
-              <h2 className="display-type text-6xl leading-[0.9] tracking-[-0.04em] md:text-8xl">
+          <Reveal className="grid min-w-0 gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-24">
+            <div className="min-w-0">
+              <h2 className="display-type text-[clamp(2.75rem,15vw,3.75rem)] leading-[0.9] tracking-[-0.04em] md:text-8xl">
                 Preservation begins
                 <span className="block text-[#3d5a3e]">with what is original.</span>
               </h2>
             </div>
-            <div className="prose-copy self-end text-base leading-8 text-black/58">
+            <div className="prose-copy min-w-0 self-end text-base leading-8 text-black/72">
               <p>
                 Garnet&apos;s buildings went up quickly, many with little or no foundation.
                 Stabilizing them is careful, continuing work—protecting original materials
                 and character without turning the town into something it never was.
+              </p>
+              <p>
+                Much of the strongest work is meant to disappear: a footing hidden below the
+                dirt, bracing tucked behind old boards, or a failing roof beam strengthened
+                without replacing the weathered surface a visitor sees.
               </p>
               <p>
                 The Bureau of Land Management manages the historic site. The nonprofit
@@ -41,17 +50,17 @@ export default function PreservePage() {
             </div>
           </Reveal>
 
-          <Reveal className="image-reveal relative mt-16 aspect-[16/8] min-h-[24rem] overflow-hidden">
+          <Reveal className="image-reveal relative mt-16 aspect-[4/5] overflow-hidden sm:aspect-[16/9] md:min-h-[24rem]">
             <Image
-              src="/images/garnet-hero.png"
-              alt="Historic timber buildings set against Montana mountain ridges"
+              src="/images/garnet-interior.png"
+              alt="Sunlight crossing original timber walls inside a preserved Garnet building"
               fill
               sizes="100vw"
-              className="object-cover object-[center_64%]"
+              className="object-cover object-center sepia-[.18] saturate-[.78] contrast-[1.06]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
             <p className="display-type absolute bottom-7 left-7 z-10 max-w-xl text-3xl leading-tight text-white md:bottom-10 md:left-10 md:text-5xl">
-              More than 30 historic buildings remain.
+              Original buildings still line the gulch.
             </p>
           </Reveal>
         </div>
@@ -69,9 +78,9 @@ export default function PreservePage() {
 
           <div className="mt-16 divide-y divide-white/15 border-y border-white/15">
             {[
-              ["Stabilization", "Careful work helps roofs, walls, foundations, and original materials withstand mountain weather."],
-              ["Interpretation", "Signs, exhibits, programs, and visitor-center resources connect buildings to the people who lived in them."],
-              ["Education", "School resources and public programs help Montana history travel beyond the town itself."],
+              ["Stabilization", "Snow, water, settling earth, and gravity never stop working. Crews reinforce roofs, straighten vulnerable walls, improve hidden footings, and preserve as much historic material as possible without making the building look newly rebuilt."],
+              ["Interpretation", "A room becomes more meaningful when visitors know who slept there, what work happened there, and why a newspaper page ended up inside the wall. Signs, exhibits, oral histories, and staff connect the surviving structures to individual lives."],
+              ["Education", "The schoolhouse, mine trail, household objects, and commercial buildings let students work from physical evidence. Field trips and classroom resources turn Garnet into a place for asking how geography, labor, family life, and national events shaped one community."],
             ].map(([title, copy], index) => (
               <Reveal
                 key={title}
@@ -79,7 +88,7 @@ export default function PreservePage() {
                 delay={index * 90}
               >
                 <h3 className="display-type text-3xl text-[#e0c46d]">{title}</h3>
-                <p className="max-w-2xl text-sm leading-7 text-white/55">{copy}</p>
+                <p className="max-w-2xl text-base leading-8 text-white/74">{copy}</p>
               </Reveal>
             ))}
           </div>
@@ -92,9 +101,11 @@ export default function PreservePage() {
             <h2 className="display-type text-5xl leading-[0.96] md:text-7xl">
               Help keep the next roof standing.
             </h2>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-black/55">
-              Memberships and contributions support the Garnet Preservation Association&apos;s
-              work. Visit the association&apos;s official site for current ways to participate.
+            <p className="mt-6 max-w-2xl text-base leading-8 text-black/72">
+              Memberships and contributions help the Garnet Preservation Association support
+              stabilization, interpretation, education, and the volunteer effort behind the
+              visitor experience. Visit the association&apos;s official site for current projects
+              and ways to participate.
             </p>
           </div>
           <a

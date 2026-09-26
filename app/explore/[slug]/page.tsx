@@ -51,7 +51,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
             <span aria-hidden="true">←</span>
             Back to the town map
           </Link>
-          <p className="mt-14 text-sm text-white/48">
+          <p className="mt-14 text-sm text-white/70">
             {building.type}
           </p>
           <h1 className="display-type mt-4 max-w-5xl text-[clamp(4rem,9vw,8.5rem)] leading-[0.86] font-normal tracking-[-0.05em]">
@@ -69,7 +69,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
             <p className="display-type text-3xl leading-[1.18]">{building.summary}</p>
           </Reveal>
           <Reveal delay={100}>
-            <div className="prose-copy max-w-3xl text-base leading-8 text-black/60">
+            <div className="prose-copy max-w-3xl text-base leading-8 text-black/72">
               {building.story.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -93,7 +93,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
               <p className="text-[0.64rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                 When you are there
               </p>
-              <p className="mt-3 max-w-2xl leading-7 text-black/60">{building.lookFor}</p>
+              <p className="mt-3 max-w-2xl leading-7 text-black/72">{building.lookFor}</p>
             </div>
             <a
               href={building.source}
@@ -111,7 +111,7 @@ export default async function BuildingPage({ params }: BuildingPageProps) {
       <section className="border-t border-black/15 bg-[#e8e2d7] px-5 py-14 md:px-10">
         <div className="mx-auto flex max-w-[82rem] flex-col gap-7 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm text-black/45">
+            <p className="text-sm text-black/65">
               Continue to another building
             </p>
             <p className="display-type mt-2 text-3xl md:text-4xl">{nextBuilding.name}</p>

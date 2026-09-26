@@ -20,52 +20,34 @@ interface ChecklistItem {
 
 const checklist: ChecklistItem[] = [
   {
-    title: "Layer for 6,000 Feet",
-    tag: "Mountain Weather",
+    title: "Food, water, and layers",
+    tag: "No Concessions",
     detail:
-      "Temperatures at Garnet run 10°F to 20°F cooler than Missoula or the Clark Fork Valley, and afternoon alpine storms roll in quickly. Summer snow can occur even in June and July. Pack windproof outer shells, fleece or wool layers, and high-altitude sun protection.",
+      "There is no drinking water or food service at Garnet. Bring everything you need for the day, plus a warm layer and rain shell for fast-changing mountain weather.",
   },
   {
-    title: "Pack All Food & Drinking Water",
-    tag: "Zero Concessions",
+    title: "Sturdy shoes",
+    tag: "Uneven Ground",
     detail:
-      "There is no potable running tap water and no food concessions on the mountain (Davey's Store closed in 1947). Bring at least 1 to 2 liters of drinking water per person, hearty trail snacks, and a packed picnic to enjoy at scenic tables overlooking the townsite.",
+      "Expect gravel roads, rocky paths, old boardwalks, stairs, and raised thresholds. Closed-toe walking or hiking shoes are the safest choice.",
   },
   {
-    title: "EPA-Approved Bear Spray",
-    tag: "Active Bear Habitat",
+    title: "An offline map and printed pass",
+    tag: "No Cell Service",
     detail:
-      "The Garnet Range is active territory for both black bears and grizzly bears. Carry EPA-registered bear spray in a quick-draw holster on your hip or chest harness—never packed deep inside a backpack. Make noise around historic wooden buildings and blind trail corners.",
+      "Cell service disappears before the townsite. Save your route offline and print any prepaid Recreation.gov receipt before leaving the valley.",
   },
   {
-    title: "Sturdy Closed-Toe Footwear",
-    tag: "Uneven Boardwalks",
+    title: "A road-ready vehicle",
+    tag: "Mountain Road",
     detail:
-      "Garnet is preserved in authentic arrested decay without modern paved walkways. You will navigate coarse gravel roads, rocky mine tailings, steep staircases, and weathered 19th-century boardwalks with raised nail heads. Sturdy hiking shoes or boots with ankle support are essential.",
+      "Start with a full tank or charge and carry a spare tire, jack, and basic emergency supplies. There is no fuel, charging, or repair service on the mountain.",
   },
   {
-    title: "Full Fuel Tank or EV Battery",
-    tag: "No Mountain Fuel",
+    title: "Bear awareness",
+    tag: "Wildlife Country",
     detail:
-      "The 11-mile Garnet Range Road climbs nearly 2,000 vertical feet, draining fuel and battery range much faster than flat highway driving. The nearest gas stations and chargers are 25 to 30 miles away in Bonner (Exit 109), Drummond, or Missoula. Fill up before leaving the valley.",
-  },
-  {
-    title: "Offline GPS Maps & Printed Passes",
-    tag: "Zero Cellular Service",
-    detail:
-      "Cell reception cuts out miles before reaching the ghost town. Download offline maps for Granite and Missoula counties beforehand so navigation apps do not send you down impassable logging tracks. If you prepay on Recreation.gov, print your paper receipt at home for your dash.",
-  },
-  {
-    title: "Pack-It-In, Pack-It-Out Trash",
-    tag: "Bear-Proof Dumpsters",
-    detail:
-      "Bear-proof steel dumpsters are provided at the main upper parking lot during peak summer months. If visiting during shoulder seasons or if bins are full, pack out 100% of your trash. Never leave food, food wrappers, pet food, or coolers inside parked cars or on picnic tables.",
-  },
-  {
-    title: "Upper Lot Parking & Ice Caution",
-    tag: "Steep Glare Ice",
-    detail:
-      "Always park in the main upper ridge lot and walk the 0.25-mile road down into town. In spring and late autumn, this steep shaded road develops severe glare ice. Vehicles driving into town regularly get trapped, and remote towing services take hours and cost upwards of $500–$1,000.",
+      "The Garnet Range is bear habitat. Keep food secured, stay alert around buildings and blind corners, and carry bear spray where it is immediately reachable.",
   },
 ];
 
@@ -78,6 +60,9 @@ export default async function VisitPage() {
         eyebrow="Plan your visit"
         title="The road is part of the experience."
         intro="Garnet sits at 6,000 feet in the Garnet Range. Use this guide to choose the safest route, check seasonal access dates, prepare for off-grid conditions, and arrive ready to explore."
+        image="/images/garnet-town.JPG"
+        imageAlt="The mountain road entering Garnet Ghost Town"
+        imagePosition="object-[center_58%]"
       />
 
       {/* At-a-Glance Fast Facts */}
@@ -91,10 +76,10 @@ export default async function VisitPage() {
               <h2 className="display-type mt-2 text-4xl leading-[1.02] font-normal md:text-5xl">
                 Know before you make the trip.
               </h2>
-              <p className="mt-5 max-w-sm text-sm leading-7 text-black/60">
+              <p className="mt-5 max-w-sm text-sm leading-7 text-black/72">
                 Garnet is unpaved, off-grid, and perched at 6,000 feet in the Garnet Range.
-                Review these six logistical realities—from seasonal road gates and day passes to
-                zero cellular reception—before leaving the valley floor.
+                Start with the four details that determine when to go, how to get there, and what
+                to arrange before leaving the valley floor.
               </p>
             </div>
             <div className="grid border-t border-black/15 sm:grid-cols-2">
@@ -110,11 +95,6 @@ export default async function VisitPage() {
                   "Ages 16+ pay $10; under 16 enter free. Tap-to-Pay kiosk in lot, cash envelopes, or Rec.gov (print receipt). America the Beautiful passes admit up to 4 adults.",
                 ],
                 [
-                  "Townsite & Structures",
-                  "29 Historic Buildings",
-                  "Preserved in authentic arrested decay. The townsite is open year-round; 5 landmark buildings are staffed daily 10:00 a.m.–4:30 p.m. during peak season.",
-                ],
-                [
                   "Primary Driving Route",
                   "MT-200 (Mile Marker 22)",
                   "Turn south at Mile Marker 22 onto Garnet Range Road (11 mi). Gentlest ascent with 3.7 mi paved; avoids the narrow, sheer cliff drop-offs of Cave Gulch off I-90.",
@@ -124,16 +104,11 @@ export default async function VisitPage() {
                   "Zero Service",
                   "No cellular signal exists on the mountain. Download offline GPS maps and print your Rec.gov day pass receipt before leaving Missoula or the I-90 corridor.",
                 ],
-                [
-                  "Ridge Parking & Ice",
-                  "Park at Upper Lot",
-                  "Always park at the top ridge and walk down. In spring and fall, the steep town descent turns to glare ice—vehicles that drive down get trapped and face steep tow fees.",
-                ],
               ].map(([label, value, note]) => (
                 <div key={label} className="border-b border-black/15 py-7 sm:pr-8 sm:odd:border-r sm:even:pl-8">
-                  <p className="text-[0.62rem] font-bold tracking-[0.15em] text-black/45 uppercase">{label}</p>
+                  <p className="text-[0.62rem] font-bold tracking-[0.15em] text-black/60 uppercase">{label}</p>
                   <p className="display-type mt-2 text-3xl">{value}</p>
-                  <p className="mt-2 text-sm leading-6 text-black/55">{note}</p>
+                  <p className="mt-2 text-sm leading-6 text-black/70">{note}</p>
                 </div>
               ))}
             </div>
@@ -151,10 +126,9 @@ export default async function VisitPage() {
             <h2 className="display-type mt-2 max-w-4xl text-5xl leading-[0.95] md:text-7xl">
               The Garnet Field Guide.
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/60">
-              Garnet rewards careful preparation. Select any topic from the ledger to review
-              turn-by-turn driving routes, preserved building hours, seasonal road dates, gear checklists,
-              and admission passes.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
+              Three short guides cover the decisions that matter most: which road to take,
+              what you will find when you arrive, and how admission works.
             </p>
           </Reveal>
 
@@ -176,9 +150,9 @@ export default async function VisitPage() {
                   Pack for a high-elevation day.
                 </h2>
               </div>
-              <p className="max-w-md text-sm leading-7 text-black/60">
-                At 6,000 feet, self-reliance is non-negotiable. Review these eight essential field provisions
-                and live mountain conditions before beginning your drive.
+              <p className="max-w-md text-sm leading-7 text-black/72">
+                Five essentials cover most day trips. Check the live mountain conditions beside
+                them before beginning your drive.
               </p>
             </div>
           </Reveal>
@@ -216,14 +190,13 @@ export default async function VisitPage() {
               <div className="border border-black/15 bg-[#0e1c27]/[0.03] p-6 text-xs leading-relaxed text-black/65">
                 <div className="flex items-center justify-between">
                   <p className="font-bold tracking-[0.14em] uppercase text-[#3d5a3e]">
-                    Emergency &amp; Mountain Towing
+                    Before Leaving Pavement
                   </p>
                   <Compass className="h-5 w-5 text-[#3d5a3e]/40" />
                 </div>
                 <p className="mt-2 text-black/65">
-                  There are no repair shops or gas stations in the Garnet Range. Mountain towing from Missoula or
-                  Drummond takes hours to dispatch and frequently costs upwards of $500–$1,000. Carry a proper spare
-                  tire, vehicle jack, jumper cables, and plenty of extra drinking water.
+                  Check the official road notice, download your map, and confirm that your spare tire
+                  and emergency supplies are ready. Assistance can take hours to reach the Garnet Range.
                 </p>
               </div>
             </div>

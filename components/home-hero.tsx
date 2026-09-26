@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { ArrowRight, Star } from "./icons";
+import { ArrowRight, ArrowUpRight, Star } from "./icons";
 import { HeroConditions, type HeroRoadReport } from "./hero-conditions";
 
 export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
@@ -130,27 +130,31 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
               </Link>
             </div>
             
-            {/* Social Proof */}
-            <div className="hero-enter hero-enter-delay-4 mt-8 flex items-center gap-4 text-sm text-white/80 md:mt-10">
-              <div className="flex -space-x-3">
-                <img src="https://i.pravatar.cc/100?img=11" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=12" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=33" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=44" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-                <img src="https://i.pravatar.cc/100?img=55" alt="Reviewer" className="h-9 w-9 rounded-full border-2 border-[#0d1218] object-cover" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <div className="flex items-center gap-1 text-[#e0c46d]">
+            <a
+              href="https://maps.app.goo.gl/vwpdwXrWdU33ZUdw9"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Read Garnet Ghost Town reviews on Google Maps"
+              className="hero-enter hero-enter-delay-4 group mt-8 inline-flex items-center gap-4 border-l border-[#e0c46d]/55 pl-4 text-sm text-white/80 transition-colors hover:text-white md:mt-10"
+            >
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white font-sans text-sm font-bold text-[#18202a] shadow-[0_8px_24px_rgba(0,0,0,.22)]">
+                G
+              </span>
+              <span>
+                <span className="flex items-center gap-1 text-[#e0c46d]">
                   <Star className="h-3.5 w-3.5" />
                   <Star className="h-3.5 w-3.5" />
                   <Star className="h-3.5 w-3.5" />
                   <Star className="h-3.5 w-3.5" />
                   <Star className="h-3.5 w-3.5" />
-                  <span className="ml-1 text-white font-semibold text-xs leading-none mt-px">4.7</span>
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-white/60 mt-1">1,171 Google reviews</span>
-              </div>
-            </div>
+                  <span className="ml-1 text-xs leading-none font-semibold text-white">4.7</span>
+                </span>
+                <span className="mt-1 flex items-center gap-2 text-[11px] tracking-wider text-white/75 uppercase group-hover:text-white/90">
+                  1,171 Google reviews
+                  <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </span>
+            </a>
           </div>
 
           <div className="hero-weather w-full max-w-md lg:mb-1 lg:w-auto">
@@ -158,7 +162,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
           </div>
         </div>
 
-        <div className="hero-scroll-cue absolute right-5 bottom-5 z-10 hidden items-center gap-3 text-[0.62rem] font-semibold tracking-[0.16em] text-white/55 uppercase md:flex md:right-10">
+        <div className="hero-scroll-cue absolute right-5 bottom-5 z-10 hidden items-center gap-3 text-[0.68rem] font-semibold tracking-[0.16em] text-white/72 uppercase md:flex md:right-10">
           <span className="h-px w-12 bg-white/30" />
           Enter Garnet
         </div>

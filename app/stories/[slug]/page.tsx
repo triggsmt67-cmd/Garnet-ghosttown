@@ -75,7 +75,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
               />
             </div>
             {story.mainPhoto.credit && (
-              <figcaption className="mt-3 text-xs text-white/45">{story.mainPhoto.credit}</figcaption>
+              <figcaption className="mt-3 text-xs text-white/68">{story.mainPhoto.credit}</figcaption>
             )}
           </figure>
         </section>
@@ -85,7 +85,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
         <div className="mx-auto max-w-3xl">
           <Reveal>
             <div
-              className="story-body text-[1.0625rem] leading-8 text-black/65"
+              className="story-body text-[1.0625rem] leading-8 text-black/74"
               dangerouslySetInnerHTML={{ __html: story.bodyHtml }}
             />
           </Reveal>
@@ -112,13 +112,13 @@ export default async function StoryPage({ params }: StoryPageProps) {
                   href={story.source.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-3 border-b border-black/20 pb-2 text-sm font-semibold text-black/60"
+                  className="group inline-flex items-center gap-3 border-b border-black/25 pb-2 text-sm font-semibold text-black/72"
                 >
                   {story.source.label}
                   <ArrowUpRight className="h-4 w-4 shrink-0" />
                 </a>
               ) : story.source ? (
-                <p className="max-w-xl text-sm leading-6 text-black/50">{story.source.label}</p>
+                <p className="max-w-xl text-sm leading-6 text-black/68">{story.source.label}</p>
               ) : null}
             </div>
           )}
@@ -128,7 +128,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       {related.length > 0 && (
         <section className="border-t border-black/15 px-5 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[82rem]">
-            <h2 className="text-[0.68rem] font-bold tracking-[0.18em] text-black/45 uppercase">
+            <h2 className="text-[0.7rem] font-bold tracking-[0.18em] text-black/62 uppercase">
               Connected stories
             </h2>
             <ul className="mt-6 grid gap-px overflow-hidden border border-[#0e1c27]/15 bg-[#0e1c27]/15 md:grid-cols-3">
@@ -153,7 +153,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
         <section className="border-t border-black/15 bg-[#e8e2d7] px-5 py-14 md:px-10">
           <div className="mx-auto flex max-w-[82rem] flex-col gap-7 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm text-black/45">Next on the timeline</p>
+              <p className="text-sm text-black/65">Next on the timeline</p>
               <p className="display-type mt-2 text-3xl md:text-4xl">{nextStory.title}</p>
             </div>
             <Link

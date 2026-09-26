@@ -57,7 +57,7 @@ function LiveDateTime() {
   });
 
   return (
-    <p className="mt-1.5 text-[0.62rem] font-semibold tracking-[0.12em] text-white/45 uppercase lg:text-xs">
+    <p className="mt-1.5 text-[0.68rem] font-semibold tracking-[0.12em] text-white/70 uppercase lg:text-xs">
       {date} · {time}
     </p>
   );
@@ -96,7 +96,7 @@ export function WeatherCard({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <div className="text-[#f8f6f1]">
-        <p className="label-type text-[0.62rem] font-semibold tracking-[0.17em] text-white/50 uppercase lg:text-[0.65rem] lg:tracking-[0.2em]">
+        <p className="label-type text-[0.68rem] font-semibold tracking-[0.17em] text-white/72 uppercase lg:text-[0.7rem] lg:tracking-[0.2em]">
           At Garnet · 6,000 ft
         </p>
         {weather ? (
@@ -112,7 +112,7 @@ export function WeatherCard({ compact = false }: { compact?: boolean }) {
             <LiveDateTime />
           </>
         ) : (
-          <p className="mt-2 text-xs text-white/60">
+          <p className="mt-2 text-xs text-white/72">
             {failed ? "Weather unavailable—check before leaving." : "Reading mountain weather…"}
           </p>
         )}
@@ -140,14 +140,14 @@ export function WeatherCard({ compact = false }: { compact?: boolean }) {
             <p className="mt-3 text-sm text-white/65">
               {weatherLabels[weather.code] ?? "Mountain weather"} · Feels like {weather.apparent}°
             </p>
-            <p className="mt-1 text-sm text-white/45">{weather.wind} mph wind · Elevation ~6,000 ft</p>
+            <p className="mt-1 text-sm text-white/70">{weather.wind} mph wind · Elevation ~6,000 ft</p>
           </div>
         ) : (
           <div className="my-10">
             <p className="display-type text-4xl font-bold">
               {failed ? "Conditions unavailable" : "Reading the mountain…"}
             </p>
-            <p className="mt-3 text-sm text-white/55">
+            <p className="mt-3 text-sm text-white/72">
               Elevation ~6,000 ft. Weather here can differ sharply from Missoula.
             </p>
           </div>

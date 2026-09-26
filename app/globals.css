@@ -107,11 +107,7 @@ button:focus-visible {
   padding: 10rem 1.5rem 5rem;
   overflow: hidden;
   color: var(--paper-light);
-  background:
-    linear-gradient(90deg, rgba(13, 18, 24, 0.96), rgba(14, 28, 39, 0.68) 52%, rgba(13, 18, 24, 0.16)),
-    linear-gradient(135deg, rgba(168, 51, 61, 0.1), rgba(211, 179, 80, 0.12)),
-    url("/images/garnet-hero.png") center 45% / cover;
-  background-blend-mode: normal, color, normal;
+  background: #0d1218;
 }
 
 .prose-copy p + p {

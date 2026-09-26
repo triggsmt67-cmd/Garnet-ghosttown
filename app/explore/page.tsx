@@ -8,14 +8,14 @@ import { TownMap } from "@/components/town-map";
 export const metadata: Metadata = {
   title: "Explore Garnet",
   description:
-    "Discover 29 preserved buildings, self-guided mining trails, scavenger hunts, geocaching, and mountain activities at Garnet Ghost Town.",
+    "Discover preserved buildings, self-guided mining trails, scavenger hunts, geocaching, and mountain activities at Garnet Ghost Town.",
 };
 
 const experiences = [
   {
     title: "Walk the Historic Street",
-    tag: "29 Preserved Structures",
-    copy: "Step directly inside 29 surviving wooden buildings in authentic arrested decay—from the two-story Wells Hotel and Kelly’s Saloon to family parlors, the general store, and the schoolhouse. Five landmark buildings are staffed by interpretive guides daily from 10:00 a.m. to 4:30 p.m. in season.",
+    tag: "The Historic Street",
+    copy: "Step directly inside surviving wooden buildings preserved in authentic arrested decay—from the two-story Wells Hotel and Kelly’s Saloon to family parlors, the general store, and the schoolhouse. Look for newspaper insulation, worn door thresholds, and the practical details that reveal how families made a town at 6,000 feet. Landmark buildings are staffed by interpretive guides in season.",
   },
   {
     title: "Trace the Sierra Mine Loop",
@@ -59,6 +59,9 @@ export default function ExplorePage() {
         eyebrow="Explore Garnet"
         title="See Garnet building by building."
         intro="Garnet is not an exhibit behind glass or a recreated movie set. Walk authentic 1890s dirt lanes, enter preserved wooden structures in arrested decay, and follow the mountain trails that sustained Montana's richest gold rush."
+        image="/images/garnet-hero.png"
+        imageAlt="Historic buildings lining the main street at Garnet Ghost Town"
+        imagePosition="object-[center_45%]"
       />
 
       <section className="px-5 py-20 md:px-10 md:py-32">

@@ -44,7 +44,7 @@ export function Header({ fire }: { fire: FireStatus }) {
               <span className="display-type block text-[1.45rem] leading-none font-semibold tracking-[0.02em]">
                 Garnet
               </span>
-              <span className="mt-1 block text-[0.55rem] leading-none font-bold tracking-[0.25em] uppercase text-white/55">
+              <span className="mt-1 block text-[0.62rem] leading-none font-bold tracking-[0.23em] uppercase text-white/72">
                 Ghost Town · Montana
               </span>
             </span>
@@ -117,7 +117,7 @@ export function Header({ fire }: { fire: FireStatus }) {
                 className="display-type flex items-center justify-between border-b border-white/10 py-4 text-3xl text-[#f8f6f1]"
               >
                 <span>{link.label}</span>
-                <ArrowUpRight className="h-5 w-5 text-white/40" />
+                <ArrowUpRight className="h-5 w-5 text-white/65" />
               </Link>
             ))}
           </div>

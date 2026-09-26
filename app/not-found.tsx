@@ -7,7 +7,7 @@ export default function NotFound() {
       <div>
         <p className="text-xs font-bold tracking-[0.2em] text-[#e0c46d] uppercase">404 · Trail not found</p>
         <h1 className="display-type mt-6 text-7xl leading-none md:text-9xl">A wrong turn.</h1>
-        <p className="mx-auto mt-7 max-w-md text-white/55">
+        <p className="mx-auto mt-7 max-w-md text-white/72">
           Even the best-marked mountain road can surprise you. Let&apos;s head back toward town.
         </p>
         <Link href="/" className="group mt-9 inline-flex items-center gap-4 border-b border-[#e0c46d] py-3 text-xs font-bold tracking-[0.16em] uppercase">

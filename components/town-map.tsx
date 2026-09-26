@@ -20,7 +20,7 @@ export function TownMap() {
             <p className="text-[0.68rem] font-bold tracking-[0.2em] text-[#e0c46d] uppercase">
               Townsite Plan · Landmark Stops
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/74">
               Select any building on the plan to preview field notes and architectural details, then open its complete archival history.
             </p>
           </div>
@@ -66,7 +66,7 @@ export function TownMap() {
               <p className="text-[0.6rem] font-bold tracking-[0.16em] text-[#e0c46d] uppercase">
                 Interpretive town plan
               </p>
-              <p className="mt-1 text-xs leading-5 text-white/45">Not intended for navigation</p>
+              <p className="mt-1 text-xs leading-5 text-white/68">Not intended for navigation</p>
             </div>
 
             {buildings.map((building) => {
@@ -98,7 +98,7 @@ export function TownMap() {
               );
             })}
 
-            <div className="absolute bottom-5 left-5 z-10 flex items-center gap-3 text-[0.58rem] font-bold tracking-[0.15em] text-white/40 uppercase">
+            <div className="absolute bottom-5 left-5 z-10 flex items-center gap-3 text-[0.65rem] font-bold tracking-[0.15em] text-white/68 uppercase">
               <span className="h-px w-10 bg-[#e0c46d]/50" />
               First Chance Gulch
             </div>
@@ -113,23 +113,23 @@ export function TownMap() {
                 <p className="text-[0.63rem] font-bold tracking-[0.18em] text-[#3d5a3e] uppercase">
                   Selected building
                 </p>
-                <p className="text-right text-[0.6rem] font-bold tracking-[0.12em] text-black/42 uppercase">
+                <p className="text-right text-[0.65rem] font-bold tracking-[0.12em] text-black/62 uppercase">
                   {active.era}
                 </p>
               </div>
-              <p className="mt-5 text-xs font-bold tracking-[0.12em] text-black/42 uppercase">
+              <p className="mt-5 text-xs font-bold tracking-[0.12em] text-black/62 uppercase">
                 {active.type}
               </p>
               <h3 className="display-type mt-3 text-4xl leading-none font-normal md:text-5xl">
                 {active.name}
               </h3>
-              <p className="mt-7 text-sm leading-7 text-black/62">{active.summary}</p>
+              <p className="mt-7 text-sm leading-7 text-black/72">{active.summary}</p>
 
               <div className="mt-8 border-l-2 border-[#3d5a3e] pl-5">
                 <p className="text-[0.61rem] font-bold tracking-[0.15em] text-[#3d5a3e] uppercase">
                   What to notice
                 </p>
-                <p className="mt-3 text-sm leading-7 text-black/58">{active.lookFor}</p>
+                <p className="mt-3 text-sm leading-7 text-black/72">{active.lookFor}</p>
               </div>
             </div>
 

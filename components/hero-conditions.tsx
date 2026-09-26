@@ -38,24 +38,24 @@ export function HeroConditions({ roadReport }: { roadReport?: HeroRoadReport }) 
         className="group border-l border-white/18 pl-4 lg:mt-4 lg:block lg:border-t lg:border-l-0 lg:pt-4 lg:pl-0"
       >
         <span className="flex items-center justify-between gap-3">
-          <span className="label-type flex items-center gap-2 text-[0.62rem] font-semibold tracking-[0.17em] text-white/50 uppercase">
+          <span className="label-type flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.17em] text-white/72 uppercase">
             <span
               aria-hidden="true"
               className={`h-1.5 w-1.5 rounded-full ${statusColor[tone]}`}
             />
             Road access
           </span>
-          <ArrowRight className="h-3.5 w-3.5 text-white/42 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="h-3.5 w-3.5 text-white/68 transition-transform group-hover:translate-x-1" />
         </span>
         <strong className="mt-1.5 block text-sm leading-5 font-semibold text-white/90">
           {report.status}
         </strong>
-        <span className="mt-1 hidden text-xs leading-5 text-white/58 sm:block">
+        <span className="mt-1 hidden text-xs leading-5 text-white/74 sm:block">
           {report.note}
         </span>
         <span
           data-road-updated
-          className="mt-1 block text-[0.58rem] font-semibold tracking-[0.08em] text-white/38 uppercase"
+          className="mt-1 block text-[0.65rem] font-semibold tracking-[0.08em] text-white/68 uppercase"
         >
           {report.updatedLabel}
         </span>

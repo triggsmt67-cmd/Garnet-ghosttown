@@ -24,7 +24,7 @@ export function FireRestrictionsCard({
           <p className="display-type mt-5 text-3xl leading-none" aria-live="polite">
             {status}
           </p>
-          <p className="mt-3 text-xs leading-5 text-white/58">
+          <p className="mt-3 text-xs leading-5 text-white/72">
             {jurisdiction} restrictions. Recheck on the morning of your visit.
           </p>
           <a
@@ -55,7 +55,7 @@ export function FireRestrictionsCard({
           <p className="display-type mt-8 text-4xl leading-[1.02]" aria-live="polite">
             {status}
           </p>
-          <p className="mt-5 text-sm leading-7 text-white/62">
+          <p className="mt-5 text-sm leading-7 text-white/74">
             Current restriction level for {jurisdiction}, which governs visits to
             Garnet. Restrictions and closures can change quickly in summer.
           </p>

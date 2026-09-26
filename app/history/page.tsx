@@ -33,20 +33,40 @@ export default async function HistoryPage() {
         eyebrow="The story of Garnet"
         title="How a mining town became a ghost town."
         intro="Garnet rose quickly in a remote mountain gulch, lived loudly for a few brief years, and then emptied slowly enough to leave an extraordinary record behind."
+        image="/images/historic/university-archive/garnet-ghost-town-mining-camp-and-mill-77-0022.webp"
+        imageAlt="Archival view of Garnet's mining camp and mill"
+        imagePosition="object-[center_42%]"
       />
 
-      <section className="px-5 py-20 md:px-10 md:py-32">
+      <section className="bg-[#e9e1d2] px-5 py-20 md:px-10 md:py-32">
         <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
-            <h2 className="display-type text-5xl leading-[1.02]">
-              The boom years
-            </h2>
-            <div>
+          <Reveal className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:gap-20 xl:gap-24">
+            <div className="lg:sticky lg:top-32">
+              <h2 className="display-type text-5xl leading-[1.02]">
+                The boom years
+              </h2>
+              <figure className="mt-8">
+                <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0d1218]">
+                  <Image
+                    src="/images/historic/university-archive/garnet-ghost-town-family-in-cabin-doorway-77-0003.webp"
+                    alt="A Garnet family standing in the doorway of their wooden cabin"
+                    fill
+                    sizes="(min-width: 1024px) 34vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4 border-l border-[#3d5a3e]/40 pl-4 text-sm leading-6 text-black/68">
+                  A family at the threshold of a Garnet cabin. The town&apos;s history was
+                  shaped as much by households and children as it was by mines and mills.
+                </figcaption>
+              </figure>
+            </div>
+            <div className="lg:pt-2">
               <p className="display-type text-4xl leading-[1.12] md:text-6xl">
                 Garnet was named for the ruby-colored stone found in the mountains.
                 But gold made it a town.
               </p>
-              <div className="prose-copy mt-10 max-w-3xl text-base leading-8 text-black/58">
+              <div className="prose-copy mt-10 max-w-3xl text-base leading-8 text-black/72">
                 <p>
                   Miners had worked the surrounding gulches for decades, but the richest
                   period came after new hard-rock claims and better milling brought people
@@ -54,9 +74,16 @@ export default async function HistoryPage() {
                   because extracting ore mattered more than building for permanence.
                 </p>
                 <p>
-                  At its height, Garnet was a working family town as much as a mining camp:
-                  a school, doctor&apos;s office, butcher, hotels, shops, and gathering places
-                  served nearly 1,000 residents.
+                  The collapse of Montana&apos;s silver economy in 1893 sent experienced miners
+                  looking for gold work, while a new wagon road and stamp mill made Garnet&apos;s
+                  quartz veins practical to pursue. Within a few years the gulch had become a
+                  dense, improvised town rather than a seasonal camp.
+                </p>
+                <p>
+                  At its height, Garnet was a working family community: a school filled with
+                  children, a doctor&apos;s office, butcher, hotels, shops, union meetings, dances,
+                  and picnics served nearly 1,000 residents. That domestic life is what makes
+                  the rooms visitors enter today feel unexpectedly personal.
                 </p>
               </div>
             </div>
@@ -64,57 +91,44 @@ export default async function HistoryPage() {
         </div>
       </section>
 
-      <section className="paper-grain relative min-h-[70svh] overflow-hidden bg-[#0d1218]">
-        <Image
-          src="/images/garnet-interior.png"
-          alt="A quiet preserved saloon interior with a table, chairs, and cast-iron stove"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1218]/10 via-transparent to-[#0d1218]/70" />
-        <div className="relative z-10 mx-auto flex min-h-[70svh] max-w-[82rem] items-end justify-end px-5 py-14 md:px-10 md:py-20">
-          <Reveal className="max-w-md bg-[#f5ead3] p-7 md:p-10">
-            <h2 className="display-type text-4xl leading-[1.05]">
-              Small rooms tell a practical story.
-            </h2>
-            <p className="mt-5 text-sm leading-7 text-black/55">
-              Beds, stoves, worktables, and thin walls show what a Garnet winter required
-              from the people who stayed.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="px-5 py-20 md:px-10 md:py-32">
+      <section className="paper-grain bg-[#0e1c27] px-5 py-20 text-[#f8f6f1] md:px-10 md:py-28">
         <div className="mx-auto max-w-[82rem]">
-          <Reveal>
+          <Reveal className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20">
             <h2 className="display-type max-w-4xl text-6xl leading-[0.92] tracking-[-0.04em] md:text-8xl">
               From first strike
-              <span className="block text-[#3d5a3e]">to final departure.</span>
+              <span className="block text-[#e0c46d]">to final departure.</span>
             </h2>
+            <p className="max-w-lg text-base leading-8 text-white/76 lg:pb-2">
+              Follow the town through four distinct chapters: early claims, a compressed
+              decade of growth, the long decline, and the final residents who watched
+              Garnet become the quiet place visitors encounter today.
+            </p>
           </Reveal>
 
           {chapters.length > 1 && (
-            <nav aria-label="Chapters of Garnet's history" className="mt-14 border-y border-black/15">
+            <nav aria-label="Chapters of Garnet's history" className="mt-14 border-y border-white/20">
               <ul className="flex flex-wrap gap-x-8 gap-y-3 py-5">
                 {chapters.map(({ era }) => (
                   <li key={era.slug}>
                     <a
                       href={`#${era.slug}`}
-                      className="group inline-flex items-baseline gap-2 text-sm font-semibold text-[#18202a]"
+                      className="group inline-flex items-baseline gap-2 text-sm font-semibold text-white"
                     >
-                      <span className="border-b border-transparent pb-0.5 transition-colors group-hover:border-[#3d5a3e]">
+                      <span className="border-b border-transparent pb-0.5 transition-colors group-hover:border-[#e0c46d] group-hover:text-[#e0c46d]">
                         {era.name}
                       </span>
-                      <span className="text-xs font-normal text-black/40">{era.years}</span>
+                      <span className="text-xs font-normal text-white/65">{era.years}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </nav>
           )}
+        </div>
+      </section>
 
+      <section className="bg-[#f5ead3] px-5 pb-20 md:px-10 md:pb-32">
+        <div className="mx-auto max-w-[82rem]">
           {chapters.map(({ era, stories: chapterStories }) => (
             <div key={era.slug} id={era.slug} className="scroll-mt-32 pt-16 md:pt-24">
               <Reveal className="grid gap-3 border-b border-black/15 pb-8 md:grid-cols-[21rem_1fr] md:gap-10">
@@ -123,7 +137,7 @@ export default async function HistoryPage() {
                   <h3 className="display-type text-4xl leading-none tracking-[-0.03em] md:text-5xl">
                     {era.name}
                   </h3>
-                  <p className="mt-3 max-w-xl text-sm leading-7 text-black/55">{era.blurb}</p>
+                  <p className="mt-3 max-w-xl text-sm leading-7 text-black/70">{era.blurb}</p>
                 </div>
               </Reveal>
 
@@ -132,39 +146,39 @@ export default async function HistoryPage() {
                 {chapterStories.map((story, index) => (
                     <Reveal
                       key={story.id}
-                      className="relative grid grid-cols-[7rem_1fr] gap-5 pb-12 md:grid-cols-[21rem_1fr] md:gap-10 md:pb-16"
+                      className="relative grid min-w-0 grid-cols-[6rem_minmax(0,1fr)] gap-4 pb-12 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[21rem_minmax(0,1fr)] md:gap-10 md:pb-16"
                       delay={index * 50}
                     >
                       <div className="relative pr-7 text-right md:pr-12">
                         <span className="display-type text-2xl text-[#3d5a3e] md:text-4xl">
                           {story.startYear}
                         </span>
-                        <span className="absolute top-1.5 -right-[7px] h-3.5 w-3.5 rotate-45 border-2 border-[#d3b350] bg-[#f2eee4] ring-8 ring-[#f5ead3]" />
+                        <span className="absolute top-1.5 -right-[7px] h-3.5 w-3.5 rotate-45 border-2 border-[#d3b350] bg-[#f5ead3] ring-8 ring-[#f5ead3]" />
                       </div>
                       <Link
                         href={`/stories/${story.slug}`}
-                        className="group block border border-[#0e1c27]/12 bg-[#f8f6f1] transition-colors hover:border-[#3d5a3e]/40 md:grid md:grid-cols-[1fr_12rem]"
+                        className="group block min-w-0 overflow-hidden border border-[#0e1c27]/12 bg-[#f8f6f1] transition-colors hover:border-[#3d5a3e]/40 md:grid md:grid-cols-[minmax(0,1fr)_12rem]"
                       >
-                        <div className="p-6 md:p-8">
+                        <div className="min-w-0 p-5 sm:p-6 md:p-8">
                           <p className="text-[0.62rem] font-bold tracking-[0.16em] text-[#3d5a3e] uppercase">
                             Story · {storyTypeLabel[story.storyType]} · {story.timeFrame}
                           </p>
                           <h4 className="display-type mt-3 text-3xl leading-[1.05] md:text-[2.1rem]">
                             {story.title}
                           </h4>
-                          <p className="mt-3 max-w-xl text-sm leading-7 text-black/58">{story.leadIn}</p>
+                          <p className="mt-3 max-w-xl text-sm leading-7 text-black/72">{story.leadIn}</p>
                           <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#18202a]">
                             Read the story
                             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                           </span>
                         </div>
                         {story.mainPhoto && (
-                          <div className="relative hidden min-h-full overflow-hidden bg-[#0e1c27] md:block">
+                          <div className="relative order-first aspect-[16/9] overflow-hidden bg-[#0e1c27] md:order-last md:min-h-full md:aspect-auto">
                             <Image
                               src={story.mainPhoto.url}
                               alt={story.mainPhoto.alt}
                               fill
-                              sizes="12rem"
+                              sizes="(min-width: 768px) 12rem, 100vw"
                               className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                           </div>
@@ -188,7 +202,7 @@ export default async function HistoryPage() {
               <h2 className="display-type text-5xl leading-[0.95] tracking-[-0.035em] md:text-7xl">
                 Stories of Garnet
               </h2>
-              <p className="max-w-xl text-lg leading-8 text-black/58 lg:pb-2">
+              <p className="max-w-xl text-lg leading-8 text-black/72 lg:pb-2">
                 The people, families, and places behind the buildings, told through records
                 and the memories of those who lived here. Every story, A to Z.
               </p>
@@ -207,7 +221,7 @@ export default async function HistoryPage() {
                         <span className="display-type block text-2xl leading-tight transition-colors group-hover:text-[#3d5a3e]">
                           {story.title}
                         </span>
-                        <span className="mt-1 block text-xs text-black/45">
+                        <span className="mt-1 block text-xs text-black/65">
                           {storyTypeLabel[story.storyType]} · {story.timeFrame}
                         </span>
                       </span>

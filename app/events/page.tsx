@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
@@ -84,7 +85,7 @@ function EventRow({ event, index, past = false }: { event: GarnetEvent; index: n
         className={`display-type shrink-0 text-xl leading-[1.1] text-[#e0c46d] ${inactive ? "line-through" : ""}`}
       >
         {formatEventDate(event.startDate)}
-        <span className="mt-1.5 block font-sans text-[0.68rem] font-semibold tracking-[0.08em] text-black/38 uppercase">
+        <span className="mt-1.5 block font-sans text-[0.68rem] font-semibold tracking-[0.08em] text-black/60 uppercase">
           {formatEventDayTime(event.startDate)}
         </span>
       </time>
@@ -96,7 +97,7 @@ function EventRow({ event, index, past = false }: { event: GarnetEvent; index: n
           </h3>
           {!past && <EventStatusBadge status={event.status} />}
         </div>
-        <p className="mt-4 max-w-2xl leading-7 text-black/58">
+        <p className="mt-4 max-w-2xl leading-7 text-black/72">
           {event.description ?? event.homepageSummary}
         </p>
         {!past && event.accessAdvisory && (
@@ -105,7 +106,7 @@ function EventRow({ event, index, past = false }: { event: GarnetEvent; index: n
         {!past && (
           <p className="mt-3 text-sm font-semibold text-[#1e2f1f]">
             {formatEventPrice(event)}
-            {priceNote && <span className="ml-2 font-normal text-black/38">· {priceNote}</span>}
+            {priceNote && <span className="ml-2 font-normal text-black/60">· {priceNote}</span>}
           </p>
         )}
       </div>
@@ -137,6 +138,9 @@ export default async function EventsPage() {
         eyebrow="Education & Events"
         title="Every building is already a classroom."
         intro="The schoolhouse still stands. The hotel still has its register. The mine trail still runs through the forest. Garnet teaches without asking anyone to sit down."
+        image="/images/historic/university-archive/garnet-ghost-town-school-class-portrait-72-0570.webp"
+        imageAlt="Archival portrait of Garnet's school class"
+        imagePosition="object-[center_42%]"
       />
 
       {/* EVENTS */}
@@ -146,9 +150,10 @@ export default async function EventsPage() {
             <h2 className="display-type text-[clamp(2.5rem,7vw,5rem)] leading-[0.93] tracking-[-0.04em]">
               Events at Garnet
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-black/55">
-              A short list of occasions when the town comes to life in ways that a
-              self-guided walk cannot quite replicate.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-black/72">
+              Living-history days, guided programs, and community gatherings add voices,
+              demonstrations, and shared activity to buildings that are usually quiet. The
+              calendar stays intentionally focused, so each confirmed event is worth planning around.
             </p>
           </Reveal>
 
@@ -159,7 +164,7 @@ export default async function EventsPage() {
               ))}
             </div>
           ) : (
-            <p className="mt-14 border-y border-[#0e1c27]/12 py-10 text-lg text-black/55">
+            <p className="mt-14 border-y border-[#0e1c27]/12 py-10 text-lg text-black/70">
               No upcoming events are currently scheduled. New events are posted here as
               soon as they are confirmed.
             </p>
@@ -167,7 +172,7 @@ export default async function EventsPage() {
 
           {recent.length > 0 && (
             <div className="mt-20">
-              <h3 className="text-[0.68rem] font-bold tracking-[0.18em] text-black/45 uppercase">
+              <h3 className="text-[0.68rem] font-bold tracking-[0.18em] text-black/60 uppercase">
                 Recent events
               </h3>
               <div className="mt-4 divide-y divide-[#0e1c27]/12 border-y border-[#0e1c27]/12">
@@ -188,17 +193,34 @@ export default async function EventsPage() {
               Education at Garnet
             </h2>
             <div>
-              <p className="text-lg leading-8 text-white/65">
+              <p className="text-lg leading-8 text-white/80">
                 Gold miners climbed into the Garnet Mountains to stake their claims and ended up
                 building a town — a school, a hotel, thirteen saloons, and a community that
-                lasted a generation. The school still stands. So does the rest of it.
+                lasted a generation. At the height of the boom, 41 students filled the schoolhouse.
+                The school still stands, surrounded by the places where their families worked and gathered.
               </p>
-              <p className="mt-5 leading-8 text-white/48">
+              <p className="mt-5 leading-8 text-white/70">
                 Programs at Garnet are designed for classrooms planning a field trip, for
                 families who want more than a walk-through, and for anyone willing to follow a
-                ranger into the forest to understand why the mines were where they were.
+                ranger into the forest to understand why the mines were where they were. The goal
+                is not simply to memorize dates, but to read buildings, objects, and landscape as evidence.
               </p>
             </div>
+          </Reveal>
+
+          <Reveal className="image-reveal relative mt-12 aspect-[4/5] overflow-hidden border border-white/10 sm:aspect-[16/8] md:mt-16">
+            <Image
+              src="/images/garnet-visitors.png"
+              alt="A family walking between Garnet's historic buildings"
+              fill
+              sizes="(min-width: 1312px) 82rem, 100vw"
+              className="object-cover object-center sepia-[.2] saturate-[.78] contrast-[1.05]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/80 via-transparent to-transparent" />
+            <p className="absolute inset-x-5 bottom-5 z-10 max-w-xl text-sm leading-6 text-white/75 md:inset-x-8 md:bottom-7">
+              Suggested photography position: a ranger-led school visit, family field activity,
+              or students examining details inside the townsite.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -223,9 +245,9 @@ export default async function EventsPage() {
                 </div>
 
                 <div>
-                  <p className="max-w-2xl text-base leading-8 text-black/62">{program.body}</p>
+                  <p className="max-w-2xl text-base leading-8 text-black/72">{program.body}</p>
                   {program.detail && (
-                    <p className="mt-5 max-w-2xl text-sm leading-7 text-black/42">
+                    <p className="mt-5 max-w-2xl text-sm leading-7 text-black/68">
                       {program.detail}
                     </p>
                   )}
@@ -259,7 +281,7 @@ export default async function EventsPage() {
               <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] md:text-5xl">
                 Resources for educators
               </h2>
-              <p className="mt-5 max-w-sm text-sm leading-7 text-black/50">
+              <p className="mt-5 max-w-sm text-sm leading-7 text-black/70">
                 Additional archaeology, history, and cultural heritage materials from the
                 organizations that support sites like Garnet across Montana and the West.
               </p>
@@ -290,7 +312,7 @@ export default async function EventsPage() {
             <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] md:text-5xl">
               Bringing a group? Talk to us first.
             </h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-white/55">
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/74">
               School groups, organizations, and educators planning a visit can contact the BLM
               Missoula Field Office to schedule tours, request transportation grant information,
               or ask questions about access.
@@ -306,7 +328,7 @@ export default async function EventsPage() {
             </a>
             <a
               href="tel:4063293914"
-              className="text-center text-sm font-semibold text-white/55 underline decoration-white/20 underline-offset-4 hover:text-white"
+              className="text-center text-sm font-semibold text-white/75 underline decoration-white/30 underline-offset-4 hover:text-white"
             >
               406.329.3914
             </a>

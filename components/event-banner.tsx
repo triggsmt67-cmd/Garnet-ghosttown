@@ -21,7 +21,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
             <h2 className="display-type mt-1 text-2xl text-white md:text-3xl">
               Upcoming Events at Garnet
             </h2>
-            <p className="mt-1 text-sm text-white/60">
+            <p className="mt-1 text-sm text-white/74">
               No special public events are currently scheduled. The townsite and hiking trails remain open year-round.
             </p>
           </div>
@@ -74,7 +74,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
             }`}
           >
             {formatEventDate(event.startDate)}
-            <span className="mt-2 block font-sans text-xs font-semibold tracking-[0.08em] text-white/52">
+            <span className="mt-2 block font-sans text-xs font-semibold tracking-[0.08em] text-white/72">
               {formatEventDayTime(event.startDate)}
             </span>
           </time>
@@ -97,7 +97,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
           <div className="flex items-center justify-between gap-8 border-t border-white/15 pt-7 lg:block lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
             <div>
               <p className="display-type text-2xl">{formatEventPrice(event)}</p>
-              {event.priceNote && <p className="mt-1 text-xs text-white/48">{event.priceNote}</p>}
+              {event.priceNote && <p className="mt-1 text-xs text-white/70">{event.priceNote}</p>}
             </div>
             <Link
               href={event.detailsUrl ?? "/events"}

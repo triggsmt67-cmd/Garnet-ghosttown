@@ -57,10 +57,12 @@ export default async function Home() {
               <h2 className="display-type text-[clamp(2.5rem,7vw,6rem)] leading-[.92] tracking-[-0.04em]">
                 You can walk into rooms unchanged since 1898.
               </h2>
-              <p className="mt-8 max-w-md text-lg leading-8 text-black/62">
+              <p className="mt-8 max-w-md text-lg leading-8 text-black/72">
                 Not a reconstruction. Not a museum with roped-off displays. Garnet&apos;s
                 hotel, saloons, schoolhouse, and cabins are still where the mining community
-                built them — open to walk through, step inside, and spend time in.
+                built them — open to walk through, step inside, and spend time in. Look closely
+                and you will find newspaper insulation, worn thresholds, and rooms arranged for
+                work, meals, school, and long mountain winters.
               </p>
               <div className="mt-9">
                 <CtaLink href="/history">Read how the town survived</CtaLink>
@@ -78,9 +80,9 @@ export default async function Home() {
                   className="object-cover sepia-[.32] saturate-[.72] contrast-[1.08]"
                 />
               </div>
-              <p className="mt-4 max-w-lg text-sm leading-6 text-black/48">
-                Inside the Wells Hotel, ordinary rooms and worn wood make the scale of
-                daily life easier to understand than any display case ever could.
+              <p className="mt-4 max-w-lg text-sm leading-6 text-black/65">
+                Inside the Wells Hotel, the dining room, guest rooms, worn wood, and surviving
+                finishes make the scale of daily life easier to understand than a display case could.
               </p>
             </div>
           </Reveal>
@@ -117,12 +119,12 @@ export default async function Home() {
               <h2 className="display-type text-4xl leading-[.96] tracking-[-0.035em] md:text-7xl">
                 Spend the first hour on Main Street.
               </h2>
-              <p className="mt-8 max-w-lg text-lg leading-8 text-white/65">
+              <p className="mt-8 max-w-lg text-lg leading-8 text-white/78">
                 Begin with the Wells Hotel, Kelly&apos;s Saloon, the schoolhouse, and the
                 cabins along the commercial street. Open doors lead into rooms that
                 still hold the shape of work, meals, sleep, and celebration.
               </p>
-              <p className="mt-5 max-w-lg leading-8 text-white/52">
+              <p className="mt-5 max-w-lg leading-8 text-white/72">
                 When the buildings begin to make sense, follow one of the mining trails
                 into the forest. Most are under two miles and require no permit — but the
                 terrain is uneven and the landscape explains exactly why the town was built
@@ -154,7 +156,7 @@ export default async function Home() {
             <h2 className="display-type text-4xl leading-[.97] tracking-[-0.035em] md:text-7xl">
               Make the last decisions while you still have service.
             </h2>
-            <p className="max-w-xl text-lg leading-8 text-black/60 lg:pb-2">
+            <p className="max-w-xl text-lg leading-8 text-black/72 lg:pb-2">
               Garnet&apos;s remoteness is part of the visit. It also means your pass,
               route, fuel, water, and parking plan should be settled before the final
               mountain miles.
@@ -192,14 +194,14 @@ export default async function Home() {
               <dl>
                 <div className="grid gap-3 border-b border-[#0e1c27]/15 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
                   <dt className="display-type text-2xl text-[#1e2f1f]">Parking</dt>
-                  <dd className="leading-7 text-black/60">
+                  <dd className="leading-7 text-black/72">
                     Spaces are limited. Arrive early on summer weekends and carpool
                     when you can; prepaid admission does not reserve a parking space.
                   </dd>
                 </div>
                 <div className="grid gap-3 border-b border-[#0e1c27]/15 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
                   <dt className="display-type text-2xl text-[#1e2f1f]">No services</dt>
-                  <dd className="leading-7 text-black/60">
+                  <dd className="leading-7 text-black/72">
                     There is no cell coverage, food concessions, fuel, or running tap water at Garnet.
                     Bring drinking water and snacks, fill your gas tank or EV charge in
                     Missoula, Bonner, or Drummond, and download offline maps.
@@ -207,7 +209,7 @@ export default async function Home() {
                 </div>
                 <div className="grid gap-3 py-7 md:grid-cols-[9rem_1fr] md:gap-8">
                   <dt className="display-type text-2xl text-[#1e2f1f]">The road</dt>
-                  <dd className="leading-7 text-black/60">
+                  <dd className="leading-7 text-black/72">
                     Approach from Highway 200 at Mile Marker 22 via Garnet Range Road (11 miles).
                     The first 3.7 miles are paved; the remaining 7.3 miles are gravel. RVs and
                     trailers should avoid the narrow, steep cliff drop-offs of Cave Gulch from I-90.
@@ -224,7 +226,7 @@ export default async function Home() {
                 </Link>
                 <a
                   href="tel:4063293914"
-                  className="text-sm font-semibold text-black/55 underline decoration-black/20 underline-offset-4"
+                  className="text-sm font-semibold text-black/70 underline decoration-black/30 underline-offset-4"
                 >
                   BLM Missoula Field Office · 406.329.3914
                 </a>

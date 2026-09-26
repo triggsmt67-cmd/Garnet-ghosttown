@@ -27,7 +27,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-10 pt-10 text-sm text-white/55 md:grid-cols-[1fr_auto_auto] md:gap-16">
+        <div className="grid gap-10 pt-10 text-sm text-white/72 md:grid-cols-[1fr_auto_auto] md:gap-16">
           <div>
             <div className="mb-5 flex items-center gap-3 text-[#f8f6f1]">
               <Mountain className="h-8 w-12 text-[#d3b350]" />

@@ -151,7 +151,7 @@ export function SeasonalFieldGuide() {
           <h2 className="display-type max-w-xl text-5xl leading-[.98] tracking-[-0.035em] md:text-7xl">
             Choose the season you plan to visit.
           </h2>
-          <p className="mt-7 max-w-md leading-8 text-black/60">
+          <p className="mt-7 max-w-md leading-8 text-black/72">
             Garnet is open year-round, but the trip changes completely with the
             mountain. Select a season before making plans.
           </p>
@@ -214,7 +214,7 @@ export function SeasonalFieldGuide() {
             <p className="display-type max-w-2xl text-4xl leading-[1.02] md:text-5xl">
               {season.headline}
             </p>
-            <p className="mt-6 max-w-2xl leading-7 text-white/65">
+            <p className="mt-6 max-w-2xl leading-7 text-white/76">
               {season.introduction}
             </p>
 
@@ -227,7 +227,7 @@ export function SeasonalFieldGuide() {
                   <dt className="text-sm font-semibold text-[#e0c46d]">
                     {detail.term}
                   </dt>
-                  <dd className="text-sm leading-6 text-white/62">
+                  <dd className="text-sm leading-6 text-white/74">
                     {detail.description}
                   </dd>
                 </div>
@@ -255,7 +255,7 @@ export function SeasonalFieldGuide() {
               {season.secondaryLink && (
                 <a
                   href={season.secondaryLink.href}
-                  className="text-sm text-white/65 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white"
+                  className="text-sm text-white/76 underline decoration-white/35 underline-offset-4 transition-colors hover:text-white"
                 >
                   {season.secondaryLink.label}
                 </a>

@@ -29,7 +29,7 @@ export function VoiceQuote({ voice, className = "" }: { voice: StoryVoice; class
       </blockquote>
       <figcaption className="mt-8 text-sm leading-6">
         <span className="font-semibold text-[#18202a]">{voice.speaker}</span>
-        {voice.source && <span className="block text-black/45">{voice.source}</span>}
+        {voice.source && <span className="block text-black/65">{voice.source}</span>}
       </figcaption>
     </figure>
   );
