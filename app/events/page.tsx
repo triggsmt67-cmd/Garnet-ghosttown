@@ -210,11 +210,11 @@ export default async function EventsPage() {
 
           <Reveal className="image-reveal relative mt-12 aspect-[4/5] overflow-hidden border border-white/10 sm:aspect-[16/8] md:mt-16">
             <Image
-              src="/images/garnet-visitors.png"
-              alt="A family walking between Garnet's historic buildings"
+              src="/images/garnet-fog.webp"
+              alt="Historic timber buildings of Garnet framed by mountain fog"
               fill
               sizes="(min-width: 1312px) 82rem, 100vw"
-              className="object-cover object-center sepia-[.2] saturate-[.78] contrast-[1.05]"
+              className="object-cover object-center sepia-[.12] saturate-[.85] contrast-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/80 via-transparent to-transparent" />
             <p className="absolute inset-x-5 bottom-5 z-10 max-w-xl text-sm leading-6 text-white/75 md:inset-x-8 md:bottom-7">

@@ -100,12 +100,12 @@ export default async function Home() {
         <div className="mx-auto grid max-w-[90rem] lg:min-h-[52rem] lg:grid-cols-[1.08fr_.92fr]">
           <Reveal className="relative min-h-[24rem] sm:min-h-[34rem] lg:min-h-full">
             <Image
-              src="/images/garnet-visitors.png"
-              alt="A family walking along the historic street between Garnet's timber buildings"
+              src="/images/garnet-fog.webp"
+              alt="Historic timber buildings of Garnet framed by mountain fog"
               fill
               unoptimized
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover sepia-[.22] saturate-[.76] contrast-[1.06]"
+              className="object-cover sepia-[.12] saturate-[.85] contrast-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/55 via-transparent to-transparent" />
             <p className="absolute inset-x-6 bottom-6 z-10 max-w-lg text-sm leading-6 text-white/68 md:inset-x-10 md:bottom-9">

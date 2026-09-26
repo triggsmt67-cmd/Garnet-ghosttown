@@ -260,3 +260,119 @@ Never commit secrets or expose them in client-side JavaScript.
 - Avoid turning every heading or button into an ACF field; expose only content
   administrators genuinely need to maintain.
 
+## Image specifications and asset guide
+
+### Quick reference cheat sheet
+
+| Page | Section | File path | Recommended size |
+|---|---|---|---|
+| **Home** (`/`) | Hero Background | `public/images/garnet-town.JPG` | `1920 × 1080` (16:9) |
+| **Home** (`/`) | Daily Life Card | `public/images/garnet-interior.png` | `1200 × 1500` (4:5) |
+| **Home** (`/`) | Walking Tour Feature | `public/images/garnet-fog.webp` | `1200 × 1500` (4:5) |
+| **Home** (`/`) | Winter Tab (Guide) | `public/images/garnet-winter-cabin.png` | `1600 × 800` (2:1) |
+| **Visit** (`/visit`) | Hero Banner | `public/images/garnet-town.JPG` | `1920 × 1080` (16:9) |
+| **Explore** (`/explore`) | Hero Banner | `public/images/garnet-hero.png` | `1920 × 1080` (16:9) |
+| **Explore** (`/explore`) | Split Photo | `public/images/garnet-fog.webp` | `1200 × 1500` (4:5) |
+| **Preserve** (`/preserve`) | Hero Banner | `public/images/preserve/garnet-preservation-team.jpg` | `1920 × 1080` (16:9) |
+| **Preserve** (`/preserve`) | Middle Banner | `public/images/garnet-interior.png` | `1920 × 1080` (16:9) |
+| **History** (`/history`) | Hero Banner | `public/images/historic/...mining-camp...webp` | `1920 × 1080` (16:9) |
+| **History** (`/history`) | Boom Years Card | `public/images/historic/...family-in-cabin...webp` | `1200 × 900` (4:3) |
+| **Events** (`/events`) | Hero Banner | `public/images/historic/...school-class...webp` | `1920 × 1080` (16:9) |
+| **Events** (`/events`) | Education Banner | `public/images/garnet-fog.webp` | `1200 × 1500` (4:5) |
+
+---
+
+### Page-by-page specs & notes
+
+#### 1. Home Page (`/`)
+- **Hero Background:** `public/images/garnet-town.JPG`
+  - **Recommended size:** `1920 × 1080 px` (16:9) or `2560 × 1440 px`
+  - **Aspect ratio:** Full-bleed viewport (`100vw`, `min-h-[92vh]`)
+  - **Notes:** Uses an interactive sepia-to-color crossfade on scroll. Keep the focal subject in the right-center so headline text on the left stays legible.
+- **"Daily Life" Interior Card:** `public/images/garnet-interior.png`
+  - **Recommended size:** `1200 × 1500 px` (4:5 portrait)
+  - **Notes:** Displays the preserved wooden interior of the Wells Hotel.
+- **Walking Tour Section:** `public/images/garnet-fog.webp`
+  - **Recommended size:** `1200 × 1500 px` (4:5 portrait)
+  - **Notes:** Vertical editorial photo beside the "Spend the first hour on Main Street" copy.
+- **Seasonal Guide (Winter Tab):** `public/images/garnet-winter-cabin.png`
+  - **Recommended size:** `1600 × 800 px` (2:1 landscape)
+  - **Notes:** Displays inside the interactive season tab card (`aspect-[16/8]`).
+  - *(Note: Summer, Autumn, and Spring currently fall back to `garnet-hero.png`. If you want unique photography for every season, supply 1600 × 800 px images for each tab in `components/seasonal-field-guide.tsx`.)*
+
+#### 2. Plan Your Visit Page (`/visit`)
+- **Route Hero Banner:** `public/images/garnet-town.JPG`
+  - **Recommended size:** `1920 × 1080 px` (16:9 landscape)
+  - **Notes:** Full-width header banner (`min-h-[52svh]` to `62svh`).
+
+#### 3. Explore Page (`/explore`)
+- **Route Hero Banner:** `public/images/garnet-hero.png`
+  - **Recommended size:** `1920 × 1080 px` (16:9 landscape)
+  - **Notes:** Wide panoramic landscape of the town and mountains. Also used as the site's default social share preview (`og:image`).
+- **Arrested Decay Split Photo:** `public/images/garnet-fog.webp`
+  - **Recommended size:** `1200 × 1500 px` (4:5 portrait)
+  - **Notes:** Vertical documentary image in the two-column split section.
+
+#### 4. Preserve Page (`/preserve`)
+- **Route Hero Banner:** `public/images/preserve/garnet-preservation-team.jpg`
+  - **Recommended size:** `1920 × 1080 px` (16:9) or `2000 × 1125 px`
+  - **Notes:** Documentary photo of preservation team and restoration work.
+- **"Original Buildings" Feature Banner:** `public/images/garnet-interior.png`
+  - **Recommended size:** `1920 × 1080 px` (16:9 landscape)
+  - **Notes:** Horizontal wide banner across the middle of the page.
+
+#### 5. History Page (`/history`)
+- **Route Hero Banner:** `public/images/historic/university-archive/garnet-ghost-town-mining-camp-and-mill-77-0022.webp`
+  - **Recommended size:** `1920 × 1080 px` (16:9) or `1600 × 1200 px` (4:3)
+- **"Boom Years" Sidebar Card:** `public/images/historic/university-archive/garnet-ghost-town-family-in-cabin-doorway-77-0003.webp`
+  - **Recommended size:** `1200 × 900 px` (4:3 landscape)
+
+#### 6. Events & Education Page (`/events`)
+- **Route Hero Banner:** `public/images/historic/university-archive/garnet-ghost-town-school-class-portrait-72-0570.webp`
+  - **Recommended size:** `1920 × 1080 px` (16:9) or `1600 × 1200 px` (4:3)
+- **Education Section Banner:** `public/images/garnet-fog.webp`
+  - **Recommended size:** `1200 × 1500 px` (4:5 portrait) or `1600 × 800 px` (2:1)
+  - **Notes:** Suggests student/classroom or ranger-led activity photo.
+
+---
+
+### Historic archive collection (`public/images/historic/university-archive/`)
+
+Archive scans from the university collection available for historical stories and timeline items:
+
+| File name | Placement / Purpose | Recommended scan size |
+|---|---|---|
+| `garnet-ghost-town-mining-camp-and-mill-77-0022.webp` | History Hero Banner | `1920 × 1080` (16:9) |
+| `garnet-ghost-town-family-in-cabin-doorway-77-0003.webp` | History "Boom Years" Card | `1200 × 900` (4:3) |
+| `garnet-ghost-town-school-class-portrait-72-0570.webp` | Events Hero Banner | `1920 × 1080` (16:9) |
+| `garnet-ghost-town-abandoned-cabins-meadow-81-0371.webp` | Archive collection / Stories | `1200 × 900` (4:3) |
+| `garnet-ghost-town-children-on-schoolhouse-steps-72-0569.webp` | Archive collection / Stories | `1200 × 1500` (4:5) |
+| `garnet-ghost-town-false-front-building-with-old-doors-72-0594.webp` | Archive collection / Stories | `1000 × 1500` (2:3) |
+| `garnet-ghost-town-hillside-buildings-in-winter-77-0004.webp` | Archive collection / Stories | `1600 × 1000` (16:10) |
+| `garnet-ghost-town-horse-teams-and-wagons-77-0023.webp` | Archive collection / Stories | `1600 × 1000` (16:10) |
+| `garnet-ghost-town-leaning-abandoned-building-81-0373.webp` | Archive collection / Stories | `1200 × 1200` (1:1) |
+| `garnet-ghost-town-men-on-porch-of-false-front-building-72-0021.webp` | Archive collection / Stories | `1200 × 1600` (3:4) |
+| `garnet-ghost-town-storefront-under-restoration-72-0593.webp` | Archive collection / Stories | `1500 × 1000` (3:2) |
+| `garnet-ghost-town-street-view-cabins-and-road-72-0597.webp` | Archive collection / Stories | `1500 × 1000` (3:2) |
+| `garnet-ghost-town-weathered-two-story-building-72-0592.webp` | Archive collection / Stories | `1500 × 1000` (3:2) |
+
+---
+
+### Dynamic content images (WordPress / CMS)
+
+- **Story Main Photo (`mainPhoto` on `/stories/[slug]` and History timeline):**
+  - **Size:** `1920 × 1080 px` (16:9 landscape)
+  - Displayed in a full-width header banner on each story page, and automatically thumbnailed on the History page.
+- **Event Featured Image (`featuredImage` on `/events`):**
+  - **Size:** `1600 × 900 px` (16:9 landscape)
+
+---
+
+### Optimization guidelines
+
+1. **Format:** Use **WebP** or optimized **JPEG**. Avoid uncompressed PNGs for photographs.
+2. **File Size Target:** Under **350 KB** for hero images; under **200 KB** for cards and split sections.
+3. **Browser Cache:** After replacing files with the same filename, do a hard refresh (`Cmd + Shift + R` on Mac, `Ctrl + F5` on Windows).
+
+
+

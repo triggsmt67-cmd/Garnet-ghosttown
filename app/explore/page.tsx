@@ -108,8 +108,8 @@ export default function ExplorePage() {
       <section className="grid bg-[#0d1218] text-[#f8f6f1] lg:grid-cols-[.9fr_1.1fr]">
         <div className="relative min-h-[34rem]">
           <Image
-            src="/images/garnet-visitors.png"
-            alt="Visitors walking along Garnet's historic timber buildings"
+            src="/images/garnet-fog.webp"
+            alt="Historic timber buildings of Garnet framed by mountain fog"
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
             className="object-cover object-center"
