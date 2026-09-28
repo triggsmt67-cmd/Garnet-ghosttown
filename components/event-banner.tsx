@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { GarnetEvent } from "@/lib/content/types";
 import { formatEventDate, formatEventDayTime } from "@/lib/content/time";
-import { EventStatusBadge, formatEventPrice } from "./event-meta";
+import { EventStatusBadge, SampleEventBadge, formatEventPrice } from "./event-meta";
 import { ArrowRight, ArrowUpRight } from "./icons";
 import { Reveal } from "./reveal";
 
@@ -85,6 +85,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
                 {event.title}
               </h3>
               <EventStatusBadge status={event.status} />
+              <SampleEventBadge event={event} />
             </div>
             <p className="mt-4 max-w-2xl leading-7 text-white/75">{event.homepageSummary}</p>
             {event.accessAdvisory && (

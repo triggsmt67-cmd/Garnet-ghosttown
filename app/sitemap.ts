@@ -1,8 +1,12 @@
 import type { MetadataRoute } from "next";
 import { buildings } from "@/lib/buildings";
 import { getStories } from "@/lib/content";
+import { isIndexable } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Nothing to advertise while the site is blocked from search.
+  if (!isIndexable) return [];
+
   const { data: stories } = await getStories();
   const base = "https://garnetghosttown.org";
   return [
