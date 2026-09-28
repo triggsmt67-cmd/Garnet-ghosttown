@@ -23,8 +23,9 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
         const rect = section.getBoundingClientRect();
         const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
         const progress = Math.min(Math.max(-rect.top / travel, 0), 1);
-        const copyProgress = Math.min(progress / 0.68, 1);
-        const revealProgress = Math.min(progress / 0.92, 1);
+        // Complete the text fade and color curtain reveal much faster on scroll
+        const copyProgress = Math.min(progress / 0.4, 1);
+        const revealProgress = Math.min(progress / 0.45, 1);
 
         section.style.setProperty("--hero-clip-left", `${52 - revealProgress * 52}%`);
         section.style.setProperty("--hero-clip-right", `${48 - revealProgress * 48}%`);
@@ -32,7 +33,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
         section.style.setProperty("--hero-copy-y", `${copyProgress * -34}px`);
         section.style.setProperty("--hero-image-scale", `${1.225 + revealProgress * 0.045}`);
         section.style.setProperty("--hero-sepia-opacity", `${0.42 - revealProgress * 0.34}`);
-        section.style.setProperty("--hero-cue-opacity", `${1 - Math.min(progress * 3, 1)}`);
+        section.style.setProperty("--hero-cue-opacity", `${1 - Math.min(progress * 4, 1)}`);
       });
     };
 

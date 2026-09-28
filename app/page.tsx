@@ -100,8 +100,8 @@ export default async function Home() {
         <div className="mx-auto grid max-w-[90rem] lg:min-h-[52rem] lg:grid-cols-[1.08fr_.92fr]">
           <Reveal className="relative min-h-[24rem] sm:min-h-[34rem] lg:min-h-full">
             <Image
-              src="/images/garnet-fog.webp"
-              alt="Historic timber buildings of Garnet framed by mountain fog"
+              src="/images/Garnet_Boardwalk1.webp"
+              alt="Historic wooden boardwalk and weathered timber buildings along Garnet's main street"
               fill
               unoptimized
               sizes="(min-width: 1024px) 55vw, 100vw"

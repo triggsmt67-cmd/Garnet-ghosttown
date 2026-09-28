@@ -175,7 +175,7 @@ button:focus-visible {
   --hero-image-scale: 1.025;
   --hero-sepia-opacity: 0.42;
   --hero-cue-opacity: 1;
-  min-height: 148svh;
+  min-height: 124svh;
 }
 
 .hero-stage {

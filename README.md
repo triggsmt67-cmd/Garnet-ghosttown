@@ -268,7 +268,7 @@ Never commit secrets or expose them in client-side JavaScript.
 |---|---|---|---|
 | **Home** (`/`) | Hero Background | `public/images/garnet-town.JPG` | `1920 × 1080` (16:9) |
 | **Home** (`/`) | Daily Life Card | `public/images/garnet-interior.png` | `1200 × 1500` (4:5) |
-| **Home** (`/`) | Walking Tour Feature | `public/images/garnet-fog.webp` | `1200 × 1500` (4:5) |
+| **Home** (`/`) | Walking Tour Feature | `public/images/Garnet_Boardwalk1.webp` | `1200 × 1500` (4:5) |
 | **Home** (`/`) | Winter Tab (Guide) | `public/images/garnet-winter-cabin.png` | `1600 × 800` (2:1) |
 | **Visit** (`/visit`) | Hero Banner | `public/images/garnet-town.JPG` | `1920 × 1080` (16:9) |
 | **Explore** (`/explore`) | Hero Banner | `public/images/garnet-hero.png` | `1920 × 1080` (16:9) |
@@ -292,7 +292,7 @@ Never commit secrets or expose them in client-side JavaScript.
 - **"Daily Life" Interior Card:** `public/images/garnet-interior.png`
   - **Recommended size:** `1200 × 1500 px` (4:5 portrait)
   - **Notes:** Displays the preserved wooden interior of the Wells Hotel.
-- **Walking Tour Section:** `public/images/garnet-fog.webp`
+- **Walking Tour Section:** `public/images/Garnet_Boardwalk1.webp`
   - **Recommended size:** `1200 × 1500 px` (4:5 portrait)
   - **Notes:** Vertical editorial photo beside the "Spend the first hour on Main Street" copy.
 - **Seasonal Guide (Winter Tab):** `public/images/garnet-winter-cabin.png`
