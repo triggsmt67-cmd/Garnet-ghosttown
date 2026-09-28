@@ -33,7 +33,7 @@ const seasons: Season[] = [
     imageClass: "sepia-[.12] saturate-[.8] contrast-[1.05]",
     details: [
       {
-        term: "Visitor center",
+        term: "Visitor Center",
         description: "Generally open daily, 10:00 a.m.–4:30 p.m., weather permitting.",
       },
       {

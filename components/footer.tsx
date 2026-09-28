@@ -13,7 +13,7 @@ export function Footer() {
               Preserved in the Garnet Mountains
             </span>
             <h2 className="display-type mt-6 max-w-3xl text-5xl leading-[0.95] font-medium md:text-7xl">
-              Give Garnet two or three unhurried hours.
+              Give yourself two or three unhurried hours at Garnet.
             </h2>
           </div>
           <div className="flex items-end lg:justify-end">
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-14 text-[0.65rem] tracking-[0.08em] text-white/30 uppercase">
-          Concept redesign · Visitor details can change with weather and season. Confirm with the BLM before travel.
+          Visitor details can change with weather and season. Confirm current conditions with the BLM before travel.
         </p>
       </div>
     </footer>

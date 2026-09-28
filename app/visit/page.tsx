@@ -58,8 +58,8 @@ export default async function VisitPage() {
     <main id="main-content">
       <RouteHero
         eyebrow="Plan your visit"
-        title="The road is part of the experience."
-        intro="Garnet sits at 6,000 feet in the Garnet Range. Use this guide to choose the safest route, check seasonal access dates, prepare for off-grid conditions, and arrive ready to explore."
+        title="Plan the last 11 miles before you go."
+        intro="Garnet sits at 6,000 feet in the Garnet Range. Check the recommended route, seasonal access, admission, and what to bring before you leave reliable cell service."
         image="/images/garnet-town.JPG"
         imageAlt="The mountain road entering Garnet Ghost Town"
         imagePosition="object-[center_58%]"
@@ -77,9 +77,8 @@ export default async function VisitPage() {
                 Know before you make the trip.
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-black/72">
-                Garnet is unpaved, off-grid, and perched at 6,000 feet in the Garnet Range.
-                Start with the four details that determine when to go, how to get there, and what
-                to arrange before leaving the valley floor.
+                Start with the four details that determine when to go, which road to take,
+                what admission costs, and what to arrange before leaving the valley floor.
               </p>
             </div>
             <div className="grid border-t border-black/15 sm:grid-cols-2">
@@ -87,22 +86,22 @@ export default async function VisitPage() {
                 [
                   "Wheeled Access Season",
                   "May 1 – Dec 31",
-                  "Open to passenger cars (weather permitting). Strictly closed to wheeled vehicles Jan 1 – Apr 30 for over-snow travel only (skis, snowshoes, snowmobiles).",
+                  "Passenger cars can use the road when conditions allow. From Jan 1 – Apr 30, it is closed to wheeled vehicles and open for over-snow travel only.",
                 ],
                 [
                   "Admission & Passes",
                   "$10 / Free Under 16",
-                  "Ages 16+ pay $10; under 16 enter free. Tap-to-Pay kiosk in lot, cash envelopes, or Rec.gov (print receipt). America the Beautiful passes admit up to 4 adults.",
+                  "Visitors 16 and older pay $10; younger visitors enter free. Pay at the parking lot kiosk, use a cash envelope, or buy online and print the receipt.",
                 ],
                 [
                   "Primary Driving Route",
                   "MT-200 (Mile Marker 22)",
-                  "Turn south at Mile Marker 22 onto Garnet Range Road (11 mi). Gentlest ascent with 3.7 mi paved; avoids the narrow, sheer cliff drop-offs of Cave Gulch off I-90.",
+                  "Turn south at Mile Marker 22 onto Garnet Range Road. This 11-mile route is the gentler approach and avoids the narrow cliffside sections of Cave Gulch.",
                 ],
                 [
                   "Cellular Coverage",
                   "Zero Service",
-                  "No cellular signal exists on the mountain. Download offline GPS maps and print your Rec.gov day pass receipt before leaving Missoula or the I-90 corridor.",
+                  "Download offline maps and print your online day-pass receipt before leaving Missoula or the I-90 corridor.",
                 ],
               ].map(([label, value, note]) => (
                 <div key={label} className="border-b border-black/15 py-7 sm:pr-8 sm:odd:border-r sm:even:pl-8">
@@ -206,7 +205,7 @@ export default async function VisitPage() {
 
       <section className="bg-[#3d5a3e] px-5 py-14 text-[#f8f6f1] md:px-10">
         <div className="mx-auto flex max-w-[82rem] flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <p className="display-type text-3xl md:text-4xl">Road and visitor-center conditions can change.</p>
+          <p className="display-type text-3xl md:text-4xl">Road and Visitor Center conditions can change.</p>
           <a className="text-xs font-bold tracking-[0.15em] uppercase underline underline-offset-8" href="https://www.blm.gov/visit/garnet-ghost-town" target="_blank" rel="noreferrer">
             Check the official BLM page ↗
           </a>

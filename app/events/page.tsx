@@ -32,7 +32,7 @@ const educationPrograms = [
   {
     title: "Scavenger Hunt",
     eyebrow: "All ages · Free with day pass",
-    body: "Pick up a scavenger hunt card at the Visitors Center and work your way through town searching for artifacts, architectural details, and traces of daily life in the 1890s. A good prompt for slow looking — and for reminding visitors of every age to leave what they find exactly where it is.",
+    body: "Pick up a scavenger hunt card at the Visitor Center and work your way through town searching for artifacts, architectural details, and traces of daily life in the 1890s. It encourages visitors of every age to look closely and leave everything exactly where they find it.",
     detail: null,
     cta: { label: "Plan your visit", href: "/visit", external: false },
   },
@@ -48,25 +48,13 @@ const educationPrograms = [
     eyebrow: "Classroom curriculum · Grades 3–5",
     body: "Developed in partnership with BLM and Project Archaeology, this lesson series is designed to be used in the classroom before a site visit. Students examine evidence from historic buildings, artifacts, and documents — the same methods archaeologists use — and then apply what they have learned when they walk the town.",
     detail:
-      "Copies of the curriculum guide are sold at the Visitors Center during the summer season. Resources from Project Archaeology, BLM Learning Landscapes, Montana Historical Society, and the National Park Service are also available online.",
-    cta: { label: "Project Archaeology", href: "http://projectarchaeology.org/", external: true },
+      "Copies of the curriculum guide are sold at the Visitor Center during the summer season. Additional resources from Project Archaeology are also available online.",
+    cta: { label: "Project Archaeology", href: "https://projectarchaeology.org/", external: true },
   },
 ];
 
 const resources = [
-  { label: "Project Archaeology", href: "http://projectarchaeology.org/" },
-  {
-    label: "BLM Learning Landscapes",
-    href: "http://www.blm.gov/wo/st/en/res/Education_in_BLM/Learning_Landscapes.html",
-  },
-  {
-    label: "Montana Historical Society — Educators",
-    href: "http://mhs.mt.gov/education/Educators",
-  },
-  {
-    label: "NPS Teaching with Historic Places",
-    href: "http://www.nps.gov/nr/twhp/index.htm",
-  },
+  { label: "Project Archaeology", href: "https://projectarchaeology.org/" },
 ];
 
 function EventRow({ event, index, past = false }: { event: GarnetEvent; index: number; past?: boolean }) {
@@ -152,9 +140,8 @@ export default async function EventsPage() {
               Events at Garnet
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-black/72">
-              Living-history days, guided programs, and community gatherings add voices,
-              demonstrations, and shared activity to buildings that are usually quiet. The
-              calendar stays intentionally focused, so each confirmed event is worth planning around.
+              Living-history days, guided programs, and community gatherings bring Garnet&apos;s
+              buildings and stories to life. Check confirmed dates before planning your trip.
             </p>
           </Reveal>
 
@@ -219,8 +206,8 @@ export default async function EventsPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/80 via-transparent to-transparent" />
             <p className="absolute inset-x-5 bottom-5 z-10 max-w-xl text-sm leading-6 text-white/75 md:inset-x-8 md:bottom-7">
-              Suggested photography position: a ranger-led school visit, family field activity,
-              or students examining details inside the townsite.
+              Garnet&apos;s buildings and surrounding landscape give students physical evidence
+              of how mining families lived, worked, and learned.
             </p>
           </Reveal>
         </div>
@@ -283,8 +270,8 @@ export default async function EventsPage() {
                 Resources for educators
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-black/70">
-                Additional archaeology, history, and cultural heritage materials from the
-                organizations that support sites like Garnet across Montana and the West.
+                Project Archaeology offers classroom materials for investigating historic
+                places through artifacts, buildings, and other evidence.
               </p>
             </div>
             <ul className="divide-y divide-[#0e1c27]/10 border-y border-[#0e1c27]/10">

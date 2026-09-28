@@ -50,7 +50,7 @@ export default async function Home() {
 
       <EventBanner event={homepageEvent} />
 
-      <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-36">
+      <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-28">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
             <div className="lg:sticky lg:top-32">
@@ -58,14 +58,13 @@ export default async function Home() {
                 You can walk into rooms unchanged since 1898.
               </h2>
               <p className="mt-8 max-w-md text-lg leading-8 text-black/72">
-                Not a reconstruction. Not a museum with roped-off displays. Garnet&apos;s
-                hotel, saloons, schoolhouse, and cabins are still where the mining community
-                built them — open to walk through, step inside, and spend time in. Look closely
-                and you will find newspaper insulation, worn thresholds, and rooms arranged for
-                work, meals, school, and long mountain winters.
+                Garnet&apos;s hotel, saloons, schoolhouse, and cabins still stand where the
+                mining community built them. Step inside open buildings and look for newspaper
+                insulation, worn thresholds, and rooms shaped by work, meals, school, and long
+                mountain winters.
               </p>
               <div className="mt-9">
-                <CtaLink href="/history">Read how the town survived</CtaLink>
+                <CtaLink href="/history">Discover Garnet&apos;s story</CtaLink>
               </div>
             </div>
 
@@ -133,7 +132,7 @@ export default async function Home() {
 
               <div className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
                 <CtaLink href="/explore" light>
-                  Explore the town
+                  Explore Garnet
                 </CtaLink>
                 <Link
                   href="/explore#town-map"

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
 
@@ -50,17 +49,17 @@ export default function PreservePage() {
             </div>
           </Reveal>
 
-          <Reveal className="image-reveal relative mt-16 aspect-[4/5] overflow-hidden sm:aspect-[16/9] md:min-h-[24rem]">
+          <Reveal className="image-reveal relative mt-16 aspect-[4/3] overflow-hidden sm:aspect-[16/7]">
             <Image
-              src="/images/garnet-interior.png"
-              alt="Sunlight crossing original timber walls inside a preserved Garnet building"
+              src="/images/historic/university-archive/garnet-ghost-town-storefront-under-restoration-72-0593.webp"
+              alt="Historic Garnet storefront braced with lumber during restoration work"
               fill
               sizes="100vw"
-              className="object-cover object-center sepia-[.18] saturate-[.78] contrast-[1.06]"
+              className="object-cover object-center contrast-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
             <p className="display-type absolute bottom-7 left-7 z-10 max-w-xl text-3xl leading-tight text-white md:bottom-10 md:left-10 md:text-5xl">
-              Original buildings still line the gulch.
+              Preservation happens one board at a time.
             </p>
           </Reveal>
         </div>
@@ -96,27 +95,62 @@ export default function PreservePage() {
       </section>
 
       <section className="px-5 py-20 md:px-10 md:py-28">
-        <Reveal className="mx-auto grid max-w-[82rem] gap-10 border border-black/15 p-7 md:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
+        <Reveal className="mx-auto max-w-[82rem] border border-black/15 p-7 md:p-12">
           <div>
-            <h2 className="display-type text-5xl leading-[0.96] md:text-7xl">
-              Help keep the next roof standing.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-black/72">
-              Memberships and contributions help the Garnet Preservation Association support
-              stabilization, interpretation, education, and the volunteer effort behind the
-              visitor experience. Visit the association&apos;s official site for current projects
-              and ways to participate.
-            </p>
+            <div>
+              <h2 className="display-type text-5xl leading-[0.96] md:text-7xl">
+                Help keep the next roof standing.
+                <span className="block text-[#3d5a3e]">Become a member.</span>
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-black/72">
+                Join hundreds of other Garnet supporters and keep Montana history alive!
+              </p>
+            </div>
           </div>
-          <a
-            href="https://garnetghosttown.org/membership.php"
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-4 bg-[#3d5a3e] px-7 py-4 text-sm font-semibold text-white transition-transform duration-500 hover:-translate-y-1"
-          >
-            Support Garnet
-            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </a>
+
+          <div className="mt-12 grid gap-12 border-t border-black/15 pt-10 lg:grid-cols-[1.15fr_.85fr] lg:gap-20">
+            <div>
+              <h3 className="display-type text-3xl text-[#0e1c27]">Membership benefits include:</h3>
+              <ul className="mt-6 grid gap-4 text-base leading-7 text-black/72">
+                <li className="border-l-2 border-[#d3b350] pl-4">10% off items sold at the Visitor Center.</li>
+                <li className="border-l-2 border-[#d3b350] pl-4">
+                  A quarterly newsletter with the latest restoration work, historical projects,
+                  cabin acquisitions, and more.
+                </li>
+                <li className="border-l-2 border-[#d3b350] pl-4">
+                  Free admission to Garnet on every visit for all Garnet Preservation Association,
+                  Inc. members.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="display-type text-3xl text-[#0e1c27]">Membership options:</h3>
+              <dl className="mt-6 divide-y divide-black/12 border-y border-black/12">
+                {[
+                  ["Individual", "$20.00"],
+                  ["Family", "$30.00"],
+                  ["Sponsor", "$50.00"],
+                  ["Benefactor", "$100.00"],
+                  ["Lifetime", "$500.00"],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex items-center justify-between gap-6 py-3.5">
+                    <dt className="font-semibold text-[#0e1c27]">{name}</dt>
+                    <dd className="text-black/65">{price}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+
+          <p className="mt-10 border-t border-black/15 pt-8 text-sm leading-7 text-black/62">
+            100% of your donation to this 501(c)(3) nonprofit organization goes back into the
+            preservation, interpretation, and stabilization of Garnet.
+          </p>
+          <p className="mt-3 text-sm leading-7 text-black/62">
+            Membership enrollment details will be added here when the current application
+            information is confirmed.
+          </p>
         </Reveal>
       </section>
     </main>

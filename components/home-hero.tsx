@@ -111,8 +111,8 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
               <span className="mt-1 block text-[#e0c46d]">Montana&apos;s past…</span>
             </h1>
             <p className="hero-enter hero-enter-delay-2 mt-6 max-w-2xl text-sm leading-6 text-white/78 md:mt-8 md:text-lg md:leading-7">
-              The ghost town is open year-round and every building has its own
-              story to tell.
+              Walk the streets, enter preserved buildings, and see what remains of
+              Montana&apos;s gold-rush era.
             </p>
             <div className="hero-enter hero-enter-delay-3 mt-6 flex flex-wrap gap-3 md:mt-9 md:gap-4">
               <Link
@@ -126,7 +126,7 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
                 href="/explore"
                 className="group inline-flex items-center gap-4 border border-white/35 px-5 py-3.5 text-sm font-semibold transition-[border,background,transform] hover:-translate-y-1 hover:border-white hover:bg-white/10 md:px-6 md:py-4"
               >
-                Explore the buildings
+                See what you can explore
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
             </div>
