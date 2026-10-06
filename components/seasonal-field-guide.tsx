@@ -54,7 +54,7 @@ const seasons: Season[] = [
     name: "Autumn",
     headline: "Autumn reaches the mountain early.",
     introduction:
-      "Autumn can be one of the most atmospheric times to see Garnet, but the mountain begins changing before the valleys do. Visitor-center hours taper after September.",
+      "Fall weather arrives earlier at Garnet than in the valleys. Visitor Center hours decrease after September. Check the forecast and opening hours before you go.",
     image: "/images/garnet-hero.png",
     imageAlt: "Garnet's historic street beneath the surrounding mountains",
     imageClass: "sepia-[.3] saturate-[.65] contrast-[1.08]",
@@ -65,7 +65,7 @@ const seasons: Season[] = [
       },
       {
         term: "What to bring",
-        description: "Warm layers, water, and food. Fill up in Missoula — there's no fuel within 30 miles of Garnet.",
+        description: "Warm layers, water, and food. Fill up in Missoula. There’s no fuel within 30 miles of Garnet.",
       },
       {
         term: "Before leaving",
@@ -81,7 +81,7 @@ const seasons: Season[] = [
     name: "Winter",
     headline: "Winter visitors travel over snow.",
     introduction:
-      "Once wheeled access ends, Garnet becomes an over-snow trip by snowmobile, cross-country skis, or snowshoes. This is a backcountry visit, not a winter drive.",
+      "Once wheeled access ends, Garnet becomes an over-snow trip by snowmobile, cross-country skis, or snowshoes. You’ll need to plan for backcountry travel.",
     image: "/images/garnet-winter-cabin.png",
     imageAlt: "Illustrative winter scene of a historic cabin surrounded by deep snow",
     imageClass: "saturate-[.72] contrast-[1.08]",

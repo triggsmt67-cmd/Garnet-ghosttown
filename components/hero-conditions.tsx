@@ -27,7 +27,7 @@ export function HeroConditions({ roadReport }: { roadReport?: HeroRoadReport }) 
   return (
     <aside
       aria-label="Current weather and road access"
-      className="grid w-full grid-cols-[.88fr_1.12fr] border-t border-white/20 pt-4 text-[#f8f6f1] lg:block lg:min-w-[19rem] lg:border-t-0 lg:border-l lg:pt-0 lg:pl-5"
+      className="grid w-full grid-cols-[.88fr_1.12fr] border-t border-white/20 pt-4 text-[#f8f6f1] lg:block lg:min-w-0 lg:border-t-0 lg:pt-0"
     >
       <div className="pr-4 lg:pr-0">
         <WeatherCard compact />

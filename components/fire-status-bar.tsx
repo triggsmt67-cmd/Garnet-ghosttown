@@ -24,7 +24,7 @@ export function FireStatusBar({ fire }: { fire: FireStatus }) {
         <span className="text-white/80 uppercase tracking-widest hidden sm:inline">{jurisdiction} fire status</span>
         <span aria-hidden="true" className="hidden h-1.5 w-1.5 rounded-full bg-[#f5d57b] sm:block" />
         <span className={`font-bold text-[13px] sm:text-[15px] drop-shadow-sm uppercase tracking-wide ${isUrgent ? 'text-[#ffcf40]' : 'text-white'}`}>{status}</span>
-        <span className="hidden text-white/70 lg:inline">— Verify the morning you travel</span>
+        <span className="hidden text-white/70 lg:inline">Check the morning you travel</span>
         <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 text-white/70" />
       </a>
     </div>

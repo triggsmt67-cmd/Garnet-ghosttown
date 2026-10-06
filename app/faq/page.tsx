@@ -1,0 +1,37 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { RouteHero } from "@/components/route-hero";
+export const metadata: Metadata = { title: "Common Questions", description: "Answers about visiting Garnet Ghost Town, road access, admission, school tours, and winter cabin rentals." };
+const groups = [
+  {title:"Planning your visit", questions:[
+    {question:"Where is Garnet Ghost Town?", answer:"Garnet is in the Garnet Mountains, about 35 miles east of Missoula, Montana. The final part of the drive is on mountain gravel roads.", href:"/visit",label:"Directions and visitor information"},
+    {question:"When can I visit?",answer:"Garnet can be visited year-round, but winter access is by snowmobile, snowshoes, or cross-country skis. The Visitor Center is generally open from late May through September, depending on weather. Confirm current hours and road conditions before leaving.",href:"https://www.blm.gov/visit/garnet-ghost-town",label:"Current BLM visitor information"},
+    {question:"How much does admission cost?",answer:"The BLM currently lists admission at $10 per person, with free entry for children younger than 16. Check the official BLM page for current fees and pass information.",href:"https://www.blm.gov/visit/garnet-ghost-town",label:"Admission and passes"},
+    {question:"How much time should I allow?",answer:"Allow two or three hours to walk through town, with more time if you plan to hike. You can choose a short visit to the buildings or spend longer exploring the trails.",href:"/explore",label:"Things to do"},
+    {question:"Can I drive an RV or tow a trailer to Garnet?",answer:"The BLM does not recommend trailers or RVs on the steep, narrow Bear Gulch route from Interstate 90. Review the route information and contact the BLM before bringing a large vehicle.",href:"/visit",label:"Plan your route"},
+    {question:"What should I bring?",answer:"Bring water, comfortable walking shoes, and clothing for changing mountain weather. Check road and weather conditions before your trip. For a winter cabin stay, use the full packing list on our rental page.",href:"/cabin-rentals",label:"Winter packing list"},
+  ]},
+  {title:"Exploring Garnet",questions:[
+    {question:"What can I see and do?",answer:"Walk the historic street, visit buildings that are open, and explore the Sierra Mine Loop, Warren Park, or Placer Trail. Nearby public lands offer other outdoor activities. Check maps, access, and current rules before heading out.",href:"/explore",label:"Explore Garnet"},
+    {question:"Where can I read the stories about Garnet’s residents?",answer:"Our history timeline brings together stories about the people, families, and places that shaped Garnet. The About Garnet page provides an overview of the town’s mining years and preservation.",href:"/history",label:"History Timeline & Stories"},
+    {question:"Can I take home an old object I find?",answer:"Leave historic objects where you find them. They help tell Garnet’s story and should remain for other visitors to see. Look closely, take photos, and let staff know if you notice damage or a hazard."},
+    {question:"Can I camp at Garnet?",answer:"Camping is not allowed within half a mile of the townsite. Ask the BLM Missoula Field Office about eligible nearby public land, current stay limits, and fire restrictions before choosing a campsite.",href:"/explore#nearby",label:"Nearby activities"},
+  ]},
+  {title:"Tours and overnight stays",questions:[
+    {question:"Are school tours available?",answer:"School tours are free and usually available from late May through mid-September, weather permitting. Choose a town tour of about one hour or a Sierra Mine walk of about one mile. Contact the BLM to schedule.",href:"/events",label:"School tours and education"},
+    {question:"Is transportation help available for school groups?",answer:"The Garnet Preservation Association offers grants to help with transportation costs. The Education & Events page has the application and BLM contact details.",href:"/events",label:"Transportation grant information"},
+    {question:"Can I stay overnight in a cabin?",answer:"The BLM rents the Dahl and McDonald cabins during winter. These are primitive stays with wood heat and propane lighting, without electricity or indoor plumbing. Our rental page explains reservations, cabin capacities, and what to bring.",href:"/cabin-rentals",label:"Winter cabin rentals"},
+  ]},
+  {title:"Helping preserve Garnet",questions:[
+    {question:"How can I help?",answer:"Learn about membership, volunteering, and preservation through the Garnet Preservation Association. The ghost town license plate is another way to support work at Garnet and other Montana ghost towns.",href:"/preserve",label:"Ways to get involved"},
+    {question:"How do I get the ghost town license plate?",answer:"Request the Explore Montana Ghost Towns plate at a Montana County Treasurer Motor Vehicle Office. Our license plate page explains the donation, fees, and where to find your county office.",href:"/license-plate",label:"License plate information"},
+  ]},
+];
+export default function FaqPage(){return <main id="main-content">
+  <RouteHero eyebrow="Plan your visit" title="Common questions" intro="Find the basics before you head to Garnet, from road access and admission to school tours and winter stays." image="/images/garnet-boardwalk.webp" imageAlt="Wooden boardwalk and historic buildings at Garnet" />
+  <section className="bg-[#f4f0e7] px-5 py-12 text-[#24352b] md:px-10 md:py-16"><div className="mx-auto max-w-[82rem]">
+    <nav aria-label="Question topics" className="mb-10 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-[#3d5a3e]">{groups.map((group,i)=><a key={group.title} href={`#topic-${i+1}`} className="underline underline-offset-4">{group.title}</a>)}</nav>
+    {groups.map((group,i)=><section key={group.title} id={`topic-${i+1}`} className="scroll-mt-36 grid gap-6 border-t border-[#24352b]/20 py-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-16"><h2 className="display-type text-3xl md:text-4xl">{group.title}</h2><div className="divide-y divide-[#24352b]/15">{group.questions.map(item=><details key={item.question} className="group py-5"><summary className="flex cursor-pointer list-none items-start justify-between gap-5 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-4"><span>{item.question}</span><span aria-hidden="true" className="text-[#98613d]"><span className="group-open:hidden">+</span><span className="hidden group-open:inline">−</span></span></summary><div className="mt-4 max-w-2xl text-base leading-8 text-[#625b50]"><p>{item.answer}</p>{"href" in item && <Link href={item.href!} className="mt-3 inline-block font-semibold text-[#3d5a3e] underline underline-offset-4">{item.label} →</Link>}</div></details>)}</div></section>)}
+    <aside className="mt-6 border-l-4 border-[#a36b43] bg-[#e9e1d1] p-6"><h2 className="display-type text-2xl">Still have a question?</h2><p className="mt-3 leading-7">Contact the BLM Missoula Field Office for current access, visitor services, and rental information.</p><div className="mt-4 flex flex-wrap gap-5 font-semibold"><a href="tel:4063293914" className="underline underline-offset-4">406.329.3914</a><a href="mailto:BLM_MT_Missoula_FO@blm.gov" className="break-all underline underline-offset-4">BLM_MT_Missoula_FO@blm.gov</a></div></aside>
+  </div></section>
+</main>}

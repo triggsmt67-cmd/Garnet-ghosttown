@@ -113,7 +113,7 @@ export function WeatherCard({ compact = false }: { compact?: boolean }) {
           </>
         ) : (
           <p className="mt-2 text-xs text-white/72">
-            {failed ? "Weather unavailable—check before leaving." : "Reading mountain weather…"}
+            {failed ? "Weather unavailable. Check before leaving." : "Reading mountain weather…"}
           </p>
         )}
       </div>

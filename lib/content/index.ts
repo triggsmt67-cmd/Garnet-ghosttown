@@ -1,4 +1,5 @@
 import "server-only";
+import { getVisitorUpdates } from "./updates";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
 import { getMockEvents, getMockVisitorStatus, mockStories } from "./mock";
@@ -26,6 +27,8 @@ export * from "./time";
 /** Cache tags. The WordPress webhook sends these to /api/revalidate. */
 export const CONTENT_TAGS = {
   events: "events",
+  visitorUpdates: "visitor-updates",
+  boardMembers: "board-members",
   visitorStatus: "visitor-status",
   stories: "stories",
 } as const;
@@ -171,6 +174,9 @@ export function toRoadReport(status: VisitorStatus | null, now = new Date()): Ro
 }
 
 export async function getRoadReport(): Promise<RoadReport> {
+  const { updates } = await getVisitorUpdates();
+  const road = updates.find(item => item.category === "road" && !item.sample);
+  if (road) return { status: road.stale ? "Road report needs confirmation" : road.title, note: road.stale ? `Call the BLM · ${BLM_PHONE_DISPLAY}` : road.summary, updatedLabel: road.verifiedAt ? `Last checked ${formatShortDate(road.verifiedAt)}` : "Last checked date unavailable", href: `/updates#update-${road.id}`, tone: "caution", needsConfirmation: road.stale };
   const { data } = await getVisitorStatus();
   return toRoadReport(data);
 }

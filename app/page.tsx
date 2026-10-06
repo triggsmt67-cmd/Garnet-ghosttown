@@ -1,3 +1,5 @@
+import { getVisitorUpdates } from "@/lib/content/updates";
+import { formatEventDate } from "@/lib/content/time";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
@@ -31,6 +33,8 @@ const placeSchema = {
 
 export default async function Home() {
   const [{ data: events }, roadReport] = await Promise.all([getEvents(), getRoadReport()]);
+  const { updates } = await getVisitorUpdates();
+  const featuredUpdate = updates.find(item => item.featured && item.category !== "meeting" && (!item.stale || item.sample));
   const homepageEvent = pickHomepageEvent(events);
 
   return (
@@ -47,14 +51,15 @@ export default async function Home() {
       )}
 
       <HomeHero roadReport={roadReport} />
+      <aside aria-label="Current visitor updates" className="border-b border-[#24352b]/15 bg-[#e9e1d1] px-5 py-6 md:px-10"><div className="mx-auto flex max-w-[82rem] flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-semibold tracking-wider text-[#98613d] uppercase">{featuredUpdate?.sample ? "Current updates · Sample content" : "Current updates"}</p><p className="mt-2 max-w-3xl leading-7 text-[#24352b]">{featuredUpdate ? featuredUpdate.summary : "Check road and snow reports, visitor alerts, and announcements before your trip."}</p>{featuredUpdate?.verifiedAt && <p className="mt-2 text-xs text-[#625b50]">Last checked {formatEventDate(featuredUpdate.verifiedAt)}</p>}</div><Link href={featuredUpdate ? `/updates#update-${featuredUpdate.id}` : "/updates"} className="shrink-0 self-start border-b border-[#3d5a3e] pb-2 font-semibold text-[#24352b] md:self-center">View current updates →</Link></div></aside>
 
       <EventBanner event={homepageEvent} />
 
-      <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-28">
+      <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-24">
+          <Reveal className="grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">
             <div className="lg:sticky lg:top-32">
-              <h2 className="display-type text-[clamp(2.5rem,7vw,6rem)] leading-[.92] tracking-[-0.04em]">
+              <h2 className="display-type leading-[.92] tracking-[-0.04em] section-heading">
                 You can walk into rooms unchanged since 1898.
               </h2>
               <p className="mt-8 max-w-md text-lg leading-8 text-black/72">
@@ -69,7 +74,7 @@ export default async function Home() {
             </div>
 
             <div>
-              <div className="image-reveal relative aspect-[4/5] overflow-hidden bg-[#0e1c27]">
+              <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0e1c27]">
                 <Image
                   src="/images/garnet-interior.png"
                   alt="Sunlight crossing the preserved wooden interior of a Garnet building"
@@ -79,24 +84,24 @@ export default async function Home() {
                   className="object-cover sepia-[.32] saturate-[.72] contrast-[1.08]"
                 />
               </div>
-              <p className="mt-4 max-w-lg text-sm leading-6 text-black/65">
-                Inside the Wells Hotel, the dining room, guest rooms, worn wood, and surviving
-                finishes make the scale of daily life easier to understand than a display case could.
+              <p className="archive-caption max-w-lg text-black/65">
+                The Wells Hotel’s dining room, guest rooms, and worn wood help you picture
+                everyday life in Garnet.
               </p>
             </div>
           </Reveal>
 
-          <Reveal className="mx-auto mt-24 max-w-5xl border-t border-[#0e1c27]/25 pt-16 text-center md:mt-32 md:pt-24 pb-12">
-            <p className="display-type italic text-[clamp(2.1rem,4.2vw,3.8rem)] leading-[1.05] tracking-tight text-[#18202a]">
-              “In <span className="text-[#3d5a3e]">1898</span>, nearly <span className="text-[#3d5a3e]">1,000</span> people lived here. They built hotels, stores, a
-              school, and thirteen saloons before the mines slowed and families left.”
+          <Reveal className="mx-auto mt-12 max-w-4xl border-t border-[#0e1c27]/25 pt-8 text-center md:mt-16 md:pt-10 pb-4">
+            <p className="display-type italic text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.05] tracking-tight text-[#18202a]">
+              In <span className="text-[#3d5a3e]">1898</span>, nearly <span className="text-[#3d5a3e]">1,000</span> people lived here. They built hotels, stores, a
+              school, and thirteen saloons before the mines slowed and families left.
             </p>
           </Reveal>
         </div>
       </section>
 
       <section className="paper-grain overflow-hidden bg-[#0e1c27] text-[#f8f6f1]">
-        <div className="mx-auto grid max-w-[90rem] lg:min-h-[52rem] lg:grid-cols-[1.08fr_.92fr]">
+        <div className="mx-auto grid max-w-[90rem] lg:min-h-[38rem] lg:grid-cols-[1.08fr_.92fr]">
           <Reveal className="relative min-h-[24rem] sm:min-h-[34rem] lg:min-h-full">
             <Image
               src="/images/Garnet_Boardwalk1.webp"
@@ -115,7 +120,7 @@ export default async function Home() {
 
           <div className="flex items-center px-5 py-16 md:px-14 lg:px-16 xl:px-20">
             <Reveal>
-              <h2 className="display-type text-4xl leading-[.96] tracking-[-0.035em] md:text-7xl">
+              <h2 className="display-type leading-[.96] tracking-[-0.035em] section-heading">
                 Spend the first hour on Main Street.
               </h2>
               <p className="mt-8 max-w-lg text-lg leading-8 text-white/78">
@@ -124,10 +129,9 @@ export default async function Home() {
                 still hold the shape of work, meals, sleep, and celebration.
               </p>
               <p className="mt-5 max-w-lg leading-8 text-white/72">
-                When the buildings begin to make sense, follow one of the mining trails
-                into the forest. Most are under two miles and require no permit — but the
-                terrain is uneven and the landscape explains exactly why the town was built
-                here, and why getting here still feels remote.
+                After exploring the buildings, follow a mining trail into the forest.
+                Most are under two miles and require no permit. Expect uneven ground.
+                The trails offer a closer look at the mountain setting that drew miners here.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
@@ -148,11 +152,11 @@ export default async function Home() {
 
       <section
         id="conditions"
-        className="scroll-mt-28 overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-32"
+        className="scroll-mt-28 overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-20"
       >
         <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end lg:gap-24">
-            <h2 className="display-type text-4xl leading-[.97] tracking-[-0.035em] md:text-7xl">
+          <Reveal className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end lg:gap-16">
+            <h2 className="display-type leading-[.97] tracking-[-0.035em] section-heading">
               Make the last decisions while you still have service.
             </h2>
             <p className="max-w-xl text-lg leading-8 text-black/72 lg:pb-2">

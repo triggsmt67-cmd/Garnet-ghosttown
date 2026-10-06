@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Compass } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
@@ -68,12 +69,12 @@ export default async function VisitPage() {
       {/* At-a-Glance Fast Facts */}
       <section className="px-5 py-16 md:px-10 md:py-24">
         <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-24">
+          <Reveal className="grid gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
             <div>
               <span className="text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#3d5a3e]">
                 Trip Essentials
               </span>
-              <h2 className="display-type mt-2 text-4xl leading-[1.02] font-normal md:text-5xl">
+              <h2 className="display-type mt-2 leading-[1.02] font-normal section-heading">
                 Know before you make the trip.
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-black/72">
@@ -116,13 +117,13 @@ export default async function VisitPage() {
       </section>
 
       {/* Expandable Comprehensive Visitor Guide */}
-      <section className="paper-grain bg-[#0e1c27] px-5 py-20 text-[#f8f6f1] md:px-10 md:py-28">
+      <section className="paper-grain bg-[#0e1c27] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal>
             <span className="text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#e0c46d]">
               Interactive Field Guide
             </span>
-            <h2 className="display-type mt-2 max-w-4xl text-5xl leading-[0.95] md:text-7xl">
+            <h2 className="display-type mt-2 max-w-4xl leading-[0.95] section-heading">
               The Garnet Field Guide.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
@@ -137,7 +138,7 @@ export default async function VisitPage() {
         </div>
       </section>
 
-      <section className="px-5 py-20 md:px-10 md:py-28">
+      <section className="px-5 py-14 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal>
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -145,7 +146,7 @@ export default async function VisitPage() {
                 <span className="text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#3d5a3e]">
                   Field Readiness
                 </span>
-                <h2 className="display-type mt-2 text-5xl leading-[0.95] font-normal md:text-7xl">
+                <h2 className="display-type mt-2 leading-[0.95] font-normal section-heading">
                   Pack for a high-elevation day.
                 </h2>
               </div>
@@ -211,6 +212,8 @@ export default async function VisitPage() {
           </a>
         </div>
       </section>
+      <section className="bg-[#e9e1d1] px-5 py-10 md:px-10"><div className="mx-auto max-w-[82rem]"><h2 className="display-type text-3xl">Planning an overnight winter trip?</h2><Link href="/cabin-rentals" className="mt-5 inline-block border-b border-[#98613d] pb-2 font-semibold">See winter cabin rental information →</Link></div></section>
+    <aside className="bg-[#f4f0e7] px-5 py-8 text-center"><Link href="/updates" className="font-semibold underline underline-offset-4">Check current updates before your trip →</Link></aside>
     </main>
   );
 }

@@ -76,3 +76,11 @@ Verification email sent (Trevor has the text). Open items:
   scratch copy (don't commit that).
 - `lib/content/mock-stories.ts` is the source for `story-paste-sheet.md` and
   `garnet-stories-import.xml`; regenerate both if the stories change.
+
+## October 6 design follow-up
+
+- Timeline compacted with muted era accents and optional WordPress Main Photo thumbnails.
+- Supporting headings, section spacing, archive captions, and contextual page endings refined.
+- **Town map deferred at Trevor's request:** Trevor will supply a real image of the town. Use that image as the base for clickable building hotspots; preserve the existing building destinations and notes. Leave the current map in place until the image is supplied.
+- Local archive contains 13 historic WebP images in `public/images/historic/university-archive/`. Archive numbers are references, not dates.
+- Backend follow-ups remain: mock/test event content, unavailable Road Report field, and confirmed membership enrollment destination. No backend records were changed during the design pass.

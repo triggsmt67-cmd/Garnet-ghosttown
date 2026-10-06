@@ -50,6 +50,8 @@ function garnet_tags_for_post_type( $post_type ) {
 	$map = array(
 		'event'        => array( 'events' ),
 		'garnet_story' => array( 'stories' ),
+        'garnet_board_member' => array( 'board-members' ),
+        'garnet_update' => array( 'visitor-updates' ),
 	);
 	return $map[ $post_type ] ?? null;
 }

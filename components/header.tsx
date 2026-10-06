@@ -10,9 +10,15 @@ import { FireStatusBar } from "./fire-status-bar";
 const links = [
   { href: "/visit", label: "Plan Your Visit" },
   { href: "/explore", label: "Explore" },
-  { href: "/history", label: "Step into History" },
+  { href: "/about", label: "About Garnet" },
   { href: "/events", label: "Education & Events" },
-  { href: "/preserve", label: "Get Involved" },
+
+];
+
+const involvementLinks = [
+  { href: "/preserve", label: "Preservation & volunteering" },
+  { href: "/board", label: "Board members" },
+  { href: "/license-plate", label: "Ghost town license plate" },
 ];
 
 export function Header({ fire }: { fire: FireStatus }) {
@@ -50,9 +56,15 @@ export function Header({ fire }: { fire: FireStatus }) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-5 lg:gap-6 xl:flex" aria-label="Main navigation">
             {links.map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              if (link.href === "/visit" || link.href === "/about") return (
+                <details key={link.href} className="relative" onKeyDown={event => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
+                  <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${active || (link.href === "/visit" ? ["/cabin-rentals", "/faq", "/updates"].includes(pathname) : pathname === "/history") ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
+                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/cabin-rentals",label:"Winter cabin rentals"},{href:"/faq",label:"Common questions"},{href:"/updates",label:"Current updates"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History timeline & stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
+                </details>
+              );
               return (
                 <Link
                   key={link.href}
@@ -70,6 +82,12 @@ export function Header({ fire }: { fire: FireStatus }) {
                 </Link>
               );
             })}
+            <details className="group relative" onKeyDown={(event) => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
+              <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${involvementLinks.some(link => pathname === link.href) ? "text-[#e0c46d]" : "text-white/75"}`}>Get Involved <span aria-hidden="true">⌄</span></summary>
+              <div className="absolute right-0 top-full mt-5 w-72 border border-white/15 bg-[#0d1218] p-2 shadow-xl">
+                {involvementLinks.map(link => <Link key={link.href} href={link.href} onClick={event => { const disclosure = event.currentTarget.closest("details"); if (disclosure) disclosure.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10" aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
+              </div>
+            </details>
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
               target="_blank"
@@ -82,7 +100,7 @@ export function Header({ fire }: { fire: FireStatus }) {
           </nav>
 
           <button
-            className="relative grid h-11 w-11 place-items-center text-[#f8f6f1] md:hidden"
+            className="relative grid h-11 w-11 place-items-center text-[#f8f6f1] xl:hidden"
             type="button"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -103,14 +121,14 @@ export function Header({ fire }: { fire: FireStatus }) {
         id="mobile-menu"
         aria-hidden={!open}
         inert={!open}
-        className={`grid overflow-hidden bg-[#0d1218] transition-[grid-template-rows] duration-500 md:hidden ${
+        className={`grid max-h-[calc(100dvh-8rem)] overflow-y-auto bg-[#0d1218] transition-[grid-template-rows] duration-500 xl:hidden ${
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <nav className="min-h-0" aria-label="Mobile navigation">
           <div className="space-y-1 px-5 pt-8 pb-6">
             {links.map((link) => (
-              <Link
+              <div key={link.href}><Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
@@ -118,8 +136,12 @@ export function Header({ fire }: { fire: FireStatus }) {
               >
                 <span>{link.label}</span>
                 <ArrowUpRight className="h-5 w-5 text-white/65" />
-              </Link>
+              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History timeline & stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}</div>
             ))}
+            <details className="border-b border-white/10 py-4 text-[#f8f6f1]">
+              <summary className="display-type cursor-pointer text-3xl">Get Involved</summary>
+              <div className="mt-3 grid gap-1">{involvementLinks.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="py-3 pl-3 text-base text-white/80">{link.label}</Link>)}</div>
+            </details>
           </div>
         </nav>
       </div>

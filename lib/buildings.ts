@@ -26,10 +26,10 @@ export const buildings: Building[] = [
     type: "Hotel & gathering place",
     era: "Gold-boom years",
     summary:
-      "The hotel is one of the clearest places to picture Garnet as a working town rather than a collection of empty cabins.",
+      "The Wells Hotel housed travelers and mine workers during Garnet’s busy years.",
     story: [
       "Travelers, mine workers, and salesmen needed rooms, meals, and a place to exchange news. Garnet supported several hotels during its busiest years, and the Wells became one of the town’s defining commercial buildings.",
-      "Its scale makes the speed of the boom tangible. A remote gulch that had been thinly settled soon needed a substantial hotel, dining space, and beds for people arriving to work or do business.",
+      "As Garnet grew, more people needed rooms and meals. The hotel served workers, travelers, and people visiting on business.",
     ],
     lookFor:
       "Pause at the dining area and compare its generous public rooms with the much smaller miners’ cabins uphill.",
@@ -48,7 +48,7 @@ export const buildings: Building[] = [
       "Kelly’s predates Garnet’s 1898 peak and survived long enough to become one of the town’s most familiar landmarks.",
     story: [
       "At Garnet’s height, thirteen saloons served a population of roughly 1,000. They were places to drink, certainly, but also places to hear news, find company, and pass a winter evening.",
-      "Kelly’s is often attached to Garnet’s ghost stories. The documented history is compelling on its own: a two-story commercial building that outlasted the rush that made it busy.",
+      "Kelly’s appears in many of Garnet’s ghost stories. The two-story saloon also has a long history as a business that stayed open after the mining boom.",
     ],
     lookFor:
       "Notice the false front and the building’s position along the commercial street, close to the hotel and stores.",
@@ -66,8 +66,8 @@ export const buildings: Building[] = [
     summary:
       "Davey’s shelves supplied more than groceries. The firm handled general merchandise, building materials, and farm implements.",
     story: [
-      "A mining town could not run on ore alone. Stores connected Garnet to wholesalers and rail towns, bringing in food, household goods, tools, and the materials needed to keep businesses and cabins working.",
-      "The surviving Davey Mercantile records include invoices, letters, checks, and ledgers. They offer an unusually practical record of what people bought and how an isolated town stayed supplied.",
+      "Stores brought food, household goods, tools, and building supplies into Garnet from wholesalers and towns along the railroad.",
+      "The surviving Davey Mercantile records include invoices, letters, checks, and ledgers. They show what people bought and how supplies reached the town.",
     ],
     lookFor:
       "Think about the trip behind every item on the shelf: rail or wagon to the valley, then the long climb into Garnet.",
@@ -82,7 +82,7 @@ export const buildings: Building[] = [
     type: "One-room school",
     era: "Current building: 1937–38",
     summary:
-      "The schoolhouse is evidence that Garnet was home to families, not only miners passing through for a season.",
+      "Children from Garnet’s families attended school here.",
     story: [
       "Garnet opened its first school during the 1890s boom. The one-room building standing today came later, in 1937–38, during a smaller revival of mining activity.",
       "Attendance rose and fell with the mines. Oral histories preserved by the University of Montana record children skiing in winter, playing through the summer, and attending school in this remote town.",
@@ -102,7 +102,7 @@ export const buildings: Building[] = [
     summary:
       "A family cabin during Garnet’s later years, the Dahl now gives winter visitors a rare overnight stay inside the townsite.",
     story: [
-      "The Dahl belongs to Garnet’s later chapter, when higher gold prices brought limited mining activity back to the mountains. Its small rooms show how spare daily life remained.",
+      "The Dahl belongs to Garnet’s later chapter, when higher gold prices brought limited mining activity back to the mountains. Its small rooms give visitors a look at the homes of that time.",
       "Today the BLM rents the primitive cabin from December through April. It sleeps up to six, uses wood heat and propane light, and has no electricity or indoor plumbing.",
     ],
     lookFor:

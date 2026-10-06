@@ -6,7 +6,7 @@ import type { GarnetStory } from "./types";
 
 const p = (...paragraphs: string[]) => paragraphs.map((t) => `<p>${t}</p>`).join("\n");
 const excerpt = (cite: string, ...paragraphs: string[]) =>
-  `<blockquote>${p(...paragraphs)}</blockquote>\n<p class="excerpt-cite">— ${cite}</p>`;
+  `<blockquote>${p(...paragraphs)}</blockquote>\n<p class="excerpt-cite">Source: ${cite}</p>`;
 const h3 = (text: string) => `<h3>${text}</h3>`;
 
 const BLM_ROAD_TO_GARNET =
@@ -40,7 +40,7 @@ export const mockStories: GarnetStory[] = [
     timeFrame: "1895",
     startYear: 1895,
     leadIn:
-      "Philip Neuman’s story is one of love, craftsmanship, and heartbreak, and the unfinished house he left behind became known as Garnet’s “Gingerbread House.”",
+      "Philip Neuman owned a sawmill near Garnet and built the unfinished home known as the “Gingerbread House.”",
     bodyHtml: p(
       "Philip Neuman was born in Buffalo, New York, in 1864 and arrived in the Garnet area in his early thirties. He owned a large steam-powered sawmill on Anderson Hill, near Garnet, that supplied lumber for the town’s buildings, mines, and mills.",
       "Philip fell in love with a woman from a red-light district and set out to build her a home. Townsfolk called it the “Gingerbread House.” No detail of its design or construction was too small. He hauled a piano up the steep grade and bought a new Majestic range from the Missoula Mercantile so his bride would have every luxury.",
@@ -80,7 +80,7 @@ export const mockStories: GarnetStory[] = [
     timeFrame: "1898",
     startYear: 1898,
     leadIn:
-      "A life defined by perseverance, community, and the thrill of discovery: Edward Warren went from a struggling Butte salesman to one of Garnet’s most cherished miners and residents.",
+      "Edward Warren worked as a salesman in Butte before moving to Garnet, where he became a miner and longtime resident.",
     bodyHtml: [
       p(
         "Edward Brook Warren was born on February 2, 1861, in Ontario, Canada, and came to the United States in 1882. He settled in Butte, married, and ran a boarding house with his wife. After a divorce, he moved to Garnet.",

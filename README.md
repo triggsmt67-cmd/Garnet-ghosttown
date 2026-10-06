@@ -3,6 +3,54 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
+## Work checkpoint: October 6, 2026
+
+Start here when returning to the project. The current work is on `wp-data-layer`.
+The client preview is https://garnet-ghosttown-gdro.vercel.app/ and the Git repository
+is https://github.com/triggsmt67-cmd/Garnet-ghosttown.
+
+### Where we stopped
+
+- Refined the home hero, navigation, page endings, historic imagery, captions,
+  and public-facing copy. The home hero no longer uses the scrolling transition.
+- Made the vertical history timeline more compact, with era colors and support
+  for WordPress image thumbnails. Preserve the client's WordPress story copy.
+- Added About Garnet, Board Members, Winter Cabin Rentals, License Plate,
+  Common Questions, and Current Updates pages, with links in the navigation.
+- Expanded school-tour information and Explore activities with optional
+  Read more sections and supporting images.
+- Set up WordPress/GraphQL board profiles and visitor updates. Five clearly
+  labeled sample updates are published in local WordPress, with a committed
+  snapshot so the Vercel preview can show them without reaching the local CMS.
+
+### When we reopen
+
+1. Open the Garnet CMS site in Local and start it. Run `npm run dev` in this
+   checkout and open http://localhost:3000/. Install dependencies with
+   `npm install` only if needed. Check the branch and working tree before editing.
+2. Review the client preview and collect the final board names, roles, biographies,
+   portraits, timeline images, and any requested image replacements.
+3. Connect a publicly reachable hosted WordPress GraphQL endpoint for launch.
+   Install the board, updates, and revalidation MU plugins from `wordpress/mu-plugins/`,
+   plus the required ACF and WPGraphQL plugins. Configure the GraphQL URL and
+   revalidation settings for the hosted environments; do not commit secrets.
+4. Replace and unpublish demo updates before public launch. Add verified road,
+   access, snow, fire, event, and meeting information with accurate last-checked
+   dates. Get the board's approved wording for the land-sale scam notice.
+5. Test publishing, editing, unpublishing, expiration, homepage features, and
+   cache invalidation against the hosted CMS. Confirm the road-report fallback
+   schema: local WordPress currently lacks the legacy `garnetVisitorStatus` field.
+6. Reconfirm current cabin reservation procedures, lottery dates, fees, school-tour
+   arrangements, and visitor rules with BLM before treating this as a live guide.
+7. Return to the interactive town map after Trevor supplies a real town image.
+   Plan clickable buildings on that image. This map update is intentionally deferred.
+8. Check desktop and mobile layouts, navigation, image crops, links, and the
+   deployed pages. Run `npm run lint`, `npx tsc --noEmit`, and `npm run build`
+   before the next release. More integration details are below and in `docs/HANDOFF.md`.
+
+The frontend preview can run without hosted WordPress. Local WordPress content
+and installed plugins are separate from Git and are not uploaded by a Git push.
+
 ## Local development
 
 ```bash
@@ -10,7 +58,7 @@ npm install
 npm run dev
 ```
 
-The current local preview runs at `http://localhost:3002/`.
+The current local preview runs at `http://localhost:3000/` (use the port printed by Next.js if that port is occupied).
 
 Validation commands:
 
@@ -363,6 +411,8 @@ Archive scans from the university collection available for historical stories an
 - **Story Main Photo (`mainPhoto` on `/stories/[slug]` and History timeline):**
   - **Size:** `1920 × 1080 px` (16:9 landscape)
   - Displayed in a full-width header banner on each story page, and automatically thumbnailed on the History page.
+  - The timeline reads `storyDetails.mainPhoto.node` through WPGraphQL (URL, alt text, and dimensions); editors assign the existing **Main Photo** field on the story. No separate thumbnail field is needed.
+  - Timeline thumbnails use a centered square crop (64 px on mobile, 96 px on desktop). Choose a photo whose subject remains clear in the center. Stories without a Main Photo display as text rows without an empty image placeholder.
 - **Event Featured Image (`featuredImage` on `/events`):**
   - **Size:** `1600 × 900 px` (16:9 landscape)
 
@@ -376,3 +426,54 @@ Archive scans from the university collection available for historical stories an
 
 
 
+
+## Board members
+
+`/board` loads published Board Members through WPGraphQL. Install
+`wordpress/mu-plugins/garnet-board-members.php` in the hosted WordPress
+`wp-content/mu-plugins/` directory (already installed in local Garnet CMS).
+Requires WPGraphQL, ACF, and WPGraphQL for ACF.
+
+In WordPress, open **Board Members → Add Board Member**. Use the title for
+the name, Featured Image for the portrait, and Board Profile fields for the
+role, short biography, and display order. Publish to show the member. Lower
+display orders appear first. Three clearly labeled placeholder profiles appear
+only while there are no published members. Update the frontend sync plugin
+with the version in this repository to invalidate the `board-members` cache
+after changes; normal cache refresh is also available every five minutes.
+
+`/license-plate` contains the supplied plate illustration, donation split, and
+county treasurer purchase guidance. Fees link to the official Montana MVD page.
+The future clickable map using a supplied real town image remains deferred.
+
+## Client-maintained information center
+
+`/updates` reads the Current Updates post type through WPGraphQL. Install
+`wordpress/mu-plugins/garnet-updates.php` on hosted WordPress; it is installed locally.
+Requires ACF, WPGraphQL, and WPGraphQL for ACF. Use **Current Updates → Add Update**.
+Choose a category, enter a title and short summary, and enter the date the facts
+were last confirmed in Mountain Time. Full copy, expiration, source/map/minutes URL,
+meeting date, and home-page feature are optional. Upload documents in Media and
+paste their URLs. Publish when ready; drafts stay private. Local preview samples are clearly labeled; see below.
+
+Expired records stay in WordPress but disappear publicly. Unconfirmed or more than
+seven-day-old road/snow/grooming/access/fire reports display a confirmation notice.
+The most recent road update feeds the existing home hero road report; legacy road
+fields remain a fallback. The newest fresh home-featured visitor update appears
+in the home-page strip. Official fire status remains independently sourced.
+Install the updated frontend-sync plugin for save/unpublish cache invalidation;
+normal update refresh is 60 seconds. Include a board-approved response for the
+land-sale scam before publishing that category. Meeting minutes are public only
+when linked in a published update; avoid private records.
+
+### Information center preview samples
+
+Five labeled sample updates are published in local WordPress. `is_sample` is an
+editor field: sample road reports never feed the home hero's road status.
+`lib/content/sample-updates.json` is a snapshot exported from those WordPress
+records. It is used when no WordPress endpoint is configured, or in production
+when the configured hostname ends in `.local` (Vercel cannot reach Local WP).
+A public configured CMS always uses its published records; no snapshot replaces
+an unavailable public CMS. Before launch, connect the hosted CMS, install the
+updated plugin, and unpublish the sample records. Local edits appear locally;
+refresh the snapshot if you want those edits in a Vercel preview without a hosted CMS.

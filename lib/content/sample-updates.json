@@ -1,0 +1,97 @@
+[
+  {
+    "databaseId": 9116,
+    "title": "Sample: Association meeting",
+    "modifiedGmt": "2026-10-06T18:47:23",
+    "updateDetails": {
+      "category": [
+        "meeting"
+      ],
+      "summary": "This sample shows where meeting dates, agenda details, and minutes will be published. No meeting is scheduled by this example.",
+      "details": "A real meeting notice can include the date, time, location, and attendance information. Afterward, editors can link approved minutes uploaded to WordPress Media.",
+      "verifiedAt": "2026-10-06T12:47:23+00:00",
+      "expiresAt": null,
+      "resourceUrl": null,
+      "resourceLabel": null,
+      "meetingAt": null,
+      "featureOnHomepage": false,
+      "isSample": true
+    }
+  },
+  {
+    "databaseId": 9115,
+    "title": "Sample: Seasonal news",
+    "modifiedGmt": "2026-10-06T18:47:23",
+    "updateDetails": {
+      "category": [
+        "seasonal"
+      ],
+      "summary": "This is where the association can share beargrass observations and other seasonal news.",
+      "details": "Editors can describe what visitors may see and where. This example makes no claim about current blooms or conditions.",
+      "verifiedAt": "2026-10-06T12:47:23+00:00",
+      "expiresAt": null,
+      "resourceUrl": null,
+      "resourceLabel": null,
+      "meetingAt": null,
+      "featureOnHomepage": false,
+      "isSample": true
+    }
+  },
+  {
+    "databaseId": 9114,
+    "title": "Sample: Trail grooming update",
+    "modifiedGmt": "2026-10-06T18:47:23",
+    "updateDetails": {
+      "category": [
+        "grooming"
+      ],
+      "summary": "Example grooming update only. No trail conditions or grooming schedule are confirmed by this sample.",
+      "details": "A real update could name the trails groomed, the date of the work, and areas visitors should avoid. A trail map link can be added below.",
+      "verifiedAt": "2026-10-06T12:47:23+00:00",
+      "expiresAt": null,
+      "resourceUrl": null,
+      "resourceLabel": null,
+      "meetingAt": null,
+      "featureOnHomepage": false,
+      "isSample": true
+    }
+  },
+  {
+    "databaseId": 9113,
+    "title": "Sample: Road report",
+    "modifiedGmt": "2026-10-06T18:47:23",
+    "updateDetails": {
+      "category": [
+        "road"
+      ],
+      "summary": "Example road report only. This does not describe current road conditions. Call the BLM before traveling.",
+      "details": "A real road report could explain the affected route, what visitors should expect, and when staff last checked it.",
+      "verifiedAt": "2026-10-06T12:47:23+00:00",
+      "expiresAt": null,
+      "resourceUrl": null,
+      "resourceLabel": null,
+      "meetingAt": null,
+      "featureOnHomepage": false,
+      "isSample": true
+    }
+  },
+  {
+    "databaseId": 9112,
+    "title": "Sample: Visitor information center",
+    "modifiedGmt": "2026-10-06T18:47:23",
+    "updateDetails": {
+      "category": [
+        "announcement"
+      ],
+      "summary": "This is an example of a client-written announcement. Road reports, trail updates, and public notices will appear here when the association publishes them.",
+      "details": "This sample shows how a longer announcement will look. Editors can add a short summary for the home page and more detail here.\n\nThis is demonstration content, not a current visitor notice.",
+      "verifiedAt": "2026-10-06T12:47:23+00:00",
+      "expiresAt": null,
+      "resourceUrl": null,
+      "resourceLabel": null,
+      "meetingAt": null,
+      "featureOnHomepage": true,
+      "isSample": true
+    }
+  }
+]

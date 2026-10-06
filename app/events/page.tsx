@@ -24,29 +24,28 @@ const educationPrograms = [
   {
     title: "School Tours",
     eyebrow: "Grades K–12 · Free",
-    body: "BLM park rangers and trained volunteers guide student groups through the historic buildings and, if requested, the Sierra Mine trail — about a mile through the forest where miners once worked their claims. Tours run late May through mid-September, weather permitting, and typically last one hour. No admission fee for school groups.",
-    detail:
-      "Transportation grants from the Garnet Preservation Association are available to help offset busing costs. Contact the BLM Missoula Field Office to schedule a visit or request an application.",
+    body: "School tours are free and are usually available from late May through mid-September, weather permitting. Choose from two tour options:",
+    detail: null,
     cta: { label: "Email BLM to schedule", href: "mailto:blm_mt_Missoula_FO@blm.gov", external: true },
   },
   {
     title: "Scavenger Hunt",
     eyebrow: "All ages · Free with day pass",
-    body: "Pick up a scavenger hunt card at the Visitor Center and work your way through town searching for artifacts, architectural details, and traces of daily life in the 1890s. It encourages visitors of every age to look closely and leave everything exactly where they find it.",
+    body: "Pick up a scavenger hunt card at the Visitor Center. Search town for old objects and building details that show how people lived in the 1890s. Visitors of all ages can take part. Leave everything where you find it.",
     detail: null,
     cta: { label: "Plan your visit", href: "/visit", external: false },
   },
   {
     title: "Nature Hike to Warren's Park",
     eyebrow: "Moderate · ¾ mile one-way",
-    body: "A moderately paced trail leads from the edge of town to the small park Frank Warren cleared in the mountains above the mine. It is a good place to stop, eat lunch, and take in why Garnet felt genuinely remote even when a thousand people lived here. Return the same way.",
+    body: "Follow the trail from the edge of town to the small park Frank Warren cleared above the mine. Stop for lunch and enjoy the mountain setting. The hike is moderately difficult. Return along the same trail.",
     detail: null,
     cta: { label: "Plan your visit", href: "/visit", external: false },
   },
   {
     title: "Investigating Garnet: A Historic Mining Town",
     eyebrow: "Classroom curriculum · Grades 3–5",
-    body: "Developed in partnership with BLM and Project Archaeology, this lesson series is designed to be used in the classroom before a site visit. Students examine evidence from historic buildings, artifacts, and documents — the same methods archaeologists use — and then apply what they have learned when they walk the town.",
+    body: "BLM and Project Archaeology developed these lessons for classrooms to use before a visit. Students study old buildings, objects, and documents to learn about Garnet. They use the same skills when they explore the town.",
     detail:
       "Copies of the curriculum guide are sold at the Visitor Center during the summer season. Additional resources from Project Archaeology are also available online.",
     cta: { label: "Project Archaeology", href: "https://projectarchaeology.org/", external: true },
@@ -125,18 +124,18 @@ export default async function EventsPage() {
     <main id="main-content">
       <RouteHero
         eyebrow="Education & Events"
-        title="Every building is already a classroom."
-        intro="The schoolhouse still stands. The hotel still has its register. The mine trail still runs through the forest. Garnet teaches without asking anyone to sit down."
+        title="Learn about life in Garnet."
+        intro="Visit the schoolhouse, explore the hotel, or follow the mine trail. School tours and activities help visitors learn about the people who lived and worked here."
         image="/images/historic/university-archive/garnet-ghost-town-school-class-portrait-72-0570.webp"
         imageAlt="Archival portrait of Garnet's school class"
         imagePosition="object-[center_42%]"
       />
 
       {/* EVENTS */}
-      <section className="overflow-hidden border-b border-[#0e1c27]/12 bg-white px-5 py-16 md:px-10 md:py-28">
+      <section className="overflow-hidden border-b border-[#0e1c27]/12 bg-white px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal>
-            <h2 className="display-type text-[clamp(2.5rem,7vw,5rem)] leading-[0.93] tracking-[-0.04em]">
+            <h2 className="display-type leading-[0.93] tracking-[-0.04em] section-heading">
               Events at Garnet
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-black/72">
@@ -174,47 +173,50 @@ export default async function EventsPage() {
       </section>
 
       {/* EDUCATION INTRO */}
-      <section className="paper-grain overflow-hidden bg-[#0e1c27] px-5 py-16 text-[#f8f6f1] md:px-10 md:py-28">
+      <section className="paper-grain overflow-hidden bg-[#0e1c27] px-5 py-16 text-[#f8f6f1] md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-20 lg:items-end">
-            <h2 className="display-type text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] tracking-[-0.04em]">
+            <h2 className="display-type leading-[0.92] tracking-[-0.04em] section-heading">
               Education at Garnet
             </h2>
             <div>
               <p className="text-lg leading-8 text-white/80">
-                Gold miners climbed into the Garnet Mountains to stake their claims and ended up
-                building a town — a school, a hotel, thirteen saloons, and a community that
-                lasted a generation. At the height of the boom, 41 students filled the schoolhouse.
+                Gold miners came to the Garnet Mountains and built a town with a school,
+                a hotel, and thirteen saloons. At the height of the boom, 41 students filled the schoolhouse.
                 The school still stands, surrounded by the places where their families worked and gathered.
               </p>
               <p className="mt-5 leading-8 text-white/70">
-                Programs at Garnet are designed for classrooms planning a field trip, for
-                families who want more than a walk-through, and for anyone willing to follow a
-                ranger into the forest to understand why the mines were where they were. The goal
-                is not simply to memorize dates, but to read buildings, objects, and landscape as evidence.
+                School groups, families, and other visitors can learn from Garnet’s buildings
+                and trails. Explore with a ranger or look closely at the objects left behind.
+                Each offers clues about how people lived and worked here.
               </p>
             </div>
           </Reveal>
 
-          <Reveal className="image-reveal relative mt-12 aspect-[4/5] overflow-hidden border border-white/10 sm:aspect-[16/8] md:mt-16">
-            <Image
-              src="/images/garnet-fog.webp"
-              alt="Historic timber buildings of Garnet framed by mountain fog"
-              fill
-              sizes="(min-width: 1312px) 82rem, 100vw"
-              className="object-cover object-center sepia-[.12] saturate-[.85] contrast-[1.04]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/80 via-transparent to-transparent" />
-            <p className="absolute inset-x-5 bottom-5 z-10 max-w-xl text-sm leading-6 text-white/75 md:inset-x-8 md:bottom-7">
-              Garnet&apos;s buildings and surrounding landscape give students physical evidence
-              of how mining families lived, worked, and learned.
-            </p>
+          <Reveal className="mt-10 grid items-center gap-8 border-t border-white/15 pt-8 sm:grid-cols-[minmax(0,.65fr)_minmax(0,1.35fr)]">
+            <figure className="mx-auto w-full max-w-xs">
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#0d1218]">
+                <Image
+                  src="/images/historic/university-archive/garnet-ghost-town-children-on-schoolhouse-steps-72-0569.webp"
+                  alt="Children gathered on the steps of Garnet’s schoolhouse"
+                  fill
+                  sizes="(min-width: 640px) 320px, 80vw"
+                  className="object-contain"
+                />
+              </div>
+              <figcaption className="archive-caption text-white/65">Children on the schoolhouse steps. Courtesy of University of Montana.</figcaption>
+            </figure>
+            <div>
+              <p className="text-xs font-semibold tracking-[0.12em] text-[#e0c46d] uppercase">A closer look</p>
+              <h3 className="display-type mt-3 text-3xl leading-tight">Meet the children of Garnet.</h3>
+              <p className="mt-4 max-w-xl leading-7 text-white/75">Look at the children’s clothes and the schoolhouse behind them. What might a school day have been like in Garnet? This photo gives students a way to picture life here before they visit.</p>
+            </div>
           </Reveal>
         </div>
       </section>
 
       {/* EDUCATION PROGRAMS */}
-      <section className="bg-[#f2eee4] px-5 py-16 md:px-10 md:py-28">
+      <section className="bg-[#f2eee4] px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <div className="divide-y divide-[#0e1c27]/15 border-y border-[#0e1c27]/15">
             {educationPrograms.map((program, i) => (
@@ -234,12 +236,26 @@ export default async function EventsPage() {
 
                 <div>
                   <p className="max-w-2xl text-base leading-8 text-black/72">{program.body}</p>
+                  {program.title === "School Tours" && (
+                    <div className="mt-6 max-w-2xl">
+                      <div className="grid gap-6 border-y border-[#0e1c27]/15 py-6">
+                        <div><h4 className="text-lg font-semibold">Town tour · About one hour</h4><p className="mt-2 text-base leading-8 text-black/72">A BLM park ranger or volunteer leads your group through Garnet and shares the town’s history.</p></div>
+                        <div><h4 className="text-lg font-semibold">Sierra Mine tour · About a one-mile walk</h4><p className="mt-2 text-base leading-8 text-black/72">Walk through the forest in the Sierra Mine area, where miners once searched for gold.</p></div>
+                      </div>
+                      <div className="mt-6 border-l-4 border-[#a36b43] pl-5">
+                        <h4 className="text-lg font-semibold">Help with transportation costs</h4>
+                        <p className="mt-2 text-base leading-8 text-black/72">The Garnet Preservation Association offers grants to help with transportation. Call the BLM at <a href="tel:4063293914" className="underline underline-offset-4">(406) 329-3914</a> for details, or complete the application and follow its instructions.</p>
+                        <a href="https://www.garnetghosttown.org/assets/files/Updated_GPA-Transportation-Grant-Form.docx" className="mt-4 inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold hover:text-[#3d5a3e]">Download transportation grant application (Word) ↓</a>
+                      </div>
+                      <p className="mt-6 text-base leading-8 text-black/72">To schedule either tour, email <a href="mailto:blm_mt_Missoula_FO@blm.gov" className="break-all underline underline-offset-4">blm_mt_Missoula_FO@blm.gov</a>.</p>
+                    </div>
+                  )}
                   {program.detail && (
                     <p className="mt-5 max-w-2xl text-sm leading-7 text-black/68">
                       {program.detail}
                     </p>
                   )}
-                  <div className="mt-8">
+                  <div className={program.title === "School Tours" ? "hidden" : "mt-8"}>
                     <a
                       href={program.cta.href}
                       target={program.cta.external ? "_blank" : undefined}
@@ -266,12 +282,12 @@ export default async function EventsPage() {
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:gap-16 lg:items-center">
             <div>
-              <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] md:text-5xl">
+              <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] section-heading">
                 Resources for educators
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-black/70">
-                Project Archaeology offers classroom materials for investigating historic
-                places through artifacts, buildings, and other evidence.
+                Project Archaeology offers classroom lessons that help students learn about
+                historic places through old objects, buildings, and records.
               </p>
             </div>
             <ul className="divide-y divide-[#0e1c27]/10 border-y border-[#0e1c27]/10">
@@ -297,13 +313,12 @@ export default async function EventsPage() {
       <section className="bg-[#1e2f1f] px-5 py-16 text-[#f8f6f1] md:px-10 md:py-20">
         <Reveal className="mx-auto grid max-w-[82rem] gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] md:text-5xl">
+            <h2 className="display-type text-3xl leading-[0.96] tracking-[-0.03em] section-heading">
               Bringing a group? Talk to us first.
             </h2>
             <p className="mt-5 max-w-xl text-sm leading-7 text-white/74">
-              School groups, organizations, and educators planning a visit can contact the BLM
-              Missoula Field Office to schedule tours, request transportation grant information,
-              or ask questions about access.
+              Contact the BLM Missoula Field Office to plan a group tour. Staff can answer
+              questions about getting to Garnet and grants that help pay for school buses.
             </p>
           </div>
           <div className="flex flex-col gap-4 lg:shrink-0">
