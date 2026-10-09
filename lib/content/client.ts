@@ -45,7 +45,11 @@ export async function wpFetch<T>(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, variables }),
-    next: { revalidate, tags: ["wordpress", ...tags] },
+    // Local editing should show CMS saves on the next page reload, even when
+    // WordPress has no frontend webhook configured.
+    ...(process.env.NODE_ENV === "development"
+      ? { cache: "no-store" as const }
+      : { next: { revalidate, tags: ["wordpress", ...tags] } }),
   });
 
   if (!response.ok) {
