@@ -138,6 +138,30 @@ export default async function VisitPage() {
         </div>
       </section>
 
+      <section id="visitor-center" className="scroll-mt-32 bg-[#e9e1d1] px-5 py-14 md:px-10 md:py-20">
+        <Reveal className="mx-auto grid max-w-[82rem] gap-8 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
+          <div>
+            <span className="text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#3d5a3e]">
+              At the Townsite
+            </span>
+            <h2 className="display-type mt-2 leading-[1.02] font-normal section-heading">
+              Visitor Center Store
+            </h2>
+          </div>
+          <div className="border-t border-black/15 pt-7 text-base leading-8 text-black/72">
+            <p>
+              The Visitor Center store is open seasonally, officially from Memorial Day weekend
+              to Labor Day weekend.
+            </p>
+            <p className="mt-5">
+              The Visitor Center consists of a museum with a wide variety of historically
+              significant artifacts related to the mining and natural environment of the area,
+              with a Gift Store offering a wide assortment to choose from.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
       <section className="px-5 py-14 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal>

@@ -32,8 +32,8 @@ export function Footer() {
               <Link className="hover:text-[#e0c46d]" href="/explore">Explore</Link>
               <Link className="hover:text-[#e0c46d]" href="/about">About Garnet</Link>
               <Link className="hover:text-[#e0c46d]" href="/history">History timeline</Link>
-              <Link className="hover:text-[#e0c46d]" href="/board">Board members</Link>
-              <Link className="hover:text-[#e0c46d]" href="/license-plate">License plate</Link>
+              <Link className="hover:text-[#e0c46d]" href="/association">About the Association</Link>
+              <Link className="hover:text-[#e0c46d]" href="/license-plate">License Plate &amp; Grants</Link>
             </div>
           </div>
           <div>

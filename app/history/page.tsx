@@ -114,6 +114,11 @@ export default async function HistoryPage() {
             </p>
           </Reveal>
 
+          <p className="mt-8 max-w-3xl text-sm leading-7 text-white/65">
+            Historical references: <a href="https://www.blm.gov/sites/default/files/docs/2021-07/THE%20ROAD%20TO%20GARNET%27S%20GOLD%20%28002%29.pdf" className="underline underline-offset-4">BLM, The Road to Garnet’s Gold (2021)</a> and the <a href="https://npgallery.nps.gov/AssetDetail/NRIS/10000547" className="underline underline-offset-4">Garnet Historic District National Register documentation</a>.
+            These references cover the town’s historical background; individual recollections and quotations require their own sources.
+          </p>
+
           {chapters.length > 1 && (
             <nav aria-label="Chapters of Garnet's history" className="mt-14 border-y border-white/20">
               <ul className="flex flex-wrap gap-x-8 gap-y-3 py-5">

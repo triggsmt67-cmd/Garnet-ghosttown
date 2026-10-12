@@ -60,7 +60,7 @@ export default async function Home() {
           <Reveal className="grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">
             <div className="lg:sticky lg:top-32">
               <h2 className="display-type leading-[.92] tracking-[-0.04em] section-heading">
-                You can walk into rooms unchanged since 1898.
+                Step inside the buildings of a Montana mining town.
               </h2>
               <p className="mt-8 max-w-md text-lg leading-8 text-black/72">
                 Garnet&apos;s hotel, saloons, schoolhouse, and cabins still stand where the

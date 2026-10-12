@@ -427,20 +427,17 @@ Archive scans from the university collection available for historical stories an
 
 
 
-## Board members
+## About the Association
 
-`/board` loads published Board Members through WPGraphQL. Install
-`wordpress/mu-plugins/garnet-board-members.php` in the hosted WordPress
-`wp-content/mu-plugins/` directory (already installed in local Garnet CMS).
-Requires WPGraphQL, ACF, and WPGraphQL for ACF.
+`/association` presents GPA’s mission, funding, meeting information, and contact
+information from the committee’s Get Involved document. Navigation and footer
+links use “About the Association.” The former `/board` route permanently
+redirects to `/association`.
 
-In WordPress, open **Board Members → Add Board Member**. Use the title for
-the name, Featured Image for the portrait, and Board Profile fields for the
-role, short biography, and display order. Publish to show the member. Lower
-display orders appear first. Three clearly labeled placeholder profiles appear
-only while there are no published members. Update the frontend sync plugin
-with the version in this repository to invalidate the `board-members` cache
-after changes; normal cache refresh is also available every five minutes.
+The board roster is intentionally omitted at the committee’s request. The
+existing WordPress board-member plugin and data adapter remain available for
+future approved use, but this page does not fetch or display board profiles.
+Meeting-minute files have not been supplied; add real file links when available.
 
 `/license-plate` contains the supplied plate illustration, donation split, and
 county treasurer purchase guidance. Fees link to the official Montana MVD page.

@@ -80,17 +80,17 @@ export const buildings: Building[] = [
     number: "04",
     name: "Garnet Schoolhouse",
     type: "One-room school",
-    era: "Current building: 1937–38",
+    era: "Current building: 1938",
     summary:
       "Children from Garnet’s families attended school here.",
     story: [
-      "Garnet opened its first school during the 1890s boom. The one-room building standing today came later, in 1937–38, during a smaller revival of mining activity.",
+      "Garnet opened its first school during the 1890s boom. The one-room building standing today came later, in 1938, during a smaller revival of mining activity.",
       "Attendance rose and fell with the mines. Oral histories preserved by the University of Montana record children skiing in winter, playing through the summer, and attending school in this remote town.",
     ],
     lookFor:
       "Look at the room’s scale and imagine one teacher working with children of several ages through a Garnet winter.",
-    source: "https://scholarworks.umt.edu/garnet_oralhistory/5/",
-    sourceLabel: "University of Montana oral history",
+    source: "https://npgallery.nps.gov/GetAsset/7d2ad2ed-f834-40fc-8074-83d8e21f7ad7#page=23",
+    sourceLabel: "National Register nomination · Section 7, p. 13",
     map: { left: "62%", top: "24%", width: "18%", height: "11%", rotate: "8deg" },
   },
   {
@@ -98,7 +98,7 @@ export const buildings: Building[] = [
     number: "05",
     name: "Dahl Cabin",
     type: "Home & winter rental",
-    era: "Built in 1938",
+    era: "Built in the late 1930s · Dahl home from 1938",
     summary:
       "A family cabin during Garnet’s later years, the Dahl now gives winter visitors a rare overnight stay inside the townsite.",
     story: [

@@ -16,9 +16,9 @@ const links = [
 ];
 
 const involvementLinks = [
-  { href: "/preserve", label: "Preservation & volunteering" },
-  { href: "/board", label: "Board members" },
-  { href: "/license-plate", label: "Ghost town license plate" },
+  { href: "/preserve", label: "Get Involved" },
+  { href: "/association", label: "About the Association" },
+  { href: "/license-plate", label: "License Plate & Grants" },
 ];
 
 export function Header({ fire }: { fire: FireStatus }) {
