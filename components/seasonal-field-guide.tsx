@@ -28,9 +28,9 @@ const seasons: Season[] = [
     headline: "The easiest time to make the drive.",
     introduction:
       "Late May through September is the main visitor season. The town is busiest on summer weekends, when arriving early and carpooling make the day easier.",
-    image: "/images/garnet-hero.png",
-    imageAlt: "Historic timber buildings along Garnet's mountain road",
-    imageClass: "sepia-[.12] saturate-[.8] contrast-[1.05]",
+    image: "/images/Home-Seasonal-Guide-Summer.webp",
+    imageAlt: "Garnet’s buildings surrounded by green forest in summer",
+    imageClass: "",
     details: [
       {
         term: "Visitor Center",
@@ -55,9 +55,9 @@ const seasons: Season[] = [
     headline: "Autumn reaches the mountain early.",
     introduction:
       "Fall weather arrives earlier at Garnet than in the valleys. Visitor Center hours decrease after September. Check the forecast and opening hours before you go.",
-    image: "/images/garnet-hero.png",
-    imageAlt: "Garnet's historic street beneath the surrounding mountains",
-    imageClass: "sepia-[.3] saturate-[.65] contrast-[1.08]",
+    image: "/images/Home-Season-Guide-Autumn.webp",
+    imageAlt: "Golden autumn trees above Garnet’s historic buildings",
+    imageClass: "",
     details: [
       {
         term: "What changes",
@@ -82,9 +82,9 @@ const seasons: Season[] = [
     headline: "Winter visitors travel over snow.",
     introduction:
       "Once wheeled access ends, Garnet becomes an over-snow trip by snowmobile, cross-country skis, or snowshoes. You’ll need to plan for backcountry travel.",
-    image: "/images/garnet-winter-cabin.png",
-    imageAlt: "Illustrative winter scene of a historic cabin surrounded by deep snow",
-    imageClass: "saturate-[.72] contrast-[1.08]",
+    image: "/images/Home-Seasonal-Guide-Winter.webp",
+    imageAlt: "Snow covering Garnet’s cabins and town street",
+    imageClass: "",
     details: [
       {
         term: "Access",
@@ -113,9 +113,9 @@ const seasons: Season[] = [
     headline: "Wait for the mountain road to reopen.",
     introduction:
       "Snowmelt and spring thaw can make the final miles impassable even when Missoula feels warm. Do not assume that a clear highway means Garnet is accessible by car.",
-    image: "/images/garnet-hero.png",
-    imageAlt: "The mountain road running through Garnet Ghost Town",
-    imageClass: "sepia-[.1] saturate-[.6] brightness-[.94] contrast-[1.05]",
+    image: "/images/Home-Season-Guide-Spring.webp",
+    imageAlt: "Garnet’s buildings and surrounding forest in spring mist",
+    imageClass: "",
     details: [
       {
         term: "Road conditions",

@@ -7,8 +7,8 @@ export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
   return (
     <section className="home-hero relative overflow-hidden bg-[#0d1218] text-[#f8f6f1]">
       <Image
-        src="/images/garnet-town.JPG"
-        alt="Weathered timber buildings of Garnet along a mountain dirt lane"
+        src="/images/Home-Top-Banner.webp"
+        alt="Historic photograph of Garnet’s buildings and mountain street"
         fill
         priority
         sizes="100vw"

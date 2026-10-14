@@ -76,16 +76,16 @@ export default async function Home() {
             <div>
               <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0e1c27]">
                 <Image
-                  src="/images/garnet-interior.png"
-                  alt="Sunlight crossing the preserved wooden interior of a Garnet building"
+                  src="/images/Home-Building-Interior.webp"
+                  alt="Wooden staircase and wallpaper inside a preserved Garnet building"
                   fill
                   unoptimized
                   sizes="(min-width: 1024px) 52vw, 100vw"
-                  className="object-cover sepia-[.32] saturate-[.72] contrast-[1.08]"
+                  className="object-cover object-[center_40%]"
                 />
               </div>
               <p className="archive-caption max-w-lg text-black/65">
-                The Wells Hotel’s dining room, guest rooms, and worn wood help you picture
+                Preserved stairways, wallpaper, and worn wood help you picture
                 everyday life in Garnet.
               </p>
             </div>
@@ -104,12 +104,12 @@ export default async function Home() {
         <div className="mx-auto grid max-w-[90rem] lg:min-h-[38rem] lg:grid-cols-[1.08fr_.92fr]">
           <Reveal className="relative min-h-[24rem] sm:min-h-[34rem] lg:min-h-full">
             <Image
-              src="/images/Garnet_Boardwalk1.webp"
+              src="/images/Home-Main-Street2.webp"
               alt="Historic wooden boardwalk and weathered timber buildings along Garnet's main street"
               fill
               unoptimized
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover sepia-[.12] saturate-[.85] contrast-[1.04]"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d1218]/55 via-transparent to-transparent" />
             <p className="absolute inset-x-6 bottom-6 z-10 max-w-lg text-sm leading-6 text-white/68 md:inset-x-10 md:bottom-9">
