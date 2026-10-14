@@ -145,12 +145,28 @@ export default function PreservePage() {
             <figcaption className="archive-caption text-white/65">A weathered building at Garnet shows how much can be lost to time and the elements.</figcaption>
           </figure>
         </Reveal>
+        <Reveal className="mx-auto mt-10 grid max-w-[82rem] gap-8 md:grid-cols-2">
+          <figure>
+            <div className="relative aspect-[4/3] overflow-hidden"><Image src="/images/getinvolved-donations-backbar-from-kellys.webp" alt="People in period clothing behind the wooden bar at Kelly’s Saloon" fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover object-[center_40%]" /></div>
+            <figcaption className="archive-caption text-white/65">The bar at Kelly’s Saloon brings Garnet’s history to life.</figcaption>
+          </figure>
+          <figure>
+            <div className="relative aspect-[4/3] overflow-hidden"><Image src="/images/getinvolved-donations-tableandchairsinKellys.webp" alt="People in period clothing gathered around a table inside Kelly’s Saloon" fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" /></div>
+            <figcaption className="archive-caption text-white/65">A gathering around the table at Kelly’s Saloon.</figcaption>
+          </figure>
+        </Reveal>
       </section>
 
       <section id="history" className="scroll-mt-28 px-5 py-14 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+            <div>
             <h2 className="display-type leading-[0.95] section-heading">Do you have a piece<span className="block text-[#3d5a3e]">of Garnet’s history?</span></h2>
+            <figure className="mt-8 w-full max-w-sm">
+              <div className="relative aspect-[3/4] overflow-hidden bg-white"><Image src="/images/Getinvolved-donations-diary.webp" alt="A worn brown leather-bound diary" fill sizes="(min-width: 1024px) 384px, 90vw" className="object-contain" /></div>
+              <figcaption className="archive-caption text-black/65">Diaries and other personal records help preserve the stories of Garnet’s people.</figcaption>
+            </figure>
+            </div>
             <div className="prose-copy text-base leading-8 text-black/72">
               <p>Helping record the history of Garnet and its people is another way to donate. If you have family members who lived in Garnet and have photographs, family histories, diaries, stories, or recordings, GPA would love for you to share them. There are many stories the association hopes to capture before they are lost to time.</p>
               <p>Garnet stood empty after the Dahl family left in the 1960s, before BLM became involved in the early 1970s. After Frank Davey died in 1947, an auction of goods from his store and the hotel was scheduled for November. Snow postponed the sale until July 1948. Other objects were removed during the years the town was abandoned. Some survived because people took them home and cared for them.</p>

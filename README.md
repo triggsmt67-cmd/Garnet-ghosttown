@@ -3,53 +3,112 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
-## Work checkpoint: October 6, 2026
+## Work checkpoint: October 14, 2026
 
-Start here when returning to the project. The current work is on `wp-data-layer`.
-The client preview is https://garnet-ghosttown-gdro.vercel.app/ and the Git repository
-is https://github.com/triggsmt67-cmd/Garnet-ghosttown.
+Start here when returning to the project. Work now continues on `main`.
+`wp-data-layer` was fast-forwarded into `main`; subsequent photo updates are on
+`main` only. Do not resume from the older branch without checking its state.
+
+- Repository: https://github.com/triggsmt67-cmd/Garnet-ghosttown
+- Client preview: https://garnet-ghosttown-gdro.vercel.app/
+- Local preview: http://localhost:3000/
+- Latest verified GitHub code commit: `5b40174a` — Add supplied site photos and
+  improve loading performance. Earlier checkpoints: `e4dea6a2` (Home/Explore
+  photos) and `2383e52d` (navigation and paused meeting content).
+- GitHub `main` matched the local commit after the push. Vercel deployment
+  completion and the deployed site's new images have **not** been verified.
+  Confirm the Vercel production branch and deployed commit; do not assume the
+  earlier `wp-data-layer` deployment configuration now tracks `main`.
 
 ### Where we stopped
 
-- Refined the home hero, navigation, page endings, historic imagery, captions,
-  and public-facing copy. The home hero no longer uses the scrolling transition.
-- Made the vertical history timeline more compact, with era colors and support
-  for WordPress image thumbnails. Preserve the client's WordPress story copy.
-- Added About Garnet, Board Members, Winter Cabin Rentals, License Plate,
-  Common Questions, and Current Updates pages, with links in the navigation.
-- Expanded school-tour information and Explore activities with optional
-  Read more sections and supporting images.
-- Set up WordPress/GraphQL board profiles and visitor updates. Five clearly
-  labeled sample updates are published in local WordPress, with a committed
-  snapshot so the Vercel preview can show them without reaching the local CMS.
+- Main navigation order: Plan Your Visit → Explore → Education & Events →
+  About Garnet → Get Involved → Get Directions. Desktop/mobile visitor links
+  use Visitor information → Current updates → Common questions → Winter cabin
+  rentals. Get Involved contains Ways to Help → License Plate & Grants → About
+  the Association. The history link reads History & Stories.
+- Meetings and minutes are commented out, with their code preserved, on both
+  `/association` and `/updates`. The updates shortcut and meeting references in
+  page descriptions were removed. Meeting records remain in WordPress; do not
+  delete them or restore public display without the association's decision.
+- The board roster remains omitted at the committee's request. `/board`
+  redirects to `/association`; the underlying board integration is retained.
+- Local WordPress supplies “Step Back In Time Mock Event” in the events calendar.
+  The calendar marks that title as sample content and displays a preview notice.
+  Its current description is “Event Test Fields”; its date and price are demo
+  data. This is not a confirmed announcement. CMS content is separate from Git;
+  verify the homepage's sample presentation and remove demo content before launch.
+- Installed the supplied Home/Explore images, followed by 16 images for About
+  Garnet, History, Events, Preserve, Cabin Rentals, and Explore. Both Early Mining
+  photos appear in the first About chapter. Captions/alt text were updated to
+  match pictured subjects without carrying over unrelated archive credits.
+- Home uses `Home-Main-Street2.webp`; the alternate `Home-Main-Street.webp` is
+  available. The Explore nearby filenames are reversed in subject: “Winter View”
+  shows the mountain vista and “Mountain Setting” shows snowmobilers. Placement
+  follows the pictured subject. `AAbout-Community-LIfe.webp` retains its supplied
+  spelling. Some historical files retain screenshot borders/source labels.
+- The Boom Years cabin image is `History-family-cabin.webp`. Its resized-image
+  path stalled in the local browser; direct WebP delivery (`unoptimized`) with
+  eager loading was verified working. Do not remove that workaround without
+  verifying the image in the browser.
+- Performance pass reduced 35 photos from about 23.5 MB to 7.7 MB combined;
+  larger assets were bounded to 1920 pixels and compressed at WebP quality 82.
+  Hero text renders immediately, homepage reads run concurrently, visitor updates
+  are deduplicated per render with React cache, and responsive image output uses
+  WebP. Content freshness/revalidation windows were preserved. Common Questions
+  now uses the supplied Historic Street photo instead of a locally missing image.
+
+- Added three more supplied photos to `/preserve`: Kelly’s Saloon bar and table
+  photos beneath the donation section, plus a diary directly under the history
+  contribution heading (beside the explanatory text on desktop). Full-size WebP
+  copies remain in the source folder; website copies use the optimized settings.
+
+### Image locations
+
+- Website files: `public/images/`, with new named photos directly in that folder.
+  Older assets also live in `historic/`, `support/`, and other subfolders.
+- Supplied originals: `/Users/trevorriggs/Desktop/Get Involved Garnet photos/`.
+- Full-size converted copies: that folder's `WebP/` subfolder. These are separate
+  from the smaller optimized website copies. Preserve the originals.
+- Additional pre-optimization backups were saved to
+  `/tmp/garnet-performance-originals/`; temporary storage is not a durable archive.
+- Replace a website image using its existing filename, or update the relevant
+  page/component reference when changing names. Verify crops and refresh the page.
+
+### Local changes intentionally not pushed
+
+Eight pre-existing tracked image deletions remain in the working tree: the two
+boardwalk files and six University archive images. They were excluded from all
+commits today. `public/images/Warm Garage Packing Scene.webp` remains untracked
+and was also excluded. Inspect `git status` and preserve these decisions; do not
+stage all files, commit the deletions, or restore them automatically.
 
 ### When we reopen
 
-1. Open the Garnet CMS site in Local and start it. Run `npm run dev` in this
-   checkout and open http://localhost:3000/. Install dependencies with
-   `npm install` only if needed. Check the branch and working tree before editing.
-2. Review the client preview and collect the final board names, roles, biographies,
-   portraits, timeline images, and any requested image replacements.
-3. Connect a publicly reachable hosted WordPress GraphQL endpoint for launch.
-   Install the board, updates, and revalidation MU plugins from `wordpress/mu-plugins/`,
-   plus the required ACF and WPGraphQL plugins. Configure the GraphQL URL and
-   revalidation settings for the hosted environments; do not commit secrets.
-4. Replace and unpublish demo updates before public launch. Add verified road,
-   access, snow, fire, event, and meeting information with accurate last-checked
-   dates. Get the board's approved wording for the land-sale scam notice.
-5. Test publishing, editing, unpublishing, expiration, homepage features, and
-   cache invalidation against the hosted CMS. Confirm the road-report fallback
-   schema: local WordPress currently lacks the legacy `garnetVisitorStatus` field.
-6. Reconfirm current cabin reservation procedures, lottery dates, fees, school-tour
-   arrangements, and visitor rules with BLM before treating this as a live guide.
-7. Return to the interactive town map after Trevor supplies a real town image.
-   Plan clickable buildings on that image. This map update is intentionally deferred.
-8. Check desktop and mobile layouts, navigation, image crops, links, and the
-   deployed pages. Run `npm run lint`, `npx tsc --noEmit`, and `npm run build`
-   before the next release. More integration details are below and in `docs/HANDOFF.md`.
+1. Check `git status`, branch, and remote state. Continue on `main`. Start Garnet
+   CMS in Local for WordPress content, then run `npm run dev` and open the printed
+   local URL. Dependencies were repaired with `npm ci`; a stale `.next` cache
+   also had to be moved aside. Reinstall or clear cache only if needed.
+2. Verify Vercel's production branch/deployed commit and the new images on the
+   client preview. Today's successful push does not prove a completed deployment.
+3. Collect any image/crop corrections. Preserve the client's WordPress story copy.
+   The real-photo interactive town map remains deferred pending a suitable image.
+4. Connect a public hosted WordPress GraphQL endpoint for launch. Install the
+   required ACF/WPGraphQL and MU plugins from `wordpress/mu-plugins/`. Configure
+   revalidation and test publish/edit/unpublish/expiration flows. Local WordPress
+   and plugins are not uploaded by Git pushes.
+5. Remove/unpublish demo events and updates before launch, obtain approved
+   visitor notices, and confirm cabin procedures, fees, access, and school-tour
+   details with BLM. Keep meetings/minutes and the board roster paused.
+6. Run `npm run lint`, `npx tsc --noEmit`, and `npm run build` before releases.
+   Latest lint/build/TypeScript checks passed; 13 production-build routes returned
+   HTTP 200, and representative desktop/mobile images were inspected. Real-world
+   performance and live deployment remain unmeasured. The build still reports
+   the known missing legacy `garnetVisitorStatus` GraphQL field and uses its
+   cautious road-report fallback.
 
-The frontend preview can run without hosted WordPress. Local WordPress content
-and installed plugins are separate from Git and are not uploaded by a Git push.
+Further integration details are below and in `docs/HANDOFF.md`. This checkpoint
+supersedes older branch/roster instructions in earlier handoff notes.
 
 ## Local development
 
