@@ -32,8 +32,9 @@ const placeSchema = {
 };
 
 export default async function Home() {
-  const [{ data: events }, roadReport] = await Promise.all([getEvents(), getRoadReport()]);
-  const { updates } = await getVisitorUpdates();
+  const [{ data: events }, roadReport, { updates }] = await Promise.all([
+    getEvents(), getRoadReport(), getVisitorUpdates(),
+  ]);
   const featuredUpdate = updates.find(item => item.featured && item.category !== "meeting" && (!item.stale || item.sample));
   const homepageEvent = pickHomepageEvent(events);
 

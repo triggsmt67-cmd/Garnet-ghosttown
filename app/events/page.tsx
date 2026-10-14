@@ -132,8 +132,8 @@ export default async function EventsPage() {
         eyebrow="Education & Events"
         title="Learn about life in Garnet."
         intro="Visit the schoolhouse, explore the hotel, or follow the mine trail. School tours and activities help visitors learn about the people who lived and worked here."
-        image="/images/historic/university-archive/garnet-ghost-town-school-class-portrait-72-0570.webp"
-        imageAlt="Archival portrait of Garnet's school class"
+        image="/images/Event-Top-Banner.webp"
+        imageAlt="Visitors gathered on the lawn among Garnet’s historic buildings"
         imagePosition="object-[center_42%]"
       />
 
@@ -209,19 +209,19 @@ export default async function EventsPage() {
             <figure className="mx-auto w-full max-w-xs">
               <div className="relative aspect-[4/5] overflow-hidden bg-[#0d1218]">
                 <Image
-                  src="/images/historic/university-archive/garnet-ghost-town-children-on-schoolhouse-steps-72-0569.webp"
-                  alt="Children gathered on the steps of Garnet’s schoolhouse"
+                  src="/images/Events-Schoolchildren.webp"
+                  alt="Visitors outside Garnet’s schoolhouse"
                   fill
                   sizes="(min-width: 640px) 320px, 80vw"
                   className="object-contain"
                 />
               </div>
-              <figcaption className="archive-caption text-white/65">Children on the schoolhouse steps. Courtesy of University of Montana.</figcaption>
+              <figcaption className="archive-caption text-white/65">Visitors at Garnet’s schoolhouse.</figcaption>
             </figure>
             <div>
               <p className="text-xs font-semibold tracking-[0.12em] text-[#e0c46d] uppercase">A closer look</p>
-              <h3 className="display-type mt-3 text-3xl leading-tight">Meet the children of Garnet.</h3>
-              <p className="mt-4 max-w-xl leading-7 text-white/75">Look at the children’s clothes and the schoolhouse behind them. What might a school day have been like in Garnet? This photo gives students a way to picture life here before they visit.</p>
+              <h3 className="display-type mt-3 text-3xl leading-tight">Picture a school day in Garnet.</h3>
+              <p className="mt-4 max-w-xl leading-7 text-white/75">Visit the schoolhouse and imagine the children who learned here. What might a school day have been like in Garnet?</p>
             </div>
           </Reveal>
         </div>

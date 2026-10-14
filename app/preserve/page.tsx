@@ -16,10 +16,9 @@ export default function PreservePage() {
         eyebrow="Get Involved"
         title="Help keep Garnet standing."
         intro="Become a member, make a contribution, share a piece of Garnet’s history, or lend your skills. Your support helps the Garnet Preservation Association protect the town and keep its stories alive."
-        image="/images/preserve/garnet-preservation-team.jpg"
-        imageAlt="Four members of the Garnet preservation community gathered behind a historic wooden bar"
-        imagePosition="object-[60%_42%] sm:object-[center_42%] lg:origin-left lg:scale-[1.12]"
-        contentClassName="mt-40 sm:mt-24 md:mt-0"
+        image="/images/Preserve-Top-Banner.webp"
+        imageAlt="A weathered log cabin in tall grass at Garnet"
+        imagePosition="object-center"
       />
 
       <section className="px-5 py-14 md:px-10 md:py-20">
@@ -45,8 +44,8 @@ export default function PreservePage() {
 
           <Reveal className="image-reveal relative mt-10 aspect-[4/3] overflow-hidden sm:aspect-[16/7]">
             <Image
-              src="/images/historic/university-archive/garnet-ghost-town-storefront-under-restoration-72-0593.webp"
-              alt="Historic Garnet storefront braced with lumber during restoration work"
+              src="/images/Preserve-Building-Restoration.webp"
+              alt="Preserved wooden cabin among evergreen trees at Garnet"
               fill
               sizes="100vw"
               className="object-cover object-center contrast-[1.04]"
@@ -56,7 +55,7 @@ export default function PreservePage() {
               Repairing Garnet’s original buildings.
             </p>
           </Reveal>
-          <p className="archive-caption text-black/65">Lumber braces a Garnet storefront during restoration. Courtesy of University of Montana.</p>
+          <p className="archive-caption text-black/65">Preserving Garnet’s original wooden buildings.</p>
         </div>
       </section>
 

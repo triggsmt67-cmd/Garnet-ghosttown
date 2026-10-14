@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import sampleUpdates from "./sample-updates.json";
 import { isWordPressConfigured, wpFetch } from "./client";
 import { toDenverISO } from "./time";
@@ -9,7 +10,7 @@ export type VisitorUpdate = { id: string; title: string; category: keyof typeof 
 type Node = { databaseId: number; title: string; modifiedGmt?: string; updateDetails?: { category?: string | string[] | null; summary?: string | null; details?: string | null; verifiedAt?: string | null; expiresAt?: string | null; meetingAt?: string | null; resourceUrl?: string | null; resourceLabel?: string | null; featureOnHomepage?: boolean; isSample?: boolean } };
 const query = `query GarnetUpdates($after: String) { visitorUpdates(first: 100, after: $after, where: {status: PUBLISH}) { pageInfo { hasNextPage endCursor } nodes { databaseId title modifiedGmt updateDetails { category summary details verifiedAt expiresAt resourceUrl resourceLabel meetingAt featureOnHomepage isSample } } } }`;
 function safeUrl(value?: string | null) { try { const url = new URL(value || ""); return ["https:", "http:"].includes(url.protocol) ? url.href : undefined; } catch { return undefined; } }
-export async function getVisitorUpdates(): Promise<{ updates: VisitorUpdate[]; unavailable: boolean }> {
+export const getVisitorUpdates = cache(async function getVisitorUpdates(): Promise<{ updates: VisitorUpdate[]; unavailable: boolean }> {
   const previewMode = !isWordPressConfigured || (process.env.NODE_ENV === "production" && (() => { try { return new URL(process.env.WORDPRESS_GRAPHQL_URL || "").hostname.endsWith(".local"); } catch { return false; } })());
   try {
     const nodes: Node[] = previewMode ? sampleUpdates : []; let after: string | null = null;
@@ -29,4 +30,4 @@ export async function getVisitorUpdates(): Promise<{ updates: VisitorUpdate[]; u
     }).sort((a,b)=>new Date(b.verifiedAt || b.modifiedAt || 0).getTime()-new Date(a.verifiedAt || a.modifiedAt || 0).getTime());
     return {updates,unavailable:false};
   } catch(error) { console.warn("[content] Current updates unavailable:",error instanceof Error ? error.message : String(error));return {updates:[],unavailable:true}; }
-}
+});

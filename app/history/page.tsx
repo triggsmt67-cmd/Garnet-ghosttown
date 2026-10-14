@@ -42,7 +42,7 @@ export default async function HistoryPage() {
         eyebrow="The story of Garnet"
         title="How a mining town became a ghost town."
         intro="Garnet grew quickly when miners came looking for gold. Visit the buildings that remain and learn about the families who made their homes here."
-        image="/images/historic/university-archive/garnet-ghost-town-mining-camp-and-mill-77-0022.webp"
+        image="/images/History-Top-Banner.webp"
         imageAlt="Archival view of Garnet's mining camp and mill"
         imagePosition="object-[center_42%]"
       />
@@ -57,16 +57,18 @@ export default async function HistoryPage() {
               <figure className="mt-8">
                 <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0d1218]">
                   <Image
-                    src="/images/historic/university-archive/garnet-ghost-town-family-in-cabin-doorway-77-0003.webp"
-                    alt="A Garnet family standing in the doorway of their wooden cabin"
+                    src="/images/History-family-cabin.webp"
+                    unoptimized
+                    loading="eager"
+                    alt="A wooden cabin surrounded by winter snow"
                     fill
                     sizes="(min-width: 1024px) 34vw, 100vw"
                     className="object-cover"
                   />
                 </div>
                 <figcaption className="mt-4 border-l border-[#3d5a3e]/40 pl-4 text-sm leading-6 text-black/68">
-                  A family at the threshold of a Garnet cabin. Households and children were part
-                  of the town’s story alongside mines and mills. Courtesy of University of Montana.
+                  A cabin in winter. Households and children were part
+                  of the town’s story alongside mines and mills.
                 </figcaption>
               </figure>
             </div>

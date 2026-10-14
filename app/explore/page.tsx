@@ -122,8 +122,8 @@ export default function ExplorePage() {
       <section className="grid bg-[#0d1218] text-[#f8f6f1] lg:grid-cols-[.9fr_1.1fr]">
         <div className="relative min-h-[34rem]">
           <Image
-            src="/images/historic/university-archive/garnet-ghost-town-false-front-building-with-old-doors-72-0594.webp"
-            alt="Garnet false-front building with weathered wooden doors"
+            src="/images/Explore-Building-Details.webp"
+            alt="An old wooden wagon wheel inside a Garnet building"
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
             className="object-contain object-center"
@@ -138,11 +138,11 @@ export default function ExplorePage() {
               Look closely at the buildings.
             </h2>
             <p className="mt-7 max-w-lg text-base leading-relaxed text-white/70">
-              Look at the tall front wall that rises above the roof and the old doors below.
+              Look at the old wagon wheel and weathered wood inside this building.
               Watch for similar details along Main Street. Inside open rooms, look for
               newspaper used to insulate walls, wooden beams, and household objects.
             </p>
-            <p className="archive-caption text-white/60">False-front building and old doors. Courtesy of University of Montana.</p>
+            <p className="archive-caption text-white/60">A wagon wheel and wooden interior at Garnet.</p>
           </Reveal>
         </div>
       </section>

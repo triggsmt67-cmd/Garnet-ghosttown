@@ -8,7 +8,7 @@ export default function CabinRentalsPage() {
     <section className="bg-[#1e2f1f] px-5 pt-44 pb-12 text-[#f8f6f1] md:px-10 md:pt-48">
       <div className="mx-auto grid max-w-[82rem] items-center gap-10 lg:grid-cols-2">
         <div><p className="text-sm font-semibold text-[#e0c46d]">Stay at Garnet</p><h1 className="display-type mt-4 text-5xl leading-tight md:text-6xl">Winter cabin rentals</h1><p className="mt-5 text-lg leading-8 text-white/80">Two primitive BLM cabins, December 1 to April 30. Reach Garnet by skis, snowshoes, or snowmobile; wheeled vehicles cannot access town in winter.</p><a href="tel:4063293914" className="mt-6 inline-block border-b border-[#e0c46d] pb-2 font-semibold">Call the BLM: 406.329.3914</a></div>
-        <figure><div className="relative aspect-[4/3] overflow-hidden"><Image src="/images/historic/university-archive/garnet-ghost-town-hillside-buildings-in-winter-77-0004.webp" alt="Historic photograph of Garnet’s hillside buildings in winter" fill priority sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover" /></div><figcaption className="mt-3 text-xs text-white/70">Historic winter view. Courtesy of University of Montana.</figcaption></figure>
+        <figure><div className="relative aspect-[4/3] overflow-hidden"><Image src="/images/Cabin-Rentals-Opening-Photo.webp" alt="Wooden cabins beside a path at Garnet in misty weather" fill priority sizes="(min-width: 1024px) 45vw, 90vw" className="object-cover" /></div><figcaption className="mt-3 text-xs text-white/70">Cabins and a quiet path at Garnet.</figcaption></figure>
       </div>
     </section>
     <section className="mx-auto max-w-[82rem] px-5 py-12 md:px-10 md:py-16">
