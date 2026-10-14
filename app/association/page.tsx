@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "About the Association",
-  description: "Learn about the Garnet Preservation Association, its partnership with BLM, preservation work, funding, and monthly meetings.",
+  description: "Learn about the Garnet Preservation Association, its partnership with BLM, preservation work, and funding.",
 };
 
 export default function AssociationPage() {
@@ -52,6 +52,7 @@ export default function AssociationPage() {
         </Reveal>
       </section>
 
+      {/* Meetings and minutes are paused pending the association’s decision.
       <section className="px-5 py-14 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
@@ -64,11 +65,12 @@ export default function AssociationPage() {
           </Reveal>
           <Reveal className="mt-12 grid gap-6 border-t border-black/15 pt-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
             <h3 className="display-type text-3xl">Meeting minutes</h3>
-            {/* Add the January–September 2026 minutes when the actual files are supplied. */}
+            Add the January–September 2026 minutes when the actual files are supplied.
             <p className="text-base leading-8 text-black/72">Meeting minutes will be available here. Please contact the association to request a copy.</p>
           </Reveal>
         </div>
       </section>
+      */}
 
       <section className="bg-[#e9e1d1] px-5 py-14 md:px-10 md:py-20">
         <Reveal className="mx-auto grid max-w-[82rem] gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">

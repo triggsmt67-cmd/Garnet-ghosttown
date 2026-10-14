@@ -119,6 +119,12 @@ function EventRow({ event, index, past = false }: { event: GarnetEvent; index: n
 export default async function EventsPage() {
   const { data: events } = await getEvents();
   const { upcoming, recent } = splitEvents(events);
+  const calendarEvents = upcoming.map(event =>
+    /step back in time mock event/i.test(event.title)
+      ? { ...event, isSample: true }
+      : event,
+  );
+  const showSample = calendarEvents.some(event => event.isSample);
 
   return (
     <main id="main-content">
@@ -144,9 +150,15 @@ export default async function EventsPage() {
             </p>
           </Reveal>
 
-          {upcoming.length > 0 ? (
+          {showSample && (
+            <p className="mt-8 border-l-4 border-[#a36b43] bg-[#f4f0e7] p-5 text-sm leading-7 text-black/72">
+              Sample event for preview. The date, activities, and admission price below demonstrate the calendar layout and are not a confirmed event announcement.
+            </p>
+          )}
+
+          {calendarEvents.length > 0 ? (
             <div className="mt-14 divide-y divide-[#0e1c27]/12 border-y border-[#0e1c27]/12">
-              {upcoming.map((event, i) => (
+              {calendarEvents.map((event, i) => (
                 <EventRow key={event.id} event={event} index={i} />
               ))}
             </div>

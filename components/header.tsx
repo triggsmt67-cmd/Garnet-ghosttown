@@ -10,15 +10,15 @@ import { FireStatusBar } from "./fire-status-bar";
 const links = [
   { href: "/visit", label: "Plan Your Visit" },
   { href: "/explore", label: "Explore" },
-  { href: "/about", label: "About Garnet" },
   { href: "/events", label: "Education & Events" },
+  { href: "/about", label: "About Garnet" },
 
 ];
 
 const involvementLinks = [
-  { href: "/preserve", label: "Get Involved" },
-  { href: "/association", label: "About the Association" },
+  { href: "/preserve", label: "Ways to Help" },
   { href: "/license-plate", label: "License Plate & Grants" },
+  { href: "/association", label: "About the Association" },
 ];
 
 export function Header({ fire }: { fire: FireStatus }) {
@@ -62,7 +62,7 @@ export function Header({ fire }: { fire: FireStatus }) {
               if (link.href === "/visit" || link.href === "/about") return (
                 <details key={link.href} className="relative" onKeyDown={event => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
                   <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${active || (link.href === "/visit" ? ["/cabin-rentals", "/faq", "/updates"].includes(pathname) : pathname === "/history") ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
-                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/cabin-rentals",label:"Winter cabin rentals"},{href:"/faq",label:"Common questions"},{href:"/updates",label:"Current updates"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History timeline & stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
+                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/updates",label:"Current updates"},{href:"/faq",label:"Common questions"},{href:"/cabin-rentals",label:"Winter cabin rentals"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History & Stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
                 </details>
               );
               return (
@@ -136,7 +136,7 @@ export function Header({ fire }: { fire: FireStatus }) {
               >
                 <span>{link.label}</span>
                 <ArrowUpRight className="h-5 w-5 text-white/65" />
-              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History timeline & stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}</div>
+              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History & Stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}</div>
             ))}
             <details className="border-b border-white/10 py-4 text-[#f8f6f1]">
               <summary className="display-type cursor-pointer text-3xl">Get Involved</summary>
