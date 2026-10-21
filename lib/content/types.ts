@@ -1,3 +1,5 @@
+import type { GalleryPhoto } from "../gallery-types";
+
 // Frontend content models. Components depend on these shapes only — never on
 // raw WordPress/WPGraphQL responses. Mapping happens in lib/content/wordpress.ts.
 
@@ -76,6 +78,7 @@ export type GarnetStory = {
   bodyHtml: string;
   voice?: StoryVoice;
   mainPhoto?: ContentImage;
+  photos?: GalleryPhoto[];
   /** Sources and credits line, optionally linked */
   source?: { label: string; url?: string };
   mapBuilding?: MapBuildingSlug;

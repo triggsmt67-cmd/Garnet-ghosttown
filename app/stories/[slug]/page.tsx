@@ -1,3 +1,4 @@
+import { AlbumPhotoGrid } from "@/components/album-photo-grid";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,14 +65,14 @@ export default async function StoryPage({ params }: StoryPageProps) {
       {story.mainPhoto && (
         <section className="bg-[#0d1218] px-5 md:px-10">
           <figure className="mx-auto max-w-[82rem] pb-12">
-            <div className="relative aspect-[16/9] overflow-hidden bg-[#0e1c27]">
+            <div className="relative h-[65svh] min-h-72 max-h-[52rem] overflow-hidden bg-[#0e1c27]">
               <Image
                 src={story.mainPhoto.url}
                 alt={story.mainPhoto.alt}
                 fill
                 priority
                 sizes="(min-width: 1312px) 82rem, 100vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             {story.mainPhoto.credit && (
@@ -124,6 +125,17 @@ export default async function StoryPage({ params }: StoryPageProps) {
           )}
         </div>
       </section>
+
+      {!!story.photos?.length && (
+        <section aria-labelledby="story-photos-heading" className="border-t border-black/15 bg-[#e8e2d7] px-5 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[82rem]">
+            <p className="text-xs font-semibold tracking-widest text-[#3d5a3e] uppercase">From the collection</p>
+            <h2 id="story-photos-heading" className="display-type mt-3 text-4xl md:text-5xl">Photographs from this story</h2>
+            <p className="mt-4 mb-10 text-sm text-black/65">Select a photograph to see the full image and its caption.</p>
+            <AlbumPhotoGrid preservePhotoProportions key={JSON.stringify(story.photos)} initialPhotos={story.photos} albumTitle={story.title} albumSlug={story.slug} initialPageInfo={{ hasNextPage: false, endCursor: null }} totalCount={story.photos.length} />
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="border-t border-black/15 px-5 py-16 md:px-10 md:py-20">

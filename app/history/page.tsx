@@ -175,13 +175,13 @@ export default async function HistoryPage() {
                       className="group flex min-w-0 items-start gap-4 border-b border-black/15 py-5 transition-colors hover:border-[var(--era-color)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--era-color)] md:gap-5 md:py-6"
                     >
                       {story.mainPhoto && (
-                        <div className="relative mt-1 h-16 w-16 shrink-0 overflow-hidden bg-[#0e1c27] sm:h-20 sm:w-20 md:h-24 md:w-24">
+                        <div className="relative mt-1 h-20 w-20 shrink-0 overflow-hidden sm:h-24 sm:w-24 md:h-32 md:w-32">
                           <Image
                             src={story.mainPhoto.url}
                             alt={story.mainPhoto.alt}
                             fill
-                            sizes="(min-width: 768px) 96px, (min-width: 640px) 80px, 64px"
-                            className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-105"
+                            sizes="(min-width: 768px) 128px, (min-width: 640px) 96px, 80px"
+                            className="object-contain"
                           />
                         </div>
                       )}

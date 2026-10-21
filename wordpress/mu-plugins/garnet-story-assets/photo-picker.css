@@ -1,0 +1,8 @@
+.garnet-story-photo-list { display:flex; flex-wrap:wrap; gap:16px; margin:0 0 16px; }
+.garnet-story-photo { width:170px; padding:10px; margin:0; border:1px solid #c3c4c7; background:#fff; cursor:move; box-sizing:border-box; }
+.garnet-story-photo img { display:block; width:148px; height:118px; object-fit:contain; background:#f0f0f1; pointer-events:none; }
+.garnet-story-photo p { margin:8px 0; overflow-wrap:anywhere; }
+.garnet-story-photo-controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.garnet-story-photo-controls .button-link-delete { cursor:pointer; }
+.garnet-story-photo-status { display:inline-block; margin:6px; }
+.garnet-story-photo-list .ui-sortable-placeholder { border:2px dashed #2271b1; visibility:visible !important; }

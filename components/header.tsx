@@ -39,7 +39,7 @@ export function Header({ fire }: { fire: FireStatus }) {
       <FireStatusBar fire={fire} />
       <div
         className={`border-b transition-all duration-500 ${
-          (pathname.startsWith("/hero-review") || pathname.startsWith("/gallery"))
+          (pathname === "/" || pathname.startsWith("/hero-review") || pathname.startsWith("/gallery"))
             ? "border-white/10 bg-[#24352b] py-4 shadow-sm"
             : scrolled || open
             ? "border-white/10 bg-[#0d1218]/96 py-3 shadow-2xl shadow-black/10 backdrop-blur-xl"

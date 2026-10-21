@@ -54,6 +54,15 @@ Verification email sent (Trevor has the text). Open items:
 
 ## Next steps (suggested order)
 
+### Added October 21, 2026
+
+- [ ] **Make the footer link layout more compact.** As links are added, the footer
+  keeps getting taller. Explore arranging the links into three or four rows on
+  desktop, with clear grouping and a readable mobile layout. Review the layout
+  with Trevor before implementing it; this is a follow-up note only.
+
+### Earlier backlog (check against the current README before resuming)
+
 1. **ACF Pro** → re-import `acf-import.json` → Road Report page works.
 2. **Simplify the WordPress admin for non-technical editors:** Editor role, hide
    unneeded menus, a dashboard with three big buttons (Update road report / Add an

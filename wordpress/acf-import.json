@@ -706,7 +706,7 @@
                 "name": "story_main_photo",
                 "aria-label": "",
                 "type": "image",
-                "instructions": "Optional. At least 1200 pixels wide. Fill in the photo's 'Alternative Text' with a short description. To add more photos, use 'Add Media' in the story text below.",
+                "instructions": "Choose a horizontal (landscape) image at least 1200 pixels wide for the main photo. Vertical (portrait) photographs belong in Additional story photos below. If an image will not upload here, check its width in Media Library.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -728,6 +728,29 @@
                 "max_height": "",
                 "max_size": "",
                 "mime_types": "jpg,jpeg,png,webp"
+            },
+            {
+                "key": "field_garnet_story_photos",
+                "label": "Additional story photos",
+                "name": "story_photos",
+                "type": "garnet_story_photos",
+                "instructions": "Choose Add photos to upload or select several images. Drag thumbnails into order, then save the story. Captions, alternative text and credits can be edited in Media Library.",
+                "post_type": [
+                    "attachment"
+                ],
+                "post_status": [
+                    "inherit"
+                ],
+                "filters": [
+                    "search"
+                ],
+                "elements": [
+                    "featured_image"
+                ],
+                "return_format": "id",
+                "min": 0,
+                "max": 30,
+                "show_in_graphql": 0
             },
             {
                 "key": "field_garnet_story_photo_credit",

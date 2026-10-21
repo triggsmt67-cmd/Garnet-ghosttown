@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { GalleryPhoto, GalleryPageInfo } from "@/lib/gallery-types";
 
-export function AlbumPhotoGrid({ initialPhotos, albumTitle, albumSlug, initialPageInfo, totalCount }: { initialPhotos: GalleryPhoto[]; albumTitle: string; albumSlug: string; initialPageInfo: GalleryPageInfo; totalCount: number }) {
+export function AlbumPhotoGrid({ initialPhotos, albumTitle, albumSlug, initialPageInfo, totalCount, preservePhotoProportions = false }: { initialPhotos: GalleryPhoto[]; albumTitle: string; albumSlug: string; initialPageInfo: GalleryPageInfo; totalCount: number; preservePhotoProportions?: boolean }) {
   const [photos, setPhotos] = useState(initialPhotos);
   const [pageInfo, setPageInfo] = useState(initialPageInfo);
   const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ export function AlbumPhotoGrid({ initialPhotos, albumTitle, albumSlug, initialPa
   return (
     <>
       <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-        {photos.map((photo, index) => <figure key={photo.id}><button type="button" onClick={() => setSelected(index)} aria-label={`Enlarge photo ${index + 1}: ${photo.alt}`} className="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden bg-[#ded8c9]"><Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transition-none" /><span aria-hidden="true" className="absolute right-3 bottom-3 grid h-9 w-9 place-items-center bg-[#f2eee4]/95 text-xl text-[#24352b]">+</span></button><figcaption className="mt-3 text-sm leading-6 text-[#4e5b4e]">{photo.caption}{photo.credit && <span className="mt-1 block text-xs text-[#625b50]">{photo.credit}</span>}</figcaption></figure>)}
+        {photos.map((photo, index) => <figure key={photo.id}><button type="button" onClick={() => setSelected(index)} aria-label={`Enlarge photo ${index + 1}: ${photo.alt}`} className="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden bg-[#ded8c9]"><Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className={preservePhotoProportions ? "object-contain" : "object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transition-none"} /><span aria-hidden="true" className="absolute right-3 bottom-3 grid h-9 w-9 place-items-center bg-[#f2eee4]/95 text-xl text-[#24352b]">+</span></button><figcaption className="mt-3 text-sm leading-6 text-[#4e5b4e]">{photo.caption}{photo.credit && <span className="mt-1 block text-xs text-[#625b50]">{photo.credit}</span>}</figcaption></figure>)}
       </div>
       {pageInfo.hasNextPage && !albumChanged && <div className="mt-10 text-center"><button type="button" disabled={loading} onClick={() => void loadMore()} className="bg-[#24352b] px-6 py-3 text-sm font-semibold text-white disabled:opacity-60">{loading ? "Loading photos…" : "Load more photos"}</button></div>}
       {loadError && <p role="alert" className="mt-5 text-center text-sm">{loadError}{albumChanged && <button type="button" onClick={() => window.location.reload()} className="ml-3 underline">Refresh album</button>}</p>}

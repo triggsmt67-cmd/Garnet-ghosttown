@@ -2,6 +2,7 @@
 // Mappers are defensive: a half-filled WordPress record is dropped or
 // degraded, never allowed to crash a page.
 
+import type { GalleryPhoto } from "../gallery-types";
 import { sanitizeStoryHtml } from "./sanitize";
 import { toDenverISO } from "./time";
 import type {
@@ -55,6 +56,7 @@ export type WpStoriesResponse = {
       slug?: string | null;
       title?: string | null;
       content?: string | null;
+      storyPhotos?: GalleryPhoto[] | null;
       storyDetails?: {
         leadIn?: string | null;
         timeFrame?: string | null;
@@ -191,6 +193,7 @@ export function mapStory(node: WpStoryNode): GarnetStory | null {
     bodyHtml: sanitizeStoryHtml(node.content ?? ""),
     voice: quote && speaker ? { quote, speaker, source: clean(f.voiceSource) } : undefined,
     mainPhoto: mapImage(f.mainPhoto, f.photoCredit),
+    photos: (node.storyPhotos ?? []).filter(photo => photo?.id && /^https?:\/\//.test(photo.src)).map(photo => ({ ...photo, alt: photo.alt || photo.caption || title })),
     source: sourceLabel || sourceUrl ? { label: sourceLabel ?? "Source", url: sourceUrl } : undefined,
     mapBuilding: mapBuilding && MAP_BUILDINGS.includes(mapBuilding) ? mapBuilding : undefined,
     relatedStories: (f.relatedStories?.nodes ?? [])

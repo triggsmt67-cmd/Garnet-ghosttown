@@ -14,7 +14,7 @@ were verified. Hosted WordPress migration and deployment remain pending.
 
 See [the editor guide](docs/gallery-editor-guide.md) and
 [the integration handoff](docs/gallery-preview.md). The development server remains
-running. The original homepage hero remains active pending the client’s choice.
+running. The homepage now uses the selected option 3, **The travel journal**.
 Four saved concepts are available at `/hero-review`; switching instructions are
 in `components/home-hero.tsx`. Gallery, editor guidance, navigation, and Explore
 photo-map updates are included in this checkpoint. The MU plugin requires its

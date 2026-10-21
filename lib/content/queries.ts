@@ -41,6 +41,7 @@ export const STORIES_QUERY = /* GraphQL */ `
         slug
         title
         content
+        storyPhotos { id src alt caption credit width height }
         storyDetails {
           leadIn
           timeFrame
