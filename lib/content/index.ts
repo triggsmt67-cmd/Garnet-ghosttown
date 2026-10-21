@@ -1,4 +1,5 @@
 import "server-only";
+import storySnapshot from "./story-snapshot.json";
 import { getVisitorUpdates } from "./updates";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
@@ -182,6 +183,17 @@ export async function getRoadReport(): Promise<RoadReport> {
 // ---------------------------------------------------------------------------
 
 export async function getStories(): Promise<Sourced<GarnetStory[]>> {
+  // Review snapshot is used only without a hosted CMS. A configured hosted
+  // WordPress remains authoritative, including its normal outage behavior.
+  const localCmsInProduction = process.env.NODE_ENV === "production" &&
+    new URL(process.env.WORDPRESS_GRAPHQL_URL || "http://unconfigured.invalid").hostname.endsWith(".local");
+  if (!isWordPressConfigured || localCmsInProduction) {
+    const response = storySnapshot.data as WpStoriesResponse;
+    const data = (response.garnetStories?.nodes ?? []).map(mapStory)
+      .filter((story): story is GarnetStory => story !== null)
+      .sort((a, b) => a.startYear - b.startYear || a.title.localeCompare(b.title));
+    return { data, source: "fallback" };
+  }
   const result = await load(
     "Stories",
     async () => {

@@ -3,6 +3,13 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
+## Customer story review snapshot: October 21, 2026
+
+The customer site includes the 13 published local stories and five referenced photo
+files as a portable snapshot. Local WordPress edits still appear immediately locally;
+refresh and deploy the snapshot to share later edits. See
+[the snapshot guide](docs/story-snapshot.md). Hosted WordPress migration remains pending.
+
 ## Local gallery checkpoint: October 21, 2026
 
 The local `/gallery` page now reads **Photo Galleries** albums from `garnet-cms.local`.

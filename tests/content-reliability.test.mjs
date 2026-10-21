@@ -42,6 +42,7 @@ test('album-change errors survive GraphQL transport as a typed code', async () =
 let updates = [];
 let unavailable = false;
 const content = load('lib/content/index.ts', {
+  './story-snapshot.json': {},
   './updates': { getVisitorUpdates: async () => ({ updates, unavailable }) },
   'next/constants': { PHASE_PRODUCTION_BUILD: 'phase-production-build' },
   './client': { isWordPressConfigured: true }, './mock': {}, './queries': {}, './wordpress': {}, './types': {},
@@ -83,4 +84,14 @@ test('pagination API returns a refresh conflict for a changed album', async () =
   const response = await route.GET({ nextUrl: new URL('https://example.test/api/gallery/historic-garnet/photos?after=YWJj') }, { params: Promise.resolve({ slug: 'historic-garnet' }) });
   assert.equal(response.status, 409);
   assert.match((await response.json()).message, /Refresh/);
+});
+
+
+test('story snapshot has portable media paths and no local CMS references', () => {
+  const snapshot = JSON.parse(fs.readFileSync('lib/content/story-snapshot.json', 'utf8'));
+  assert.ok(snapshot.data.garnetStories.nodes.length > 0);
+  assert.doesNotMatch(JSON.stringify(snapshot), /https?:\/\/[^" ]*\.local/);
+  const paths = JSON.stringify(snapshot).match(/\/images\/story-snapshot\/[^"\\]+/g) || [];
+  assert.ok(paths.length > 0);
+  for (const path of paths) assert.ok(fs.existsSync('public' + path), 'Missing snapshot image: ' + path);
 });
