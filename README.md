@@ -120,9 +120,9 @@ stage all files, commit the deletions, or restore them automatically.
 6. Run `npm run lint`, `npx tsc --noEmit`, and `npm run build` before releases.
    Latest lint/build/TypeScript checks passed; 13 production-build routes returned
    HTTP 200, and representative desktop/mobile images were inspected. Real-world
-   performance and live deployment remain unmeasured. The build still reports
-   the known missing legacy `garnetVisitorStatus` GraphQL field and uses its
-   cautious road-report fallback.
+   performance and live deployment remain unmeasured. The October 21 reliability
+   update removed the legacy `garnetVisitorStatus` query; Current Updates supplies
+   road reports with a seven-day confirmation safeguard and BLM fallback.
 
 Further integration details are below and in `docs/HANDOFF.md`. This checkpoint
 supersedes older branch/roster instructions in earlier handoff notes.
@@ -243,7 +243,16 @@ when no end time is entered.
 
 ---
 
-## Current road and winter-access status
+## Road-status editor: Current Updates
+
+Use **Current Updates → Add Update → Road status**. Only published, unexpired,
+non-sample records feed the hero. A missing report shows **Confirm access before
+leaving** and the BLM number. A missing, invalid, future, or more-than-seven-day-old
+verification date shows **Not recently confirmed** and the BLM number. Saving a
+report does not automatically claim it was rechecked; editors enter the actual
+confirmation date. The legacy options-page query is no longer used.
+
+### Archived ACF Pro options-page design (not used by the current frontend)
 
 This information represents one current site-wide status, so it is better suited
 to an **ACF Options Page** than a post type.
@@ -320,11 +329,9 @@ the detailed visitor-planning section and source transparency.
 
 ### Stale-report safeguard (implemented)
 
-`toRoadReport()` in `lib/content/index.ts` turns the ACF fields into the hero's
-`RoadReport`. If `road_last_verified` is older than 7 days
-(`ROAD_REPORT_STALE_DAYS`), or the report is missing, the hero shows
-“Not recently confirmed” with the BLM phone number instead of the saved status.
-An unrecognized `road_tone` is treated as `caution`, never `open`.
+`toRoadReport()` in `lib/content/index.ts` applies the current safeguards described
+above to the selected Current Updates record. The legacy field names in this
+archived section are retained as historical reference only.
 
 ---
 
@@ -531,8 +538,8 @@ paste their URLs. Publish when ready; drafts stay private. Local preview samples
 
 Expired records stay in WordPress but disappear publicly. Unconfirmed or more than
 seven-day-old road/snow/grooming/access/fire reports display a confirmation notice.
-The most recent road update feeds the existing home hero road report; legacy road
-fields remain a fallback. The newest fresh home-featured visitor update appears
+The most recent non-sample road update feeds the existing home hero road report;
+missing or stale information uses the cautious BLM confirmation fallback. The newest fresh home-featured visitor update appears
 in the home-page strip. Official fire status remains independently sourced.
 Install the updated frontend-sync plugin for save/unpublish cache invalidation;
 normal update refresh is 60 seconds. Include a board-approved response for the
@@ -550,3 +557,11 @@ A public configured CMS always uses its published records; no snapshot replaces
 an unavailable public CMS. Before launch, connect the hosted CMS, install the
 updated plugin, and unpublish the sample records. Local edits appear locally;
 refresh the snapshot if you want those edits in a Vercel preview without a hosted CMS.
+
+## Reliability checks
+
+Run `npm run test:reliability`, `npm run lint`, `npx tsc --noEmit`, and `npm run build`.
+The optional `tests/gallery-wordpress-check.php` runs with WP-CLI `eval-file` on
+`garnet-cms.local` only: it creates and removes its own temporary album, reuses
+existing attachments without editing them, and tests image metadata through
+request-only filters. Do not run it against hosted WordPress.

@@ -28,7 +28,7 @@ Remember: **choose the album → Add photos → Save**. Uploading through **Medi
 - Very large files still take longer to upload, require server processing, and consume storage. Keep high-resolution scans in your archive and upload suitable web copies.
 - Avoid tiny images, which may look blurry when enlarged.
 
-These are recommendations, not a new hard upload limit. The server’s usual upload and processing limits still apply. Display copies are generated for new uploads; older uploads may need their image sizes regenerated.
+These are recommendations, not a new hard upload limit. The server’s usual upload and processing limits still apply. Display copies are generated for new uploads; older uploads use a suitable existing smaller copy. If a large photo has no suitable copy, it is omitted until its image sizes are regenerated. Ask the website administrator to regenerate sizes if an uploaded photo does not appear.
 
 ## Alt text and photo credits
 

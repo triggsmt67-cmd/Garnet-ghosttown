@@ -6,11 +6,11 @@ import { galleryAlbums as previewAlbums } from "../gallery-preview";
 import type { GalleryAlbum, GalleryPhoto, GalleryPageInfo } from "../gallery-types";
 
 const photoFields = `id src alt caption credit width height`;
-const albumFields = `slug title: albumTitle albumDetails { description displayOrder isSample coverImage { node { sourceUrl(size: LARGE) altText mediaDetails { width height } } } }`;
+const albumFields = `slug title: albumTitle albumDetails { description displayOrder isSample coverImage { node { garnetGalleryImage { ${photoFields} } } } }`;
 const listQuery = `query GarnetGalleryAlbums($after: String) { photoAlbums(first: 100, after: $after, where: {status: PUBLISH}) { pageInfo { hasNextPage endCursor } nodes { ${albumFields} galleryPhotos(first: 1) { totalCount nodes { ${photoFields} } pageInfo { hasNextPage endCursor } } } } }`;
 const albumQuery = `query GarnetGalleryAlbum($slug: ID!, $after: String) { photoAlbum(id: $slug, idType: SLUG) { ${albumFields} galleryPhotos(first: 24, after: $after) { totalCount nodes { ${photoFields} } pageInfo { hasNextPage endCursor } } } }`;
 type PhotoNode = { id?: string | null; src?: string | null; alt?: string | null; caption?: string | null; credit?: string | null; width?: number | null; height?: number | null };
-type AlbumNode = { slug: string; title?: string | null; albumDetails?: { description?: string | null; displayOrder?: number | null; isSample?: boolean | null; coverImage?: { node?: { sourceUrl?: string | null; altText?: string | null; mediaDetails?: { width?: number | null; height?: number | null } | null } | null } | null } | null; galleryPhotos?: { totalCount: number; nodes: PhotoNode[]; pageInfo: GalleryPageInfo } | null };
+type AlbumNode = { slug: string; title?: string | null; albumDetails?: { description?: string | null; displayOrder?: number | null; isSample?: boolean | null; coverImage?: { node?: { garnetGalleryImage?: PhotoNode | null } | null } | null } | null; galleryPhotos?: { totalCount: number; nodes: PhotoNode[]; pageInfo: GalleryPageInfo } | null };
 function imageUrl(value?: string | null) { try { const url = new URL(value || ""); return ["http:", "https:"].includes(url.protocol) && !url.username && !url.password ? url.href : null; } catch { return null; } }
 function mapPhoto(node: PhotoNode): GalleryPhoto | null {
   const src = imageUrl(node.src);
@@ -22,8 +22,7 @@ function mapAlbum(node: AlbumNode): GalleryAlbum | null {
   const photos = node.galleryPhotos.nodes.map(mapPhoto).filter((photo): photo is GalleryPhoto => photo !== null);
   const fields = node.albumDetails;
   const coverNode = fields?.coverImage?.node;
-  const coverUrl = imageUrl(coverNode?.sourceUrl);
-  const cover: GalleryPhoto | undefined = coverUrl ? { id: `cover-${node.slug}`, src: coverUrl, alt: coverNode?.altText || node.title || "Garnet photo album", caption: "", width: coverNode?.mediaDetails?.width || undefined, height: coverNode?.mediaDetails?.height || undefined } : photos[0];
+  const cover = (coverNode?.garnetGalleryImage ? mapPhoto(coverNode.garnetGalleryImage) : null) || photos[0];
   // A page beyond the last photo can still have a valid cover and total count.
   if (!cover) return null;
   return { slug: node.slug, title: node.title || "Photo album", description: fields?.description || "", cover, photos, photoCount: node.galleryPhotos.totalCount, sample: !!fields?.isSample, order: fields?.displayOrder || 0, pageInfo: node.galleryPhotos.pageInfo };

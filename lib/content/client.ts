@@ -18,11 +18,12 @@ export const isWordPressConfigured = Boolean(WORDPRESS_GRAPHQL_URL);
 
 export class WordPressError extends Error {
   name = "WordPressError";
+  constructor(message: string, public code?: string) { super(message); }
 }
 
 type GraphQLResponse<T> = {
   data?: T;
-  errors?: Array<{ message: string }>;
+  errors?: Array<{ message: string; extensions?: { code?: string } }>;
 };
 
 export async function wpFetch<T>(
@@ -42,6 +43,7 @@ export async function wpFetch<T>(
   }
 
   const response = await fetch(WORDPRESS_GRAPHQL_URL, {
+    signal: AbortSignal.timeout(10_000),
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, variables }),
@@ -59,7 +61,7 @@ export async function wpFetch<T>(
   const json = (await response.json()) as GraphQLResponse<T>;
 
   if (json.errors?.length) {
-    throw new WordPressError(json.errors.map((e) => e.message).join("; "));
+    throw new WordPressError(json.errors.map((e) => e.message).join("; "), json.errors.find(e => e.extensions?.code)?.extensions?.code);
   }
   if (!json.data) {
     throw new WordPressError("Empty GraphQL response");

@@ -111,8 +111,25 @@ function garnet_album_photo_items($album_id) {
 
 function garnet_gallery_photo($item) {
     $id = $item['id'];
-    $image = wp_get_attachment_image_src($id, 'garnet-gallery-display');
-    if (!$image) { return null; }
+    // Older uploads and failed derivative generation must not silently use a huge original.
+    $metadata = wp_get_attachment_metadata($id);
+    $candidates = [];
+    foreach (($metadata['sizes'] ?? []) as $name => $size) {
+        if (!empty($size['width']) && !empty($size['height']) && max($size['width'], $size['height']) <= 2048) {
+            // Only proportional sizes preserve the full photograph in the viewer.
+            $ratio = ($metadata['width'] ?? 0) / max(1, $metadata['height'] ?? 0);
+            if (abs($size['width'] - $size['height'] * $ratio) <= max(2, $ratio)) {
+                $candidates[$name] = $size['width'] * $size['height'];
+            }
+        }
+    }
+    arsort($candidates);
+    $image = $candidates ? wp_get_attachment_image_src($id, array_key_first($candidates)) : false;
+    if (!$image && max($metadata['width'] ?? 0, $metadata['height'] ?? 0) <= 2048) {
+        $image = wp_get_attachment_image_src($id, 'full');
+    }
+    // An unprocessable large image is omitted, rather than served at archive resolution.
+    if (!$image || $image[1] <= 0 || $image[2] <= 0 || max($image[1], $image[2]) > 2048) { return null; }
     $caption = $item['caption'] ?: wp_strip_all_tags(wp_get_attachment_caption($id) ?: '');
     return [
         'id' => (string) $id, 'src' => $image[0], 'width' => (int) $image[1], 'height' => (int) $image[2],
@@ -129,6 +146,10 @@ add_action('graphql_register_types', function () {
         'caption' => ['type' => 'String'], 'credit' => ['type' => 'String'],
         'width' => ['type' => 'Int'], 'height' => ['type' => 'Int'],
     ]]);
+    register_graphql_field('MediaItem', 'garnetGalleryImage', [
+        'type' => 'GarnetGalleryPhoto',
+        'resolve' => function ($source) { return garnet_gallery_photo(['id' => (int) $source->databaseId, 'caption' => '']); },
+    ]);
     register_graphql_object_type('GarnetGalleryPageInfo', ['fields' => [
         'hasNextPage' => ['type' => 'Boolean'], 'endCursor' => ['type' => 'String'],
     ]]);
@@ -141,22 +162,30 @@ add_action('graphql_register_types', function () {
         'args' => ['first' => ['type' => 'Int', 'defaultValue' => 24], 'after' => ['type' => 'String']],
         'resolve' => function ($source, $args) {
             $id = (int) $source->databaseId;
-            $items = garnet_album_photo_items($id);
+            $items = array_values(array_filter(garnet_album_photo_items($id), function ($item) { return garnet_gallery_photo($item) !== null; }));
+            // The cursor belongs to this exact membership/order snapshot.
+            $version = substr(hash('sha256', wp_json_encode(array_column($items, 'id'))), 0, 16);
             $first = min(48, max(1, (int) ($args['first'] ?? 24)));
             $start = 0;
             if (!empty($args['after'])) {
                 $cursor = base64_decode($args['after'], true);
-                if (!$cursor || !preg_match('/^garnet-gallery:' . $id . ':(\d+)$/', $cursor, $match)) {
+                if ($cursor && preg_match('/^garnet-gallery:' . $id . ':(\d+)$/', $cursor)) {
+                    throw new \GraphQL\Error\Error('This album has changed. Refresh to see its current photographs.', null, null, null, null, null, ['code' => 'GARNET_ALBUM_CHANGED']);
+                }
+                if (!$cursor || !preg_match('/^garnet-gallery:' . $id . ':([a-f0-9]{16}):(\d+)$/', $cursor, $match)) {
                     throw new \GraphQL\Error\UserError('Invalid album photo cursor.');
                 }
-                $start = (int) $match[1] + 1;
+                if (!hash_equals($version, $match[1])) {
+                    throw new \GraphQL\Error\Error('This album has changed. Refresh to see its current photographs.', null, null, null, null, null, ['code' => 'GARNET_ALBUM_CHANGED']);
+                }
+                $start = (int) $match[2] + 1;
             }
             $page = array_slice($items, $start, $first);
             $end = $start + count($page);
             return [
                 'nodes' => array_values(array_filter(array_map('garnet_gallery_photo', $page))),
                 'totalCount' => count($items),
-                'pageInfo' => ['hasNextPage' => $end < count($items), 'endCursor' => $page ? base64_encode('garnet-gallery:' . $id . ':' . ($end - 1)) : null],
+                'pageInfo' => ['hasNextPage' => $end < count($items), 'endCursor' => $page ? base64_encode('garnet-gallery:' . $id . ':' . $version . ':' . ($end - 1)) : null],
             ];
         },
     ]);

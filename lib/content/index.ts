@@ -2,8 +2,8 @@ import "server-only";
 import { getVisitorUpdates } from "./updates";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { isWordPressConfigured, wpFetch } from "./client";
-import { getMockEvents, getMockVisitorStatus, mockStories } from "./mock";
-import { EVENTS_QUERY, STORIES_QUERY, VISITOR_STATUS_QUERY } from "./queries";
+import { getMockEvents, mockStories } from "./mock";
+import { EVENTS_QUERY, STORIES_QUERY } from "./queries";
 import { formatShortDate } from "./time";
 import type {
   GarnetEvent,
@@ -15,10 +15,8 @@ import type {
 import {
   mapEvent,
   mapStory,
-  mapVisitorStatus,
   type WpEventsResponse,
   type WpStoriesResponse,
-  type WpVisitorStatusResponse,
 } from "./wordpress";
 
 export * from "./types";
@@ -125,19 +123,19 @@ export function pickHomepageEvent(events: GarnetEvent[], now = new Date()): Garn
 // ---------------------------------------------------------------------------
 
 export async function getVisitorStatus(): Promise<Sourced<VisitorStatus | null>> {
-  return load(
-    "Road report",
-    async () => {
-      const data = await wpFetch<WpVisitorStatusResponse>(VISITOR_STATUS_QUERY, {
-        tags: [CONTENT_TAGS.visitorStatus],
-        // Road status is safety-relevant: refresh more often than other content.
-        revalidate: 120,
-      });
-      return mapVisitorStatus(data);
-    },
-    getMockVisitorStatus,
-    () => null,
-  );
+  // Free ACF exposes road reports through Current Updates, not an options page.
+  const { updates, unavailable } = await getVisitorUpdates();
+  const road = updates.find(item => item.category === "road" && !item.sample);
+  return {
+    source: unavailable ? "fallback" : isWordPressConfigured ? "wordpress" : "mock",
+    data: road ? {
+      roadStatus: road.title,
+      roadNote: road.summary,
+      lastVerified: road.verifiedAt || "",
+      tone: "caution",
+      reportUrl: `/updates#update-${road.id}`,
+    } : null,
+  };
 }
 
 const unavailableReport: RoadReport = {
@@ -157,11 +155,11 @@ export function toRoadReport(status: VisitorStatus | null, now = new Date()): Ro
   const ageDays = (now.getTime() - verifiedAt.getTime()) / 86_400_000;
   const verifiedLabel = `Verified ${formatShortDate(status.lastVerified)}`;
 
-  if (Number.isNaN(ageDays) || ageDays > ROAD_REPORT_STALE_DAYS) {
+  if (Number.isNaN(ageDays) || ageDays < 0 || ageDays > ROAD_REPORT_STALE_DAYS) {
     return {
       ...unavailableReport,
       status: "Not recently confirmed",
-      updatedLabel: Number.isNaN(ageDays) ? "Road report unavailable" : `Last ${verifiedLabel.toLowerCase()}`,
+      updatedLabel: Number.isNaN(ageDays) || ageDays < 0 ? "Road report unavailable" : `Last ${verifiedLabel.toLowerCase()}`,
     };
   }
 
@@ -175,9 +173,6 @@ export function toRoadReport(status: VisitorStatus | null, now = new Date()): Ro
 }
 
 export async function getRoadReport(): Promise<RoadReport> {
-  const { updates } = await getVisitorUpdates();
-  const road = updates.find(item => item.category === "road" && !item.sample);
-  if (road) return { status: road.stale ? "Road report needs confirmation" : road.title, note: road.stale ? `Call the BLM · ${BLM_PHONE_DISPLAY}` : road.summary, updatedLabel: road.verifiedAt ? `Last checked ${formatShortDate(road.verifiedAt)}` : "Last checked date unavailable", href: `/updates#update-${road.id}`, tone: "caution", needsConfirmation: road.stale };
   const { data } = await getVisitorStatus();
   return toRoadReport(data);
 }

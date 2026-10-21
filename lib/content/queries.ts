@@ -33,20 +33,6 @@ export const EVENTS_QUERY = /* GraphQL */ `
   }
 `;
 
-export const VISITOR_STATUS_QUERY = /* GraphQL */ `
-  query GarnetVisitorStatus {
-    garnetVisitorStatus {
-      roadAndWinterAccess {
-        roadStatus
-        roadNote
-        roadLastVerified
-        roadTone
-        roadReportUrl
-      }
-    }
-  }
-`;
-
 export const STORIES_QUERY = /* GraphQL */ `
   query GarnetStories {
     garnetStories(first: 200, where: { status: PUBLISH }) {

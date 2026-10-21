@@ -10,10 +10,8 @@ import type {
   GarnetEvent,
   GarnetStory,
   MapBuildingSlug,
-  RoadTone,
   StoryLink,
   StoryType,
-  VisitorStatus,
 } from "./types";
 
 type WpImageNode = {
@@ -47,18 +45,6 @@ export type WpEventsResponse = {
         eventRegistrationRequired?: boolean | null;
       } | null;
     }>;
-  } | null;
-};
-
-export type WpVisitorStatusResponse = {
-  garnetVisitorStatus?: {
-    roadAndWinterAccess?: {
-      roadStatus?: string | null;
-      roadNote?: string | null;
-      roadLastVerified?: string | null;
-      roadTone?: WpSelect;
-      roadReportUrl?: string | null;
-    } | null;
   } | null;
 };
 
@@ -97,7 +83,6 @@ export type WpStoriesResponse = {
 // ---------------------------------------------------------------------------
 
 const EVENT_STATUSES: EventStatus[] = ["scheduled", "postponed", "cancelled", "sold_out"];
-const ROAD_TONES: RoadTone[] = ["open", "caution", "closed"];
 
 function selectValue(value: WpSelect | undefined): string | undefined {
   return (Array.isArray(value) ? value[0] : value) ?? undefined;
@@ -168,24 +153,6 @@ export function mapEvent(node: WpEventNode): GarnetEvent | null {
     status: status && EVENT_STATUSES.includes(status) ? status : "scheduled",
     registrationRequired: Boolean(f.eventRegistrationRequired),
     featuredImage: mapImage(node.featuredImage),
-  };
-}
-
-export function mapVisitorStatus(data: WpVisitorStatusResponse): VisitorStatus | null {
-  const f = data.garnetVisitorStatus?.roadAndWinterAccess;
-  const lastVerified = toDenverISO(f?.roadLastVerified);
-  const roadStatus = clean(f?.roadStatus);
-  if (!f || !roadStatus || !lastVerified) return null;
-
-  const tone = selectValue(f.roadTone) as RoadTone | undefined;
-
-  return {
-    roadStatus,
-    roadNote: clean(f.roadNote) ?? "",
-    lastVerified,
-    // An unrecognized tone must never render as "open".
-    tone: tone && ROAD_TONES.includes(tone) ? tone : "caution",
-    reportUrl: clean(f.roadReportUrl),
   };
 }
 
