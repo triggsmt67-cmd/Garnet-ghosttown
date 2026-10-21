@@ -20,8 +20,8 @@ installed locally. WordPress editor saves, pagination, and publish/unpublish beh
 were verified. Hosted WordPress migration and deployment remain pending.
 
 See [the editor guide](docs/gallery-editor-guide.md) and
-[the integration handoff](docs/gallery-preview.md). The development server remains
-running. The homepage now uses the selected option 3, **The travel journal**.
+[the integration handoff](docs/gallery-preview.md). The development server was stopped at the end of the October 21 session;
+restart it with `npm run dev`. The homepage now uses the selected option 3, **The travel journal**.
 Four saved concepts are available at `/hero-review`; switching instructions are
 in `components/home-hero.tsx`. Gallery, editor guidance, navigation, and Explore
 photo-map updates are included in this checkpoint. The MU plugin requires its

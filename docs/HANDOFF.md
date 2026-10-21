@@ -93,3 +93,15 @@ Verification email sent (Trevor has the text). Open items:
 - **Town map deferred at Trevor's request:** Trevor will supply a real image of the town. Use that image as the base for clickable building hotspots; preserve the existing building destinations and notes. Leave the current map in place until the image is supplied.
 - Local archive contains 13 historic WebP images in `public/images/historic/university-archive/`. Archive numbers are references, not dates.
 - Backend follow-ups remain: mock/test event content, unavailable Road Report field, and confirmed membership enrollment destination. No backend records were changed during the design pass.
+
+
+## End-of-day checkpoint — October 21, 2026
+
+- Customer site: https://garnet-ghosttown-gdro.vercel.app/ — production deployment verified with the travel-journal hero (option 3), current story text, and local story photo snapshot.
+- Both remote branches `main` and `wp-data-layer` were verified at `1ebc50a8`. Earlier change `c76ccd9c` contains the hero, free-ACF story photo picker, portrait display, timeline thumbnail improvements and editor guidance.
+- Snapshot: 13 published stories and five portable photo files. Public John Leshou and Sam Ritchey pages and loaded photos verified; John Leshou enlarged viewer verified. Local WordPress remains the editing source; refresh `scripts/export-story-snapshot.py` and redeploy to share further edits. See `docs/story-snapshot.md`.
+- WordPress story picker and companion assets are installed in local `garnet-cms.local`. Hosted CMS migration is still pending. Preserve the client-provided spellings/labels; the couple image label says Dora and John Liebson.
+- Local WordPress database and repository MU-plugin copies backed up outside Git at `/Users/trevorriggs/Local Sites/garnet-cms/backups/story-review-2026-10-21/`. SQL export verified to contain schema and data. Original media remain in LocalWP uploads; review image copies are committed in `public/images/story-snapshot/`.
+- Lint, TypeScript, six reliability tests and production build passed for the snapshot release.
+- Dev server on port 3000 stopped for the day. Resume with LocalWP running, then `npm run dev` from this checkout.
+- Eight pre-existing tracked image deletions and the unrelated untracked `Warm Garage Packing Scene.webp` remain deliberately untouched and uncommitted. Do not stage them automatically.
