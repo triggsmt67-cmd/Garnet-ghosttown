@@ -31,6 +31,7 @@ export const CONTENT_TAGS = {
   boardMembers: "board-members",
   visitorStatus: "visitor-status",
   stories: "stories",
+  photoGalleries: "photo-galleries",
 } as const;
 
 /** A road report older than this is treated as unconfirmed. */

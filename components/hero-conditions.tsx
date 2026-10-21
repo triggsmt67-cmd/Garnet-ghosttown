@@ -20,22 +20,22 @@ const unavailableReport: HeroRoadReport = {
   tone: "caution",
 };
 
-export function HeroConditions({ roadReport }: { roadReport?: HeroRoadReport }) {
+export function HeroConditions({ roadReport, layout = "original" }: { roadReport?: HeroRoadReport; layout?: "original" | "strip" }) {
   const report = roadReport ?? unavailableReport;
   const tone = report.tone ?? "caution";
 
   return (
     <aside
       aria-label="Current weather and road access"
-      className="grid w-full grid-cols-[.88fr_1.12fr] border-t border-white/20 pt-4 text-[#f8f6f1] lg:block lg:min-w-0 lg:border-t-0 lg:pt-0"
+      className={layout === "strip" ? "grid w-full grid-cols-[.88fr_1.12fr] items-center text-[#f8f6f1] md:grid-cols-[1fr_1.4fr] md:gap-10" : "grid w-full grid-cols-[.88fr_1.12fr] border-t border-white/20 pt-4 text-[#f8f6f1] lg:block lg:min-w-0 lg:border-t-0 lg:pt-0"}
     >
-      <div className="pr-4 lg:pr-0">
+      <div className={layout === "strip" ? "pr-4" : "pr-4 lg:pr-0"}>
         <WeatherCard compact />
       </div>
 
       <Link
         href={report.href}
-        className="group border-l border-white/18 pl-4 lg:mt-4 lg:block lg:border-t lg:border-l-0 lg:pt-4 lg:pl-0"
+        className={layout === "strip" ? "group border-l border-white/18 pl-4 md:pl-10" : "group border-l border-white/18 pl-4 lg:mt-4 lg:block lg:border-t lg:border-l-0 lg:pt-4 lg:pl-0"}
       >
         <span className="flex items-center justify-between gap-3">
           <span className="label-type flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.17em] text-white/72 uppercase">

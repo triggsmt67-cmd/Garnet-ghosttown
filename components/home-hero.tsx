@@ -3,6 +3,17 @@ import Link from "next/link";
 import { ArrowRight } from "./icons";
 import { HeroConditions, type HeroRoadReport } from "./hero-conditions";
 
+/**
+ * Keep this original homepage hero until the client chooses a concept.
+ * Compare the saved options at /hero-review (all use the original copy):
+ * 1 /hero-review/1 — HomeHeroGradient, ./home-hero-gradient
+ * 2 /hero-review/2 — HomeHeroCream, ./home-hero-cream
+ * 3 /hero-review/3 — HomeHeroJournal, ./home-hero-journal
+ * 4 /hero-review/4 — HomeHeroFourth, ./home-hero-fourth
+ * To activate a choice, import its component here and return it with roadReport.
+ * The fourth option includes the portal photo and its conditions strip.
+ * Also include / in Header's solid-green treatment for concepts 1–4.
+ */
 export function HomeHero({ roadReport }: { roadReport?: HeroRoadReport }) {
   return (
     <section className="home-hero relative overflow-hidden bg-[#0d1218] text-[#f8f6f1]">

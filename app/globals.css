@@ -316,3 +316,150 @@ button:focus-visible {
   font-size: 0.875rem;
   line-height: 1.65;
 }
+
+/* Arrival concept: a travel-journal masthead, living landscape, archival print. */
+.garnet-arrival {
+  overflow: hidden;
+  padding-top: 8.25rem;
+  background: #f2eee4;
+  color: #24352b;
+}
+.arrival-heading { max-width: 100rem; margin: auto; padding: 1.8rem 3rem 1.5rem; }
+.arrival-kicker { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #24352b40; padding-bottom: .7rem; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.arrival-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding-top: 1.75rem; }
+.arrival-title { margin: 0; font-size: clamp(7rem, 17.5vw, 17rem); line-height: .72; letter-spacing: -.065em; animation: arrival-appear 1s cubic-bezier(.16,1,.3,1) both; }
+.arrival-intro { margin: 0 0 .2rem; font-size: clamp(1.5rem, 2.7vw, 2.7rem); line-height: 1.05; letter-spacing: -.03em; }
+.arrival-intro em { color: #815337; }
+.arrival-landscape { position: relative; min-height: 30rem; isolation: isolate; background: #697b55; }
+.arrival-photo { object-fit: cover; object-position: center 54%; animation: arrival-landscape 2.4s cubic-bezier(.2,.6,.2,1) both; }
+.arrival-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,33,22,.72), rgba(16,33,22,.34) 34%, transparent 65%), linear-gradient(0deg,rgba(16,33,22,.24), transparent 50%); }
+.arrival-invitation { position: relative; z-index: 1; max-width: 100rem; margin: auto; padding: 3rem; color: #f8f6f1; animation: arrival-appear 1s .15s cubic-bezier(.16,1,.3,1) both; }
+.arrival-call { margin: 0; font-size: clamp(3.5rem, 5.7vw, 6rem); line-height: .94; letter-spacing: -.04em; }
+.arrival-call em { color: #f0dba0; }
+.arrival-description { margin: 1.4rem 0 0; font-size: 1rem; line-height: 1.6; }
+.arrival-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.8rem; }
+.arrival-primary { display: inline-flex; align-items: center; gap: 2rem; background: #f2eee4; color: #24352b; padding: .9rem 1.3rem; font-size: .9rem; font-weight: 600; transition: background .2s, transform .2s; }
+.arrival-primary:hover { background: #fff; transform: translateY(-3px); }
+.arrival-secondary { display: inline-flex; gap: 1.25rem; align-items: center; border-bottom: 1px solid #f8f6f170; padding: .6rem 0; font-size: .9rem; font-weight: 600; }
+.arrival-secondary:hover { border-color: #fff; }
+.arrival-archive { position: absolute; z-index: 2; right: max(4rem, calc((100vw - 90rem) / 2)); bottom: 3.5rem; width: 15rem; padding: .65rem .65rem 0; color: #24352b; background: #f2eee4; box-shadow: 0 15px 35px #10211640; transform: rotate(5deg); transition: transform .4s; animation: arrival-print 1.3s .3s cubic-bezier(.16,1,.3,1) both; }
+.arrival-archive:hover { transform: rotate(0deg) translateY(-6px); }
+.arrival-archive-image { position: relative; aspect-ratio: 1.5; background: #c3bcab; }
+.arrival-archive-caption { display: flex; justify-content: space-between; gap: .3rem; padding: .65rem .1rem; font-size: .72rem; font-weight: 600; }
+.arrival-photo-label { position: absolute; right: 2.5rem; top: 1.4rem; font-size: .63rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: white; background: #24352be6; padding: .35rem .7rem; }
+@keyframes arrival-appear { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes arrival-landscape { from { transform: scale(1.045); } to { transform: scale(1); } }
+@keyframes arrival-print { from { opacity: 0; translate: 0 20px; rotate: -5deg; } to { opacity: 1; translate: 0 0; rotate: 0deg; } }
+@media (min-width: 1600px) { .arrival-landscape { min-height: 35rem; } .arrival-invitation { padding-top: 4.5rem; } }
+@media (max-width: 767px) {
+  .garnet-arrival { padding-top: 7.75rem; }
+  .arrival-heading { padding: 1rem 1.25rem 1.2rem; }
+  .arrival-kicker { font-size: .58rem; letter-spacing: .12em; }
+  .arrival-location { display: none; }
+  .arrival-title-row { display: block; padding-top: 1.6rem; }
+  .arrival-title { font-size: 27vw; }
+  .arrival-intro { margin-top: 1.5rem; font-size: 1.65rem; }
+  .arrival-intro br { display: none; }
+  .arrival-landscape { min-height: 39rem; }
+  .arrival-photo { object-position: 60% center; }
+  .arrival-shade { background: linear-gradient(180deg, #102116ad, #10211630 70%, #10211650); }
+  .arrival-invitation { padding: 2rem 1.25rem; }
+  .arrival-call { font-size: 3.8rem; }
+  .arrival-description { max-width: 18rem; }
+  .arrival-actions { gap: 1rem; }
+  .arrival-archive { width: 10rem; bottom: 1.8rem; right: 1.8rem; }
+  .arrival-archive-caption { font-size: .6rem; }
+  .arrival-photo-label { top: auto; bottom: 1.4rem; left: 1.25rem; right: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrival-title, .arrival-invitation, .arrival-photo, .arrival-archive { animation: none; }
+}
+
+/* Fourth concept: a photographic doorway into Garnet's past and present. */
+.portal-hero { overflow: hidden; padding-top: 8.5rem; background: #f2eee4; color: #24352b; }
+.portal-composition { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 90rem; margin: auto; padding: 3.5rem 4rem 2.5rem; align-items: center; }
+.portal-copy { position: relative; z-index: 1; animation: arrival-appear 1s cubic-bezier(.16,1,.3,1) both; }
+.portal-eyebrow { display: flex; align-items: center; gap: .75rem; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.portal-eyebrow > span { font-size: 1.8rem; line-height: 1; color: #98613d; }
+.portal-title { margin: 2rem 0 0; font-size: clamp(4rem, 7.4vw, 7.2rem); line-height: .91; letter-spacing: -.055em; }
+.portal-title em { display: block; color: #98613d; font-size: 1.25em; }
+.portal-description { margin-top: 2rem; font-size: 1.3rem; line-height: 1.35; font-weight: 500; }
+.portal-detail { max-width: 23rem; margin-top: 1rem; font-size: .95rem; line-height: 1.7; color: #4e5b4e; }
+.portal-actions { margin-top: 1.8rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.portal-primary { display: inline-flex; align-items: center; gap: 2rem; background: #24352b; color: #f8f6f1; padding: 1rem 1.4rem; font-size: .88rem; font-weight: 600; transition: transform .25s, background .25s; }
+.portal-primary:hover { transform: translateY(-3px); background: #3d5a3e; }
+.portal-explore { display: inline-flex; gap: .8rem; border-bottom: 1px solid #24352b60; padding: .5rem 0; font-size: .88rem; font-weight: 600; }
+.portal-explore:hover { border-color: #24352b; }
+.portal-footnote { display: flex; align-items: center; gap: .8rem; margin-top: 2rem; font-size: .7rem; color: #675e50; }
+.portal-rule { width: 2rem; height: 1px; background: #98613d; }
+.portal-gallery { position: relative; padding: 0 1rem; }
+.portal-window { position: relative; isolation: isolate; width: 100%; aspect-ratio: .87; overflow: hidden; border-radius: 50% 50% 0 0; background: #889174; animation: portal-open 1.5s cubic-bezier(.16,1,.3,1) both; }
+.portal-arch-outline { position: absolute; left: .35rem; right: .35rem; top: -.7rem; bottom: 5.6rem; border: 1px solid #98613d70; border-radius: 50% 50% 0 0; pointer-events: none; }
+.portal-view { object-fit: cover; object-position: 42% center; transition: opacity .65s, transform 1.2s; }
+.portal-view-today { opacity: 1; }
+.portal-view-hidden { opacity: 0; }
+.portal-view-archive { animation: portal-image-in .65s both; object-position: 60% center; }
+.portal-window-shade { position: absolute; inset: 0; background: linear-gradient(0deg,#172b1eb0,transparent 30%); }
+.portal-image-caption { position: absolute; left: 1.5rem; right: 1.5rem; bottom: 1.5rem; color: #fff; text-align: center; font-size: .75rem; letter-spacing: .025em; }
+.portal-side-note { position: absolute; right: -.7rem; top: 36%; writing-mode: vertical-rl; font-size: .6rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #675e50; }
+.portal-view-controls { position: relative; z-index: 1; display: flex; width: fit-content; max-width: 100%; align-items: center; gap: .3rem; margin: -1px auto 0; padding: .6rem; border: 1px solid #24352b25; background: #f8f6f1; }
+.portal-view-controls button { cursor: pointer; border: 0; background: transparent; color: #56604f; font: inherit; font-size: .76rem; padding: .5rem 1.2rem; transition: color .2s, background .2s; }
+.portal-view-controls button[aria-pressed="true"] { background: #24352b; color: #fff; }
+.portal-view-controls button:hover { background: #e4dfd0; color: #24352b; }
+.portal-view-controls button[aria-pressed="true"]:hover { background: #3d5a3e; color: #fff; }
+.portal-control-divider { height: .8rem; width: 1px; background: #24352b30; }
+.portal-view-hint { margin-top: .7rem; font-family: var(--display); font-size: .9rem; font-style: italic; text-align: center; color: #675e50; }
+.portal-bottom-line { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; align-items: center; max-width: 82rem; width: calc(100% - 8rem); margin: 0 auto; padding: 1.5rem 0; border-top: 1px solid #24352b35; }
+.portal-bottom-line > span:first-child { font-size: .65rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 600; }
+.portal-bottom-line > span:nth-child(2) { font-size: 1.7rem; font-style: italic; }
+.portal-bottom-line a { font-size: .78rem; font-weight: 600; border-bottom: 1px solid #24352b50; }
+@keyframes portal-open { from { opacity: .5; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes portal-image-in { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 1023px) {
+  .portal-composition { padding: 2.5rem 2rem; gap: 1.5rem; }
+  .portal-title { font-size: clamp(3.5rem,8vw,6rem); }
+  .portal-window { aspect-ratio: .65; }
+  .portal-bottom-line { width: calc(100% - 4rem); margin-inline: 2rem; }
+  .portal-actions { gap: 1rem; }
+}
+@media (max-width: 639px) {
+  .portal-hero { padding-top: 7.75rem; }
+  .portal-composition { grid-template-columns: 1fr; gap: 3rem; padding: 1.8rem 1.25rem 1.5rem; }
+  .portal-title { font-size: clamp(4.1rem, 16vw, 6rem); margin-top: 1.5rem; }
+  .portal-title em { display: inline; }
+  .portal-description { margin-top: 1.5rem; font-size: 1.2rem; }
+  .portal-detail { max-width: 25rem; }
+  .portal-footnote { margin-top: 1.5rem; }
+  .portal-window { aspect-ratio: .87; }
+  .portal-gallery { max-width: 30rem; width: 100%; margin: auto; }
+  .portal-bottom-line { width: calc(100% - 2.5rem); margin-inline: 1.25rem; gap: .75rem; }
+  .portal-bottom-line > span:first-child { width: 100%; }
+  .portal-bottom-line > span:nth-child(2) { font-size: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .portal-copy, .portal-window, .portal-view-archive { animation: none; } .portal-view { transition: none; } }
+
+/* Original copy shared by all four review concepts. */
+.portal-title { font-size: clamp(3rem, 5.2vw, 5.4rem); }
+.portal-title em { font-size: 1.08em; }
+.portal-detail { margin-top: 2rem; font-size: 1.1rem; max-width: 27rem; }
+.portal-gallery { padding-bottom: .5rem; }
+.portal-arch-outline { bottom: 4rem; }
+.arrival-title-row { margin: 0; }
+.arrival-title { font-size: clamp(7rem, 16vw, 16rem); }
+.arrival-invitation { padding-top: 4.5rem; }
+.arrival-description { margin-top: 0; max-width: 36rem; font-size: clamp(1.75rem, 2.9vw, 2.8rem); line-height: 1.2; letter-spacing: -.02em; }
+@media (max-width: 767px) {
+  .arrival-title { font-size: 25vw; }
+  .arrival-invitation { padding-top: 2rem; }
+  .arrival-description { max-width: 24rem; font-size: 2rem; }
+}
+@media (max-width: 639px) {
+  .portal-title { font-size: clamp(3rem, 12vw, 4rem); }
+  .portal-title em { display: block; }
+  .portal-detail { margin-top: 1.5rem; font-size: 1rem; }
+}
+
+.gallery-lightbox { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; padding: 1.25rem; background: #111c16fa; color: #f8f6f1; }
+.gallery-lightbox[open] { display: flex; flex-direction: column; }
+.gallery-lightbox::backdrop { background: #111c16; }
+@media (min-width: 768px) { .gallery-lightbox { padding: 1.5rem 2.5rem; } }

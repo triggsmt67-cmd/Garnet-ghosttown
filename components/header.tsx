@@ -19,6 +19,7 @@ const involvementLinks = [
   { href: "/preserve", label: "Ways to Help" },
   { href: "/license-plate", label: "License Plate & Grants" },
   { href: "/association", label: "About the Association" },
+  { href: "/gallery", label: "Photo Gallery" },
 ];
 
 export function Header({ fire }: { fire: FireStatus }) {
@@ -38,7 +39,9 @@ export function Header({ fire }: { fire: FireStatus }) {
       <FireStatusBar fire={fire} />
       <div
         className={`border-b transition-all duration-500 ${
-          scrolled || open
+          (pathname.startsWith("/hero-review") || pathname.startsWith("/gallery"))
+            ? "border-white/10 bg-[#24352b] py-4 shadow-sm"
+            : scrolled || open
             ? "border-white/10 bg-[#0d1218]/96 py-3 shadow-2xl shadow-black/10 backdrop-blur-xl"
             : "border-transparent bg-[#0d1218]/12 py-5"
         }`}
@@ -83,7 +86,7 @@ export function Header({ fire }: { fire: FireStatus }) {
               );
             })}
             <details className="group relative" onKeyDown={(event) => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
-              <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${involvementLinks.some(link => pathname === link.href) ? "text-[#e0c46d]" : "text-white/75"}`}>Get Involved <span aria-hidden="true">⌄</span></summary>
+              <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${involvementLinks.some(link => pathname === link.href || pathname.startsWith(`${link.href}/`)) ? "text-[#e0c46d]" : "text-white/75"}`}>Get Involved <span aria-hidden="true">⌄</span></summary>
               <div className="absolute right-0 top-full mt-5 w-72 border border-white/15 bg-[#0d1218] p-2 shadow-xl">
                 {involvementLinks.map(link => <Link key={link.href} href={link.href} onClick={event => { const disclosure = event.currentTarget.closest("details"); if (disclosure) disclosure.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10" aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
               </div>

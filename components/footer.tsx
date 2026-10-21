@@ -30,6 +30,7 @@ export function Footer() {
               <Link className="hover:text-[#e0c46d]" href="/faq">Common questions</Link>
               <Link className="hover:text-[#e0c46d]" href="/cabin-rentals">Winter cabin rentals</Link>
               <Link className="hover:text-[#e0c46d]" href="/explore">Explore</Link>
+              <Link className="hover:text-[#e0c46d]" href="/gallery">Photo Gallery</Link>
               <Link className="hover:text-[#e0c46d]" href="/about">About Garnet</Link>
               <Link className="hover:text-[#e0c46d]" href="/history">History timeline</Link>
               <Link className="hover:text-[#e0c46d]" href="/association">About the Association</Link>

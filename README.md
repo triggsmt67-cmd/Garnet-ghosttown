@@ -3,6 +3,23 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
+## Local gallery checkpoint: October 21, 2026
+
+The local `/gallery` page now reads **Photo Galleries** albums from `garnet-cms.local`.
+Editors can upload/select photos in the native Gallery block, reorder and caption them,
+and use ACF fields for the cover, description, order, sample flag, and photo credit.
+The gallery supports the installed **free ACF** plugin. Six labeled sample albums are
+installed locally. WordPress editor saves, pagination, and publish/unpublish behavior
+were verified. Hosted WordPress migration and deployment remain pending.
+
+See [the editor guide](docs/gallery-editor-guide.md) and
+[the integration handoff](docs/gallery-preview.md). The development server remains
+running. The original homepage hero remains active pending the client’s choice.
+Four saved concepts are available at `/hero-review`; switching instructions are
+in `components/home-hero.tsx`. Gallery, editor guidance, navigation, and Explore
+photo-map updates are included in this checkpoint. The MU plugin requires its
+`garnet-gallery-assets` companion directory when installed on hosted WordPress.
+
 ## Work checkpoint: October 14, 2026
 
 Start here when returning to the project. Work now continues on `main`.
