@@ -4,8 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Mountain } from "./icons";
-import type { FireStatus } from "@/lib/fire-shared";
-import { FireStatusBar } from "./fire-status-bar";
+import type { ReactNode } from "react";
 
 const links = [
   { href: "/visit", label: "Plan Your Visit" },
@@ -22,7 +21,7 @@ const involvementLinks = [
   { href: "/gallery", label: "Photo Gallery" },
 ];
 
-export function Header({ fire }: { fire: FireStatus }) {
+export function Header({ fireStatus }: { fireStatus: ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +35,7 @@ export function Header({ fire }: { fire: FireStatus }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <FireStatusBar fire={fire} />
+      {fireStatus}
       <div
         className={`border-b transition-all duration-500 ${
           (pathname === "/" || pathname.startsWith("/hero-review") || pathname.startsWith("/gallery"))

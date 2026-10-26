@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -32,76 +33,11 @@ export const metadata: Metadata = {
   description: "Follow Garnet from gold discovery and its 1898 boom through decline, abandonment, and preservation.",
 };
 
-export default async function HistoryPage() {
+async function HistoryTimeline() {
   const { data: stories } = await getStories();
   const chapters = buildTimeline(stories);
 
-  return (
-    <main id="main-content">
-      <RouteHero
-        eyebrow="The story of Garnet"
-        title="How a mining town became a ghost town."
-        intro="Garnet grew quickly when miners came looking for gold. Visit the buildings that remain and learn about the families who made their homes here."
-        image="/images/History-Top-Banner.webp"
-        imageAlt="Archival view of Garnet's mining camp and mill"
-        imagePosition="object-[center_42%]"
-      />
-
-      <section className="bg-[#e9e1d2] px-5 py-14 md:px-10 md:py-20">
-        <div className="mx-auto max-w-[82rem]">
-          <Reveal className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:gap-20 xl:gap-24">
-            <div className="lg:sticky lg:top-32">
-              <h2 className="display-type leading-[1.02] section-heading">
-                The boom years
-              </h2>
-              <figure className="mt-8">
-                <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0d1218]">
-                  <Image
-                    src="/images/History-family-cabin.webp"
-                    unoptimized
-                    loading="eager"
-                    alt="A wooden cabin surrounded by winter snow"
-                    fill
-                    sizes="(min-width: 1024px) 34vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="mt-4 border-l border-[#3d5a3e]/40 pl-4 text-sm leading-6 text-black/68">
-                  A cabin in winter. Households and children were part
-                  of the town’s story alongside mines and mills.
-                </figcaption>
-              </figure>
-            </div>
-            <div className="lg:pt-2">
-              <p className="display-type text-4xl leading-[1.12] md:text-6xl">
-                Garnet took its name from the red stone found nearby.
-                Gold mining brought people to the town.
-              </p>
-              <div className="prose-copy mt-10 max-w-3xl text-base leading-8 text-black/72">
-                <p>
-                  Miners had worked the nearby gulches for decades. New mining claims
-                  and better ways to process ore brought more people to the mountains.
-                  Buildings went up quickly, often without foundations. Getting gold out
-                  of the ground mattered more than building a town that would last.
-                </p>
-                <p>
-                  When Montana’s silver industry collapsed in 1893, experienced miners
-                  began looking for gold work. A new wagon road and a mill that crushed
-                  rock made it easier to mine Garnet’s gold-bearing quartz. Within a few
-                  years, the seasonal camp had grown into a busy town.
-                </p>
-                <p>
-                  At its height, Garnet was home to nearly 1,000 people. Families had a
-                  school, a doctor, a butcher, hotels, and shops. Residents gathered for
-                  union meetings, dances, and picnics. The rooms you can enter today
-                  offer a glimpse of that everyday life.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
+  return (<>
       <section className="paper-grain bg-[#0e1c27] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">
           <Reveal className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-20">
@@ -247,6 +183,79 @@ export default async function HistoryPage() {
           </div>
         </section>
       )}
+  </>);
+}
+
+export default function HistoryPage() {
+  return (
+    <main id="main-content">
+      <RouteHero
+        eyebrow="The story of Garnet"
+        title="How a mining town became a ghost town."
+        intro="Garnet grew quickly when miners came looking for gold. Visit the buildings that remain and learn about the families who made their homes here."
+        image="/images/History-Top-Banner.webp"
+        imageAlt="Archival view of Garnet's mining camp and mill"
+        imagePosition="object-[center_42%]"
+      />
+
+      <section className="bg-[#e9e1d2] px-5 py-14 md:px-10 md:py-20">
+        <div className="mx-auto max-w-[82rem]">
+          <Reveal className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:gap-20 xl:gap-24">
+            <div className="lg:sticky lg:top-32">
+              <h2 className="display-type leading-[1.02] section-heading">
+                The boom years
+              </h2>
+              <figure className="mt-8">
+                <div className="image-reveal relative aspect-[4/3] overflow-hidden bg-[#0d1218]">
+                  <Image
+                    src="/images/History-family-cabin.webp"
+                    unoptimized
+                    loading="eager"
+                    alt="A wooden cabin surrounded by winter snow"
+                    fill
+                    sizes="(min-width: 1024px) 34vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4 border-l border-[#3d5a3e]/40 pl-4 text-sm leading-6 text-black/68">
+                  A cabin in winter. Households and children were part
+                  of the town’s story alongside mines and mills.
+                </figcaption>
+              </figure>
+            </div>
+            <div className="lg:pt-2">
+              <p className="display-type text-4xl leading-[1.12] md:text-6xl">
+                Garnet took its name from the red stone found nearby.
+                Gold mining brought people to the town.
+              </p>
+              <div className="prose-copy mt-10 max-w-3xl text-base leading-8 text-black/72">
+                <p>
+                  Miners had worked the nearby gulches for decades. New mining claims
+                  and better ways to process ore brought more people to the mountains.
+                  Buildings went up quickly, often without foundations. Getting gold out
+                  of the ground mattered more than building a town that would last.
+                </p>
+                <p>
+                  When Montana’s silver industry collapsed in 1893, experienced miners
+                  began looking for gold work. A new wagon road and a mill that crushed
+                  rock made it easier to mine Garnet’s gold-bearing quartz. Within a few
+                  years, the seasonal camp had grown into a busy town.
+                </p>
+                <p>
+                  At its height, Garnet was home to nearly 1,000 people. Families had a
+                  school, a doctor, a butcher, hotels, and shops. Residents gathered for
+                  union meetings, dances, and picnics. The rooms you can enter today
+                  offer a glimpse of that everyday life.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <Suspense fallback={<p role="status" className="bg-[#f5ead3] px-5 py-12 text-center text-[#24352b]">Loading Garnet’s history and stories…</p>}>
+        <HistoryTimeline />
+      </Suspense>
     </main>
   );
 }

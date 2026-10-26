@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { HeroConditions } from "@/components/hero-conditions";
 import { getVisitorUpdates } from "@/lib/content/updates";
 import { formatEventDate } from "@/lib/content/time";
 import Image from "next/image";
@@ -31,19 +33,14 @@ const placeSchema = {
   publicAccess: true,
 };
 
-export default async function Home() {
-  const [{ data: events }, roadReport, { updates }] = await Promise.all([
-    getEvents(), getRoadReport(), getVisitorUpdates(),
+async function HomeUpdates() {
+  const [{ data: events }, { updates }] = await Promise.all([
+    getEvents(), getVisitorUpdates(),
   ]);
   const featuredUpdate = updates.find(item => item.featured && item.category !== "meeting" && (!item.stale || item.sample));
   const homepageEvent = pickHomepageEvent(events);
 
-  return (
-    <main id="main-content">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd(placeSchema) }}
-      />
+  return (<>
       {homepageEvent && (
         <script
           type="application/ld+json"
@@ -51,10 +48,32 @@ export default async function Home() {
         />
       )}
 
-      <HomeHero roadReport={roadReport} />
       <aside aria-label="Current visitor updates" className="border-b border-[#24352b]/15 bg-[#e9e1d1] px-5 py-6 md:px-10"><div className="mx-auto flex max-w-[82rem] flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-semibold tracking-wider text-[#98613d] uppercase">{featuredUpdate?.sample ? "Current updates · Sample content" : "Current updates"}</p><p className="mt-2 max-w-3xl leading-7 text-[#24352b]">{featuredUpdate ? featuredUpdate.summary : "Check road and snow reports, visitor alerts, and announcements before your trip."}</p>{featuredUpdate?.verifiedAt && <p className="mt-2 text-xs text-[#625b50]">Last checked {formatEventDate(featuredUpdate.verifiedAt)}</p>}</div><Link href={featuredUpdate ? `/updates#update-${featuredUpdate.id}` : "/updates"} className="shrink-0 self-start border-b border-[#3d5a3e] pb-2 font-semibold text-[#24352b] md:self-center">View current updates →</Link></div></aside>
 
       <EventBanner event={homepageEvent} />
+
+  </>);
+}
+
+async function HomeRoadConditions() {
+  return <HeroConditions roadReport={await getRoadReport()} layout="strip" />;
+}
+
+export default function Home() {
+  return (
+    <main id="main-content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(placeSchema) }}
+      />
+      <HomeHero conditions={
+        <Suspense fallback={<HeroConditions layout="strip" />}>
+          <HomeRoadConditions />
+        </Suspense>
+      } />
+      <Suspense fallback={<div role="status" className="border-b border-[#24352b]/15 bg-[#e9e1d1] px-5 py-6 text-[#24352b] md:px-10"><p className="mx-auto max-w-[82rem]">Loading current updates and events…</p></div>}>
+        <HomeUpdates />
+      </Suspense>
 
       <section className="overflow-hidden bg-[#f2eee4] px-5 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-[82rem]">

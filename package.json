@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test:reliability": "node --test tests/content-reliability.test.mjs"
+    "test:reliability": "node --test tests/content-reliability.test.mjs",
+    "test:hero-streaming": "node --test tests/hero-streaming.test.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

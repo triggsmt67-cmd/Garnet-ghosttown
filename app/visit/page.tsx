@@ -6,7 +6,9 @@ import { RouteHero } from "@/components/route-hero";
 import { WeatherCard } from "@/components/weather-card";
 import { FireRestrictionsCard } from "@/components/fire-restrictions-card";
 import { VisitCards } from "@/components/visit-cards";
-import { getFireStatus } from "@/lib/fire";
+import { Suspense } from "react";
+import { LiveFireRestrictionsCard } from "@/components/live-fire-status";
+import { pendingFireStatus } from "@/lib/fire-shared";
 
 export const metadata: Metadata = {
   title: "Plan Your Visit",
@@ -52,8 +54,7 @@ const checklist: ChecklistItem[] = [
   },
 ];
 
-export default async function VisitPage() {
-  const fire = await getFireStatus();
+export default function VisitPage() {
 
   return (
     <main id="main-content">
@@ -209,7 +210,9 @@ export default async function VisitPage() {
             {/* Sidebar Widgets & Emergency Advisory */}
             <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
               <WeatherCard />
-              <FireRestrictionsCard fire={fire} compact />
+              <Suspense fallback={<FireRestrictionsCard fire={pendingFireStatus} compact />}>
+                <LiveFireRestrictionsCard />
+              </Suspense>
 
               <div className="border border-black/15 bg-[#0e1c27]/[0.03] p-6 text-xs leading-relaxed text-black/65">
                 <div className="flex items-center justify-between">

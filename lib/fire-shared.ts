@@ -6,6 +6,14 @@ export const FIRE_MAP_URL =
 
 export const FIRE_JURISDICTION_LABEL = "Missoula County";
 
+// Neutral initial state while the live restriction check streams in.
+export const pendingFireStatus: FireStatus = {
+  status: "Check the official map",
+  isUrgent: false,
+  jurisdiction: FIRE_JURISDICTION_LABEL,
+  failed: true,
+};
+
 export type FireStatus = {
   /** Visitor-facing label, e.g. "Stage 2 restrictions" */
   status: string;

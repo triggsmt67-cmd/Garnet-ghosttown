@@ -327,13 +327,13 @@ button:focus-visible {
 .arrival-heading { max-width: 100rem; margin: auto; padding: 1.8rem 3rem 1.5rem; }
 .arrival-kicker { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #24352b40; padding-bottom: .7rem; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .arrival-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding-top: 1.75rem; }
-.arrival-title { margin: 0; font-size: clamp(7rem, 17.5vw, 17rem); line-height: .72; letter-spacing: -.065em; animation: arrival-appear 1s cubic-bezier(.16,1,.3,1) both; }
+.arrival-title { margin: 0; font-size: clamp(7rem, 17.5vw, 17rem); line-height: .72; letter-spacing: -.065em; }
 .arrival-intro { margin: 0 0 .2rem; font-size: clamp(1.5rem, 2.7vw, 2.7rem); line-height: 1.05; letter-spacing: -.03em; }
 .arrival-intro em { color: #815337; }
 .arrival-landscape { position: relative; min-height: 30rem; isolation: isolate; background: #697b55; }
-.arrival-photo { object-fit: cover; object-position: center 54%; animation: arrival-landscape 2.4s cubic-bezier(.2,.6,.2,1) both; }
+.arrival-photo { object-fit: cover; object-position: center 54%; }
 .arrival-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,33,22,.72), rgba(16,33,22,.34) 34%, transparent 65%), linear-gradient(0deg,rgba(16,33,22,.24), transparent 50%); }
-.arrival-invitation { position: relative; z-index: 1; max-width: 100rem; margin: auto; padding: 3rem; color: #f8f6f1; animation: arrival-appear 1s .15s cubic-bezier(.16,1,.3,1) both; }
+.arrival-invitation { position: relative; z-index: 1; max-width: 100rem; margin: auto; padding: 3rem; color: #f8f6f1; }
 .arrival-call { margin: 0; font-size: clamp(3.5rem, 5.7vw, 6rem); line-height: .94; letter-spacing: -.04em; }
 .arrival-call em { color: #f0dba0; }
 .arrival-description { margin: 1.4rem 0 0; font-size: 1rem; line-height: 1.6; }
@@ -342,7 +342,7 @@ button:focus-visible {
 .arrival-primary:hover { background: #fff; transform: translateY(-3px); }
 .arrival-secondary { display: inline-flex; gap: 1.25rem; align-items: center; border-bottom: 1px solid #f8f6f170; padding: .6rem 0; font-size: .9rem; font-weight: 600; }
 .arrival-secondary:hover { border-color: #fff; }
-.arrival-archive { position: absolute; z-index: 2; right: max(4rem, calc((100vw - 90rem) / 2)); bottom: 3.5rem; width: 15rem; padding: .65rem .65rem 0; color: #24352b; background: #f2eee4; box-shadow: 0 15px 35px #10211640; transform: rotate(5deg); transition: transform .4s; animation: arrival-print 1.3s .3s cubic-bezier(.16,1,.3,1) both; }
+.arrival-archive { position: absolute; z-index: 2; right: max(4rem, calc((100vw - 90rem) / 2)); bottom: 3.5rem; width: 15rem; padding: .65rem .65rem 0; color: #24352b; background: #f2eee4; box-shadow: 0 15px 35px #10211640; transform: rotate(5deg); transition: transform .4s; }
 .arrival-archive:hover { transform: rotate(0deg) translateY(-6px); }
 .arrival-archive-image { position: relative; aspect-ratio: 1.5; background: #c3bcab; }
 .arrival-archive-caption { display: flex; justify-content: space-between; gap: .3rem; padding: .65rem .1rem; font-size: .72rem; font-weight: 600; }

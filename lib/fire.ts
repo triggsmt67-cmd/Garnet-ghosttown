@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 
 /**
  * Fire restrictions from Montana DNRC's public ArcGIS layer.
@@ -63,10 +64,11 @@ const failedStatus: FireStatus = {
   failed: true,
 };
 
-export async function getFireStatus(): Promise<FireStatus> {
+export const getFireStatus = cache(async function getFireStatus(): Promise<FireStatus> {
   try {
     const response = await fetch(FIRE_QUERY_URL, {
       next: { revalidate: REVALIDATE_SECONDS, tags: ["fire-restrictions"] },
+      signal: AbortSignal.timeout(5_000),
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
@@ -87,4 +89,4 @@ export async function getFireStatus(): Promise<FireStatus> {
     console.error("[fire] Restrictions unavailable", error);
     return failedStatus;
   }
-}
+});

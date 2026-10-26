@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { homeHeroCopy } from "./home-hero-copy";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "./icons";
 import { HeroConditions, type HeroRoadReport } from "./hero-conditions";
 
-export function HomeHeroJournal({ roadReport }: { roadReport?: HeroRoadReport }) {
+export function HomeHeroJournal({ roadReport, conditions }: { roadReport?: HeroRoadReport; conditions?: ReactNode }) {
   return (
     <>
       <section className="garnet-arrival" aria-labelledby="arrival-title">
@@ -46,7 +47,7 @@ export function HomeHeroJournal({ roadReport }: { roadReport?: HeroRoadReport })
       </section>
       <div className="bg-[#24352b] px-5 py-5 md:px-10">
         <div className="mx-auto max-w-[82rem]">
-          <HeroConditions roadReport={roadReport} layout="strip" />
+          {conditions ?? <HeroConditions roadReport={roadReport} layout="strip" />}
         </div>
       </div>
     </>

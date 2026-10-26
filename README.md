@@ -3,6 +3,24 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
+## To-do: Education & Events customer follow-up — October 26, 2026
+
+Collect the following from the customer for the updated `/events` page:
+
+- [ ] Get the Warren Park photo from the old website, including any caption or
+  photo credit to retain.
+- [ ] Get the Self-Guided Interpretive Trail brochure and confirm its official title.
+- [ ] Get the Town Map pamphlet and confirm its official title.
+- [ ] Get the Scavenger Hunt map/list for visitors to download.
+- [ ] Confirm the genealogy committee details: whether it researches former
+  residents and updates *The People of Garnet*, whether the book is sold at the
+  Visitor Center, and whether a current version is available online for free.
+  Request the correct link and approved wording, or confirmation to omit the
+  paragraph. It is currently omitted from the page pending confirmation.
+- [ ] After Trevor supplies the updated files, add the Warren Park photo and
+  working download links to the Education & Events page. Add the genealogy copy
+  and any book link once the customer confirms them.
+
 ## Customer story review snapshot: October 21, 2026
 
 The customer site includes the 13 published local stories and five referenced photo

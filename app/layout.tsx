@@ -4,7 +4,10 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
-import { getFireStatus } from "@/lib/fire";
+import { Suspense } from "react";
+import { LiveFireStatusBar } from "@/components/live-fire-status";
+import { FireStatusBar } from "@/components/fire-status-bar";
+import { pendingFireStatus } from "@/lib/fire-shared";
 import { isIndexable } from "@/lib/site";
 
 const display = Newsreader({
@@ -37,11 +40,9 @@ export const metadata: Metadata = {
   robots: isIndexable ? undefined : { index: false, follow: false },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const fire = await getFireStatus();
-
   return (
     <html
       lang="en"
@@ -53,7 +54,11 @@ export default async function RootLayout({
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-        <Header fire={fire} />
+        <Header fireStatus={
+          <Suspense fallback={<FireStatusBar fire={pendingFireStatus} />}>
+            <LiveFireStatusBar />
+          </Suspense>
+        } />
         {children}
         <Footer />
       </body>
