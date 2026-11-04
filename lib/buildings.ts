@@ -107,8 +107,8 @@ export const buildings: Building[] = [
     ],
     lookFor:
       "Compare the cabin’s compact footprint with the commercial buildings below, then picture reaching it only by ski, snowshoe, or snowmobile.",
-    source: "https://garnetghosttown.org/cabin-rentals.php",
-    sourceLabel: "Official winter cabin information",
+    source: "https://www.recreation.gov/camping/campgrounds/10388435",
+    sourceLabel: "Cabin details & booking on Recreation.gov",
     map: { left: "68%", top: "62%", width: "16%", height: "10%", rotate: "-9deg" },
   },
 ];

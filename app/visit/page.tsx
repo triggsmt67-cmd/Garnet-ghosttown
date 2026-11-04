@@ -159,6 +159,20 @@ export default function VisitPage() {
               significant artifacts related to the mining and natural environment of the area,
               with a Gift Store offering a wide assortment to choose from.
             </p>
+            <aside className="mt-8 border-l-4 border-[#a36b43] pl-5">
+              <h3 className="display-type text-2xl text-[#24352b]">Planning an accessible visit</h3>
+              <p className="mt-3">
+                Garnet has designated accessible parking for visitors with a valid disability
+                parking placard or license plate, accessible vault toilets, and wheelchair
+                ramps at some historic buildings and the Visitor Center.
+              </p>
+              <p className="mt-3">
+                The trail from the main parking lot is steep and can be slippery. Visitors
+                with limited mobility should arrange a drop-off at the town entrance.
+                Some buildings and trails have access limitations.
+              </p>
+              <a href="/events#accessibility" className="mt-4 inline-block font-semibold text-[#3d5a3e] underline underline-offset-4">Accessibility at Garnet →</a>
+            </aside>
           </div>
         </Reveal>
       </section>

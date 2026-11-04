@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Mountain } from "./icons";
+import { ArrowUpRight, Mountain, Wheelchair } from "./icons";
 import type { ReactNode } from "react";
 
 const links = [
@@ -63,8 +63,8 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
               if (link.href === "/visit" || link.href === "/about") return (
                 <details key={link.href} className="relative" onKeyDown={event => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
-                  <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${active || (link.href === "/visit" ? ["/cabin-rentals", "/faq", "/updates"].includes(pathname) : pathname === "/history") ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
-                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/updates",label:"Current updates"},{href:"/faq",label:"Common questions"},{href:"/cabin-rentals",label:"Winter cabin rentals"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History & Stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
+                  <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${active || (link.href === "/visit" ? ["/cabin-rentals", "/faq", "/updates", "/montana-ghost-towns"].includes(pathname) : pathname === "/history") ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
+                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/updates",label:"Current updates"},{href:"/faq",label:"Common questions"},{href:"/cabin-rentals",label:"Winter cabin rentals"},{href:"/montana-ghost-towns",label:"Montana ghost towns"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History & Stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
                 </details>
               );
               return (
@@ -90,6 +90,14 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
                 {involvementLinks.map(link => <Link key={link.href} href={link.href} onClick={event => { const disclosure = event.currentTarget.closest("details"); if (disclosure) disclosure.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10" aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}
               </div>
             </details>
+            <a
+              href="/events#accessibility"
+              aria-label="Accessibility at Garnet"
+              title="Accessibility at Garnet"
+              className="grid h-11 w-11 shrink-0 place-items-center text-[#d3b350] transition-colors hover:text-[#e0c46d] focus-visible:rounded-sm"
+            >
+              <Wheelchair className="h-6 w-6" />
+            </a>
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
               target="_blank"
@@ -138,12 +146,20 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
               >
                 <span>{link.label}</span>
                 <ArrowUpRight className="h-5 w-5 text-white/65" />
-              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History & Stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}</div>
+              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History & Stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}{link.href === "/visit" && <Link href="/montana-ghost-towns" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Montana ghost towns →</Link>}</div>
             ))}
             <details className="border-b border-white/10 py-4 text-[#f8f6f1]">
               <summary className="display-type cursor-pointer text-3xl">Get Involved</summary>
               <div className="mt-3 grid gap-1">{involvementLinks.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="py-3 pl-3 text-base text-white/80">{link.label}</Link>)}</div>
             </details>
+            <a
+              href="/events#accessibility"
+              onClick={() => setOpen(false)}
+              className="display-type flex min-h-14 items-center gap-3 border-b border-white/10 py-4 text-3xl text-[#d3b350] hover:text-[#e0c46d]"
+            >
+              <Wheelchair className="h-7 w-7 shrink-0" />
+              <span>Accessibility at Garnet</span>
+            </a>
           </div>
         </nav>
       </div>

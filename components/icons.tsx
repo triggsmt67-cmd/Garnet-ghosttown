@@ -74,3 +74,18 @@ export function Star(props: IconProps) {
     </svg>
   );
 }
+
+export function Wheelchair(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <circle cx="9" cy="4" r="2" fill="currentColor" />
+      <path
+        d="M9 8v7h7l3 5 3-1M9 10h6M6.5 11.5a5.5 5.5 0 1 0 8 6.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

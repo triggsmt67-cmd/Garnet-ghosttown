@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "./icons";
 
 const endings = {
+  "montana-ghost-towns": { label: "Start at Garnet", title: "Make Garnet part of your Montana trip.", href: "/visit", action: "Plan your Garnet visit" },
   home: { label: "Your time at Garnet", title: "Check the route and plan your visit.", href: "/visit", action: "Plan your visit" },
   visit: { label: "Once you arrive", title: "See which buildings you can explore.", href: "/explore", action: "Explore the town" },
   explore: { label: "Garnet’s residents", title: "Meet the people who made Garnet a town.", href: "/history", action: "Read Garnet’s stories" },

@@ -3,6 +3,159 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
+## Start here: local handoff — November 4, 2026
+
+This is the current checkpoint. The dated October notes below remain useful history;
+where they differ from this section, use this section and inspect the checkout.
+
+### Current checkout and release state
+
+- Project: `/Users/trevorriggs/Documents/Garnet Ghost Town Website Mockup Number Two`.
+- Branch: `main`. Local HEAD inspected today: `943e52f9` — “Update education
+  content and improve hero loading.” The older commit IDs below are historical.
+- The November 4 work described here is **local, uncommitted, and not deployed**.
+  No commit, push, or deployment was performed for these changes. GitHub remote
+  state and the current Vercel deployed commit were not verified in this session.
+- Local preview was running at `http://localhost:3001/` at this checkpoint.
+  Next time, start Garnet CMS in Local if CMS editing is needed, run `npm run dev`
+  (or `npm run dev -- --port 3001`), and use the URL printed by Next.js. Port 3000
+  may belong to another project; do not stop another site's server.
+- **Preserve the working tree.** There are 33 missing tracked images under
+  `public/images/`, including About, Home, Events, Explore, Preserve, boardwalk,
+  and University archive files. Their intent has not been established. They were
+  already missing before today's download/page edits and were not restored,
+  deleted, or staged by this work. Inspect `git status` and resolve their intended
+  disposition with Trevor before any release; do not stage all files or infer
+  that the successful build proves image completeness.
+- New untracked deliverables are `public/downloads/`,
+  `app/montana-ghost-towns/`, and `public/images/montana-ghost-towns-map.webp`.
+  Preserve them along with the existing tracked changes.
+
+### Completed locally
+
+- **Downloads:** `public/downloads/` contains the transportation grant application
+  in editable Word and printable PDF formats, plus the license-plate grant
+  application and cover-letter PDFs. `/events` links both transportation formats;
+  `/license-plate#grants` links both grant PDFs. Links use local files, format
+  labels, and native download attributes. The PDFs have no built-in fillable
+  fields. The transportation Word document remains the option for typing answers.
+  Grant PDF filenames retain the supplied 2024 version; a newer approved version
+  has not been established.
+- **Cabin booking:** `/cabin-rentals` and the Dahl Cabin reference in
+  `lib/buildings.ts` link to the official
+  [Recreation.gov cabin listing](https://www.recreation.gov/camping/campgrounds/10388435),
+  confirmed through the [BLM Garnet page](https://www.blm.gov/visit/garnet-ghost-town).
+  The CTA reads “Check availability & book on Recreation.gov.” The seasonal
+  guide links to the local cabin page. Conflicting mailed-application, lottery,
+  seven-day refund, and $5 processing-fee instructions were replaced with current
+  online booking guidance. The unconfirmed $50 nightly rate was removed; visitors
+  are directed to current rates and cancellation terms on Recreation.gov. The
+  packing list now refers to reservation confirmation and access instructions,
+  not a separate application or permit. No permit terms were invented.
+- **Montana ghost towns:** `/montana-ghost-towns` uses Trevor's supplied static,
+  uncropped vintage map illustration and lists all 20 supplied towns with
+  descriptions and individually usable links. The page matches the site's forest
+  green, parchment, and editorial type styles; two columns become one on phones.
+  Desktop: **Plan Your Visit → Montana ghost towns**. Mobile: open navigation →
+  **Plan Your Visit** section → **Montana ghost towns →**. Also in the footer's
+  **Explore** group. Added page metadata, closing CTA, and sitemap entry.
+  Four broken Wikipedia links were replaced (Castle Town, Kendall, Giltedge,
+  Independence); Glendale now links to its own regional visitor page, Nevada City
+  to its museum page, and Garnet to local `/visit`. History references are labeled
+  as history/Wikipedia rather than implying every town has an official visitor site.
+- **Accessibility:** current local changes add the wheelchair shortcut in desktop
+  and mobile navigation, accessible visitor guidance on `/visit` and `/faq`, and
+  the `#accessibility` target with parking/drop-off/ramp/toilet guidance on `/events`.
+  This is visitor information, not a certification that every historic building
+  or trail is accessible.
+- **Other local presentation work:** homepage arrival-heading letter spacing is
+  adjusted; the footer is grouped into Visit, Explore, Get Involved, and Official,
+  includes the additional Travel + Leisure feature link, and displays “Powered by
+  TruePath Digital.” Association navigation now points to local `/association`.
+
+### Verification recorded today
+
+- All four download endpoints returned HTTP 200 from the local preview with the
+  expected MIME types and bytes matching the Library-supplied files. `/events`
+  and `/license-plate` each rendered the intended pair of download links.
+- Local `/cabin-rentals` and `/explore/dahl-cabin` returned HTTP 200 and rendered
+  the official booking link. BLM and Recreation.gov destinations returned HTTP 200.
+  No `cabin-rentals.php` references remain in `app/`, `components/`, or `lib/`.
+- Ghost-town directory: all 19 external destinations and local Garnet `/visit`
+  returned HTTP 200. Headless Chrome checks at **1440 × 1000** and **390 × 844**
+  found all 20 entries/links, a loaded hero, no broken images on this page, and no
+  horizontal overflow. Desktop and mobile navigation passed; mobile selection
+  closed the menu. Screenshots were visually inspected. This does not verify
+  images on every other route or every historical claim.
+- Targeted ESLint checks on the changed TSX/TypeScript files,
+  `tsc --noEmit --incremental false`, and `git diff --check` passed.
+  `npm run build` passed and included `/montana-ghost-towns`; the existing events
+  feed logged WordPress fetch failures and used its fallback. The static directory
+  itself does not depend on WordPress. Full reliability/hero test suites were not
+  rerun as part of this handoff; run the release checks below when preparing release.
+- Supporting local reports, link results, original CSV/image, screenshots, and
+  archived pre-change cabin text are in
+  `/Users/trevorriggs/Documents/Codex/2026-11-04/task-3/`:
+  `garnet-downloads-verification.md`, `garnet-cabin-verification.md`, and
+  `garnet-ghost-towns-verification.md`. These are outside this repository and are
+  not automatically included in a future commit or deployment.
+
+### Remaining content and client dependencies
+
+- [ ] Resolve the 33 missing tracked images with Trevor; inspect affected routes
+  visually once their intended state is known. Keep unrelated changes intact.
+- [ ] Complete the **Education & Events customer follow-up** checklist below:
+  Warren Park photo/credit, interpretive-trail brochure, Town Map pamphlet,
+  scavenger-hunt download, official titles, and genealogy/*The People of Garnet*
+  wording/link. These are still missing; the new transportation/grant downloads
+  do not complete that separate list. Genealogy copy remains omitted pending approval.
+- [ ] Ask GPA to confirm the supplied grant documents are the versions to publish,
+  including the PDFs named 2024, and approve any updated application instructions.
+- [ ] Review the ghost-town descriptions before launch. The supplied historical
+  summaries have **not been comprehensively fact-checked**. Bannack's superlative
+  was softened and Independence's unsupported naming/access account was replaced
+  with conservative copy; the original CSV is preserved in the supporting workspace.
+- [ ] Review the supplied **generated map** as artwork: labels include errors and
+  duplicates, and geography/markers have not been verified. It is explicitly
+  decorative, noninteractive, and not a navigation map. If the client wants an
+  accurate map, obtain a corrected replacement. No additional third-party map or
+  photo assets were copied; no specific rights concern was identified, but no
+  independent rights documentation was supplied or established.
+- [ ] Retain source attribution when reviewing the two remaining old-site links;
+  use a verified equivalent if replacing them: `app/about/page.tsx` credits
+  `https://www.garnetghosttown.org/history.php`, and `app/explore/page.tsx` credits
+  `https://www.garnetghosttown.org/things-to-do.php#nearby`. These are source
+  citations, not download/booking navigation. Canonical URLs, metadata, sitemap
+  base, and `lib/site.ts` still use the intended Garnet domain; those are not stale
+  outbound links. No old-site download or cabin application links remain.
+- [ ] Connect/migrate hosted WordPress and required plugins, revalidation, galleries,
+  and stories before launch; Local WP is not published by pushing Next.js code.
+  Preserve client story copy and the snapshot/editor guidance below. Verify real
+  publish/edit/unpublish/expiration behavior against the hosted endpoint.
+- [ ] Audit and remove/unpublish demo events and updates before launch, obtain
+  approved current visitor notices, and recheck changing access/fees with BLM.
+  Board roster and meetings/minutes remain paused pending the association's
+  explicit decision; do not re-enable or delete the retained CMS data by default.
+- [ ] After review, separately verify GitHub branch/remote and Vercel deployment
+  configuration/commit, then prepare only the intended changes for an authorized
+  release. Nothing in this README authorizes a commit, push, or deployment.
+
+### Next session: start in this order
+
+1. Run `git status --short`, `git branch --show-current`, and `git log -1`.
+   Review this checkpoint, preserve uncommitted/untracked work, and settle the
+   **33 missing images** before staging or assessing release readiness.
+2. Start the local preview and review `/montana-ghost-towns`, `/cabin-rentals`,
+   `/events`, `/license-plate`, and the shared navigation/footer with Trevor.
+   Collect the outstanding Education & Events files and client content decisions.
+3. Address approved content/image corrections; connect and verify hosted WordPress
+   and remove demo content. Keep the paused roster/meeting decisions intact.
+4. Before release, run `npm run lint`,
+   `npx tsc --noEmit --incremental false`, `npm run test:reliability`,
+   `npm run test:hero-streaming`, and `npm run build`; check affected routes,
+   downloads, and external destinations on desktop and phone. Inspect the precise
+   diff, verify deployment targets, and obtain release authorization separately.
+
 ## To-do: Education & Events customer follow-up — October 26, 2026
 
 Collect the following from the customer for the updated `/events` page:
@@ -47,7 +200,8 @@ photo-map updates are included in this checkpoint. The MU plugin requires its
 
 ## Work checkpoint: October 14, 2026
 
-Start here when returning to the project. Work now continues on `main`.
+Historical checkpoint; the November 4 handoff above is the current starting point.
+At this October checkpoint, work continued on `main`.
 `wp-data-layer` was fast-forwarded into `main`; subsequent photo updates are on
 `main` only. Do not resume from the older branch without checking its state.
 
@@ -117,15 +271,20 @@ Start here when returning to the project. Work now continues on `main`.
 - Replace a website image using its existing filename, or update the relevant
   page/component reference when changing names. Verify crops and refresh the page.
 
-### Local changes intentionally not pushed
+### Historical image status — October 14 only
 
-Eight pre-existing tracked image deletions remain in the working tree: the two
-boardwalk files and six University archive images. They were excluded from all
-commits today. `public/images/Warm Garage Packing Scene.webp` remains untracked
-and was also excluded. Inspect `git status` and preserve these decisions; do not
-stage all files, commit the deletions, or restore them automatically.
+This paragraph records the October 14 state, not the current checkout. See the
+November 4 handoff for the 33 currently missing tracked images and preservation
+instructions. At the October checkpoint, eight tracked image deletions were
+recorded: the two boardwalk files and six University archive images. They were
+excluded from that session’s commits. `public/images/Warm Garage Packing Scene.webp`
+was then untracked and was also excluded. This records history rather than
+establishing the intent of today’s missing files; inspect the current checkout.
 
-### When we reopen
+### Historical next steps — October 14
+
+Use the prioritized November 4 starting steps above; the items here preserve the
+earlier integration context.
 
 1. Check `git status`, branch, and remote state. Continue on `main`. Start Garnet
    CMS in Local for WordPress content, then run `npm run dev` and open the printed
@@ -159,7 +318,8 @@ npm install
 npm run dev
 ```
 
-The current local preview runs at `http://localhost:3000/` (use the port printed by Next.js if that port is occupied).
+Use the port printed by Next.js. The November 4 preview used `http://localhost:3001/`;
+port 3000 can be occupied by another project.
 
 Validation commands:
 
@@ -537,15 +697,17 @@ Archive scans from the university collection available for historical stories an
 
 ## About the Association
 
-`/association` presents GPA’s mission, funding, meeting information, and contact
-information from the committee’s Get Involved document. Navigation and footer
+`/association` presents GPA’s mission, funding, and contact information from the
+committee’s Get Involved document. Public meeting content is paused; its code is
+preserved pending the association’s decision. Navigation and footer
 links use “About the Association.” The former `/board` route permanently
 redirects to `/association`.
 
 The board roster is intentionally omitted at the committee’s request. The
 existing WordPress board-member plugin and data adapter remain available for
 future approved use, but this page does not fetch or display board profiles.
-Meeting-minute files have not been supplied; add real file links when available.
+Meeting-minute files have not been supplied; add real file links only after the
+association approves resuming their public display.
 
 `/license-plate` contains the supplied plate illustration, donation split, and
 county treasurer purchase guidance. Fees link to the official Montana MVD page.

@@ -29,8 +29,9 @@ const educationSections = [
   { id: "visitor-information", label: "Additional information" },
 ];
 
-function ActivityRow({ title, note, children }: {
+function ActivityRow({ title, note, children, id }: {
   title: string;
+  id?: string;
   note?: string;
   children: React.ReactNode;
 }) {
@@ -38,7 +39,7 @@ function ActivityRow({ title, note, children }: {
     <Reveal className="grid gap-6 border-t border-[#0e1c27]/15 py-10 md:grid-cols-[.72fr_1.28fr] md:gap-16 md:py-12">
       <div>
         {note && <p className="mb-3 text-[0.65rem] font-bold tracking-[0.14em] text-[#3d5a3e] uppercase">{note}</p>}
-        <h3 className="display-type text-3xl leading-[1.05] tracking-[-0.025em] md:text-4xl">{title}</h3>
+        <h3 id={id} tabIndex={id ? -1 : undefined} className="display-type scroll-mt-40 text-3xl leading-[1.05] tracking-[-0.025em] md:text-4xl">{title}</h3>
       </div>
       <div className="max-w-2xl space-y-5 text-base leading-8 text-black/72">{children}</div>
     </Reveal>
@@ -251,7 +252,11 @@ export default function EventsPage() {
             <div className="border-l-4 border-[#a36b43] pl-6">
               <h3 className="text-lg font-semibold">Help with transportation costs</h3>
               <p className="mt-3 leading-8 text-black/72">GPA offers grants to assist with transportation costs. Once your tour is scheduled and approved, complete the Transportation Grant Application and follow the submission instructions in the form. For current details, call BLM at <a href="tel:4063293914" className="underline underline-offset-4">406-329-3914</a>.</p>
-              <a href="https://www.garnetghosttown.org/assets/files/Updated_GPA-Transportation-Grant-Form.docx" className="mt-4 inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold hover:text-[#3d5a3e]">Download transportation grant application (Word) ↓</a>
+              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-4">
+                <a href="/downloads/Updated_GPA-Transportation-Grant-Form.docx" download className="inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold hover:text-[#3d5a3e]">Download transportation grant application (Word) ↓</a>
+                <a href="/downloads/Updated_GPA-Transportation-Grant-Form.pdf" download className="inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold hover:text-[#3d5a3e]">Download transportation grant application (PDF) ↓</a>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-black/65">Use the Word document to type your responses, or print and complete the PDF.</p>
             </div>
           </div>
           <ActivityRow title="Investigating Garnet: A Historic Mining Town" note="Project Archaeology · Grades 3–5">
@@ -337,7 +342,9 @@ export default function EventsPage() {
           <Reveal className="mb-10">
             <h2 className="display-type section-heading leading-[0.98] tracking-[-0.035em]">Additional information</h2>
           </Reveal>
-          <ActivityRow title="Accessibility at Garnet">
+          <ActivityRow id="accessibility" title="Accessibility at Garnet">
+            <p>Garnet provides designated accessible parking spaces within the ghost town for visitors with a valid disability parking placard or license plate, accessible vault toilets, and wheelchair ramps at some historic buildings and the Visitor Center.</p>
+            <p>The trail from the main parking lot is steep and can be slippery. Visitors with limited mobility should use transportation to reach the town entrance for drop-off instead of taking this trail. After drop-off, drivers should return to the upper lot unless using a designated accessible parking space with a valid placard or license plate.</p>
             <p>Not all of Garnet’s historic buildings and trails are accessible to visitors with limited mobility. Some trails are not suitable for everyone, and the Welles Hotel’s second and third floors are not wheelchair accessible.</p>
             <p>For help planning a visit around your access needs, contact BLM at <a href="tel:4063293914" className="underline underline-offset-4">406-329-3914</a>.</p>
             <a href="/visit" className="inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold text-[#1e2f1f] hover:text-[#3d5a3e]">Plan your visit →</a>

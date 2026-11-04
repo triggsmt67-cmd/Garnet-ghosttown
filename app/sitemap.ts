@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/`, priority: 1, changeFrequency: "monthly" },
     { url: `${base}/visit`, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/explore`, priority: 0.8, changeFrequency: "yearly" },
+    { url: `${base}/montana-ghost-towns`, priority: 0.6, changeFrequency: "yearly" },
     { url: `${base}/history`, priority: 0.7, changeFrequency: "yearly" },
     { url: `${base}/preserve`, priority: 0.7, changeFrequency: "monthly" },
     { url: `${base}/association`, priority: 0.5, changeFrequency: "monthly" },

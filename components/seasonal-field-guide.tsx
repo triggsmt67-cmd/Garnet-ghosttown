@@ -92,7 +92,7 @@ const seasons: Season[] = [
       },
       {
         term: "Cabin stays",
-        description: "Two primitive historic cabins are available through an annual lottery on Recreation.gov. Apply before the season fills.",
+        description: "Book the Dahl and McDonald cabins on Recreation.gov. Check the reservation page for available dates.",
       },
       {
         term: "Facilities",
@@ -100,7 +100,7 @@ const seasons: Season[] = [
       },
     ],
     primaryLink: {
-      href: "https://garnetghosttown.org/cabin-rentals.php",
+      href: "/cabin-rentals",
       label: "Winter cabin details",
     },
     secondaryLink: {

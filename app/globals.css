@@ -327,7 +327,7 @@ button:focus-visible {
 .arrival-heading { max-width: 100rem; margin: auto; padding: 1.8rem 3rem 1.5rem; }
 .arrival-kicker { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #24352b40; padding-bottom: .7rem; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .arrival-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding-top: 1.75rem; }
-.arrival-title { margin: 0; font-size: clamp(7rem, 17.5vw, 17rem); line-height: .72; letter-spacing: -.065em; }
+.arrival-title { margin: 0; font-size: clamp(7rem, 17.5vw, 17rem); line-height: .72; letter-spacing: -.015em; }
 .arrival-intro { margin: 0 0 .2rem; font-size: clamp(1.5rem, 2.7vw, 2.7rem); line-height: 1.05; letter-spacing: -.03em; }
 .arrival-intro em { color: #815337; }
 .arrival-landscape { position: relative; min-height: 30rem; isolation: isolate; background: #697b55; }
