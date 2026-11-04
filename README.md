@@ -3,10 +3,45 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
-## Start here: local handoff — November 4, 2026
+## Start here: released checkpoint — November 4, 2026
 
-This is the current checkpoint. The dated October notes below remain useful history;
-where they differ from this section, use this section and inspect the checkout.
+- Application changes were committed and pushed to `origin/main` as
+  `0c3b2d97050c9822670159450e8d4e5e1b67d910` — “Add grant downloads and Montana
+  ghost town directory.” This documentation follow-up records the verified result;
+  use `git log -1` and Vercel to identify the latest documentation commit/build.
+- Production: <https://garnet-ghosttown-gdro.vercel.app/>. The application deployment
+  `dpl_7mDETLDUcrJ1BojwYUz8ohdL1wUM` reached **READY**, sourced from that exact
+  Git commit. New page: <https://garnet-ghosttown-gdro.vercel.app/montana-ghost-towns>.
+- Verified eight deployed pages, four downloads, the new map, and all 33 excluded
+  images. All 38 file responses returned HTTP 200 and exactly matched committed
+  bytes. Desktop (1440 × 1000) and mobile (390 × 844) directory rendering and
+  navigation passed without overflow, broken images, or browser page errors.
+- Full lint, TypeScript, six reliability tests, four hero-streaming tests, and an
+  isolated build of the staged Git tree passed. The isolated tree included the
+  unchanged committed images; the original checkout was not repaired or restored.
+- The 33 missing tracked images remain **local, unstaged deletions only**. None
+  were included in the release; all are present on the deployed site. Their local
+  intent remains unresolved. Do not stage or restore them automatically.
+- The existing Vercel connection has two projects on this same repository and
+  production branch `main`: `garnet-ghosttown-gdro` (this checkout's linked target)
+  and `garnet-ghosttown`. Both rebuilt successfully on the push. No production
+  branch, build, domain, or SSO settings were changed. The verification CLI created
+  an automation bypass token unexpectedly; that exact token was revoked after
+  verification, leaving zero automation bypass tokens and existing SSO protection
+  enabled. Runtime error/fatal log scan for the application deployment was empty.
+- Local release evidence is in
+  `/Users/trevorriggs/Documents/Codex/2026-11-04/task-3/release-verification.json`.
+  The earlier reports and screenshots listed below remain outside this repository.
+- **Next session:** inspect Git status and the 33 local missing images, review the
+  outstanding client assets/content and ghost-town caveats below, then continue
+  hosted WordPress and launch-content work. The deployment succeeded; those client
+  dependencies and the local image disposition remain open.
+
+### Earlier implementation handoff — before the release
+
+The following checkpoint records the local state before the authorized commit,
+push, and Vercel rebuild above. Its local-only release statements are historical;
+the completed work, client dependencies, and older integration notes remain useful.
 
 ### Current checkout and release state
 
