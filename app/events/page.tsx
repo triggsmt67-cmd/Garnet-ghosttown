@@ -330,6 +330,9 @@ export default function EventsPage() {
           <ActivityRow title="Scavenger Hunt" note="All ages">
             <p>With a prepared scavenger hunt list, search the Garnet area to find and identify artifacts and items of interest. The activity is suitable for all ages and is especially fun for younger visitors.</p>
             <p>Take your completed list to the Visitor Center to receive a small prize. Leave artifacts and other objects where you find them.</p>
+            <a href="/downloads/garnet-scavenger-hunt.pdf" download className="inline-block border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold hover:text-[#3d5a3e]">
+              Download the scavenger hunt brochure (PDF) ↓
+            </a>
           </ActivityRow>
           <ActivityRow title="Interpretive Signage" note="Buildings, mines & trails">
             <p>GPA and BLM have worked together to place interpretive signs throughout the area. The signs share the history of buildings, old mines, and trails, offering a closer look at Garnet’s early days and the people who lived here.</p>
