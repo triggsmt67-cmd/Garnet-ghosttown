@@ -137,6 +137,16 @@ the completed work, client dependencies, and older integration notes remain usef
 
 ### Remaining content and client dependencies
 
+- **Historical-information email sent November 4, 2026:** Trevor confirmed sending
+  the revised request for family-history sources, census records, Davey’s buggy
+  provenance, grant award/completion records, and confirmation of the 2024 grant
+  forms. Awaiting responses; historical questions remain open. See the dated
+  follow-up in `docs/historical-content-audit-2026-10-12.md` for the exact scope
+  and client replies received by November 6.
+- **November 6 local review:** Removed the paused Zeffy placeholders and added
+  the supplied thank-you quotes to the Bonner and Engine 1356 grant projects.
+  The official BLM book already links from History and About Garnet; its PDF
+  responded successfully. These local changes were not deployed.
 - [ ] Resolve the 33 missing tracked images with Trevor; inspect affected routes
   visually once their intended state is known. Keep unrelated changes intact.
 - [ ] Complete the **Education & Events customer follow-up** checklist below:
@@ -144,8 +154,12 @@ the completed work, client dependencies, and older integration notes remain usef
   scavenger-hunt download, official titles, and genealogy/*The People of Garnet*
   wording/link. These are still missing; the new transportation/grant downloads
   do not complete that separate list. Genealogy copy remains omitted pending approval.
-- [ ] Ask GPA to confirm the supplied grant documents are the versions to publish,
-  including the PDFs named 2024, and approve any updated application instructions.
+- [x] Confirm the license-plate grant application with GPA. On November 6, Jen
+  confirmed the old site's application is current. Both local PDFs match the
+  old site's extracted wording and page counts, although the file bytes differ.
+  Both downloads work locally and on the deployed review site. Keep the PDFs
+  and list the two submission options printed on the application: email the
+  completed form or mail it to the GPA Grant Committee.
 - [ ] Review the ghost-town descriptions before launch. The supplied historical
   summaries have **not been comprehensively fact-checked**. Bannack's superlative
   was softened and Independence's unsupported naming/access account was replaced

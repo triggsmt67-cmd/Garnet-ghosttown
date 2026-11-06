@@ -83,4 +83,31 @@ For independently written text only checked against the book, use “Historical 
 4. Missoula County Records Center: Maud Markley case records identified in the BLM notes.
 5. GPA grant files/recipient archives: award letters, completion reports and photographs for all five projects, plus the History Corp assessment scope and schedule.
 
-No outreach has been sent. Online sources above were located/read during this review; requested original records remain outstanding. CMS stories should be edited at their source after these discrepancies are reviewed, not patched invisibly in the frontend.
+At the October 12 review, no outreach had been sent. Online sources above were located/read during that review; requested original records remained outstanding. CMS stories should be edited at their source after these discrepancies are reviewed, not patched invisibly in the frontend.
+
+## Follow-up email sent — November 4, 2026
+
+Trevor confirmed that he sent the revised historical-information request email. Status: awaiting responses and supporting records; sending the request does not resolve the historical questions.
+
+The email requested:
+
+- Fitzgerald family: original 1912 newspaper clipping/source, 1918 versus 1919 departure, and the sequence of Frank’s 1941 visit and postwar return.
+- Seadin family: 1902 versus 1905 arrival and the sequence of moves, including their final return.
+- John Leshou/Lehsou: preferred name spelling and records resolving bank president versus vice president in 1900.
+- Philip Neuman: supporting records for his biography, the Gingerbread House story, and the reported 1971 fire.
+- Chinese residents: census year and pages, Garnet versus Beartown context, and whether the two Ah Chung entries represent different people.
+- Dahl family: The Joint’s opening date versus construction of the surviving Visitor Center building.
+- Davey’s buggy: purchase/accession records or accounts connecting it to the July 1948 auction and its later return. The auction chronology is already corrected on the website.
+- License-plate grant projects: award letters and completion reports to confirm dates and completed work; confirmation that the application and cover-letter PDFs labeled 2024 are current.
+
+No replies or new evidence were recorded with this update. This note records Trevor’s report of sending the email; Codex did not send it. The broader archive requests listed above are not all covered by this email.
+
+## Client replies reviewed — November 6, 2026
+
+- Gloria confirmed on November 5 that the correct spelling is **John Leshou**
+  and that he was **vice president** of the bank. The clipping supports the
+  spelling; the title comes from Gloria’s correction. Updated only the title
+  in the LocalWP story and repository story copies. Historical dates are unchanged.
+- Jen confirmed that the old site's license-plate grant application is current.
+  The existing application and cover-letter PDFs have the same extracted
+  wording and page counts as the old site's copies. No replacement was needed.

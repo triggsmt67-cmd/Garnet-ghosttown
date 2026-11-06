@@ -115,12 +115,6 @@ export default function PreservePage() {
           <p className="mt-3 text-sm leading-7 text-black/62">
             For membership and application information, call <a href="tel:+14063293914" className="font-semibold underline underline-offset-4">406-329-3914</a>.
           </p>
-          {/* Replace this placeholder with the association’s Zeffy membership embed when supplied. */}
-          <div aria-label="Zeffy membership form placeholder" className="mt-8 flex min-h-64 flex-col items-center justify-center border border-dashed border-[#3d5a3e]/40 bg-[#e9e1d1]/40 p-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#3d5a3e]">Online membership</p>
-            <h3 className="display-type mt-3 text-3xl text-[#0e1c27]">Become a member through Zeffy</h3>
-            <p className="mt-4 max-w-md text-sm leading-7 text-black/62">Online membership registration is coming soon. For now, please call the number above for membership information.</p>
-          </div>
         </Reveal>
       </section>
       <section id="donations" className="paper-grain scroll-mt-28 bg-[#0e1c27] px-5 py-14 text-[#f8f6f1] md:px-10 md:py-20">
@@ -130,13 +124,7 @@ export default function PreservePage() {
             <h2 className="display-type leading-[0.95] section-heading">Help care for<br />what remains.</h2>
             <p className="mt-7 text-base leading-8 text-white/74">Garnet welcomes four kinds of contributions: money, time, help recording the past, and the return of artifacts that once belonged in the town.</p>
             <p className="mt-5 text-base leading-8 text-white/74">Financial donations support operating costs, restoration, preservation, interpretation, structural stabilization, historical artifact preservation, and educational programs. Your generosity helps protect Garnet’s cabins, saloons, and storefronts for generations to explore. Donations are tax deductible.</p>
-            <p className="mt-5 text-base leading-8 text-white/74">To ask about making a contribution, call <a href="tel:+14063293914" className="font-semibold text-[#e0c46d] underline underline-offset-4">406-329-3914</a> or write to Garnet Preservation Association, Inc., PO Box 18295, Missoula, MT 59808.</p>
-            {/* Replace this placeholder with the association’s Zeffy donation embed when supplied. */}
-            <div aria-label="Zeffy donation form placeholder" className="mt-8 flex min-h-64 flex-col items-center justify-center border border-dashed border-[#e0c46d]/50 bg-white/5 p-8 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#e0c46d]">Online donations</p>
-              <h3 className="display-type mt-3 text-3xl">Make a donation through Zeffy</h3>
-              <p className="mt-4 max-w-md text-sm leading-7 text-white/74">Online donations are coming soon. For now, please contact GPA using the details above to ask about contributing.</p>
-            </div>
+            <p className="mt-5 text-base leading-8 text-white/74">To ask about making a contribution, call <a href="tel:+14063293914" className="whitespace-nowrap font-semibold text-[#e0c46d] underline underline-offset-4">406-329-3914</a> or write to Garnet Preservation Association, Inc., PO Box 18295, Missoula, MT 59808.</p>
           </div>
           <figure>
             <div className="image-reveal relative aspect-[4/3] overflow-hidden">

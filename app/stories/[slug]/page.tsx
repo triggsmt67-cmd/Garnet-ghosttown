@@ -89,6 +89,21 @@ export default async function StoryPage({ params }: StoryPageProps) {
               className="story-body text-[1.0625rem] leading-8 text-black/74"
               dangerouslySetInnerHTML={{ __html: story.bodyHtml }}
             />
+            {story.slug === "ole-and-marian-dahl-garnet-montana" && (
+              <figure className="mt-10 max-w-sm">
+                <Image
+                  src="/images/historic/frank-fitzgerald-oles-tavern.jpg"
+                  alt="Frank Fitzgerald standing outside Ole’s Tavern in Garnet"
+                  width={428}
+                  height={640}
+                  sizes="(min-width: 424px) 384px, calc(100vw - 40px)"
+                  className="h-auto w-full"
+                />
+                <figcaption className="archive-caption">
+                  Frank Fitzgerald outside Ole’s Tavern, also known as The Joint, in Garnet.
+                </figcaption>
+              </figure>
+            )}
           </Reveal>
 
           {story.voice && (
