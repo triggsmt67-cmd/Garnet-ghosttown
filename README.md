@@ -3,7 +3,28 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
-## Start here: released checkpoint — November 4, 2026
+## Start here: released checkpoint — November 6, 2026
+
+- Pushed `890edb00` and `c7c6a5be` to `origin/main`. Vercel Production reached
+  READY for `c7c6a5be` on the [Garnet review site](https://garnet-ghosttown-gdro.vercel.app/).
+  [Deployment record](https://vercel.com/trevor-riggs-projects/garnet-ghosttown-gdro/E24mAWxw7RyZpPbq1dW7tcWU4ALs)
+- Verified the live grant email and mail instructions, existing application
+  download, and thank-you quotes from Friends of the 1356 and Bonner Milltown
+  History Center. The Get Involved page now shows the association contact
+  details without the paused Zeffy placeholders.
+- Verified the live stories: John Leshou was bank vice president, the Fitzgerald
+  family left in 1918, Frank returned in 1945, and the Seadins arrived in 1902.
+  Gloria’s photo of Frank outside Ole’s Tavern is on the Dahl family story.
+- Restored the missing local images from Git and the story snapshot. The
+  local rescan found no broken images across the 69 image URLs checked.
+- Sent Gloria “Garnet website updates are ready to view” on November 6 from
+  Trevor’s TruePath account. [Sent email](https://mail.google.com/mail/u/?authuser=trevor%40truepath406.com#sent/1a1b23f50180a1a9)
+
+Still open: clear BLM and GPA logos, the board’s opt-in roster decisions,
+the Education & Events materials listed below, and the remaining historical
+sources tracked in [the historical audit](docs/historical-content-audit-2026-10-12.md).
+
+## Earlier release checkpoint — November 4, 2026
 
 - Application changes were committed and pushed to `origin/main` as
   `0c3b2d97050c9822670159450e8d4e5e1b67d910` — “Add grant downloads and Montana
@@ -137,23 +158,10 @@ the completed work, client dependencies, and older integration notes remain usef
 
 ### Remaining content and client dependencies
 
-- **Historical-information email sent November 4, 2026:** Trevor confirmed sending
-  the revised request for family-history sources, census records, Davey’s buggy
-  provenance, grant award/completion records, and confirmation of the 2024 grant
-  forms. Awaiting responses; historical questions remain open. See the dated
-  follow-up in `docs/historical-content-audit-2026-10-12.md` for the exact scope
-  and client replies received by November 6.
-- **November 6 local review:** Removed the paused Zeffy placeholders and added
-  the supplied thank-you quotes to the Bonner and Engine 1356 grant projects.
-  The official BLM book already links from History and About Garnet; its PDF
-  responded successfully. These local changes were not deployed.
-- [ ] Resolve the 33 missing tracked images with Trevor; inspect affected routes
-  visually once their intended state is known. Keep unrelated changes intact.
-- [ ] Complete the **Education & Events customer follow-up** checklist below:
-  Warren Park photo/credit, interpretive-trail brochure, Town Map pamphlet,
-  scavenger-hunt download, official titles, and genealogy/*The People of Garnet*
-  wording/link. These are still missing; the new transportation/grant downloads
-  do not complete that separate list. Genealogy copy remains omitted pending approval.
+- [ ] Collect the remaining Education & Events materials and decisions listed
+  below. The current scavenger hunt brochure is live.
+- [ ] Collect clear BLM and GPA logo files and confirm which board members
+  opt into the roster. Zeffy remains tabled.
 - [x] Confirm the license-plate grant application with GPA. On November 6, Jen
   confirmed the old site's application is current. Both local PDFs match the
   old site's extracted wording and page counts, although the file bytes differ.
@@ -192,8 +200,7 @@ the completed work, client dependencies, and older integration notes remain usef
 ### Next session: start in this order
 
 1. Run `git status --short`, `git branch --show-current`, and `git log -1`.
-   Review this checkpoint, preserve uncommitted/untracked work, and settle the
-   **33 missing images** before staging or assessing release readiness.
+   Review the latest checkpoint and preserve uncommitted or untracked work.
 2. Start the local preview and review `/montana-ghost-towns`, `/cabin-rentals`,
    `/events`, `/license-plate`, and the shared navigation/footer with Trevor.
    Collect the outstanding Education & Events files and client content decisions.
@@ -213,7 +220,7 @@ Collect the following from the customer for the updated `/events` page:
   photo credit to retain.
 - [ ] Get the Self-Guided Interpretive Trail brochure and confirm its official title.
 - [ ] Get the Town Map pamphlet and confirm its official title.
-- [ ] Get the Scavenger Hunt map/list for visitors to download.
+- [x] Publish the current scavenger hunt brochure. A revised version for home printing may follow if Gloria and Nick settle on one.
 - [ ] Confirm the genealogy committee details: whether it researches former
   residents and updates *The People of Garnet*, whether the book is sold at the
   Visitor Center, and whether a current version is available online for free.

@@ -111,3 +111,30 @@ No replies or new evidence were recorded with this update. This note records Tre
 - Jen confirmed that the old site's license-plate grant application is current.
   The existing application and cover-letter PDFs have the same extracted
   wording and page counts as the old site's copies. No replacement was needed.
+
+
+## Live corrections and follow-up sent — November 6, 2026
+
+The review site was rebuilt from `c7c6a5be`. The live pages show John Leshou as
+bank vice president, the Fitzgerald family leaving in 1918, Frank returning
+in 1945, and the Seadin family arriving in 1902. Gloria’s photo of Frank
+outside Ole’s Tavern appears on the Dahl family story.
+
+Trevor’s TruePath account sent Gloria the release recap on November 6.
+[Sent email](https://mail.google.com/mail/u/?authuser=trevor%40truepath406.com#sent/1a1b23f50180a1a9)
+
+Open research and records:
+
+- Fitzgerald: confirm the source or replace the existing 1912 newspaper
+  passage. Gloria supplied a *Philipsburg Mail* clipping about the fire.
+- Seadin: reconcile the sequence of later moves if supporting records become available.
+- Chinese residents: await Jennie’s response via Gloria on the census source
+  and how it relates to the names in *The People of Garnet*.
+- Philip Neuman: await Gloria’s follow-up with descendants and supporting
+  records for the biography, house story, and reported fire.
+- Dahl family: confirm The Joint’s opening date and the construction date of
+  the building now used as the Visitor Center.
+- Davey’s buggy: await records connecting it to the July 1948 auction.
+- Grant project histories: award letters and completion reports remain
+  outstanding. Jen confirmed the current application, and the site now
+  lists the email and mail options printed on it.
