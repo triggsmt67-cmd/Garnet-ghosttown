@@ -1,5 +1,6 @@
 "use client";
 
+import { navLabels } from "@/lib/navigation";
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight } from "./icons";
@@ -101,7 +102,7 @@ const seasons: Season[] = [
     ],
     primaryLink: {
       href: "/cabin-rentals",
-      label: "Winter cabin details",
+      label: navLabels.cabins,
     },
     secondaryLink: {
       href: "tel:4063293914",

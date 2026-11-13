@@ -1,3 +1,4 @@
+import { navLabels } from "@/lib/navigation";
 import type { ReactNode } from "react";
 import { homeHeroCopy } from "./home-hero-copy";
 import Image from "next/image";
@@ -36,11 +37,11 @@ export function HomeHeroJournal({ roadReport, conditions }: { roadReport?: HeroR
               <Link href="/explore" className="arrival-secondary">{homeHeroCopy.secondaryAction} <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
-          <Link href="/history" className="arrival-archive" aria-label="Discover Garnet’s history and stories">
+          <Link href="/history" className="arrival-archive" aria-label={navLabels.history}>
             <div className="arrival-archive-image">
               <Image src="/images/Home-Top-Banner.webp" alt="An archival view of Garnet’s busy main street" fill sizes="(min-width: 768px) 220px, 130px" className="object-cover" />
             </div>
-            <span className="arrival-archive-caption">History & Stories <span aria-hidden="true">↗</span></span>
+            <span className="arrival-archive-caption">{navLabels.history} <span aria-hidden="true">↗</span></span>
           </Link>
           <span className="arrival-photo-label">Garnet, today</span>
         </div>

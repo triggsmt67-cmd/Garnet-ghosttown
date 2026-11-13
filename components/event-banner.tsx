@@ -1,3 +1,4 @@
+import { navLabels } from "@/lib/navigation";
 import Link from "next/link";
 import type { GarnetEvent } from "@/lib/content/types";
 import { formatEventDate, formatEventDayTime } from "@/lib/content/time";
@@ -29,7 +30,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
             href="/events"
             className="inline-flex items-center gap-3 border-b border-[#d3b350] pb-2 text-sm font-semibold text-[#f8f6f1] transition-colors hover:text-[#e0c46d]"
           >
-            Education &amp; events calendar
+            {navLabels.events}
             <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -60,7 +61,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
             href="/events"
             className="group inline-flex items-center gap-2 text-xs font-bold tracking-[0.14em] uppercase text-white/70 transition-colors hover:text-[#e0c46d]"
           >
-            View full event calendar
+            {navLabels.events}
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
         </Reveal>
@@ -106,7 +107,7 @@ export function EventBanner({ event }: { event: GarnetEvent | null }) {
               rel={isExternal ? "noreferrer" : undefined}
               className="group mt-0 inline-flex shrink-0 items-center gap-3 border-b border-[#d3b350] pb-2 text-sm font-semibold lg:mt-5"
             >
-              {event.registrationRequired ? "Register" : "Event details & tickets"}
+              {!event.detailsUrl || event.detailsUrl === "/events" ? navLabels.events : event.registrationRequired ? "Register" : "Event details & tickets"}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>

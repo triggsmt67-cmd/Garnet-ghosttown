@@ -1,3 +1,4 @@
+import { navLabels } from "@/lib/navigation";
 import { Suspense } from "react";
 import { HeroConditions } from "@/components/hero-conditions";
 import { getVisitorUpdates } from "@/lib/content/updates";
@@ -48,7 +49,7 @@ async function HomeUpdates() {
         />
       )}
 
-      <aside aria-label="Current visitor updates" className="border-b border-[#24352b]/15 bg-[#e9e1d1] px-5 py-6 md:px-10"><div className="mx-auto flex max-w-[82rem] flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-semibold tracking-wider text-[#98613d] uppercase">{featuredUpdate?.sample ? "Current updates · Sample content" : "Current updates"}</p><p className="mt-2 max-w-3xl leading-7 text-[#24352b]">{featuredUpdate ? featuredUpdate.summary : "Check road and snow reports, visitor alerts, and announcements before your trip."}</p>{featuredUpdate?.verifiedAt && <p className="mt-2 text-xs text-[#625b50]">Last checked {formatEventDate(featuredUpdate.verifiedAt)}</p>}</div><Link href={featuredUpdate ? `/updates#update-${featuredUpdate.id}` : "/updates"} className="shrink-0 self-start border-b border-[#3d5a3e] pb-2 font-semibold text-[#24352b] md:self-center">View current updates →</Link></div></aside>
+      <aside aria-label="Current visitor updates" className="border-b border-[#24352b]/15 bg-[#e9e1d1] px-5 py-6 md:px-10"><div className="mx-auto flex max-w-[82rem] flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-semibold tracking-wider text-[#98613d] uppercase">{featuredUpdate?.sample ? "Current updates · Sample content" : "Current updates"}</p><p className="mt-2 max-w-3xl leading-7 text-[#24352b]">{featuredUpdate ? featuredUpdate.summary : "Check road and snow reports, visitor alerts, and announcements before your trip."}</p>{featuredUpdate?.verifiedAt && <p className="mt-2 text-xs text-[#625b50]">Last checked {formatEventDate(featuredUpdate.verifiedAt)}</p>}</div><Link href={featuredUpdate ? `/updates#update-${featuredUpdate.id}` : "/updates"} className="shrink-0 self-start border-b border-[#3d5a3e] pb-2 font-semibold text-[#24352b] md:self-center">{navLabels.updates} <span aria-hidden="true">→</span></Link></div></aside>
 
       <EventBanner event={homepageEvent} />
 
@@ -89,7 +90,7 @@ export default function Home() {
                 mountain winters.
               </p>
               <div className="mt-9">
-                <CtaLink href="/history">Discover Garnet&apos;s story</CtaLink>
+                <CtaLink href="/history">{navLabels.history}</CtaLink>
               </div>
             </div>
 
@@ -156,7 +157,7 @@ export default function Home() {
 
               <div className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
                 <CtaLink href="/explore" light>
-                  Explore Garnet
+                  {navLabels.explore}
                 </CtaLink>
                 <Link
                   href="/explore#town-map"
@@ -245,7 +246,7 @@ export default function Home() {
                   href="/visit"
                   className="inline-flex border-b border-[#3d5a3e] pb-2 text-sm font-semibold"
                 >
-                  Read the complete visitor guide
+                  {navLabels.visit}
                 </Link>
                 <a
                   href="tel:4063293914"
