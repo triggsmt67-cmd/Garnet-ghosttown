@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RouteHero } from "@/components/route-hero";
-export const metadata: Metadata = { title: "Common Questions", description: "Answers about visiting Garnet Ghost Town, road access, admission, school tours, and winter cabin rentals." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
+  title: "Common Questions", description: "Answers about visiting Garnet Ghost Town, road access, admission, school tours, and winter cabin rentals." };
 const groups = [
   {title:"Planning your visit", questions:[
     {question:"Where is Garnet Ghost Town?", answer:"Garnet is in the Garnet Mountains, about 35 miles east of Missoula, Montana. The final part of the drive is on mountain gravel roads.", href:"/visit",label:"Directions and visitor information"},

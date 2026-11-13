@@ -41,6 +41,7 @@ export function TownMap() {
           <div>
             <p className="text-[0.68rem] font-bold tracking-[0.2em] text-[#e0c46d] uppercase">Explore the town · Landmark stops</p>
             <p id="town-map-instructions" className="mt-4 max-w-sm text-sm leading-relaxed text-white/74">Select a numbered marker on the photograph, or choose a building below, to see its field notes and history.</p>
+            <a href="/downloads/garnet-walking-tour.pdf" download className="mt-3 inline-block py-2 text-sm font-semibold text-[#e0c46d] underline underline-offset-4">Download the walking tour (PDF)</a>
           </div>
           <h2 className="display-type text-4xl leading-[0.95] font-normal tracking-[-0.035em] md:text-6xl">Find the town inside<span className="block text-[#e0c46d]">the ghost town.</span></h2>
         </div>

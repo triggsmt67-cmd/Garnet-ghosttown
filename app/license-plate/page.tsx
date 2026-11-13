@@ -3,7 +3,9 @@ import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import projects from "./projects.json";
 
-export const metadata: Metadata = { title: "License Plate & Grants", description: "Support Garnet and other Montana ghost towns with the Explore Montana Ghost Towns specialty plate." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/license-plate" },
+  title: "License Plate & Grants", description: "Support Garnet and other Montana ghost towns with the Explore Montana Ghost Towns specialty plate." };
 const steps = [
   ["Visit your county treasurer.", "Go to a Montana County Treasurer Motor Vehicle Office to request the plate."],
   ["Ask for the ghost town plate.", "Request the Explore Montana Ghost Towns plate sponsored by the Garnet Preservation Association."],

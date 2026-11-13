@@ -17,6 +17,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/events" },
   title: "Events & Programs",
   description:
     "Explore guided tours, hiking trails, classroom resources, family activities, and special events at Garnet Ghost Town.",
@@ -264,7 +265,7 @@ export default function EventsPage() {
             <p>“Investigating Garnet” turns students into archaeologists and historians as they explore Montana’s preserved mining town. Developed in partnership with BLM and GPA, the curriculum blends classroom learning with on-site investigation.</p>
             <p>Best suited for grades 3–5, the lessons can be adapted for other ages. The guide includes classroom lesson plans and field activities at Garnet, so a follow-up tour will need to be scheduled.</p>
             <p>The only cost is the curriculum guide, available for $29.95 online through Project Archaeology or at Garnet’s Visitor Center Store during seasonal hours.</p>
-            <a href="https://projectarchaeology.org/product/investigating-garnet-a-historic-mining-town/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold text-[#1e2f1f] hover:text-[#3d5a3e]">View the curriculum at Project Archaeology <ArrowUpRight className="h-4 w-4 shrink-0" /></a>
+            <a href="https://projectarchaeology.org/investigating-garnet-a-historic-mining-town/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 border-b border-[#3d5a3e] pb-1.5 text-sm font-semibold text-[#1e2f1f] hover:text-[#3d5a3e]">View the curriculum at Project Archaeology <ArrowUpRight className="h-4 w-4 shrink-0" /></a>
             <p className="text-sm">For more information, call the BLM office at <a href="tel:4063293914" className="underline underline-offset-4">406-329-3914</a>.</p>
           </ActivityRow>
         </div>

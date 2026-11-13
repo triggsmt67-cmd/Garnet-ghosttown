@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-export const metadata: Metadata = { title: "Winter Cabin Rentals", description: "Plan a winter cabin stay at Garnet. Find cabin capacities, rental information, and BLM reservation contacts." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/cabin-rentals" },
+  title: "Winter Cabin Rentals", description: "Plan a winter cabin stay at Garnet. Find cabin capacities, rental information, and BLM reservation contacts." };
 const provided = ["Rodent-proof can", "Firewood and ax", "Water containers", "Two-burner propane cook stove", "Wood-burning heat stove", "Fire extinguisher and smoke alarm", "First aid kit", "Propane light", "Table and chairs", "Beds", "Broom and dust pan", "Snow shovel", "Dish pan, drying rack and drainer", "Frying pans, pots and kettle", "Plates, bowls, cups and glasses", "Silverware, can opener and basic utensils"];
 const bring = ["Reservation confirmation and cabin access instructions", "Food and beverages", "Warm clothing", "Sleeping bags", "Flashlight", "Emergency shelter", "Sharp knife", "Storm gear", "Towel", "Dish soap and sponge", "Ski repair items", "Snowmobile repair items", "Garbage bags", "Compass", "Toiletries", "Specific first aid or medical supplies"];
 export default function CabinRentalsPage() {

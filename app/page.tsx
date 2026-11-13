@@ -18,6 +18,8 @@ import { eventSchema, jsonLd } from "@/lib/content/schema";
 // cutoffs are re-evaluated even between WordPress webhooks.
 export const revalidate = 120;
 
+export const metadata = { alternates: { canonical: "/" } };
+
 const placeSchema = {
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
@@ -42,7 +44,7 @@ async function HomeUpdates() {
   const homepageEvent = pickHomepageEvent(events);
 
   return (<>
-      {homepageEvent && (
+      {homepageEvent && !homepageEvent.isSample && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema(homepageEvent)) }}

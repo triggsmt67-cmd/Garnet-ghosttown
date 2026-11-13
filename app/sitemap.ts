@@ -1,17 +1,18 @@
 import type { MetadataRoute } from "next";
 import { buildings } from "@/lib/buildings";
 import { getStories } from "@/lib/content";
-import { isIndexable } from "@/lib/site";
+import { isIndexable, SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Nothing to advertise while the site is blocked from search.
   if (!isIndexable) return [];
 
   const { data: stories } = await getStories();
-  const base = "https://garnetghosttown.org";
+  const base = SITE_URL;
   return [
     { url: `${base}/`, priority: 1, changeFrequency: "monthly" },
     { url: `${base}/visit`, priority: 0.9, changeFrequency: "monthly" },
+    { url: `${base}/events`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${base}/explore`, priority: 0.8, changeFrequency: "yearly" },
     { url: `${base}/montana-ghost-towns`, priority: 0.6, changeFrequency: "yearly" },
     { url: `${base}/history`, priority: 0.7, changeFrequency: "yearly" },

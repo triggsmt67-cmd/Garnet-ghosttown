@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: BuildingPageProps): Promise<M
   if (!building) return {};
 
   return {
+    alternates: { canonical: `/explore/${encodeURIComponent(building.slug)}` },
     title: building.name,
     description: building.summary,
   };

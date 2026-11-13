@@ -6,6 +6,7 @@ import { RouteHero } from "@/components/route-hero";
 import { TownMap } from "@/components/town-map";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/explore" },
   title: "Things to Do",
   description:
     "Discover preserved buildings, self-guided mining trails, scavenger hunts, geocaching, and mountain activities at Garnet Ghost Town.",
@@ -111,7 +112,7 @@ export default function ExplorePage() {
                 delay={index * 90}
               >
                 <div>
-                  <h3 className="display-type text-3xl font-normal text-[#0e1c27] md:text-4xl">{item.title}</h3>
+                  <h3 id={item.href === "/events" ? "events" : undefined} className="display-type scroll-mt-36 text-3xl font-normal text-[#0e1c27] md:text-4xl">{item.title}</h3>
                   <span className="mt-2 inline-block rounded-full bg-[#3d5a3e]/10 px-2.5 py-0.5 text-[0.62rem] font-bold tracking-[0.12em] uppercase text-[#3d5a3e]">
                     {item.tag}
                   </span>
@@ -126,7 +127,7 @@ export default function ExplorePage() {
       <section id="nearby" className="scroll-mt-36 bg-[#f2eee4] px-5 py-14 md:px-10 md:py-20"><div className="mx-auto max-w-[82rem]"><p className="text-xs font-semibold uppercase tracking-wider text-[#3d5a3e]">Beyond Garnet</p><h2 className="display-type mt-3 text-4xl md:text-5xl">Activities nearby</h2><p className="mt-5 max-w-2xl leading-7 text-black/65">Make time for the surrounding mountains, too. Contact the BLM at <a href="tel:4063293914" className="underline">406.329.3914</a> for maps and current access information.</p><div className="mt-8 grid gap-6 sm:grid-cols-2">
         <figure><div className="relative aspect-[16/10] overflow-hidden bg-[#e9e1d1]"><Image src="/images/Explore-Nearby-Winter-View.webp" alt="Mountain vista framed by evergreen trees near Garnet" fill sizes="(min-width: 768px) 45vw, 90vw" className="object-cover" /></div><figcaption className="mt-3 text-xs leading-6 text-black/60">Garnet’s mountain setting. Check access and weather before heading out.</figcaption></figure>
         <figure><div className="relative aspect-[16/10] overflow-hidden bg-[#e9e1d1]"><Image src="/images/Explore-Nearby-Mountain-Setting.webp" alt="Snowmobilers gathered on a snowy overlook near Garnet" fill sizes="(min-width: 768px) 45vw, 90vw" className="object-cover" /></div><figcaption className="mt-3 text-xs leading-6 text-black/60">Winter recreation in the surrounding mountains. Check snow and access conditions.</figcaption></figure>
-      </div><div className="mt-8 grid gap-x-12 md:grid-cols-2">{nearby.map(item=><article key={item.title} className="border-t border-black/15 py-7"><h3 className="display-type text-3xl">{item.title}</h3><p className="mt-2 text-xs font-semibold text-[#3d5a3e]">{item.tag}</p><p className="mt-3 text-sm leading-7 text-black/65">{item.copy}</p><ReadMore item={item} /></article>)}</div><p className="mt-6 text-xs text-black/60">Activity details adapted from the association’s <a href="https://www.garnetghosttown.org/things-to-do.php#nearby" className="underline">Things to Do page</a>. Confirm current rules and conditions before your trip.</p></div></section>
+      </div><div className="mt-8 grid gap-x-12 md:grid-cols-2">{nearby.map(item=><article key={item.title} className="border-t border-black/15 py-7"><h3 className="display-type text-3xl">{item.title}</h3><p className="mt-2 text-xs font-semibold text-[#3d5a3e]">{item.tag}</p><p className="mt-3 text-sm leading-7 text-black/65">{item.copy}</p><ReadMore item={item} /></article>)}</div><p className="mt-6 text-xs text-black/60">Activity details adapted from the Garnet Preservation Association’s Things to Do guide. Confirm current rules and conditions before your trip.</p></div></section>
       <TownMap />
 
       <section className="grid bg-[#0d1218] text-[#f8f6f1] lg:grid-cols-[.9fr_1.1fr]">

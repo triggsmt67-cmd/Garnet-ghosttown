@@ -11,6 +11,7 @@ import { LiveFireRestrictionsCard } from "@/components/live-fire-status";
 import { pendingFireStatus } from "@/lib/fire-shared";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/visit" },
   title: "Plan Your Visit",
   description: "Hours, fees, seasonal access, road guidance, directions, and practical tips for visiting Garnet Ghost Town from Missoula.",
 };

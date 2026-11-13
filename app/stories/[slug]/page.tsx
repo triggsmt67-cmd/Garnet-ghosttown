@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: StoryPageProps): Promise<Meta
   const story = await getStory(slug);
   if (!story) return {};
   return {
+    alternates: { canonical: `/stories/${encodeURIComponent(story.slug)}` },
     title: story.title,
     description: story.leadIn,
     openGraph: story.mainPhoto ? { images: [story.mainPhoto.url] } : undefined,

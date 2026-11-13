@@ -31,6 +31,7 @@ const link = ({ children, href }) => e('a', { href }, children);
 const defaultExport = value => ({ __esModule: true, default: value });
 const icons = new Proxy({}, { get: () => () => e('svg') });
 const shared = {
+  '@/lib/navigation': load('lib/navigation.ts', {}),
   'next/image': defaultExport(image),
   'next/link': defaultExport(link),
   '@/components/icons': icons,
@@ -66,10 +67,10 @@ for (const [path, title] of [
       '@/components/live-fire-status': live,
       '@/components/fire-status-bar': { FireStatusBar },
       '@/lib/fire-shared': { pendingFireStatus },
-      '@/lib/site': { isIndexable: false },
+      '@/lib/site': { isIndexable: false, SITE_URL: 'https://garnetghosttown.org' },
     }).default;
     const HeroConditions = ({ roadReport }) => e('aside', null, roadReport?.status ?? 'Confirm access before leaving');
-    const { homeHeroCopy } = load('components/home-hero-copy.ts', {});
+    const { homeHeroCopy } = load('components/home-hero-copy.ts', shared);
     const journal = load('components/home-hero-journal.tsx', {
       ...shared, './home-hero-copy': { homeHeroCopy }, './icons': icons,
       './hero-conditions': { HeroConditions },

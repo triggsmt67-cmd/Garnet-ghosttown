@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/association" },
   title: "About the Association",
   description: "Learn about the Garnet Preservation Association, its partnership with BLM, preservation work, and funding.",
 };

@@ -5,6 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/preserve" },
   title: "Get Involved",
   description: "Support Garnet Ghost Town through membership, donations, historical contributions, and BLM volunteer opportunities.",
 };
@@ -188,7 +189,7 @@ export default function PreservePage() {
           </div>
           <div>
             <p className="text-base leading-8 text-black/72">The Bureau of Land Management handles employment and seasonal volunteer positions at Garnet. The usual volunteer season runs from May 14 through October 1. Housing and an RV site may be available; confirm current openings and arrangements with BLM.</p>
-            <p className="mt-5 text-base leading-8 text-black/72">Garnet is remote and has limited modern conveniences. Consider those conditions before applying. Seasonal opportunities may be listed through <a href="https://www.volunteer.gov/" className="font-semibold text-[#3d5a3e] underline underline-offset-4">Volunteer.gov</a>.</p>
+            <p className="mt-5 text-base leading-8 text-black/72">Garnet is remote and has limited modern conveniences. Consider those conditions before applying. Seasonal opportunities may be listed through <a href="https://www.volunteer.gov/s/" className="font-semibold text-[#3d5a3e] underline underline-offset-4">Volunteer.gov</a>.</p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 font-semibold text-[#3d5a3e]">
               <a href="tel:+14063293914" className="underline underline-offset-4">Call BLM: 406-329-3914</a>
               <a href="mailto:BLM_MT_Missoula_FO@blm.gov" className="break-all underline underline-offset-4">Email the Missoula Field Office</a>

@@ -8,7 +8,7 @@ import { Suspense } from "react";
 import { LiveFireStatusBar } from "@/components/live-fire-status";
 import { FireStatusBar } from "@/components/fire-status-bar";
 import { pendingFireStatus } from "@/lib/fire-shared";
-import { isIndexable } from "@/lib/site";
+import { isIndexable, SITE_URL } from "@/lib/site";
 
 const display = Newsreader({
   variable: "--font-newsreader",
@@ -23,7 +23,7 @@ const sans = Barlow({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://garnetghosttown.org"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Garnet Ghost Town | Step Into Montana History",
     template: "%s | Garnet Ghost Town",

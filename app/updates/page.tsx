@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getVisitorUpdates, updateCategories } from "@/lib/content/updates";
 import { formatEventDate /*, formatEventDayTime */ } from "@/lib/content/time";
-export const metadata: Metadata = {title:"Current Updates",description:"Check Garnet visitor updates, road and snow reports, announcements, and maps."};
+export const metadata: Metadata = {
+  alternates: { canonical: "/updates" },
+  title: "Current Updates",description:"Check Garnet visitor updates, road and snow reports, announcements, and maps."};
 export const revalidate = 60;
 export default async function UpdatesPage(){
   const {updates,unavailable}=await getVisitorUpdates();

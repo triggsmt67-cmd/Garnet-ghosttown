@@ -29,6 +29,7 @@ const eraColors: Record<string, string> = {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/history" },
   title: "History",
   description: "Follow Garnet from gold discovery and its 1898 boom through decline, abandonment, and preservation.",
 };
