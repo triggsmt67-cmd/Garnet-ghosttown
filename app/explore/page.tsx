@@ -6,7 +6,7 @@ import { RouteHero } from "@/components/route-hero";
 import { TownMap } from "@/components/town-map";
 
 export const metadata: Metadata = {
-  title: "Explore Garnet",
+  title: "Things to Do",
   description:
     "Discover preserved buildings, self-guided mining trails, scavenger hunts, geocaching, and mountain activities at Garnet Ghost Town.",
 };
@@ -60,8 +60,8 @@ export default function ExplorePage() {
   return (
     <main id="main-content">
       <RouteHero
-        eyebrow="Explore Garnet"
-        title="See Garnet building by building."
+        eyebrow="See Garnet building by building."
+        title="Things to Do"
         intro="Walk Garnet’s dirt streets, visit the old buildings, and follow trails to the nearby mines."
         image="/images/Explore-Top-Banner.webp"
         imageAlt="Historic buildings lining the main street at Garnet Ghost Town"

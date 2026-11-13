@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { RouteHero } from "@/components/route-hero";
@@ -16,7 +17,7 @@ import {
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Education & Events",
+  title: "Events & Programs",
   description:
     "Explore guided tours, hiking trails, classroom resources, family activities, and special events at Garnet Ghost Town.",
 };
@@ -155,8 +156,8 @@ export default function EventsPage() {
   return (
     <main id="main-content">
       <RouteHero
-        eyebrow="Education & Events"
-        title="Learn about life in Garnet."
+        eyebrow="Learn about life in Garnet."
+        title="Events & Programs"
         intro="Explore Garnet’s historic buildings, follow a trail to an old mining claim, or bring your class for a guided tour. Discover programs, events, and activities for visitors of all ages."
         image="/images/Event-Top-Banner.webp"
         imageAlt="Visitors gathered on the lawn among Garnet’s historic buildings"
@@ -324,7 +325,7 @@ export default function EventsPage() {
             <h2 className="display-type section-heading leading-[0.98] tracking-[-0.035em]">Kids &amp; family activities</h2>
           </Reveal>
           <ActivityRow title="Self-Guided Building and Mine Tour" note="Complimentary town pamphlet">
-            <a href="/explore#walking-tour" className="inline-block font-semibold text-[#3d5a3e] underline underline-offset-4">View or download the Garnet walking tour</a>
+            <Link href="/explore#walking-tour" className="inline-block font-semibold text-[#3d5a3e] underline underline-offset-4">View or download the Garnet walking tour</Link>
             <p>Pick up a complimentary pamphlet at the Visitor Center with a town map showing Garnet’s old homes and businesses. It includes historical information and helps you explore at your leisure when guided tours are not available.</p>
             <p>Guided tours must be scheduled in advance. Contact the BLM office at <a href="tel:4063293914" className="underline underline-offset-4">406-329-3914</a> to arrange a tour.</p>
           </ActivityRow>

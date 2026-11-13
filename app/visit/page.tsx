@@ -59,8 +59,8 @@ export default function VisitPage() {
   return (
     <main id="main-content">
       <RouteHero
-        eyebrow="Plan your visit"
-        title="Plan the last 11 miles before you go."
+        eyebrow="Plan the last 11 miles before you go."
+        title="Plan Your Visit"
         intro="Garnet sits at 6,000 feet in the Garnet Range. Check the recommended route, seasonal access, admission, and what to bring before you leave reliable cell service."
         image="/images/garnet-town.JPG"
         imageAlt="The mountain road entering Garnet Ghost Town"

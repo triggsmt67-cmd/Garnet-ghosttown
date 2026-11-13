@@ -1,3 +1,4 @@
+import { links, involvementLinks } from "@/lib/navigation";
 import Link from "next/link";
 import { Mountain } from "./icons";
 import { PageClosing } from "./page-closing";
@@ -26,32 +27,28 @@ export function Footer() {
             </p>
           </div>
           <nav aria-label="Footer navigation" className="grid gap-x-8 gap-y-8 min-[360px]:grid-cols-2 sm:grid-cols-3">
+            {links.map(section => (
+              <div key={section.href}>
+                <Link href={section.href} className="mb-4 block text-xs font-bold tracking-[0.15em] text-white uppercase hover:text-[#e0c46d]">
+                  {section.label}
+                </Link>
+                <div className="grid gap-2">
+                  {section.children?.filter(item => item.href !== section.href).map(item => (
+                    <Link key={item.href} className="hover:text-[#e0c46d]" href={item.href}>{item.label}</Link>
+                  ))}
+                </div>
+              </div>
+            ))}
             <div>
-              <p className="mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Visit</p>
+              <Link href="/preserve" className="mb-4 block text-xs font-bold tracking-[0.15em] text-white uppercase hover:text-[#e0c46d]">Get Involved</Link>
               <div className="grid gap-2">
-                <Link className="hover:text-[#e0c46d]" href="/visit">Plan Your Visit</Link>
-                <Link className="hover:text-[#e0c46d]" href="/updates">Current updates</Link>
-                <Link className="hover:text-[#e0c46d]" href="/faq">Common questions</Link>
-                <Link className="hover:text-[#e0c46d]" href="/cabin-rentals">Winter cabin rentals</Link>
+                {involvementLinks.map(item => (
+                  <Link key={item.href} className="hover:text-[#e0c46d]" href={item.href}>{item.label}</Link>
+                ))}
               </div>
             </div>
             <div>
-              <p className="mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Explore</p>
-              <div className="grid gap-2">
-                <Link className="hover:text-[#e0c46d]" href="/explore">Explore</Link>
-                <Link className="hover:text-[#e0c46d]" href="/gallery">Photo Gallery</Link>
-                <Link className="hover:text-[#e0c46d]" href="/montana-ghost-towns">Montana ghost towns</Link>
-                <Link className="hover:text-[#e0c46d]" href="/about">About Garnet</Link>
-                <Link className="hover:text-[#e0c46d]" href="/history">History timeline</Link>
-              </div>
-            </div>
-            <div className="min-[360px]:col-span-2 sm:col-span-1">
-              <p className="mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Get Involved</p>
-              <div className="grid gap-2">
-                <Link className="hover:text-[#e0c46d]" href="/association">About the Association</Link>
-                <Link className="hover:text-[#e0c46d]" href="/license-plate">License Plate &amp; Grants</Link>
-              </div>
-              <p className="mt-6 mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Official</p>
+              <p className="mb-4 text-xs font-bold tracking-[0.15em] text-white uppercase">Official</p>
               <div className="grid gap-2">
                 <a className="hover:text-[#e0c46d]" href="https://www.blm.gov/visit/garnet-ghost-town" target="_blank" rel="noreferrer">BLM visitor page ↗</a>
                 <Link className="hover:text-[#e0c46d]" href="/association">Preservation association</Link>

@@ -5,19 +5,19 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "./icons";
 
 const endings = {
-  "montana-ghost-towns": { label: "Start at Garnet", title: "Make Garnet part of your Montana trip.", href: "/visit", action: "Plan your Garnet visit" },
-  home: { label: "Your time at Garnet", title: "Check the route and plan your visit.", href: "/visit", action: "Plan your visit" },
-  visit: { label: "Once you arrive", title: "See which buildings you can explore.", href: "/explore", action: "Explore the town" },
-  explore: { label: "Garnet’s residents", title: "Meet the people who made Garnet a town.", href: "/history", action: "Read Garnet’s stories" },
-  history: { label: "Caring for Garnet", title: "Learn how crews care for Garnet’s buildings.", href: "/preserve", action: "See how Garnet is preserved" },
-  preserve: { label: "Visit Garnet", title: "Come see Garnet for yourself.", href: "/visit", action: "Plan your visit" },
-  board: { label: "Support preservation", title: "Help care for Montana’s ghost towns.", href: "/license-plate", action: "See the license plate" },
-  "license-plate": { label: "More ways to help", title: "Get involved with preservation at Garnet.", href: "/preserve", action: "Explore ways to help" },
-  "cabin-rentals": { label: "Winter access", title: "Check the route before heading to Garnet.", href: "/visit", action: "Visitor information" },
-  about: { label: "Stories through time", title: "Explore Garnet’s history, one story at a time.", href: "/history", action: "See the timeline" },
+  "montana-ghost-towns": { label: "Start at Garnet", title: "Make Garnet part of your Montana trip.", href: "/visit", action: "Plan Your Visit" },
+  home: { label: "Your time at Garnet", title: "Check the route and plan your visit.", href: "/visit", action: "Plan Your Visit" },
+  visit: { label: "Once you arrive", title: "See which buildings you can explore.", href: "/explore", action: "Things to Do" },
+  explore: { label: "Garnet’s residents", title: "Meet the people who made Garnet a town.", href: "/history", action: "History & Stories" },
+  history: { label: "Caring for Garnet", title: "Learn how crews care for Garnet’s buildings.", href: "/preserve", action: "Get Involved" },
+  preserve: { label: "Visit Garnet", title: "Come see Garnet for yourself.", href: "/visit", action: "Plan Your Visit" },
+  board: { label: "Support preservation", title: "Help care for Montana’s ghost towns.", href: "/license-plate", action: "License Plate & Grants" },
+  "license-plate": { label: "More ways to help", title: "Get involved with preservation at Garnet.", href: "/preserve", action: "Get Involved" },
+  "cabin-rentals": { label: "Winter access", title: "Check the route before heading to Garnet.", href: "/visit", action: "Plan Your Visit" },
+  about: { label: "Stories through time", title: "Explore Garnet’s history, one story at a time.", href: "/history", action: "History & Stories" },
   updates: { label: "Visitor information", title: "Find answers before you head to Garnet.", href: "/faq", action: "Common questions" },
-  faq: { label: "Ready to visit?", title: "Check the route and plan your day at Garnet.", href: "/visit", action: "Plan your visit" },
-  events: { label: "Explore Garnet", title: "Take a look around the town.", href: "/explore", action: "Explore the town" },
+  faq: { label: "Ready to visit?", title: "Check the route and plan your day at Garnet.", href: "/visit", action: "Plan Your Visit" },
+  events: { label: "Around town", title: "Take a look around the town.", href: "/explore", action: "Things to Do" },
 };
 
 export function PageClosing() {

@@ -13,8 +13,8 @@ export default function PreservePage() {
   return (
     <main id="main-content">
       <RouteHero
-        eyebrow="Get Involved"
-        title="Help keep Garnet standing."
+        eyebrow="Help keep Garnet standing."
+        title="Get Involved"
         intro="Become a member, make a contribution, share a piece of Garnet’s history, or lend your skills. Your support helps the Garnet Preservation Association protect the town and keep its stories alive."
         image="/images/Preserve-Top-Banner.webp"
         imageAlt="A weathered log cabin in tall grass at Garnet"
