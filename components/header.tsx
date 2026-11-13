@@ -6,20 +6,42 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Mountain, Wheelchair } from "./icons";
 import type { ReactNode } from "react";
 
-const links = [
-  { href: "/visit", label: "Plan Your Visit" },
-  { href: "/explore", label: "Explore" },
-  { href: "/events", label: "Education & Events" },
-  { href: "/about", label: "About Garnet" },
-
+type NavLink = { href: string; label: string };
+const links: (NavLink & { children?: NavLink[] })[] = [
+  {
+    href: "/visit", label: "Plan Your Visit",
+    children: [
+      { href: "/visit", label: "Visitor information" },
+      { href: "/updates", label: "Current updates" },
+      { href: "/faq", label: "Common questions" },
+      { href: "/cabin-rentals", label: "Winter cabin rentals" },
+      { href: "/montana-ghost-towns", label: "Montana ghost towns" },
+    ],
+  },
+  {
+    href: "/explore", label: "Things to Do",
+    children: [
+      { href: "/explore", label: "Walks & activities" },
+      { href: "/gallery", label: "Photo Gallery" },
+    ],
+  },
+  { href: "/events", label: "Events & Programs" },
+  {
+    href: "/about", label: "Garnet History",
+    children: [
+      { href: "/about", label: "About Garnet" },
+      { href: "/history", label: "History & Stories" },
+    ],
+  },
 ];
 
 const involvementLinks = [
   { href: "/preserve", label: "Ways to Help" },
   { href: "/license-plate", label: "License Plate & Grants" },
   { href: "/association", label: "About the Association" },
-  { href: "/gallery", label: "Photo Gallery" },
 ];
+
+const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945";
 
 export function Header({ fireStatus }: { fireStatus: ReactNode }) {
   const pathname = usePathname();
@@ -61,10 +83,10 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
           <nav className="hidden items-center gap-5 lg:gap-6 xl:flex" aria-label="Main navigation">
             {links.map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-              if (link.href === "/visit" || link.href === "/about") return (
+              if (link.children) return (
                 <details key={link.href} className="relative" onKeyDown={event => { if (event.key === "Escape") event.currentTarget.open = false; }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) event.currentTarget.open = false; }}>
-                  <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${active || (link.href === "/visit" ? ["/cabin-rentals", "/faq", "/updates", "/montana-ghost-towns"].includes(pathname) : pathname === "/history") ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
-                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{(link.href === "/visit" ? [{href:"/visit",label:"Visitor information"},{href:"/updates",label:"Current updates"},{href:"/faq",label:"Common questions"},{href:"/cabin-rentals",label:"Winter cabin rentals"},{href:"/montana-ghost-towns",label:"Montana ghost towns"}] : [{href:"/about",label:"About Garnet"},{href:"/history",label:"History & Stories"}]).map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
+                  <summary className={`cursor-pointer list-none text-xs font-semibold tracking-[0.12em] uppercase hover:text-[#e0c46d] ${link.children.some(item => pathname === item.href || pathname.startsWith(`${item.href}/`)) ? "text-[#e0c46d]" : "text-white/75"}`}>{link.label} <span aria-hidden="true">⌄</span></summary>
+                  <div className="absolute left-0 top-full mt-5 w-64 border border-white/15 bg-[#0d1218] p-2 shadow-xl">{link.children.map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={event => { const parent = event.currentTarget.closest("details"); if (parent) parent.open = false; }} className="block px-4 py-3 text-sm text-white/85 hover:bg-white/10 focus-visible:bg-white/10">{item.label}</Link>)}</div>
                 </details>
               );
               return (
@@ -99,7 +121,7 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
               <Wheelchair className="h-6 w-6" />
             </a>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=46.82559,-113.33945"
+              href={directionsUrl}
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-2 bg-[#3d5a3e] px-4 py-3 text-xs font-bold tracking-[0.12em] text-white uppercase transition-colors hover:bg-[#4a6e4c]"
@@ -146,7 +168,13 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
               >
                 <span>{link.label}</span>
                 <ArrowUpRight className="h-5 w-5 text-white/65" />
-              </Link>{link.href === "/about" && <Link href="/history" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">History & Stories →</Link>}{link.href === "/visit" && <Link href="/updates" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Current updates →</Link>}{link.href === "/visit" && <Link href="/faq" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Common questions →</Link>}{link.href === "/visit" && <Link href="/cabin-rentals" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Winter cabin rentals →</Link>}{link.href === "/visit" && <Link href="/montana-ghost-towns" onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">Montana ghost towns →</Link>}</div>
+              </Link>
+                {link.children?.filter(item => item.href !== link.href).map(item => (
+                  <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="block py-3 pl-3 text-base text-[#e0c46d]">
+                    {item.label} →
+                  </Link>
+                ))}
+              </div>
             ))}
             <details className="border-b border-white/10 py-4 text-[#f8f6f1]">
               <summary className="display-type cursor-pointer text-3xl">Get Involved</summary>
@@ -159,6 +187,9 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
             >
               <Wheelchair className="h-7 w-7 shrink-0" />
               <span>Accessibility at Garnet</span>
+            </a>
+            <a href={directionsUrl} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="inline-flex items-center gap-2 bg-[#3d5a3e] px-4 py-3 text-sm font-bold text-white">
+              Get directions <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </nav>
