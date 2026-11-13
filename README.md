@@ -3,7 +3,23 @@
 Visitor-focused Next.js concept for Garnet Ghost Town, built with the App Router,
 TypeScript, and Tailwind CSS.
 
-## Start here: released checkpoint — November 6, 2026
+## Start here — November 13, 2026
+
+The application release through `a5b6c58d` is live on the [Garnet review site](https://garnet-ghosttown-gdro.vercel.app/). Both Vercel projects connected to `main` reported successful deployments. [Application deployment](https://vercel.com/trevor-riggs-projects/garnet-ghosttown-gdro/EmbACEHQPkTiT6Ltdtmxw9etPtB9)
+
+- Visitors can view or download the upright, two-page walking tour from Things to Do. Events & Programs links to the guide, and the interactive map has its own download link. Desktop and mobile downloads matched the committed PDF. [Interactive map and download](https://garnet-ghosttown-gdro.vercel.app/explore#town-map)
+- The smaller map shows the selected building’s description beside the photo on larger screens and brings it into view on phones. All five markers and their list buttons passed browser checks at widths of 320, 390, 768, and 1440 pixels.
+- Desktop and mobile menus, the footer, homepage links, and landing-page headings use the revised visitor labels. Photo Gallery is under Things to Do. The scrolled navigation bar switches to solid charcoal.
+- The deployed crawl checked 109 internal URLs and 80 fragment links with no internal 404s or missing anchors. Of 41 external destinations, 38 loaded. Two Montana MVD links on the license plate page and the Smithsonian article in the footer presented browser challenges and still need a manual check.
+- Verified 17 permanent redirects for legacy URLs. In an isolated launch-mode production build, all 31 sitemap entries loaded and declared the matching canonical on the intended domain. The reliability and hero-streaming test suites passed.
+
+### Next session
+
+The public domain still serves the legacy site. At cutover, connect `garnetghosttown.org` to the approved Vercel project, redirect `www` to the apex, and enable `SITE_INDEXABLE=true` on the launch deployment. Verify robots.txt, the sitemap, canonical URLs, and legacy redirects on the custom domain before submitting the sitemap in Google Search Console. The review site currently disallows crawling and serves an empty sitemap. Actual Google indexing remains unverified.
+
+Hosted WordPress, approved launch content, and the client and archival follow-ups below are still pending. Five pre-existing local deletions (three grant PDFs and two boardwalk images) remain unstaged. Their committed copies are part of the release. To resume local development, run `npm run dev -- --port 3001`.
+
+## Earlier release checkpoint — November 6, 2026
 
 - Pushed `890edb00` and `c7c6a5be` to `origin/main`. Vercel Production reached
   READY for `c7c6a5be` on the [Garnet review site](https://garnet-ghosttown-gdro.vercel.app/).
@@ -178,13 +194,7 @@ the completed work, client dependencies, and older integration notes remain usef
   accurate map, obtain a corrected replacement. No additional third-party map or
   photo assets were copied; no specific rights concern was identified, but no
   independent rights documentation was supplied or established.
-- [ ] Retain source attribution when reviewing the two remaining old-site links;
-  use a verified equivalent if replacing them: `app/about/page.tsx` credits
-  `https://www.garnetghosttown.org/history.php`, and `app/explore/page.tsx` credits
-  `https://www.garnetghosttown.org/things-to-do.php#nearby`. These are source
-  citations, not download/booking navigation. Canonical URLs, metadata, sitemap
-  base, and `lib/site.ts` still use the intended Garnet domain; those are not stale
-  outbound links. No old-site download or cabin application links remain.
+- [x] November 13 — Preserved the association credit on About and Things to Do and removed the two legacy PHP citation links. Legacy visitors have permanent redirects to the corresponding new pages.
 - [ ] Connect/migrate hosted WordPress and required plugins, revalidation, galleries,
   and stories before launch; Local WP is not published by pushing Next.js code.
   Preserve client story copy and the snapshot/editor guidance below. Verify real
