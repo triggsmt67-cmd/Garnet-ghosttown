@@ -93,6 +93,16 @@ export default function ExplorePage() {
             </div>
             <figcaption className="mt-3 text-xs leading-6 text-black/60">Start with a walk through Garnet’s historic buildings.</figcaption>
           </figure>
+          <section id="walking-tour" aria-labelledby="walking-tour-heading" className="mt-8 scroll-mt-28 border-l-2 border-[#a36b43] pl-5">
+            <h3 id="walking-tour-heading" className="display-type text-3xl text-[#0e1c27]">Garnet walking tour</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-black/65">
+              Follow the numbered stops on the illustrated town map. The map and building histories are on page two.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-[#3d5a3e] underline underline-offset-4">
+              <a href="/downloads/garnet-walking-tour.pdf">View the walking tour (PDF)</a>
+              <a href="/downloads/garnet-walking-tour.pdf" download>Download for offline use</a>
+            </div>
+          </section>
           <div className="mt-16 divide-y divide-black/15 border-y border-black/15">
             {experiences.map((item, index) => (
               <Reveal

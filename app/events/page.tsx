@@ -324,6 +324,7 @@ export default function EventsPage() {
             <h2 className="display-type section-heading leading-[0.98] tracking-[-0.035em]">Kids &amp; family activities</h2>
           </Reveal>
           <ActivityRow title="Self-Guided Building and Mine Tour" note="Complimentary town pamphlet">
+            <a href="/explore#walking-tour" className="inline-block font-semibold text-[#3d5a3e] underline underline-offset-4">View or download the Garnet walking tour</a>
             <p>Pick up a complimentary pamphlet at the Visitor Center with a town map showing Garnet’s old homes and businesses. It includes historical information and helps you explore at your leisure when guided tours are not available.</p>
             <p>Guided tours must be scheduled in advance. Contact the BLM office at <a href="tel:4063293914" className="underline underline-offset-4">406-329-3914</a> to arrange a tour.</p>
           </ActivityRow>

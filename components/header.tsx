@@ -37,12 +37,12 @@ export function Header({ fireStatus }: { fireStatus: ReactNode }) {
     <header className="fixed inset-x-0 top-0 z-50">
       {fireStatus}
       <div
-        className={`border-b transition-all duration-500 ${
+        className={`border-b transition-[padding] duration-300 ${
           (pathname === "/" || pathname.startsWith("/hero-review") || pathname.startsWith("/gallery"))
             ? "border-white/10 bg-[#24352b] py-4 shadow-sm"
             : scrolled || open
-            ? "border-white/10 bg-[#0d1218]/96 py-3 shadow-2xl shadow-black/10 backdrop-blur-xl"
-            : "border-transparent bg-[#0d1218]/12 py-5"
+            ? "border-white/10 bg-[#0d1218] py-3 shadow-2xl shadow-black/10"
+            : "border-transparent bg-[#0d1218]/75 py-5"
         }`}
       >
         <div className="mx-auto flex max-w-[90rem] items-center justify-between px-5 md:px-10">
